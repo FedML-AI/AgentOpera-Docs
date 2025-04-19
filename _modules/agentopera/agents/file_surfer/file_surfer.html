@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.agents.file_surfer.file_surfer &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.agents.file_surfer.file_surfer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.agents.file_surfer.file_surfer</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">MultiModalMessage</span><span class="p">,</span>
+    <span class="n">TextMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">remove_images</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionCall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AssistantMessage</span><span class="p">,</span>
+    <span class="n">ChatCompletionClient</span><span class="p">,</span>
+    <span class="n">LLMMessage</span><span class="p">,</span>
+    <span class="n">SystemMessage</span><span class="p">,</span>
+    <span class="n">UserMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.markdown_file_browser</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkdownFileBrowser</span>
+
+<span class="c1"># from typing_extensions import Annotated</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tool_definitions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TOOL_FIND_NEXT</span><span class="p">,</span>
+    <span class="n">TOOL_FIND_ON_PAGE_CTRL_F</span><span class="p">,</span>
+    <span class="n">TOOL_OPEN_PATH</span><span class="p">,</span>
+    <span class="n">TOOL_PAGE_DOWN</span><span class="p">,</span>
+    <span class="n">TOOL_PAGE_UP</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="FileSurfer">
+<a class="viewcode-back" href="../../../../agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FileSurfer</span><span class="p">(</span><span class="n">BaseChatAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An agent, used by MagenticOne, that acts as a local file previewer. FileSurfer can open and read a variety of common file types, and can navigate the local file hierarchy.</span>
+
+<span class="sd">    Installation:</span>
+
+<span class="sd">    .. code-block:: bash</span>
+
+<span class="sd">        pip install &quot;agentopera[file-surfer]&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The agent&#39;s name</span>
+<span class="sd">        model_client (ChatCompletionClient): The model to use (must be tool-use enabled)</span>
+<span class="sd">        description (str): The agent&#39;s description used by the team. Defaults to DEFAULT_DESCRIPTION</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DEFAULT_DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;An agent that can handle local files.&quot;</span>
+
+    <span class="n">DEFAULT_SYSTEM_MESSAGES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">SystemMessage</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        You are a helpful AI Assistant.</span>
+<span class="s2">        When given a user query, use available functions to help the user with their request.&quot;&quot;&quot;</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DESCRIPTION</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span> <span class="o">=</span> <span class="n">model_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span> <span class="o">=</span> <span class="n">MarkdownFileBrowser</span><span class="p">(</span><span class="n">viewport_size</span><span class="o">=</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">TextMessage</span><span class="p">,)</span>
+
+<div class="viewcode-block" id="FileSurfer.on_messages">
+<a class="viewcode-back" href="../../../../agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_messages">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">chat_message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chat_message</span><span class="p">,</span> <span class="n">TextMessage</span> <span class="o">|</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">chat_message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">chat_message</span><span class="o">.</span><span class="n">source</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected message in FileSurfer: </span><span class="si">{</span><span class="n">chat_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_reply</span><span class="p">(</span><span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;File surfing error:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="FileSurfer.on_reset">
+<a class="viewcode-back" href="../../../../agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_browser_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current state of the browser, including the header and content.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Path: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">page_title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">header</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Title: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">page_title</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="n">current_page</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">viewport_current_page</span>
+        <span class="n">total_pages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">viewport_pages</span><span class="p">)</span>
+        <span class="n">header</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Viewport position: Showing page </span><span class="si">{</span><span class="n">current_page</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="n">total_pages</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">viewport</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_generate_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">last_message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">last_message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">)</span>
+
+        <span class="n">task_content</span> <span class="o">=</span> <span class="n">last_message</span><span class="o">.</span><span class="n">content</span>  <span class="c1"># the last message from the sender is the task</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="n">context_message</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span>
+            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Your file viewer is currently open to the file or directory &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">page_title</span><span class="si">}</span><span class="s2">&#39; with path &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">task_message</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span>
+            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">task_content</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">create_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">messages</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_compatible_context</span><span class="p">(</span><span class="n">history</span> <span class="o">+</span> <span class="p">[</span><span class="n">context_message</span><span class="p">,</span> <span class="n">task_message</span><span class="p">]),</span>
+            <span class="n">tools</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">TOOL_OPEN_PATH</span><span class="p">,</span>
+                <span class="n">TOOL_PAGE_DOWN</span><span class="p">,</span>
+                <span class="n">TOOL_PAGE_UP</span><span class="p">,</span>
+                <span class="n">TOOL_FIND_NEXT</span><span class="p">,</span>
+                <span class="n">TOOL_FIND_ON_PAGE_CTRL_F</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">create_result</span><span class="o">.</span><span class="n">content</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Answer directly.</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">response</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FunctionCall</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">):</span>
+            <span class="n">function_calls</span> <span class="o">=</span> <span class="n">response</span>
+            <span class="k">for</span> <span class="n">function_call</span> <span class="ow">in</span> <span class="n">function_calls</span><span class="p">:</span>
+                <span class="n">tool_name</span> <span class="o">=</span> <span class="n">function_call</span><span class="o">.</span><span class="n">name</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">arguments</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">function_call</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">error_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;File surfer encountered an error decoding JSON arguments: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">error_str</span>
+
+                <span class="k">if</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s2">&quot;open_path&quot;</span><span class="p">:</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">open_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s2">&quot;page_up&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">page_up</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s2">&quot;page_down&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">page_down</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s2">&quot;find_on_page_ctrl_f&quot;</span><span class="p">:</span>
+                    <span class="n">search_string</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;search_string&quot;</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">find_on_page</span><span class="p">(</span><span class="n">search_string</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">tool_name</span> <span class="o">==</span> <span class="s2">&quot;find_next&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_browser</span><span class="o">.</span><span class="n">find_next</span><span class="p">()</span>
+            <span class="n">header</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_browser_state</span><span class="p">()</span>
+            <span class="n">final_response</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=======================</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">content</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">final_response</span>
+
+        <span class="n">final_response</span> <span class="o">=</span> <span class="s2">&quot;TERMINATE&quot;</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">final_response</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_compatible_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that the messages are compatible with the underlying client, by removing images if needed.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">messages</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">remove_images</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

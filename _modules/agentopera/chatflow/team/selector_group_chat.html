@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.team.selector_group_chat &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.team.selector_group_chat</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.team.selector_group_chat</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantMessage</span><span class="p">,</span> <span class="n">ChatCompletionClient</span><span class="p">,</span> <span class="n">ModelFamily</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">,</span> <span class="n">UserMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">TRACE_LOGGER_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAgent</span><span class="p">,</span> <span class="n">TerminationCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">BaseAgentEvent</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">MultiModalMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..state</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectorManagerState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_group_chat</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_group_chat_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseGroupChatManager</span>
+
+<span class="n">trace_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">TRACE_LOGGER_NAME</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SelectorGroupChatManager</span><span class="p">(</span><span class="n">BaseGroupChatManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group chat manager that selects the next speaker using a ChatCompletion</span>
+<span class="sd">    model and a custom selector function.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">group_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">selector_prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">allow_repeated_speaker</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">selector_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]],</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_selector_attempts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">group_topic_type</span><span class="p">,</span>
+            <span class="n">output_topic_type</span><span class="p">,</span>
+            <span class="n">participant_topic_types</span><span class="p">,</span>
+            <span class="n">participant_descriptions</span><span class="p">,</span>
+            <span class="n">termination_condition</span><span class="p">,</span>
+            <span class="n">max_turns</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span> <span class="o">=</span> <span class="n">model_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selector_prompt</span> <span class="o">=</span> <span class="n">selector_prompt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allow_repeated_speaker</span> <span class="o">=</span> <span class="n">allow_repeated_speaker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selector_func</span> <span class="o">=</span> <span class="n">selector_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_selector_attempts</span> <span class="o">=</span> <span class="n">max_selector_attempts</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_group_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">SelectorManagerState</span><span class="p">(</span>
+            <span class="n">message_thread</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span><span class="p">),</span>
+            <span class="n">current_turn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span><span class="p">,</span>
+            <span class="n">previous_speaker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">state</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">selector_state</span> <span class="o">=</span> <span class="n">SelectorManagerState</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">selector_state</span><span class="o">.</span><span class="n">message_thread</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span> <span class="o">=</span> <span class="n">selector_state</span><span class="o">.</span><span class="n">current_turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="o">=</span> <span class="n">selector_state</span><span class="o">.</span><span class="n">previous_speaker</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">select_speaker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Selects the next speaker in a group chat using a ChatCompletion client,</span>
+<span class="sd">        with the selector function as override if it returns a speaker name.</span>
+
+<span class="sd">        A key assumption is that the agent type is the same as the topic type, which we use as the agent name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Use the selector function if provided.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selector_func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">speaker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selector_func</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">speaker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Skip the model based selection.</span>
+                <span class="k">return</span> <span class="n">speaker</span>
+
+        <span class="c1"># Construct the history of the conversation.</span>
+        <span class="n">history_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">thread</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">BaseAgentEvent</span><span class="p">):</span>
+                <span class="c1"># Ignore agent events.</span>
+                <span class="k">continue</span>
+            <span class="c1"># The agent type must be the same as the topic type, which we use as the agent name.</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">:&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                        <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot; [Image]&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected message type in selector: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">history_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="p">)</span>  <span class="c1"># Create some consistency for how messages are separated in the transcript</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">history_messages</span><span class="p">)</span>
+
+        <span class="c1"># Construct agent roles, we are using the participant topic type as the agent name.</span>
+        <span class="c1"># Each agent sould appear on a single line.</span>
+        <span class="n">roles</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">topic_type</span><span class="p">,</span> <span class="n">description</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_descriptions</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">roles</span> <span class="o">+=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">topic_type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">roles</span> <span class="o">=</span> <span class="n">roles</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="c1"># Construct agent list to be selected, skip the previous speaker if not allowed.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_repeated_speaker</span><span class="p">:</span>
+            <span class="n">participants</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span> <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">participants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+        <span class="c1"># Select the next speaker.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">agent_name</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_speaker</span><span class="p">(</span><span class="n">roles</span><span class="p">,</span> <span class="n">participants</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_selector_attempts</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">agent_name</span> <span class="o">=</span> <span class="n">participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="o">=</span> <span class="n">agent_name</span>
+        <span class="n">trace_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected speaker: </span><span class="si">{</span><span class="n">agent_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">agent_name</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_select_speaker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roles</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">history</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_attempts</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">select_speaker_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selector_prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">roles</span><span class="o">=</span><span class="n">roles</span><span class="p">,</span> <span class="n">participants</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">participants</span><span class="p">),</span> <span class="n">history</span><span class="o">=</span><span class="n">history</span>
+        <span class="p">)</span>
+        <span class="n">select_speaker_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">SystemMessage</span> <span class="o">|</span> <span class="n">UserMessage</span> <span class="o">|</span> <span class="n">AssistantMessage</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ModelFamily</span><span class="o">.</span><span class="n">is_openai</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;family&quot;</span><span class="p">]):</span>
+            <span class="n">select_speaker_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">select_speaker_prompt</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Many other models need a UserMessage to respond to</span>
+            <span class="n">select_speaker_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">select_speaker_prompt</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)]</span>
+
+        <span class="n">num_attempts</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">num_attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+            <span class="n">num_attempts</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">select_speaker_messages</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+            <span class="n">select_speaker_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;selector&quot;</span><span class="p">))</span>
+            <span class="n">mentions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mentioned_agents</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mentions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">trace_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model failed to select a valid name: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">num_attempts</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                <span class="n">feedback</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;No valid name was mentioned. Please select from: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="n">select_speaker_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">feedback</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">mentions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">trace_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model selected multiple names: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">mentions</span><span class="p">)</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">num_attempts</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                <span class="n">feedback</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Expected exactly one name to be mentioned. Please select only one from: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">select_speaker_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">feedback</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">agent_name</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mentions</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_repeated_speaker</span>
+                    <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="n">agent_name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span>
+                <span class="p">):</span>
+                    <span class="n">trace_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model selected the previous speaker: </span><span class="si">{</span><span class="n">agent_name</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">num_attempts</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                    <span class="n">feedback</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Repeated speaker is not allowed, please select a different name from: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">select_speaker_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">feedback</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Valid selection</span>
+                    <span class="n">trace_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model selected a valid name: </span><span class="si">{</span><span class="n">agent_name</span><span class="si">}</span><span class="s2"> (attempt </span><span class="si">{</span><span class="n">num_attempts</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">agent_name</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">trace_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model failed to select a speaker after </span><span class="si">{</span><span class="n">max_attempts</span><span class="si">}</span><span class="s2">, using the previous speaker.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_previous_speaker</span>
+        <span class="n">trace_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Model failed to select a speaker after </span><span class="si">{</span><span class="n">max_attempts</span><span class="si">}</span><span class="s2"> and there was no previous speaker, using the first participant.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_mentioned_agents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">agent_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Counts the number of times each agent is mentioned in the provided message content.</span>
+<span class="sd">        Agent names will match under any of the following conditions (all case-sensitive):</span>
+<span class="sd">        - Exact name match</span>
+<span class="sd">        - If the agent name has underscores it will match with spaces instead (e.g. &#39;Story_writer&#39; == &#39;Story writer&#39;)</span>
+<span class="sd">        - If the agent name has underscores it will match with &#39;\\_&#39; instead of &#39;_&#39; (e.g. &#39;Story_writer&#39; == &#39;Story\\_writer&#39;)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message_content (Union[str, List]): The content of the message, either as a single string or a list of strings.</span>
+<span class="sd">            agents (List[Agent]): A list of Agent objects, each having a &#39;name&#39; attribute to be searched in the message content.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict: a counter for mentioned agents.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mentions</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">agent_names</span><span class="p">:</span>
+            <span class="c1"># Finds agent mentions, taking word boundaries into account,</span>
+            <span class="c1"># accommodates escaping underscores and underscores as spaces</span>
+            <span class="n">regex</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">r</span><span class="s2">&quot;(?&lt;=\W)(&quot;</span>
+                <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;|&quot;</span>
+                <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+                <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;|&quot;</span>
+                <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\_&quot;</span><span class="p">))</span>
+                <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;)(?=\W)&quot;</span>
+            <span class="p">)</span>
+            <span class="c1"># Pad the message to help with matching</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">message_content</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">mentions</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="k">return</span> <span class="n">mentions</span>
+
+<div class="viewcode-block" id="SelectorGroupChat">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.SelectorGroupChat">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SelectorGroupChat</span><span class="p">(</span><span class="n">BaseGroupChat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group chat team that have participants takes turn to publish a message</span>
+<span class="sd">    to all, using a ChatCompletion model to select the next speaker after each message.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        participants (List[ChatAgent]): The participants in the group chat,</span>
+<span class="sd">            must have unique names and at least two participants.</span>
+<span class="sd">        model_client (ChatCompletionClient): The ChatCompletion model client used</span>
+<span class="sd">            to select the next speaker.</span>
+<span class="sd">        termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.</span>
+<span class="sd">            Without a termination condition, the group chat will run indefinitely.</span>
+<span class="sd">        max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.</span>
+<span class="sd">        selector_prompt (str, optional): The prompt template to use for selecting the next speaker.</span>
+<span class="sd">            Available fields: &#39;{roles}&#39;, &#39;{participants}&#39;, and &#39;{history}&#39;.</span>
+<span class="sd">        allow_repeated_speaker (bool, optional): Whether to include the previous speaker in the list of candidates to be selected for the next turn.</span>
+<span class="sd">            Defaults to False. The model may still select the previous speaker -- a warning will be logged if this happens.</span>
+<span class="sd">        max_selector_attempts (int, optional): The maximum number of attempts to select a speaker using the model. Defaults to 3.</span>
+<span class="sd">            If the model fails to select a speaker after the maximum number of attempts, the previous speaker will be used if available,</span>
+<span class="sd">            otherwise the first participant will be used.</span>
+<span class="sd">        selector_func (Callable[[Sequence[AgentEvent | ChatMessage]], str | None], optional): A custom selector</span>
+<span class="sd">            function that takes the conversation history and returns the name of the next speaker.</span>
+<span class="sd">            If provided, this function will be used to override the model to select the next speaker.</span>
+<span class="sd">            If the function returns None, the model will be used to select the next speaker.</span>
+
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the number of participants is less than two or if the selector prompt is invalid.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">    A team with multiple participants:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.teams import SelectorGroupChat</span>
+<span class="sd">            from agentopera.chatflow.conditions import TextMentionTermination</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                async def lookup_hotel(location: str) -&gt; str:</span>
+<span class="sd">                    return f&quot;Here are some hotels in {location}: hotel1, hotel2, hotel3.&quot;</span>
+
+<span class="sd">                async def lookup_flight(origin: str, destination: str) -&gt; str:</span>
+<span class="sd">                    return f&quot;Here are some flights from {origin} to {destination}: flight1, flight2, flight3.&quot;</span>
+
+<span class="sd">                async def book_trip() -&gt; str:</span>
+<span class="sd">                    return &quot;Your trip is booked!&quot;</span>
+
+<span class="sd">                travel_advisor = AssistantAgent(</span>
+<span class="sd">                    &quot;Travel_Advisor&quot;,</span>
+<span class="sd">                    model_client,</span>
+<span class="sd">                    tools=[book_trip],</span>
+<span class="sd">                    description=&quot;Helps with travel planning.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                hotel_agent = AssistantAgent(</span>
+<span class="sd">                    &quot;Hotel_Agent&quot;,</span>
+<span class="sd">                    model_client,</span>
+<span class="sd">                    tools=[lookup_hotel],</span>
+<span class="sd">                    description=&quot;Helps with hotel booking.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                flight_agent = AssistantAgent(</span>
+<span class="sd">                    &quot;Flight_Agent&quot;,</span>
+<span class="sd">                    model_client,</span>
+<span class="sd">                    tools=[lookup_flight],</span>
+<span class="sd">                    description=&quot;Helps with flight booking.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                termination = TextMentionTermination(&quot;TERMINATE&quot;)</span>
+<span class="sd">                team = SelectorGroupChat(</span>
+<span class="sd">                    [travel_advisor, hotel_agent, flight_agent],</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    termination_condition=termination,</span>
+<span class="sd">                )</span>
+<span class="sd">                await Console(team.run_stream(task=&quot;Book a 3-day trip to new york.&quot;))</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">    A team with a custom selector function:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from typing import Sequence</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.teams import SelectorGroupChat</span>
+<span class="sd">            from agentopera.chatflow.conditions import TextMentionTermination</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.chatflow.messages import AgentEvent, ChatMessage</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                def check_calculation(x: int, y: int, answer: int) -&gt; str:</span>
+<span class="sd">                    if x + y == answer:</span>
+<span class="sd">                        return &quot;Correct!&quot;</span>
+<span class="sd">                    else:</span>
+<span class="sd">                        return &quot;Incorrect!&quot;</span>
+
+<span class="sd">                agent1 = AssistantAgent(</span>
+<span class="sd">                    &quot;Agent1&quot;,</span>
+<span class="sd">                    model_client,</span>
+<span class="sd">                    description=&quot;For calculation&quot;,</span>
+<span class="sd">                    system_message=&quot;Calculate the sum of two numbers&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                agent2 = AssistantAgent(</span>
+<span class="sd">                    &quot;Agent2&quot;,</span>
+<span class="sd">                    model_client,</span>
+<span class="sd">                    tools=[check_calculation],</span>
+<span class="sd">                    description=&quot;For checking calculation&quot;,</span>
+<span class="sd">                    system_message=&quot;Check the answer and respond with &#39;Correct!&#39; or &#39;Incorrect!&#39;&quot;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                def selector_func(messages: Sequence[AgentEvent | ChatMessage]) -&gt; str | None:</span>
+<span class="sd">                    if len(messages) == 1 or messages[-1].content == &quot;Incorrect!&quot;:</span>
+<span class="sd">                        return &quot;Agent1&quot;</span>
+<span class="sd">                    if messages[-1].source == &quot;Agent1&quot;:</span>
+<span class="sd">                        return &quot;Agent2&quot;</span>
+<span class="sd">                    return None</span>
+
+<span class="sd">                termination = TextMentionTermination(&quot;Correct!&quot;)</span>
+<span class="sd">                team = SelectorGroupChat(</span>
+<span class="sd">                    [agent1, agent2],</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    selector_func=selector_func,</span>
+<span class="sd">                    termination_condition=termination,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                await Console(team.run_stream(task=&quot;What is 1 + 1?&quot;))</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatAgent</span><span class="p">],</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">selector_prompt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You are in a role play game. The following roles are available:</span>
+<span class="si">{roles}</span><span class="s2">.</span>
+<span class="s2">Read the following conversation. Then select the next role from </span><span class="si">{participants}</span><span class="s2"> to play. Only return the role.</span>
+
+<span class="si">{history}</span>
+
+<span class="s2">Read the above conversation. Then select the next role from </span><span class="si">{participants}</span><span class="s2"> to play. Only return the role.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">allow_repeated_speaker</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">max_selector_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">selector_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]],</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">participants</span><span class="p">,</span>
+            <span class="n">group_chat_manager_class</span><span class="o">=</span><span class="n">SelectorGroupChatManager</span><span class="p">,</span>
+            <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination_condition</span><span class="p">,</span>
+            <span class="n">max_turns</span><span class="o">=</span><span class="n">max_turns</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Validate the participants.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least two participants are required for SelectorGroupChat.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selector_prompt</span> <span class="o">=</span> <span class="n">selector_prompt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span> <span class="o">=</span> <span class="n">model_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allow_repeated_speaker</span> <span class="o">=</span> <span class="n">allow_repeated_speaker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_selector_func</span> <span class="o">=</span> <span class="n">selector_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_selector_attempts</span> <span class="o">=</span> <span class="n">max_selector_attempts</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_group_chat_manager_factory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">group_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">BaseGroupChatManager</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SelectorGroupChatManager</span><span class="p">(</span>
+            <span class="n">group_topic_type</span><span class="p">,</span>
+            <span class="n">output_topic_type</span><span class="p">,</span>
+            <span class="n">participant_topic_types</span><span class="p">,</span>
+            <span class="n">participant_descriptions</span><span class="p">,</span>
+            <span class="n">termination_condition</span><span class="p">,</span>
+            <span class="n">max_turns</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_selector_prompt</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_allow_repeated_speaker</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_selector_func</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_max_selector_attempts</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

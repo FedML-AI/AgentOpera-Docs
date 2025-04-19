@@ -72,7 +72,17 @@
 <li class="toctree-l1"><a class="reference internal" href="agents.magentic_one_team.html">agents.magentic_one_team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.web_surfer.html">agents.web_surfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.video_surfer.html">agents.video_surfer</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.file_surfer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.file_surfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer"><code class="docutils literal notranslate"><span class="pre">FileSurfer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer.DEFAULT_SYSTEM_MESSAGES"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_SYSTEM_MESSAGES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer.produced_message_types"><code class="docutils literal notranslate"><span class="pre">FileSurfer.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer.on_messages"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.file_surfer.FileSurfer.on_reset"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="agents.code_executor.html">agents.code_executor</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
@@ -155,8 +165,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="agents-file-surfer">
-<h1>agents.file_surfer<a class="headerlink" href="#agents-file-surfer" title="Link to this heading"></a></h1>
+  <section id="module-agentopera.agents.file_surfer">
+<span id="agents-file-surfer"></span><h1>agents.file_surfer<a class="headerlink" href="#module-agentopera.agents.file_surfer" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.agents.file_surfer.</span></span><span class="sig-name descname"><span class="pre">FileSurfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.model_client.ChatCompletionClient"><span class="pre">ChatCompletionClient</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'An</span> <span class="pre">agent</span> <span class="pre">that</span> <span class="pre">can</span> <span class="pre">handle</span> <span class="pre">local</span> <span class="pre">files.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/agents/file_surfer/file_surfer.html#FileSurfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent" title="agentopera.chatflow.agents.base_chat_agent.BaseChatAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseChatAgent</span></code></a></p>
+<p>An agent, used by MagenticOne, that acts as a local file previewer. FileSurfer can open and read a variety of common file types, and can navigate the local file hierarchy.</p>
+<p>Installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;agentopera[file-surfer]&quot;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The agent’s name</p></li>
+<li><p><strong>model_client</strong> (<a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.ChatCompletionClient"><em>ChatCompletionClient</em></a>) – The model to use (must be tool-use enabled)</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – The agent’s description used by the team. Defaults to DEFAULT_DESCRIPTION</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer.DEFAULT_DESCRIPTION">
+<span class="sig-name descname"><span class="pre">DEFAULT_DESCRIPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'An</span> <span class="pre">agent</span> <span class="pre">that</span> <span class="pre">can</span> <span class="pre">handle</span> <span class="pre">local</span> <span class="pre">files.'</span></em><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer.DEFAULT_DESCRIPTION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer.DEFAULT_SYSTEM_MESSAGES">
+<span class="sig-name descname"><span class="pre">DEFAULT_SYSTEM_MESSAGES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[SystemMessage(content='\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">AI</span> <span class="pre">Assistant.\n</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">When</span> <span class="pre">given</span> <span class="pre">a</span> <span class="pre">user</span> <span class="pre">query,</span> <span class="pre">use</span> <span class="pre">available</span> <span class="pre">functions</span> <span class="pre">to</span> <span class="pre">help</span> <span class="pre">the</span> <span class="pre">user</span> <span class="pre">with</span> <span class="pre">their</span> <span class="pre">request.',</span> <span class="pre">type='SystemMessage')]</span></em><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer.DEFAULT_SYSTEM_MESSAGES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer.produced_message_types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">produced_message_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer.produced_message_types" title="Link to this definition"></a></dt>
+<dd><p>The types of messages that the agent produces in the
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">Response.chat_message</span></code> field. They must be <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code> types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer.on_messages">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../chatflow/chatflow.base.html#agentopera.chatflow.base.Response" title="agentopera.chatflow.base.chat_agent.Response"><span class="pre">Response</span></a></span></span><a class="reference internal" href="../_modules/agentopera/agents/file_surfer/file_surfer.html#FileSurfer.on_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer.on_messages" title="Link to this definition"></a></dt>
+<dd><p>Handles incoming messages and returns a response.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Agents are stateful and the messages passed to this method should
+be the new messages since the last call to this method. The agent
+should maintain its state between calls to this method. For example,
+if the agent needs to remember the previous messages to respond to
+the current message, it should store the previous messages in the
+agent state.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.file_surfer.FileSurfer.on_reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/file_surfer/file_surfer.html#FileSurfer.on_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.file_surfer.FileSurfer.on_reset" title="Link to this definition"></a></dt>
+<dd><p>Resets the agent to its initialization state.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

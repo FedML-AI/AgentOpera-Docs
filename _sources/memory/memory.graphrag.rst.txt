@@ -1,5 +1,5 @@
 memory.graphrag
-==============
+===============
 
 .. automodule:: agentopera.memory.graphrag
    :members:

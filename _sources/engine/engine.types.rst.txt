@@ -1,14 +1,47 @@
 engine.types
-=============
+============
 
 engine.types.agent
------------------
+------------------
 
 .. automodule:: agentopera.engine.types.agent
    :members:
    :undoc-members:
    :show-inheritance:
    :member-order: bysource
+
+engine.types.model_context
+--------------------------
+
+.. automodule:: agentopera.engine.types.model_context
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+engine.types.models
+--------------------------
+
+.. automodule:: agentopera.engine.types.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+engine.types.msg_channel
+--------------------------
+
+.. automodule:: agentopera.engine.types.msg_channel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+engine.types.msg_context
+--------------------------
+
+.. automodule:: agentopera.engine.types.msg_context
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 others
 ------

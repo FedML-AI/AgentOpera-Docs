@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.team.swarm_group_chat &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.team.swarm_group_chat</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.team.swarm_group_chat</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAgent</span><span class="p">,</span> <span class="n">TerminationCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">HandoffMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..state</span><span class="w"> </span><span class="kn">import</span> <span class="n">SwarmManagerState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_group_chat</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_group_chat_manager</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseGroupChatManager</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SwarmGroupChatManager</span><span class="p">(</span><span class="n">BaseGroupChatManager</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group chat manager that selects the next speaker based on handoff message only.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">group_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">group_topic_type</span><span class="p">,</span>
+            <span class="n">output_topic_type</span><span class="p">,</span>
+            <span class="n">participant_topic_types</span><span class="p">,</span>
+            <span class="n">participant_descriptions</span><span class="p">,</span>
+            <span class="n">termination_condition</span><span class="p">,</span>
+            <span class="n">max_turns</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span> <span class="o">=</span> <span class="n">participant_topic_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_group_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate the start messages for the group chat.&quot;&quot;&quot;</span>
+        <span class="c1"># Check if any of the start messages is a handoff message.</span>
+        <span class="k">if</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;The target </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">target</span><span class="si">}</span><span class="s2"> is not one of the participants </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="si">}</span><span class="s2">. &quot;</span>
+                            <span class="s2">&quot;If you are resuming Swarm with a new HandoffMessage make sure to set the target to a valid participant as the target.&quot;</span>
+                        <span class="p">)</span>
+                    <span class="k">return</span>
+
+        <span class="c1"># Check if there is a handoff message in the thread that is not targeting a valid participant.</span>
+        <span class="k">for</span> <span class="n">existing_message</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">existing_message</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">existing_message</span><span class="o">.</span><span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The existing handoff target </span><span class="si">{</span><span class="n">existing_message</span><span class="o">.</span><span class="n">target</span><span class="si">}</span><span class="s2"> is not one of the participants </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="si">}</span><span class="s2">. &quot;</span>
+                        <span class="s2">&quot;If you are resuming Swarm with a new task make sure to include in your task &quot;</span>
+                        <span class="s2">&quot;a HandoffMessage with a valid participant as the target. For example, if you are &quot;</span>
+                        <span class="s2">&quot;resuming from a HandoffTermination, make sure the new task is a HandoffMessage &quot;</span>
+                        <span class="s2">&quot;with a valid participant as the target.&quot;</span>
+                    <span class="p">)</span>
+                <span class="c1"># The latest handoff message should always target a valid participant.</span>
+                <span class="c1"># Do not look past the latest handoff message.</span>
+                <span class="k">return</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">select_speaker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thread</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select a speaker from the participants based on handoff message.</span>
+<span class="sd">        Looks for the last handoff message in the thread to determine the next speaker.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">thread</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">target</span>
+                <span class="c1"># The latest handoff message should always target a valid participant.</span>
+                <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">SwarmManagerState</span><span class="p">(</span>
+            <span class="n">message_thread</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span><span class="p">),</span>
+            <span class="n">current_turn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span><span class="p">,</span>
+            <span class="n">current_speaker</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">state</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">swarm_state</span> <span class="o">=</span> <span class="n">SwarmManagerState</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_thread</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">swarm_state</span><span class="o">.</span><span class="n">message_thread</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_turn</span> <span class="o">=</span> <span class="n">swarm_state</span><span class="o">.</span><span class="n">current_turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_speaker</span> <span class="o">=</span> <span class="n">swarm_state</span><span class="o">.</span><span class="n">current_speaker</span>
+
+<div class="viewcode-block" id="Swarm">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.Swarm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Swarm</span><span class="p">(</span><span class="n">BaseGroupChat</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group chat team that selects the next speaker based on handoff message only.</span>
+
+<span class="sd">    The first participant in the list of participants is the initial speaker.</span>
+<span class="sd">    The next speaker is selected based on the :class:`~agentopera.chatflow.messages.HandoffMessage` message</span>
+<span class="sd">    sent by the current speaker. If no handoff message is sent, the current speaker</span>
+<span class="sd">    continues to be the speaker.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        participants (List[ChatAgent]): The agents participating in the group chat. The first agent in the list is the initial speaker.</span>
+<span class="sd">        termination_condition (TerminationCondition, optional): The termination condition for the group chat. Defaults to None.</span>
+<span class="sd">            Without a termination condition, the group chat will run indefinitely.</span>
+<span class="sd">        max_turns (int, optional): The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.</span>
+
+<span class="sd">    Basic example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.teams import Swarm</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(</span>
+<span class="sd">                    &quot;Alice&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    handoffs=[&quot;Bob&quot;],</span>
+<span class="sd">                    system_message=&quot;You are Alice and you only answer questions about yourself.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                agent2 = AssistantAgent(</span>
+<span class="sd">                    &quot;Bob&quot;, model_client=model_client, system_message=&quot;You are Bob and your birthday is on 1st January.&quot;</span>
+<span class="sd">                )</span>
+
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = Swarm([agent1, agent2], termination_condition=termination)</span>
+
+<span class="sd">                stream = team.run_stream(task=&quot;What is bob&#39;s birthday?&quot;)</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">    Using the :class:`~agentopera.chatflow.conditions.HandoffTermination` for human-in-the-loop handoff:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.teams import Swarm</span>
+<span class="sd">            from agentopera.chatflow.conditions import HandoffTermination, MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.chatflow.messages import HandoffMessage</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    &quot;Alice&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    handoffs=[&quot;user&quot;],</span>
+<span class="sd">                    system_message=&quot;You are Alice and you only answer questions about yourself, ask the user for help if needed.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                termination = HandoffTermination(target=&quot;user&quot;) | MaxMessageTermination(3)</span>
+<span class="sd">                team = Swarm([agent], termination_condition=termination)</span>
+
+<span class="sd">                # Start the conversation.</span>
+<span class="sd">                await Console(team.run_stream(task=&quot;What is bob&#39;s birthday?&quot;))</span>
+
+<span class="sd">                # Resume with user feedback.</span>
+<span class="sd">                await Console(</span>
+<span class="sd">                    team.run_stream(</span>
+<span class="sd">                        task=HandoffMessage(source=&quot;user&quot;, target=&quot;Alice&quot;, content=&quot;Bob&#39;s birthday is on 1st January.&quot;)</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatAgent</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">participants</span><span class="p">,</span>
+            <span class="n">group_chat_manager_class</span><span class="o">=</span><span class="n">SwarmGroupChatManager</span><span class="p">,</span>
+            <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination_condition</span><span class="p">,</span>
+            <span class="n">max_turns</span><span class="o">=</span><span class="n">max_turns</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># The first participant must be able to produce handoff messages.</span>
+        <span class="n">first_participant</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">HandoffMessage</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">first_participant</span><span class="o">.</span><span class="n">produced_message_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The first participant must be able to produce a handoff messages.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_group_chat_manager_factory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">group_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">SwarmGroupChatManager</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_factory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">SwarmGroupChatManager</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">SwarmGroupChatManager</span><span class="p">(</span>
+                <span class="n">group_topic_type</span><span class="p">,</span>
+                <span class="n">output_topic_type</span><span class="p">,</span>
+                <span class="n">participant_topic_types</span><span class="p">,</span>
+                <span class="n">participant_descriptions</span><span class="p">,</span>
+                <span class="n">termination_condition</span><span class="p">,</span>
+                <span class="n">max_turns</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">_factory</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

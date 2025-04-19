@@ -159,7 +159,7 @@
 
 
 <div class="viewcode-block" id="CancellationToken">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CancellationToken</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A token used to cancel pending async calls&quot;&quot;&quot;</span>
 
@@ -169,7 +169,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
  
 <div class="viewcode-block" id="CancellationToken.cancel">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken.cancel">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken.cancel">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancel pending async calls linked to this cancellation token.&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
@@ -180,7 +180,7 @@
 
 
 <div class="viewcode-block" id="CancellationToken.is_cancelled">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken.is_cancelled">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken.is_cancelled">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_cancelled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the CancellationToken has been used&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
@@ -188,7 +188,7 @@
 
     
 <div class="viewcode-block" id="CancellationToken.reset">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken.reset">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken.reset">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;reset the token state to be re-used&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
@@ -197,7 +197,7 @@
 
 
 <div class="viewcode-block" id="CancellationToken.add_callback">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken.add_callback">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken.add_callback">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="kc">None</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Attach a callback that will be called when cancel is invoked&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
@@ -208,7 +208,7 @@
 
 
 <div class="viewcode-block" id="CancellationToken.link_future">
-<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.agent.CancellationToken.link_future">[docs]</a>
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken.link_future">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">link_future</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Future</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Link a pending async call to a token to allow its cancellation&quot;&quot;&quot;</span>
         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>

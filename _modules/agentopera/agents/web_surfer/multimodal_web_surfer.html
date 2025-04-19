@@ -1,0 +1,1136 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.agents.web_surfer.multimodal_web_surfer &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.agents.web_surfer.multimodal_web_surfer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.agents.web_surfer.multimodal_web_surfer</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">AsyncGenerator</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">quote_plus</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">aiofiles</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">PIL.Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">MultiModalMessage</span><span class="p">,</span> <span class="n">TextMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">content_to_str</span><span class="p">,</span> <span class="n">remove_images</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">EVENT_LOGGER_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionCall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">AGImage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AssistantMessage</span><span class="p">,</span>
+    <span class="n">ChatCompletionClient</span><span class="p">,</span>
+    <span class="n">LLMMessage</span><span class="p">,</span>
+    <span class="n">ModelFamily</span><span class="p">,</span>
+    <span class="n">RequestUsage</span><span class="p">,</span>
+    <span class="n">SystemMessage</span><span class="p">,</span>
+    <span class="n">UserMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.async_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrowserContext</span><span class="p">,</span> <span class="n">Download</span><span class="p">,</span> <span class="n">Page</span><span class="p">,</span> <span class="n">Playwright</span><span class="p">,</span> <span class="n">async_playwright</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebSurferEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">WEB_SURFER_QA_PROMPT</span><span class="p">,</span>
+    <span class="n">WEB_SURFER_QA_SYSTEM_MESSAGE</span><span class="p">,</span>
+    <span class="n">WEB_SURFER_TOOL_PROMPT_MM</span><span class="p">,</span>
+    <span class="n">WEB_SURFER_TOOL_PROMPT_TEXT</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.set_of_mark</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_set_of_mark</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tool_definitions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TOOL_CLICK</span><span class="p">,</span>
+    <span class="n">TOOL_HISTORY_BACK</span><span class="p">,</span>
+    <span class="n">TOOL_HOVER</span><span class="p">,</span>
+    <span class="n">TOOL_READ_PAGE_AND_ANSWER</span><span class="p">,</span>
+    <span class="n">TOOL_SCROLL_DOWN</span><span class="p">,</span>
+    <span class="n">TOOL_SCROLL_UP</span><span class="p">,</span>
+    <span class="n">TOOL_SLEEP</span><span class="p">,</span>
+    <span class="n">TOOL_SUMMARIZE_PAGE</span><span class="p">,</span>
+    <span class="n">TOOL_TYPE</span><span class="p">,</span>
+    <span class="n">TOOL_VISIT_URL</span><span class="p">,</span>
+    <span class="n">TOOL_WEB_SEARCH</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">InteractiveRegion</span><span class="p">,</span> <span class="n">UserContent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.playwright_controller</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlaywrightController</span>
+
+<span class="n">DEFAULT_CONTEXT_SIZE</span> <span class="o">=</span> <span class="mi">128000</span>
+
+<div class="viewcode-block" id="MultimodalWebSurfer">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MultimodalWebSurfer</span><span class="p">(</span><span class="n">BaseChatAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    MultimodalWebSurfer is a multimodal agent that acts as a web surfer that can search the web and visit web pages.</span>
+
+<span class="sd">    Installation:</span>
+
+<span class="sd">    .. code-block:: bash</span>
+
+<span class="sd">        pip install &quot;agentopera[web-surfer]&quot;</span>
+
+<span class="sd">    It launches a chromium browser and allows the playwright to interact with the web browser and can perform a variety of actions. The browser is launched on the first call to the agent and is reused for subsequent calls.</span>
+
+<span class="sd">    It must be used with a multimodal model client that supports function/tool calling, ideally GPT-4o currently.</span>
+
+
+<span class="sd">    When :meth:`on_messages` or :meth:`on_messages_stream` is called, the following occurs:</span>
+<span class="sd">        1) If this is the first call, the browser is initialized and the page is loaded. This is done in :meth:`_lazy_init`. The browser is only closed when :meth:`close` is called.</span>
+<span class="sd">        2) The method :meth:`_generate_reply` is called, which then creates the final response as below.</span>
+<span class="sd">        3) The agent takes a screenshot of the page, extracts the interactive elements, and prepares a set-of-mark screenshot with bounding boxes around the interactive elements.</span>
+<span class="sd">        4) The agent makes a call to the :attr:`model_client` with the SOM screenshot, history of messages, and the list of available tools.</span>
+<span class="sd">            - If the model returns a string, the agent returns the string as the final response.</span>
+<span class="sd">            - If the model returns a list of tool calls, the agent executes the tool calls with :meth:`_execute_tool` using :attr:`_playwright_controller`.</span>
+<span class="sd">            - The agent returns a final response which includes a screenshot of the page, page metadata, description of the action taken and the inner text of the webpage.</span>
+<span class="sd">        5) If at any point the agent encounters an error, it returns the error message as the final response.</span>
+
+
+<span class="sd">    .. note::</span>
+<span class="sd">        Please note that using the MultimodalWebSurfer involves interacting with a digital world designed for humans, which carries inherent risks.</span>
+<span class="sd">        Be aware that agents may occasionally attempt risky actions, such as recruiting humans for help or accepting cookie agreements without human involvement. Always ensure agents are monitored and operate within a controlled environment to prevent unintended consequences.</span>
+<span class="sd">        Moreover, be cautious that MultimodalWebSurfer may be susceptible to prompt injection attacks from webpages.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        On Windows, the event loop policy must be set to `WindowsProactorEventLoopPolicy` to avoid issues with subprocesses.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import sys</span>
+<span class="sd">            import asyncio</span>
+
+<span class="sd">            if sys.platform == &quot;win32&quot;:</span>
+<span class="sd">                asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the agent.</span>
+<span class="sd">        model_client (ChatCompletionClient): The model client used by the agent. Must be multimodal and support function calling.</span>
+<span class="sd">        downloads_folder (str, optional): The folder where downloads are saved. Defaults to None, no downloads are saved.</span>
+<span class="sd">        description (str, optional): The description of the agent. Defaults to MultimodalWebSurfer.DEFAULT_DESCRIPTION.</span>
+<span class="sd">        debug_dir (str, optional): The directory where debug information is saved. Defaults to None.</span>
+<span class="sd">        headless (bool, optional): Whether the browser should be headless. Defaults to True.</span>
+<span class="sd">        start_page (str, optional): The start page for the browser. Defaults to MultimodalWebSurfer.DEFAULT_START_PAGE.</span>
+<span class="sd">        animate_actions (bool, optional): Whether to animate actions. Defaults to False.</span>
+<span class="sd">        to_save_screenshots (bool, optional): Whether to save screenshots. Defaults to False.</span>
+<span class="sd">        use_ocr (bool, optional): Whether to use OCR. Defaults to False.</span>
+<span class="sd">        browser_channel (str, optional): The browser channel. Defaults to None.</span>
+<span class="sd">        browser_data_dir (str, optional): The browser data directory. Defaults to None.</span>
+<span class="sd">        to_resize_viewport (bool, optional): Whether to resize the viewport. Defaults to True.</span>
+<span class="sd">        playwright (Playwright, optional): The playwright instance. Defaults to None.</span>
+<span class="sd">        context (BrowserContext, optional): The browser context. Defaults to None.</span>
+
+
+
+
+<span class="sd">    Example usage:</span>
+
+<span class="sd">    The following example demonstrates how to create a web surfing agent with</span>
+<span class="sd">    a model client and run it for multiple turns.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.agents.agents.web_surfer import MultimodalWebSurfer</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Define an agent</span>
+<span class="sd">                web_surfer_agent = MultimodalWebSurfer(</span>
+<span class="sd">                    name=&quot;MultimodalWebSurfer&quot;,</span>
+<span class="sd">                    model_client=OpenAIChatCompletionClient(model=&quot;gpt-4o-2024-08-06&quot;),</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Define a team</span>
+<span class="sd">                agent_team = RoundRobinGroupChat([web_surfer_agent], max_turns=3)</span>
+
+<span class="sd">                # Run the team and stream messages to the console</span>
+<span class="sd">                stream = agent_team.run_stream(task=&quot;Navigate to the agentopera readme on GitHub.&quot;)</span>
+<span class="sd">                await Console(stream)</span>
+<span class="sd">                # Close the browser controlled by the agent</span>
+<span class="sd">                await web_surfer_agent.close()</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DEFAULT_DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    A helpful assistant with access to a web browser.</span>
+<span class="s2">    Ask them to perform web searches, open pages, and interact with content (e.g., clicking links, scrolling the viewport, filling in form fields, etc.).</span>
+<span class="s2">    It can also summarize the entire page, or answer questions based on the content of the page.</span>
+<span class="s2">    It can also be asked to sleep and wait for pages to load, in cases where the page seems not yet fully loaded.</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">DEFAULT_START_PAGE</span> <span class="o">=</span> <span class="s2">&quot;https://www.bing.com/&quot;</span>
+
+    <span class="c1"># Viewport dimensions</span>
+    <span class="n">VIEWPORT_HEIGHT</span> <span class="o">=</span> <span class="mi">900</span>
+    <span class="n">VIEWPORT_WIDTH</span> <span class="o">=</span> <span class="mi">1440</span>
+
+    <span class="c1"># Size of the image we send to the MLM</span>
+    <span class="c1"># Current values represent a 0.85 scaling to fit within the GPT-4v short-edge constraints (768px)</span>
+    <span class="n">MLM_HEIGHT</span> <span class="o">=</span> <span class="mi">765</span>
+    <span class="n">MLM_WIDTH</span> <span class="o">=</span> <span class="mi">1224</span>
+
+    <span class="n">SCREENSHOT_TOKENS</span> <span class="o">=</span> <span class="mi">1105</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">downloads_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_DESCRIPTION</span><span class="p">,</span>
+        <span class="n">debug_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">headless</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">start_page</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">DEFAULT_START_PAGE</span><span class="p">,</span>
+        <span class="n">animate_actions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">to_save_screenshots</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">use_ocr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">browser_channel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">browser_data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">to_resize_viewport</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">playwright</span><span class="p">:</span> <span class="n">Playwright</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">BrowserContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the MultimodalWebSurfer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">debug_dir</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">to_save_screenshots</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Cannot save screenshots without a debug directory. Set it using the &#39;debug_dir&#39; parameter. The debug directory is created if it does not exist.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;function_calling&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The model does not support function calling. MultimodalWebSurfer requires a model that supports function calling.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span> <span class="o">=</span> <span class="n">model_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="n">headless</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">browser_channel</span> <span class="o">=</span> <span class="n">browser_channel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">browser_data_dir</span> <span class="o">=</span> <span class="n">browser_data_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_page</span> <span class="o">=</span> <span class="n">start_page</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_START_PAGE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span> <span class="o">=</span> <span class="n">downloads_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span> <span class="o">=</span> <span class="n">debug_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span> <span class="o">=</span> <span class="n">to_save_screenshots</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_ocr</span> <span class="o">=</span> <span class="n">use_ocr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_resize_viewport</span> <span class="o">=</span> <span class="n">to_resize_viewport</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span> <span class="o">=</span> <span class="n">animate_actions</span>
+
+        <span class="c1"># Call init to set these in case not set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span><span class="p">:</span> <span class="n">Playwright</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">playwright</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">:</span> <span class="n">BrowserContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">:</span> <span class="n">Page</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span><span class="p">:</span> <span class="n">Download</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">EVENT_LOGGER_NAME</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.MultimodalWebSurfer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Define the download handler</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_download_handler</span><span class="p">(</span><span class="n">download</span><span class="p">:</span> <span class="n">Download</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="n">download</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_download_handler</span> <span class="o">=</span> <span class="n">_download_handler</span>
+
+        <span class="c1"># Define the Playwright controller that handles the browser interactions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span> <span class="o">=</span> <span class="n">PlaywrightController</span><span class="p">(</span>
+            <span class="n">animate_actions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">,</span>
+            <span class="n">downloads_folder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span><span class="p">,</span>
+            <span class="n">viewport_width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">VIEWPORT_WIDTH</span><span class="p">,</span>
+            <span class="n">viewport_height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">VIEWPORT_HEIGHT</span><span class="p">,</span>
+            <span class="n">_download_handler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_download_handler</span><span class="p">,</span>
+            <span class="n">to_resize_viewport</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">to_resize_viewport</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_tools</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">TOOL_VISIT_URL</span><span class="p">,</span>
+            <span class="n">TOOL_WEB_SEARCH</span><span class="p">,</span>
+            <span class="n">TOOL_HISTORY_BACK</span><span class="p">,</span>
+            <span class="n">TOOL_CLICK</span><span class="p">,</span>
+            <span class="n">TOOL_TYPE</span><span class="p">,</span>
+            <span class="n">TOOL_READ_PAGE_AND_ANSWER</span><span class="p">,</span>
+            <span class="n">TOOL_SUMMARIZE_PAGE</span><span class="p">,</span>
+            <span class="n">TOOL_SLEEP</span><span class="p">,</span>
+            <span class="n">TOOL_HOVER</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">did_lazy_init</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># flag to check if we have initialized the browser</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_lazy_init</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        On the first call, we initialize the browser and the page.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Check the current event loop policy if on windows.</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">&quot;win32&quot;</span><span class="p">:</span>
+            <span class="n">current_policy</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop_policy</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">asyncio</span><span class="p">,</span> <span class="s2">&quot;WindowsProactorEventLoopPolicy&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">current_policy</span><span class="p">,</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">WindowsProactorEventLoopPolicy</span>
+            <span class="p">):</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;The current event loop policy is not WindowsProactorEventLoopPolicy. &quot;</span>
+                    <span class="s2">&quot;This may cause issues with subprocesses. &quot;</span>
+                    <span class="s2">&quot;Try setting the event loop policy to WindowsProactorEventLoopPolicy. &quot;</span>
+                    <span class="s2">&quot;For example: `asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())`. &quot;</span>
+                    <span class="s2">&quot;See https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.ProactorEventLoop.&quot;</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Create the playwright self</span>
+        <span class="n">launch_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;headless&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">headless</span><span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser_channel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">launch_args</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser_channel</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_playwright</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># Create the context -- are we launching persistent?</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser_data_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">browser</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="o">**</span><span class="n">launch_args</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">new_context</span><span class="p">(</span>
+                    <span class="n">user_agent</span><span class="o">=</span><span class="s2">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span><span class="o">.</span><span class="n">chromium</span><span class="o">.</span><span class="n">launch_persistent_context</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">browser_data_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">launch_args</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Create the page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">set_default_timeout</span><span class="p">(</span><span class="mi">60000</span><span class="p">)</span>  <span class="c1"># One minute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">new_page</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="c1"># self._page.route(lambda x: True, self._route_handler)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_handler</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_resize_viewport</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">set_viewport_size</span><span class="p">({</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">VIEWPORT_WIDTH</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">VIEWPORT_HEIGHT</span><span class="p">})</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">add_init_script</span><span class="p">(</span>
+            <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;page_script.js&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_page</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span>
+
+        <span class="c1"># Prepare the debug directory -- which stores the screenshots generated throughout the process</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_debug_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">did_lazy_init</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="MultimodalWebSurfer.close">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.close">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the browser and the page.</span>
+<span class="sd">        Should be called when the agent is no longer needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_playwright</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_set_debug_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">debug_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span><span class="p">:</span>
+            <span class="n">current_timestamp</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+            <span class="n">screenshot_png_name</span> <span class="o">=</span> <span class="s2">&quot;screenshot&quot;</span> <span class="o">+</span> <span class="n">current_timestamp</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">,</span> <span class="n">screenshot_png_name</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">WebSurferEvent</span><span class="p">(</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Screenshot: &quot;</span> <span class="o">+</span> <span class="n">screenshot_png_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">MultiModalMessage</span><span class="p">,)</span>
+
+<div class="viewcode-block" id="MultimodalWebSurfer.on_reset">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">did_lazy_init</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">reset_prior_metadata</span><span class="p">,</span> <span class="n">reset_last_download</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">visit_page</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_page</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">reset_last_download</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">reset_prior_metadata</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span><span class="p">:</span>
+            <span class="n">current_timestamp</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+            <span class="n">screenshot_png_name</span> <span class="o">=</span> <span class="s2">&quot;screenshot&quot;</span> <span class="o">+</span> <span class="n">current_timestamp</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">,</span> <span class="n">screenshot_png_name</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">WebSurferEvent</span><span class="p">(</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Screenshot: &quot;</span> <span class="o">+</span> <span class="n">screenshot_png_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="n">WebSurferEvent</span><span class="p">(</span>
+                <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Resetting browser.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MultimodalWebSurfer.on_messages">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages_stream</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">message</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;The stream should have returned the final result.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MultimodalWebSurfer.on_messages_stream">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Response</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">chat_message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chat_message</span><span class="p">,</span> <span class="n">TextMessage</span> <span class="o">|</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">chat_message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">chat_message</span><span class="o">.</span><span class="n">source</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected message in MultiModalWebSurfer: </span><span class="si">{</span><span class="n">chat_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_usage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RequestUsage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_reply</span><span class="p">(</span><span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content_to_str</span><span class="p">(</span><span class="n">content</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="n">final_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span>
+                <span class="n">prompt_tokens</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="n">u</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_usage</span><span class="p">]),</span>
+                <span class="n">completion_tokens</span><span class="o">=</span><span class="nb">sum</span><span class="p">([</span><span class="n">u</span><span class="o">.</span><span class="n">completion_tokens</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_usage</span><span class="p">]),</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span>
+                    <span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">models_usage</span><span class="o">=</span><span class="n">final_usage</span><span class="p">),</span>
+                    <span class="n">inner_messages</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_messages</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span>
+                    <span class="n">chat_message</span><span class="o">=</span><span class="n">MultiModalMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">models_usage</span><span class="o">=</span><span class="n">final_usage</span><span class="p">),</span>
+                    <span class="n">inner_messages</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inner_messages</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Web surfing error:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_generate_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UserContent</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates the actual reply. First calls the LLM to figure out which tool to use, then executes the tool.&quot;&quot;&quot;</span>
+
+        <span class="c1"># Lazy init, initialize the browser and the page on the first generate reply only</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">did_lazy_init</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lazy_init</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="c1"># Clone the messages, removing old screenshots</span>
+        <span class="n">history</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="n">remove_images</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_chat_history</span><span class="p">)</span>
+
+        <span class="c1"># Split the history, removing the last message</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
+            <span class="n">user_request</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">user_request</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Empty request.&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Truncate the history for smaller models</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;family&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="n">ModelFamily</span><span class="o">.</span><span class="n">GPT_4O</span><span class="p">,</span>
+            <span class="n">ModelFamily</span><span class="o">.</span><span class="n">O1</span><span class="p">,</span>
+            <span class="n">ModelFamily</span><span class="o">.</span><span class="n">O3</span><span class="p">,</span>
+            <span class="n">ModelFamily</span><span class="o">.</span><span class="n">GPT_4</span><span class="p">,</span>
+            <span class="n">ModelFamily</span><span class="o">.</span><span class="n">GPT_35</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Ask the page for interactive elements, then prepare the state-of-mark screenshot</span>
+        <span class="n">rects</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_interactive_rects</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+        <span class="n">viewport</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_visual_viewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+        <span class="n">screenshot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+        <span class="n">som_screenshot</span><span class="p">,</span> <span class="n">visible_rects</span><span class="p">,</span> <span class="n">rects_above</span><span class="p">,</span> <span class="n">rects_below</span> <span class="o">=</span> <span class="n">add_set_of_mark</span><span class="p">(</span><span class="n">screenshot</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span><span class="p">:</span>
+            <span class="n">current_timestamp</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+            <span class="n">screenshot_png_name</span> <span class="o">=</span> <span class="s2">&quot;screenshot_som&quot;</span> <span class="o">+</span> <span class="n">current_timestamp</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+            <span class="n">som_screenshot</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">,</span> <span class="n">screenshot_png_name</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">WebSurferEvent</span><span class="p">(</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Screenshot: &quot;</span> <span class="o">+</span> <span class="n">screenshot_png_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="c1"># What tools are available?</span>
+        <span class="n">tools</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_tools</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># We can scroll up</span>
+        <span class="k">if</span> <span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;pageTop&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TOOL_SCROLL_UP</span><span class="p">)</span>
+
+        <span class="c1"># Can scroll down</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;pageTop&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;scrollHeight&quot;</span><span class="p">]:</span>
+            <span class="n">tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TOOL_SCROLL_DOWN</span><span class="p">)</span>
+
+        <span class="c1"># Focus hint</span>
+        <span class="n">focused</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_focused_rect_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+        <span class="n">focused_hint</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">focused</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">focused</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(and name &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;) &quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;control&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">role</span> <span class="o">=</span> <span class="n">rects</span><span class="p">[</span><span class="n">focused</span><span class="p">][</span><span class="s2">&quot;role&quot;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+            <span class="n">focused_hint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">The </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2"> with ID </span><span class="si">{</span><span class="n">focused</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">currently has the input focus.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Everything visible</span>
+        <span class="n">visible_targets</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_target_list</span><span class="p">(</span><span class="n">visible_rects</span><span class="p">,</span> <span class="n">rects</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Everything else</span>
+        <span class="n">other_targets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">other_targets</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_target_list</span><span class="p">(</span><span class="n">rects_above</span><span class="p">,</span> <span class="n">rects</span><span class="p">))</span>
+        <span class="n">other_targets</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_target_list</span><span class="p">(</span><span class="n">rects_below</span><span class="p">,</span> <span class="n">rects</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">other_targets</span> <span class="o">=</span> <span class="n">other_targets</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span>
+                <span class="n">other_targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+            <span class="n">other_targets_str</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;Additional valid interaction targets include (but are not limited to):</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">other_targets</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">other_targets_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">state_description</span> <span class="o">=</span> <span class="s2">&quot;Your &quot;</span> <span class="o">+</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state_description</span><span class="p">()</span>
+        <span class="n">tool_names</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">])</span>
+        <span class="n">page_title</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+        <span class="n">prompt_message</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]:</span>
+            <span class="n">text_prompt</span> <span class="o">=</span> <span class="n">WEB_SURFER_TOOL_PROMPT_MM</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">state_description</span><span class="o">=</span><span class="n">state_description</span><span class="p">,</span>
+                <span class="n">visible_targets</span><span class="o">=</span><span class="n">visible_targets</span><span class="p">,</span>
+                <span class="n">other_targets_str</span><span class="o">=</span><span class="n">other_targets_str</span><span class="p">,</span>
+                <span class="n">focused_hint</span><span class="o">=</span><span class="n">focused_hint</span><span class="p">,</span>
+                <span class="n">tool_names</span><span class="o">=</span><span class="n">tool_names</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="n">page_title</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="c1"># Scale the screenshot for the MLM, and close the original</span>
+            <span class="n">scaled_screenshot</span> <span class="o">=</span> <span class="n">som_screenshot</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">MLM_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MLM_HEIGHT</span><span class="p">))</span>
+            <span class="n">som_screenshot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span><span class="p">:</span>
+                <span class="n">scaled_screenshot</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">,</span> <span class="s2">&quot;screenshot_scaled.png&quot;</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># Create the message</span>
+            <span class="n">prompt_message</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="p">[</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\n\s*){3,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text_prompt</span><span class="p">),</span> <span class="n">AGImage</span><span class="o">.</span><span class="n">from_pil</span><span class="p">(</span><span class="n">scaled_screenshot</span><span class="p">)],</span>
+                <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">text_prompt</span> <span class="o">=</span> <span class="n">WEB_SURFER_TOOL_PROMPT_TEXT</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">state_description</span><span class="o">=</span><span class="n">state_description</span><span class="p">,</span>
+                <span class="n">visible_targets</span><span class="o">=</span><span class="n">visible_targets</span><span class="p">,</span>
+                <span class="n">other_targets_str</span><span class="o">=</span><span class="n">other_targets_str</span><span class="p">,</span>
+                <span class="n">focused_hint</span><span class="o">=</span><span class="n">focused_hint</span><span class="p">,</span>
+                <span class="n">tool_names</span><span class="o">=</span><span class="n">tool_names</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="n">page_title</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="c1"># Create the message</span>
+            <span class="n">prompt_message</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\n\s*){3,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text_prompt</span><span class="p">),</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prompt_message</span><span class="p">)</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user_request</span><span class="p">)</span>
+
+        <span class="c1"># {history[-2].content if isinstance(history[-2].content, str) else history[-2].content[0]}</span>
+        <span class="c1"># print(f&quot;&quot;&quot;</span>
+        <span class="c1"># ================={len(history)}=================</span>
+        <span class="c1"># {history[-2].content}</span>
+        <span class="c1"># =====</span>
+        <span class="c1"># {history[-1].content}</span>
+        <span class="c1"># ===================================================</span>
+        <span class="c1"># &quot;&quot;&quot;)</span>
+
+        <span class="c1"># Make the request</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">history</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span> <span class="n">extra_create_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tool_choice&quot;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">},</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span>
+        <span class="p">)</span>  <span class="c1"># , &quot;parallel_tool_calls&quot;: False})</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_usage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="p">)</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Answer directly</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">message</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="c1"># Take an action</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_tool</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">rects</span><span class="p">,</span> <span class="n">tool_names</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Not sure what happened here</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown response format &#39;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_execute_tool</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">],</span>
+        <span class="n">rects</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InteractiveRegion</span><span class="p">],</span>
+        <span class="n">tool_names</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UserContent</span><span class="p">:</span>
+        <span class="c1"># Execute the tool</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+        <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="n">WebSurferEvent</span><span class="p">(</span>
+                <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                <span class="n">action</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">arguments</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">( </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> )&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">( </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="si">}</span><span class="s2"> )&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;visit_url&quot;</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">)</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I typed &#39;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&#39; into the browser address bar.&quot;</span>
+            <span class="c1"># Check if the argument starts with a known protocol</span>
+            <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;https://&quot;</span><span class="p">,</span> <span class="s2">&quot;http://&quot;</span><span class="p">,</span> <span class="s2">&quot;file://&quot;</span><span class="p">,</span> <span class="s2">&quot;about:&quot;</span><span class="p">)):</span>
+                <span class="n">reset_prior_metadata</span><span class="p">,</span> <span class="n">reset_last_download</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">visit_page</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">url</span>
+                <span class="p">)</span>
+            <span class="c1"># If the argument contains a space, treat it as a search query</span>
+            <span class="k">elif</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+                <span class="n">reset_prior_metadata</span><span class="p">,</span> <span class="n">reset_last_download</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">visit_page</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;https://www.bing.com/search?q=</span><span class="si">{</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;FORM=QBLH&quot;</span>
+                <span class="p">)</span>
+            <span class="c1"># Otherwise, prefix with https://</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">reset_prior_metadata</span><span class="p">,</span> <span class="n">reset_last_download</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">visit_page</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="s2">&quot;https://&quot;</span> <span class="o">+</span> <span class="n">url</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">reset_last_download</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">reset_prior_metadata</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;history_back&quot;</span><span class="p">:</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I clicked the browser back button.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">back</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;web_search&quot;</span><span class="p">:</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;query&quot;</span><span class="p">)</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I typed &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39; into the browser search bar.&quot;</span>
+            <span class="n">reset_prior_metadata</span><span class="p">,</span> <span class="n">reset_last_download</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">visit_page</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;https://www.bing.com/search?q=</span><span class="si">{</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="si">}</span><span class="s2">&amp;FORM=QBLH&quot;</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">reset_last_download</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">reset_prior_metadata</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;scroll_up&quot;</span><span class="p">:</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I scrolled up one page in the browser.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">page_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;scroll_down&quot;</span><span class="p">:</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I scrolled down one page in the browser.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">page_down</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;click&quot;</span><span class="p">:</span>
+            <span class="n">target_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_id&quot;</span><span class="p">))</span>
+            <span class="n">target_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">target_name</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I clicked &#39;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I clicked the control.&quot;</span>
+            <span class="n">new_page_tentative</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">click_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">target_id</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_page_tentative</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="o">=</span> <span class="n">new_page_tentative</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="n">WebSurferEvent</span><span class="p">(</span>
+                        <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;New tab or window.&quot;</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;input_text&quot;</span><span class="p">:</span>
+            <span class="n">input_field_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;input_field_id&quot;</span><span class="p">))</span>
+            <span class="n">text_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;text_value&quot;</span><span class="p">))</span>
+            <span class="n">input_field_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">input_field_id</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">input_field_name</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I typed &#39;</span><span class="si">{</span><span class="n">text_value</span><span class="si">}</span><span class="s2">&#39; into &#39;</span><span class="si">{</span><span class="n">input_field_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I input &#39;</span><span class="si">{</span><span class="n">text_value</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">fill_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">input_field_id</span><span class="p">,</span> <span class="n">text_value</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;scroll_element_up&quot;</span><span class="p">:</span>
+            <span class="n">target_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_id&quot;</span><span class="p">))</span>
+            <span class="n">target_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">target_name</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I scrolled &#39;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2">&#39; up.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I scrolled the control up.&quot;</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">scroll_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;scroll_element_down&quot;</span><span class="p">:</span>
+            <span class="n">target_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_id&quot;</span><span class="p">))</span>
+            <span class="n">target_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">target_name</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I scrolled &#39;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2">&#39; down.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I scrolled the control down.&quot;</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">scroll_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">target_id</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;answer_question&quot;</span><span class="p">:</span>
+            <span class="n">question</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;question&quot;</span><span class="p">))</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I answered the following question &#39;</span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">&#39; based on the web page.&quot;</span>
+            <span class="c1"># Do Q&amp;A on the DOM. No need to take further action. Browser state does not change.</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_summarize_page</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;summarize_page&quot;</span><span class="p">:</span>
+            <span class="c1"># Summarize the DOM. No need to take further action. Browser state does not change.</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I summarized the current web page&quot;</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_summarize_page</span><span class="p">(</span><span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;hover&quot;</span><span class="p">:</span>
+            <span class="n">target_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;target_id&quot;</span><span class="p">))</span>
+            <span class="n">target_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target_name</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">rects</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">target_name</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I hovered over &#39;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I hovered over the control.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">hover_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="n">target_id</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;sleep&quot;</span><span class="p">:</span>
+            <span class="n">action_description</span> <span class="o">=</span> <span class="s2">&quot;I am waiting a short period of time before taking further action.&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown tool &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;. Please choose from:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">tool_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="c1"># Handle downloads</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span><span class="o">.</span><span class="n">suggested_filename</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span><span class="o">.</span><span class="n">save_as</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="n">page_body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Download Successful&lt;/title&gt;&lt;/head&gt;&lt;body style=</span><span class="se">\&quot;</span><span class="s2">margin: 20px;</span><span class="se">\&quot;</span><span class="s2">&gt;&lt;h1&gt;Successfully downloaded &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_last_download</span><span class="o">.</span><span class="n">suggested_filename</span><span class="si">}</span><span class="s2">&#39; to local path:&lt;br&gt;&lt;br&gt;</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span>
+                <span class="s2">&quot;data:text/html;base64,&quot;</span> <span class="o">+</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">page_body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span>
+
+        <span class="c1"># Handle metadata</span>
+        <span class="n">page_metadata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_page_metadata</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">metadata_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">page_metadata</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">metadata_hash</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span><span class="p">:</span>
+            <span class="n">page_metadata</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">The following metadata was extracted from the webpage:</span><span class="se">\n\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">page_metadata</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">page_metadata</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prior_metadata_hash</span> <span class="o">=</span> <span class="n">metadata_hash</span>
+
+        <span class="n">new_screenshot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_save_screenshots</span><span class="p">:</span>
+            <span class="n">current_timestamp</span> <span class="o">=</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+            <span class="n">screenshot_png_name</span> <span class="o">=</span> <span class="s2">&quot;screenshot&quot;</span> <span class="o">+</span> <span class="n">current_timestamp</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+
+            <span class="k">async</span> <span class="k">with</span> <span class="n">aiofiles</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">debug_dir</span><span class="p">,</span> <span class="n">screenshot_png_name</span><span class="p">),</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                <span class="k">await</span> <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_screenshot</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">WebSurferEvent</span><span class="p">(</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Screenshot: &quot;</span> <span class="o">+</span> <span class="n">screenshot_png_name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Return the complete observation</span>
+        <span class="n">state_description</span> <span class="o">=</span> <span class="s2">&quot;The &quot;</span> <span class="o">+</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state_description</span><span class="p">()</span>
+        <span class="n">message_content</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">action_description</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">state_description</span> <span class="o">+</span> <span class="n">page_metadata</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Here is a screenshot of the page.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\n\s*){3,}&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">message_content</span><span class="p">),</span>  <span class="c1"># Removing blank lines</span>
+            <span class="n">AGImage</span><span class="o">.</span><span class="n">from_pil</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">new_screenshot</span><span class="p">))),</span>
+        <span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_state_description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="c1"># Describe the viewport of the new page in words</span>
+        <span class="n">viewport</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_visual_viewport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+        <span class="n">percent_visible</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;scrollHeight&quot;</span><span class="p">])</span>
+        <span class="n">percent_scrolled</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;pageTop&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">viewport</span><span class="p">[</span><span class="s2">&quot;scrollHeight&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">percent_scrolled</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Allow some rounding error</span>
+            <span class="n">position_text</span> <span class="o">=</span> <span class="s2">&quot;at the top of the page&quot;</span>
+        <span class="k">elif</span> <span class="n">percent_scrolled</span> <span class="o">+</span> <span class="n">percent_visible</span> <span class="o">&gt;=</span> <span class="mi">99</span><span class="p">:</span>  <span class="c1"># Allow some rounding error</span>
+            <span class="n">position_text</span> <span class="o">=</span> <span class="s2">&quot;at the bottom of the page&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">position_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">percent_scrolled</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">% d</span><span class="s2">own from the top of the page&quot;</span>
+
+        <span class="n">visible_text</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_visible_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+
+        <span class="c1"># Return the complete observation</span>
+        <span class="n">page_title</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="n">message_content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;web browser is open to the page [</span><span class="si">{</span><span class="n">page_title</span><span class="si">}</span><span class="s2">](</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">).</span><span class="se">\n</span><span class="s2">The viewport shows </span><span class="si">{</span><span class="n">percent_visible</span><span class="si">}</span><span class="s2">% of the webpage, and is positioned </span><span class="si">{</span><span class="n">position_text</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">message_content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;The following text is visible in the viewport:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">visible_text</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">message_content</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_target_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">rects</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InteractiveRegion</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rects</span><span class="p">[</span><span class="n">target</span><span class="p">][</span><span class="s2">&quot;aria_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format_target_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">rects</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InteractiveRegion</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Format the list of targets in the webpage as a string to be used in the agent&#39;s prompt.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">targets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+                <span class="c1"># Get the role</span>
+                <span class="n">aria_role</span> <span class="o">=</span> <span class="n">rects</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;role&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">aria_role</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">aria_role</span> <span class="o">=</span> <span class="n">rects</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag_name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="c1"># Get the name</span>
+                <span class="n">aria_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\n\r]+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">rects</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;aria_name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="c1"># What are the actions?</span>
+                <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&quot;click&quot;, &quot;hover&quot;&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">rects</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;textbox&quot;</span><span class="p">,</span> <span class="s2">&quot;searchbox&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">]:</span>
+                    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&quot;input_text&quot;&#39;</span><span class="p">]</span>
+                <span class="n">actions_str</span> <span class="o">=</span> <span class="s2">&quot;[&quot;</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+
+                <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">{{</span><span class="s1">&quot;id&quot;: </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">, &quot;name&quot;: &quot;</span><span class="si">{</span><span class="n">aria_name</span><span class="si">}</span><span class="s1">&quot;, &quot;role&quot;: &quot;</span><span class="si">{</span><span class="n">aria_role</span><span class="si">}</span><span class="s1">&quot;, &quot;tools&quot;: </span><span class="si">{</span><span class="n">actions_str</span><span class="si">}</span><span class="s1"> </span><span class="se">}}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">targets</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_summarize_page</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">question</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="n">page_markdown</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_playwright_controller</span><span class="o">.</span><span class="n">get_page_markdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="p">)</span>
+
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">url</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># Take a screenshot and scale it</span>
+        <span class="n">screenshot</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_page</span><span class="o">.</span><span class="n">screenshot</span><span class="p">()))</span>
+        <span class="n">scaled_screenshot</span> <span class="o">=</span> <span class="n">screenshot</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">MLM_WIDTH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MLM_HEIGHT</span><span class="p">))</span>
+        <span class="n">screenshot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">ag_image</span> <span class="o">=</span> <span class="n">AGImage</span><span class="o">.</span><span class="n">from_pil</span><span class="p">(</span><span class="n">scaled_screenshot</span><span class="p">)</span>
+
+        <span class="c1"># Prepare the system prompt</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">WEB_SURFER_QA_SYSTEM_MESSAGE</span><span class="p">))</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="n">WEB_SURFER_QA_PROMPT</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">question</span><span class="p">)</span>
+        <span class="c1"># Grow the buffer (which is added to the prompt) until we overflow the context window or run out of lines</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="c1"># for line in re.split(r&quot;([\r\n]+)&quot;, page_markdown):</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">page_markdown</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+            <span class="n">trial_message</span> <span class="o">=</span> <span class="n">UserMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">prompt</span> <span class="o">+</span> <span class="n">buffer</span> <span class="o">+</span> <span class="n">line</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">remaining</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">remaining_tokens</span><span class="p">(</span><span class="n">messages</span> <span class="o">+</span> <span class="p">[</span><span class="n">trial_message</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="c1"># Use the default if the model isn&#39;t found</span>
+                <span class="n">remaining</span> <span class="o">=</span> <span class="n">DEFAULT_CONTEXT_SIZE</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">count_tokens</span><span class="p">(</span><span class="n">messages</span> <span class="o">+</span> <span class="p">[</span><span class="n">trial_message</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">remaining</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">remaining</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SCREENSHOT_TOKENS</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">buffer</span> <span class="o">+=</span> <span class="n">line</span>
+
+        <span class="c1"># Nothing to do</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Nothing to summarize.&quot;</span>
+
+        <span class="c1"># Append the message</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]:</span>
+            <span class="c1"># Multimodal</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">UserMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="p">[</span>
+                        <span class="n">prompt</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">,</span>
+                        <span class="n">ag_image</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Text only</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">UserMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">prompt</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Generate the response</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_usage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="p">)</span>
+        <span class="n">scaled_screenshot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

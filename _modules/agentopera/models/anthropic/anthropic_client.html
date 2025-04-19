@@ -1,0 +1,1192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.models.anthropic.anthropic_client &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.models.anthropic.anthropic_client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.models.anthropic.anthropic_client</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="c1"># from asyncio import Task</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">AsyncGenerator</span><span class="p">,</span>
+    <span class="n">Coroutine</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">Mapping</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Set</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tiktoken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">anthropic</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncAnthropic</span><span class="p">,</span> <span class="n">AsyncStream</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">anthropic.types</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ContentBlock</span><span class="p">,</span>
+    <span class="n">ImageBlockParam</span><span class="p">,</span>
+    <span class="n">Message</span><span class="p">,</span>
+    <span class="n">MessageParam</span><span class="p">,</span>
+    <span class="n">RawMessageStreamEvent</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+    <span class="n">TextBlock</span><span class="p">,</span>
+    <span class="n">TextBlockParam</span><span class="p">,</span>
+    <span class="n">ToolParam</span><span class="p">,</span>
+    <span class="n">ToolResultBlockParam</span><span class="p">,</span>
+    <span class="n">ToolUseBlock</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">anthropic.types.image_block_param</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">EVENT_LOGGER_NAME</span><span class="p">,</span>
+    <span class="n">TRACE_LOGGER_NAME</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionCall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.message_handler_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageHandlerContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLMCallEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AssistantMessage</span><span class="p">,</span>
+    <span class="n">ChatCompletionClient</span><span class="p">,</span>
+    <span class="n">CreateResult</span><span class="p">,</span>
+    <span class="n">FinishReasons</span><span class="p">,</span>
+    <span class="n">FunctionExecutionResultMessage</span><span class="p">,</span>
+    <span class="n">LLMMessage</span><span class="p">,</span>
+    <span class="n">ModelCapabilities</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+    <span class="n">ModelInfo</span><span class="p">,</span>
+    <span class="n">RequestUsage</span><span class="p">,</span>
+    <span class="n">SystemMessage</span><span class="p">,</span>
+    <span class="n">UserMessage</span><span class="p">,</span>
+    <span class="n">validate_model_info</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">ToolSchema</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span><span class="p">,</span> <span class="n">Unpack</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">model_info_util</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnthropicClientConfiguration</span><span class="p">,</span> <span class="n">AnthropicClientConfigurationConfigModel</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">EVENT_LOGGER_NAME</span><span class="p">)</span>
+<span class="n">trace_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">TRACE_LOGGER_NAME</span><span class="p">)</span>
+
+<span class="c1"># Common parameters for message creation</span>
+<span class="n">anthropic_message_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;messages&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;max_tokens&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;top_p&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;top_k&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stop_sequences&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tools&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tool_choice&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;metadata&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">disallowed_create_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;stream&quot;</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">}</span>
+<span class="n">required_create_args</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">}</span>
+
+<span class="n">anthropic_init_kwargs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">AsyncAnthropic</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span><span class="o">.</span><span class="n">kwonlyargs</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_anthropic_client_from_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncAnthropic</span><span class="p">:</span>
+    <span class="c1"># Filter config to only include valid parameters</span>
+    <span class="n">client_config</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">anthropic_init_kwargs</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">AsyncAnthropic</span><span class="p">(</span><span class="o">**</span><span class="n">client_config</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_create_args_from_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="n">create_args</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">anthropic_message_params</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;model&quot;</span><span class="p">}</span>
+    <span class="n">create_args_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">create_args</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">required_create_args</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">create_args_keys</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Required create args are missing: </span><span class="si">{</span><span class="n">required_create_args</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">create_args_keys</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">disallowed_create_args</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">create_args_keys</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disallowed create args are present: </span><span class="si">{</span><span class="n">disallowed_create_args</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">create_args_keys</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">create_args</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">type_to_role</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">LLMMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;system&quot;</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;user&quot;</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AssistantMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;assistant&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;tool&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_mime_type_from_image</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span> <span class="s2">&quot;image/gif&quot;</span><span class="p">,</span> <span class="s2">&quot;image/webp&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a valid Anthropic media type from an Image object.&quot;&quot;&quot;</span>
+    <span class="c1"># Get base64 data first</span>
+    <span class="n">base64_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">to_base64</span><span class="p">()</span>
+
+    <span class="c1"># Decode the base64 string</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">base64_data</span><span class="p">)</span>
+
+    <span class="c1"># Check the first few bytes for known signatures</span>
+    <span class="k">if</span> <span class="n">image_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xff\xd8\xff</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;image/jpeg&quot;</span>
+    <span class="k">elif</span> <span class="n">image_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x89</span><span class="s2">PNG</span><span class="se">\r\n\x1a\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;image/png&quot;</span>
+    <span class="k">elif</span> <span class="n">image_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;GIF87a&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">image_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;GIF89a&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;image/gif&quot;</span>
+    <span class="k">elif</span> <span class="n">image_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;RIFF&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">image_data</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;WEBP&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;image/webp&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Default to JPEG as a fallback</span>
+        <span class="k">return</span> <span class="s2">&quot;image/jpeg&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">user_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">UserMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageParam</span><span class="p">:</span>
+    <span class="n">assert_valid_name</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">TextBlockParam</span><span class="p">,</span> <span class="n">ImageBlockParam</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextBlockParam</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">part</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="n">Image</span><span class="p">):</span>
+                <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">ImageBlockParam</span><span class="p">(</span>
+                        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">Source</span><span class="p">(</span>
+                            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;base64&quot;</span><span class="p">,</span>
+                            <span class="n">media_type</span><span class="o">=</span><span class="n">get_mime_type_from_image</span><span class="p">(</span><span class="n">part</span><span class="p">),</span>
+                            <span class="n">data</span><span class="o">=</span><span class="n">part</span><span class="o">.</span><span class="n">to_base64</span><span class="p">(),</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown content type: </span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">blocks</span><span class="p">,</span>
+        <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">system_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">SystemMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">assistant_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">AssistantMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageParam</span><span class="p">:</span>
+    <span class="n">assert_valid_name</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="c1"># Tool calls</span>
+        <span class="n">tool_use_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ToolUseBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">func_call</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+            <span class="c1"># Parse the arguments and convert to dict if it&#39;s a JSON string</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">func_call</span><span class="o">.</span><span class="n">arguments</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">args_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+                    <span class="n">args_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">args</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">args_dict</span> <span class="o">=</span> <span class="n">args</span>
+
+            <span class="n">tool_use_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">ToolUseBlock</span><span class="p">(</span>
+                    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;tool_use&quot;</span><span class="p">,</span>
+                    <span class="nb">id</span><span class="o">=</span><span class="n">func_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">func_call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="nb">input</span><span class="o">=</span><span class="n">args_dict</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Include thought if available</span>
+        <span class="n">content_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ContentBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;thought&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">message</span><span class="o">.</span><span class="n">thought</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">content_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextBlock</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">thought</span><span class="p">))</span>
+
+        <span class="n">content_blocks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tool_use_blocks</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content_blocks</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Simple text content</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+        <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tool_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">FunctionExecutionResultMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageParam</span><span class="p">]:</span>
+    <span class="c1"># Create a single user message containing all tool results</span>
+    <span class="n">content_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ToolResultBlockParam</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+        <span class="n">content_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ToolResultBlockParam</span><span class="p">(</span>
+                <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;tool_result&quot;</span><span class="p">,</span>
+                <span class="n">tool_use_id</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">call_id</span><span class="p">,</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>  <span class="c1"># Changed from &quot;tool&quot; to &quot;user&quot;</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content_blocks</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_anthropic_type</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">LLMMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageParam</span><span class="p">],</span> <span class="n">MessageParam</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">system_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">user_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AssistantMessage</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">assistant_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tool_message_to_anthropic</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ToolParam</span><span class="p">]:</span>
+    <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ToolParam</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">Tool</span><span class="p">):</span>
+            <span class="n">tool_schema</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">schema</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+            <span class="n">tool_schema</span> <span class="o">=</span> <span class="n">tool</span>
+
+        <span class="c1"># Convert parameters to match Anthropic&#39;s schema format</span>
+        <span class="n">tool_params</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="s2">&quot;parameters&quot;</span> <span class="ow">in</span> <span class="n">tool_schema</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+
+            <span class="c1"># Transfer properties</span>
+            <span class="k">if</span> <span class="s2">&quot;properties&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">tool_params</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span>
+
+            <span class="c1"># Transfer required fields</span>
+            <span class="k">if</span> <span class="s2">&quot;required&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">tool_params</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span>
+
+            <span class="c1"># Handle schema type</span>
+            <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">tool_params</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tool_params</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;object&quot;</span>
+
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ToolParam</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="n">input_schema</span><span class="o">=</span><span class="n">tool_params</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="n">tool_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check if the tool has a valid name</span>
+        <span class="n">assert_valid_name</span><span class="p">(</span><span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    def __init__(self, **kwargs: Unpack[AnthropicClientConfiguration]):</span>
+<span class="sd">        if &quot;model&quot; not in kwargs:</span>
+<span class="sd">            raise ValueError(&quot;model is required for AnthropicChatCompletionClient&quot;)</span>
+
+<span class="sd">        self._raw_config: Dict[str, Any] = dict(kwargs).copy()</span>
+<span class="sd">        copied_args = dict(kwargs).copy()</span>
+
+<span class="sd">        model_info: Optional[ModelInfo] = None</span>
+<span class="sd">        if &quot;model_info&quot; in kwargs:</span>
+<span class="sd">            model_info = kwargs[&quot;model_info&quot;]</span>
+<span class="sd">            del copied_args[&quot;model_info&quot;]</span>
+
+<span class="sd">        client = _anthropic_client_from_config(copied_args)</span>
+<span class="sd">        create_args = _create_args_from_config(copied_args)</span>
+
+<span class="sd">        super().__init__(</span>
+<span class="sd">            client=client,</span>
+<span class="sd">            create_args=create_args,</span>
+<span class="sd">            model_info=model_info,</span>
+<span class="sd">        )</span>
+
+<span class="sd">    def __getstate__(self) -&gt; Dict[str, Any]:</span>
+<span class="sd">        state = self.__dict__.copy()</span>
+<span class="sd">        state[&quot;_client&quot;] = None</span>
+<span class="sd">        return state</span>
+
+<span class="sd">    def __setstate__(self, state: Dict[str, Any]) -&gt; None:</span>
+<span class="sd">        self.__dict__.update(state)</span>
+<span class="sd">        self._client = _anthropic_client_from_config(state[&quot;_raw_config&quot;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[^a-zA-Z0-9_-]&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)[:</span><span class="mi">64</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">assert_valid_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ensure that configured names are valid, raises ValueError if not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^[a-zA-Z0-9_-]+$&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Only letters, numbers, &#39;_&#39; and &#39;-&#39; are allowed.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">64</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Name must be less than 64 characters.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_stop_reason</span><span class="p">(</span><span class="n">stop_reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FinishReasons</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">stop_reason</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;unknown&quot;</span>
+
+    <span class="c1"># Convert to lowercase for comparison</span>
+    <span class="n">stop_reason</span> <span class="o">=</span> <span class="n">stop_reason</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># Map Anthropic stop reasons to standard reasons</span>
+    <span class="n">KNOWN_STOP_MAPPINGS</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FinishReasons</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;end_turn&quot;</span><span class="p">:</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="s2">&quot;length&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stop_sequence&quot;</span><span class="p">:</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tool_use&quot;</span><span class="p">:</span> <span class="s2">&quot;function_calls&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">KNOWN_STOP_MAPPINGS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stop_reason</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_add_usage</span><span class="p">(</span><span class="n">usage1</span><span class="p">:</span> <span class="n">RequestUsage</span><span class="p">,</span> <span class="n">usage2</span><span class="p">:</span> <span class="n">RequestUsage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RequestUsage</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">RequestUsage</span><span class="p">(</span>
+        <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">usage1</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">+</span> <span class="n">usage2</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="p">,</span>
+        <span class="n">completion_tokens</span><span class="o">=</span><span class="n">usage1</span><span class="o">.</span><span class="n">completion_tokens</span> <span class="o">+</span> <span class="n">usage2</span><span class="o">.</span><span class="n">completion_tokens</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseAnthropicChatCompletionClient</span><span class="p">(</span><span class="n">ChatCompletionClient</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">client</span><span class="p">:</span> <span class="n">AsyncAnthropic</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">create_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">model_info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">client</span>
+
+        <span class="k">if</span> <span class="n">model_info</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span> <span class="o">=</span> <span class="n">model_info_util</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="n">create_args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;model_info is required when model name is not recognized&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span> <span class="o">=</span> <span class="n">model_info</span>
+
+        <span class="c1"># Validate model_info</span>
+        <span class="n">validate_model_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_create_args</span> <span class="o">=</span> <span class="n">create_args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.create">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">json_output</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_create_args</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CreateResult</span><span class="p">:</span>
+        <span class="c1"># Copy create args and update with extra args</span>
+        <span class="n">create_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_args</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">create_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra_create_args</span><span class="p">)</span>
+
+        <span class="c1"># Check for vision capability if images are present</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Image</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support vision and image was provided&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Handle JSON output format</span>
+        <span class="k">if</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;json_output&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support JSON output&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">create_args</span><span class="p">[</span><span class="s2">&quot;response_format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;json_object&quot;</span><span class="p">}</span>
+
+        <span class="c1"># Process system message separately</span>
+        <span class="n">system_message</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">anthropic_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageParam</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">system_message</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Multiple system messages are not supported&quot;</span><span class="p">)</span>
+                <span class="n">system_message</span> <span class="o">=</span> <span class="n">to_anthropic_type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">anthropic_message</span> <span class="o">=</span> <span class="n">to_anthropic_type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="n">MessageParam</span><span class="p">(</span>
+                        <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">anthropic_message</span>
+                    <span class="p">)</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">)</span>
+
+        <span class="c1"># Check for function calling support</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;function_calling&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support function calling&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Set up the request</span>
+        <span class="n">request_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="n">anthropic_messages</span><span class="p">,</span>
+            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_tokens&quot;</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>
+            <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Add system message if present</span>
+        <span class="k">if</span> <span class="n">system_message</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_message</span>
+
+        <span class="n">has_tool_results</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">FunctionExecutionResultMessage</span><span class="p">)</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">)</span>
+
+        <span class="c1"># Store and add tools if present</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">converted_tools</span> <span class="o">=</span> <span class="n">convert_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_used_tools</span> <span class="o">=</span> <span class="n">converted_tools</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">converted_tools</span>
+        <span class="k">elif</span> <span class="n">has_tool_results</span><span class="p">:</span>
+            <span class="c1"># anthropic requires tools to be present even if there is any tool use</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_used_tools</span>
+
+        <span class="c1"># Optional parameters</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;top_p&quot;</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">,</span> <span class="s2">&quot;stop_sequences&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">create_args</span><span class="p">:</span>
+                <span class="n">request_args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+
+        <span class="c1"># Execute the request</span>
+        <span class="n">future</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">request_args</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cancellation_token</span><span class="o">.</span><span class="n">link_future</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">result</span><span class="p">:</span> <span class="n">Message</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Message</span><span class="p">,</span> <span class="k">await</span> <span class="n">future</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="c1"># Extract usage statistics</span>
+        <span class="n">usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span>
+            <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">input_tokens</span><span class="p">,</span>
+            <span class="n">completion_tokens</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">output_tokens</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Log the event if in a handler context</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">agent_id</span> <span class="o">=</span> <span class="n">MessageHandlerContext</span><span class="o">.</span><span class="n">agent_id</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="n">agent_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="n">LLMCallEvent</span><span class="p">(</span>
+                <span class="n">messages</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">anthropic_messages</span><span class="p">),</span>
+                <span class="n">response</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span>
+                <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="p">,</span>
+                <span class="n">completion_tokens</span><span class="o">=</span><span class="n">usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="p">,</span>
+                <span class="n">agent_id</span><span class="o">=</span><span class="n">agent_id</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Process the response</span>
+        <span class="n">content</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">]]</span>
+        <span class="n">thought</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Check if the response includes tool uses</span>
+        <span class="n">tool_uses</span> <span class="o">=</span> <span class="p">[</span><span class="n">block</span> <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">content</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;tool_use&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">tool_uses</span><span class="p">:</span>
+            <span class="c1"># Handle tool use response</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Check for text content that should be treated as thought</span>
+            <span class="n">text_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TextBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">block</span> <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">content</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">TextBlock</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">text_blocks</span><span class="p">:</span>
+                <span class="n">thought</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">block</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">text_blocks</span><span class="p">])</span>
+
+            <span class="c1"># Process tool use blocks</span>
+            <span class="k">for</span> <span class="n">tool_use</span> <span class="ow">in</span> <span class="n">tool_uses</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool_use</span><span class="p">,</span> <span class="n">ToolUseBlock</span><span class="p">):</span>
+                    <span class="n">tool_input</span> <span class="o">=</span> <span class="n">tool_use</span><span class="o">.</span><span class="n">input</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool_input</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="n">tool_input</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tool_input</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">tool_input</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tool_input</span><span class="p">)</span> <span class="k">if</span> <span class="n">tool_input</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+                    <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="n">FunctionCall</span><span class="p">(</span>
+                            <span class="nb">id</span><span class="o">=</span><span class="n">tool_use</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                            <span class="n">name</span><span class="o">=</span><span class="n">normalize_name</span><span class="p">(</span><span class="n">tool_use</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+                            <span class="n">arguments</span><span class="o">=</span><span class="n">tool_input</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Handle text response</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">block</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">TextBlock</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">])</span>
+
+        <span class="c1"># Create the final result</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">CreateResult</span><span class="p">(</span>
+            <span class="n">finish_reason</span><span class="o">=</span><span class="n">normalize_stop_reason</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">),</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">usage</span><span class="o">=</span><span class="n">usage</span><span class="p">,</span>
+            <span class="n">cached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">thought</span><span class="o">=</span><span class="n">thought</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update usage statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span> <span class="o">=</span> <span class="n">_add_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="p">,</span> <span class="n">usage</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span> <span class="o">=</span> <span class="n">_add_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span><span class="p">,</span> <span class="n">usage</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span></div>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.create_stream">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">json_output</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_create_args</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_consecutive_empty_chunk_tolerance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an AsyncGenerator that yields a stream of completions based on the provided messages and tools.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Copy create args and update with extra args</span>
+        <span class="n">create_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_args</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">create_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">extra_create_args</span><span class="p">)</span>
+
+        <span class="c1"># Check for vision capability if images are present</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Image</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support vision and image was provided&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Handle JSON output format</span>
+        <span class="k">if</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;json_output&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support JSON output&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">json_output</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">create_args</span><span class="p">[</span><span class="s2">&quot;response_format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;json_object&quot;</span><span class="p">}</span>
+
+        <span class="c1"># Process system message separately</span>
+        <span class="n">system_message</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">anthropic_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageParam</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">system_message</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Multiple system messages are not supported&quot;</span><span class="p">)</span>
+                <span class="n">system_message</span> <span class="o">=</span> <span class="n">to_anthropic_type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">anthropic_message</span> <span class="o">=</span> <span class="n">to_anthropic_type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="n">MessageParam</span><span class="p">(</span>
+                        <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">anthropic_message</span>
+                    <span class="p">)</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">anthropic_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">anthropic_message</span><span class="p">)</span>
+
+        <span class="c1"># Check for function calling support</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;function_calling&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model does not support function calling&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Set up the request</span>
+        <span class="n">request_args</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="n">anthropic_messages</span><span class="p">,</span>
+            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_tokens&quot;</span><span class="p">,</span> <span class="mi">4096</span><span class="p">),</span>
+            <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">create_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+            <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Add system message if present</span>
+        <span class="k">if</span> <span class="n">system_message</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">system_message</span>
+
+        <span class="c1"># Check if any message is a tool result</span>
+        <span class="n">has_tool_results</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">FunctionExecutionResultMessage</span><span class="p">)</span> <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">)</span>
+
+        <span class="c1"># Add tools if present</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">converted_tools</span> <span class="o">=</span> <span class="n">convert_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_used_tools</span> <span class="o">=</span> <span class="n">converted_tools</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">converted_tools</span>
+        <span class="k">elif</span> <span class="n">has_tool_results</span><span class="p">:</span>
+            <span class="n">request_args</span><span class="p">[</span><span class="s2">&quot;tools&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_used_tools</span>
+
+        <span class="c1"># Optional parameters</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;top_p&quot;</span><span class="p">,</span> <span class="s2">&quot;top_k&quot;</span><span class="p">,</span> <span class="s2">&quot;stop_sequences&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">create_args</span><span class="p">:</span>
+                <span class="n">request_args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_args</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+
+        <span class="c1"># Stream the response</span>
+        <span class="n">stream_future</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">[</span><span class="n">AsyncStream</span><span class="p">[</span><span class="n">RawMessageStreamEvent</span><span class="p">]]</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span>
+            <span class="n">cast</span><span class="p">(</span><span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncStream</span><span class="p">[</span><span class="n">RawMessageStreamEvent</span><span class="p">]],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">request_args</span><span class="p">))</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cancellation_token</span><span class="o">.</span><span class="n">link_future</span><span class="p">(</span><span class="n">stream_future</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">stream</span><span class="p">:</span> <span class="n">AsyncStream</span><span class="p">[</span><span class="n">RawMessageStreamEvent</span><span class="p">]</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">AsyncStream</span><span class="p">[</span><span class="n">RawMessageStreamEvent</span><span class="p">],</span> <span class="k">await</span> <span class="n">stream_future</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">text_content</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Track tool calls by ID</span>
+        <span class="n">current_tool_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">input_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">output_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">stop_reason</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Process the stream</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+            <span class="c1"># Handle different event types</span>
+            <span class="k">if</span> <span class="n">chunk</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;content_block_start&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">chunk</span><span class="o">.</span><span class="n">content_block</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;tool_use&quot;</span><span class="p">:</span>
+                    <span class="c1"># Start of a tool use block</span>
+                    <span class="n">current_tool_id</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">content_block</span><span class="o">.</span><span class="n">id</span>
+                    <span class="n">tool_calls</span><span class="p">[</span><span class="n">current_tool_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">chunk</span><span class="o">.</span><span class="n">content_block</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">chunk</span><span class="o">.</span><span class="n">content_block</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># Will be populated from deltas</span>
+                    <span class="p">}</span>
+
+            <span class="k">elif</span> <span class="n">chunk</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;content_block_delta&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;text_delta&quot;</span><span class="p">:</span>
+                    <span class="c1"># Handle text content</span>
+                    <span class="n">delta_text</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">text</span>
+                    <span class="n">text_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta_text</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">delta_text</span><span class="p">:</span>
+                        <span class="k">yield</span> <span class="n">delta_text</span>
+
+                <span class="c1"># Handle tool input deltas - they come as InputJSONDelta</span>
+                <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;input_json_delta&quot;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">current_tool_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;partial_json&quot;</span><span class="p">):</span>
+                        <span class="c1"># Accumulate partial JSON for the current tool</span>
+                        <span class="n">tool_calls</span><span class="p">[</span><span class="n">current_tool_id</span><span class="p">][</span><span class="s2">&quot;input&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">partial_json</span>
+
+            <span class="k">elif</span> <span class="n">chunk</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;content_block_stop&quot;</span><span class="p">:</span>
+                <span class="c1"># End of a content block (could be text or tool)</span>
+                <span class="n">current_tool_id</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">elif</span> <span class="n">chunk</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;message_delta&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;stop_reason&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">:</span>
+                    <span class="n">stop_reason</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">stop_reason</span>
+
+                <span class="c1"># Get usage info if available</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="s2">&quot;usage&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span> <span class="s2">&quot;output_tokens&quot;</span><span class="p">):</span>
+                    <span class="n">output_tokens</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">output_tokens</span>
+
+            <span class="k">elif</span> <span class="n">chunk</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;message_start&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;usage&quot;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span> <span class="s2">&quot;input_tokens&quot;</span><span class="p">):</span>
+                        <span class="n">input_tokens</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">input_tokens</span>
+                    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span> <span class="s2">&quot;output_tokens&quot;</span><span class="p">):</span>
+                        <span class="n">output_tokens</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">output_tokens</span>
+
+        <span class="c1"># Prepare the final response</span>
+        <span class="n">usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span>
+            <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">input_tokens</span><span class="p">,</span>
+            <span class="n">completion_tokens</span><span class="o">=</span><span class="n">output_tokens</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Determine content based on what was received</span>
+        <span class="n">content</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">]]</span>
+        <span class="n">thought</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="c1"># We received tool calls</span>
+            <span class="k">if</span> <span class="n">text_content</span><span class="p">:</span>
+                <span class="c1"># Text before tool calls is treated as thought</span>
+                <span class="n">thought</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text_content</span><span class="p">)</span>
+
+            <span class="c1"># Convert tool calls to FunctionCall objects</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">tool_data</span> <span class="ow">in</span> <span class="n">tool_calls</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Parse the JSON input if needed</span>
+                <span class="n">input_str</span> <span class="o">=</span> <span class="n">tool_data</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># If it&#39;s valid JSON, parse it; otherwise use as-is</span>
+                    <span class="k">if</span> <span class="n">input_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">input_str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">):</span>
+                        <span class="n">parsed_input</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
+                        <span class="n">input_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">parsed_input</span><span class="p">)</span>  <span class="c1"># Re-serialize to ensure valid JSON</span>
+                <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+                    <span class="c1"># Keep as string if not valid JSON</span>
+                    <span class="k">pass</span>
+
+                <span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">FunctionCall</span><span class="p">(</span>
+                        <span class="nb">id</span><span class="o">=</span><span class="n">tool_data</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">normalize_name</span><span class="p">(</span><span class="n">tool_data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]),</span>
+                        <span class="n">arguments</span><span class="o">=</span><span class="n">input_str</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Just text content</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text_content</span><span class="p">)</span>
+
+        <span class="c1"># Create the final result</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">CreateResult</span><span class="p">(</span>
+            <span class="n">finish_reason</span><span class="o">=</span><span class="n">normalize_stop_reason</span><span class="p">(</span><span class="n">stop_reason</span><span class="p">),</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">usage</span><span class="o">=</span><span class="n">usage</span><span class="p">,</span>
+            <span class="n">cached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">thought</span><span class="o">=</span><span class="n">thought</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update usage statistics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span> <span class="o">=</span> <span class="n">_add_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="p">,</span> <span class="n">usage</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span> <span class="o">=</span> <span class="n">_add_usage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span><span class="p">,</span> <span class="n">usage</span><span class="p">)</span>
+
+        <span class="k">yield</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.count_tokens">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.count_tokens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">count_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Estimate the number of tokens used by messages and tools.</span>
+
+<span class="sd">        Note: This is an estimation based on common tokenization patterns and may not perfectly</span>
+<span class="sd">        match Anthropic&#39;s exact token counting for Claude models.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Use cl100k_base encoding as an approximation for Claude&#39;s tokenizer</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="n">tiktoken</span><span class="o">.</span><span class="n">get_encoding</span><span class="p">(</span><span class="s2">&quot;cl100k_base&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="n">tiktoken</span><span class="o">.</span><span class="n">get_encoding</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>  <span class="c1"># Fallback</span>
+
+        <span class="n">num_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># System message tokens (if any)</span>
+        <span class="n">system_content</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+                <span class="n">system_content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">system_content</span><span class="p">:</span>
+            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">system_content</span><span class="p">))</span> <span class="o">+</span> <span class="mi">15</span>  <span class="c1"># Approximate system message overhead</span>
+
+        <span class="c1"># Message tokens</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># Already counted</span>
+
+            <span class="c1"># Base token cost per message</span>
+            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">10</span>  <span class="c1"># Approximate message role &amp; formatting overhead</span>
+
+            <span class="c1"># Content tokens</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserMessage</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AssistantMessage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="c1"># Handle different content types</span>
+                    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">part</span><span class="p">))</span>
+                        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="n">Image</span><span class="p">):</span>
+                            <span class="c1"># Estimate vision tokens (simplified)</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">512</span>  <span class="c1"># Rough estimation for image tokens</span>
+                        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="n">FunctionCall</span><span class="p">):</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">arguments</span><span class="p">))</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">10</span>  <span class="c1"># Function call overhead</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">FunctionExecutionResultMessage</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                    <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+                    <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">10</span>  <span class="c1"># Function result overhead</span>
+
+        <span class="c1"># Tool tokens</span>
+        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">Tool</span><span class="p">):</span>
+                <span class="n">tool_schema</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">schema</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tool_schema</span> <span class="o">=</span> <span class="n">tool</span>
+
+            <span class="c1"># Name and description</span>
+            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="s2">&quot;description&quot;</span> <span class="ow">in</span> <span class="n">tool_schema</span><span class="p">:</span>
+                <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]))</span>
+
+            <span class="c1"># Parameters</span>
+            <span class="k">if</span> <span class="s2">&quot;parameters&quot;</span> <span class="ow">in</span> <span class="n">tool_schema</span><span class="p">:</span>
+                <span class="n">params</span> <span class="o">=</span> <span class="n">tool_schema</span><span class="p">[</span><span class="s2">&quot;parameters&quot;</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="s2">&quot;properties&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">prop_name</span><span class="p">,</span> <span class="n">prop_schema</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">prop_name</span><span class="p">))</span>
+
+                        <span class="k">if</span> <span class="s2">&quot;type&quot;</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="p">:</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">prop_schema</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]))</span>
+
+                        <span class="k">if</span> <span class="s2">&quot;description&quot;</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="p">:</span>
+                            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">prop_schema</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]))</span>
+
+                        <span class="c1"># Special handling for enums</span>
+                        <span class="k">if</span> <span class="s2">&quot;enum&quot;</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">prop_schema</span><span class="p">[</span><span class="s2">&quot;enum&quot;</span><span class="p">]:</span>
+                                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                                    <span class="n">num_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoding</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">2</span>  <span class="c1"># Non-string enum values</span>
+
+            <span class="c1"># Tool overhead</span>
+            <span class="n">num_tokens</span> <span class="o">+=</span> <span class="mi">20</span>
+
+        <span class="k">return</span> <span class="n">num_tokens</span></div>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.remaining_tokens">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.remaining_tokens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remaining_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the remaining tokens based on the model&#39;s token limit.&quot;&quot;&quot;</span>
+        <span class="n">token_limit</span> <span class="o">=</span> <span class="n">model_info_util</span><span class="o">.</span><span class="n">get_token_limit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_args</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">token_limit</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">count_tokens</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.actual_usage">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.actual_usage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actual_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RequestUsage</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_actual_usage</span></div>
+
+
+<div class="viewcode-block" id="BaseAnthropicChatCompletionClient.total_usage">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.total_usage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RequestUsage</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelCapabilities</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;capabilities is deprecated, use model_info instead&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">model_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelInfo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span></div>
+
+
+
+<div class="viewcode-block" id="AnthropicChatCompletionClient">
+<a class="viewcode-back" href="../../../../models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnthropicChatCompletionClient</span><span class="p">(</span>
+    <span class="n">BaseAnthropicChatCompletionClient</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Chat completion client for Anthropic&#39;s Claude models.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (str): The Claude model to use (e.g., &quot;claude-3-sonnet-20240229&quot;, &quot;claude-3-opus-20240229&quot;)</span>
+<span class="sd">        api_key (str, optional): Anthropic API key. Required if not in environment variables.</span>
+<span class="sd">        base_url (str, optional): Override the default API endpoint.</span>
+<span class="sd">        max_tokens (int, optional): Maximum tokens in the response. Default is 4096.</span>
+<span class="sd">        temperature (float, optional): Controls randomness. Lower is more deterministic. Default is 1.0.</span>
+<span class="sd">        top_p (float, optional): Controls diversity via nucleus sampling. Default is 1.0.</span>
+<span class="sd">        top_k (int, optional): Controls diversity via top-k sampling. Default is -1 (disabled).</span>
+<span class="sd">        model_info (ModelInfo, optional): The capabilities of the model. Required if using a custom model.</span>
+
+<span class="sd">    To use this client, you must install the Anthropic extension:</span>
+
+<span class="sd">    .. code-block:: bash</span>
+
+<span class="sd">        pip install &quot;agentopera[anthropic]&quot;</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from agentopera.models.anthropic import AnthropicChatCompletionClient</span>
+<span class="sd">        from agentopera.core.types.models import UserMessage</span>
+
+<span class="sd">        anthropic_client = AnthropicChatCompletionClient(</span>
+<span class="sd">            model=&quot;claude-3-sonnet-20240229&quot;,</span>
+<span class="sd">            api_key=&quot;your-api-key&quot;,  # Optional if ANTHROPIC_API_KEY is set in environment</span>
+<span class="sd">        )</span>
+
+<span class="sd">        result = await anthropic_client.create([UserMessage(content=&quot;What is the capital of France?&quot;, source=&quot;user&quot;)])</span>
+<span class="sd">        print(result)</span>
+
+<span class="sd">    To load the client from a configuration:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from agentopera.core.types.models import ChatCompletionClient</span>
+
+<span class="sd">        config = {</span>
+<span class="sd">            &quot;provider&quot;: &quot;AnthropicChatCompletionClient&quot;,</span>
+<span class="sd">            &quot;config&quot;: {&quot;model&quot;: &quot;claude-3-sonnet-20240229&quot;},</span>
+<span class="sd">        }</span>
+
+<span class="sd">        client = ChatCompletionClient.load_component(config)</span>
+
+<span class="sd">    The client supports function calling with Claude models that have the capability:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from agentopera.core.tools import FunctionTool</span>
+
+
+<span class="sd">        def get_weather(location: str) -&gt; str:</span>
+<span class="sd">            &#39;&#39;&#39;Get the weather for a location&#39;&#39;&#39;</span>
+<span class="sd">            return f&quot;The weather in {location} is sunny.&quot;</span>
+
+
+<span class="sd">        tool = FunctionTool(get_weather)</span>
+
+<span class="sd">        result = await anthropic_client.create(</span>
+<span class="sd">            [UserMessage(content=&quot;What&#39;s the weather in Paris?&quot;, source=&quot;user&quot;)],</span>
+<span class="sd">            tools=[tool],</span>
+<span class="sd">        )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">component_type</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+    <span class="n">component_config_schema</span> <span class="o">=</span> <span class="n">AnthropicClientConfigurationConfigModel</span>
+    <span class="n">component_provider_override</span> <span class="o">=</span> <span class="s2">&quot;agentopera.agents.models.anthropic.AnthropicChatCompletionClient&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">AnthropicClientConfiguration</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="s2">&quot;model&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;model is required for AnthropicChatCompletionClient&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">copied_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">model_info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ModelInfo</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="s2">&quot;model_info&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">model_info</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;model_info&quot;</span><span class="p">]</span>
+            <span class="k">del</span> <span class="n">copied_args</span><span class="p">[</span><span class="s2">&quot;model_info&quot;</span><span class="p">]</span>
+
+        <span class="n">client</span> <span class="o">=</span> <span class="n">_anthropic_client_from_config</span><span class="p">(</span><span class="n">copied_args</span><span class="p">)</span>
+        <span class="n">create_args</span> <span class="o">=</span> <span class="n">_create_args_from_config</span><span class="p">(</span><span class="n">copied_args</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+            <span class="n">create_args</span><span class="o">=</span><span class="n">create_args</span><span class="p">,</span>
+            <span class="n">model_info</span><span class="o">=</span><span class="n">model_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">state</span><span class="p">[</span><span class="s2">&quot;_client&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">state</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">_anthropic_client_from_config</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;_raw_config&quot;</span><span class="p">])</span></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

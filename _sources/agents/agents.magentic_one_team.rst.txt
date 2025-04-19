@@ -1,5 +1,5 @@
 agents.magentic_one_team
-=====================
+========================
 
 .. automodule:: agentopera.agents.magentic_one_team
    :members:

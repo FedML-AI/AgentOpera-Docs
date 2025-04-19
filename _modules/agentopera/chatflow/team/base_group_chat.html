@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.team.base_group_chat &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.team.base_group_chat</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.team.base_group_chat</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.agent_id</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.agent_instantiation_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInstantiationContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.agent_type</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClosureAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalAgentEngine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.msg_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">TopicSubscription</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.agent.closure_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClosureContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">EVENT_LOGGER_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAgent</span><span class="p">,</span> <span class="n">TaskResult</span><span class="p">,</span> <span class="n">Team</span><span class="p">,</span> <span class="n">TerminationCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">,</span> <span class="n">TextMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..state</span><span class="w"> </span><span class="kn">import</span> <span class="n">TeamState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.chat_agent_container</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAgentContainer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">GroupChatMessage</span><span class="p">,</span> <span class="n">GroupChatReset</span><span class="p">,</span> <span class="n">GroupChatStart</span><span class="p">,</span> <span class="n">GroupChatTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.sequential_routed_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">SequentialRoutedAgent</span>
+
+<span class="n">event_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">EVENT_LOGGER_NAME</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BaseGroupChat">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseGroupChat</span><span class="p">(</span><span class="n">Team</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The base class for group chat teams.</span>
+
+<span class="sd">    To implement a group chat team, first create a subclass of :class:`BaseGroupChatManager` and then</span>
+<span class="sd">    create a subclass of :class:`BaseGroupChat` that uses the group chat manager.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">participants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatAgent</span><span class="p">],</span>
+        <span class="n">group_chat_manager_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">SequentialRoutedAgent</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least one participant is required.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">participant</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">participant</span> <span class="ow">in</span> <span class="n">participants</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The participant names must be unique.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_participants</span> <span class="o">=</span> <span class="n">participants</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_group_chat_manager_class</span> <span class="o">=</span> <span class="n">group_chat_manager_class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span> <span class="o">=</span> <span class="n">termination_condition</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_turns</span> <span class="o">=</span> <span class="n">max_turns</span>
+
+        <span class="c1"># Constants for the group chat.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_topic_type</span> <span class="o">=</span> <span class="s2">&quot;group_topic&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_topic_type</span> <span class="o">=</span> <span class="s2">&quot;output_topic&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_chat_manager_topic_type</span> <span class="o">=</span> <span class="s2">&quot;group_chat_manager&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">participant</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">participant</span> <span class="ow">in</span> <span class="n">participants</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">participant</span><span class="o">.</span><span class="n">description</span> <span class="k">for</span> <span class="n">participant</span> <span class="ow">in</span> <span class="n">participants</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collector_agent_type</span> <span class="o">=</span> <span class="s2">&quot;collect_output_messages&quot;</span>
+
+        <span class="c1"># Constants for the closure agent to collect the output messages.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+        <span class="c1"># Create a engine for the team.</span>
+        <span class="c1"># TODO: The engine should be created by a managed context.</span>
+        <span class="c1"># Background exceptions must not be ignored as it results in non-surfaced exceptions and early team termination.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">(</span><span class="n">ignore_unhandled_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Flag to track if the group chat has been initialized.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Flag to track if the group chat is running.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_group_chat_manager_factory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">group_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">participant_topic_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">participant_descriptions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">termination_condition</span><span class="p">:</span> <span class="n">TerminationCondition</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_turns</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">SequentialRoutedAgent</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_participant_factory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parent_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">output_topic_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">agent</span><span class="p">:</span> <span class="n">ChatAgent</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">ChatAgentContainer</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">_factory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ChatAgentContainer</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+            <span class="k">assert</span> <span class="nb">id</span> <span class="o">==</span> <span class="n">AgentId</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">agent</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span><span class="p">)</span>
+            <span class="n">container</span> <span class="o">=</span> <span class="n">ChatAgentContainer</span><span class="p">(</span><span class="n">parent_topic_type</span><span class="p">,</span> <span class="n">output_topic_type</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">container</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span>
+            <span class="k">return</span> <span class="n">container</span>
+
+        <span class="k">return</span> <span class="n">_factory</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="n">AgentEngine</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Constants for the group chat manager.</span>
+        <span class="n">group_chat_manager_agent_type</span> <span class="o">=</span> <span class="n">AgentType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_chat_manager_topic_type</span><span class="p">)</span>
+
+        <span class="c1"># Register participants.</span>
+        <span class="k">for</span> <span class="n">participant</span><span class="p">,</span> <span class="n">participant_topic_type</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_participants</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="c1"># Use the participant topic type as the agent type.</span>
+            <span class="n">agent_type</span> <span class="o">=</span> <span class="n">participant_topic_type</span>
+            <span class="c1"># Register the participant factory.</span>
+            <span class="k">await</span> <span class="n">ChatAgentContainer</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+                <span class="n">engine</span><span class="p">,</span>
+                <span class="nb">type</span><span class="o">=</span><span class="n">agent_type</span><span class="p">,</span>
+                <span class="n">agent_builder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_participant_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_topic_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_topic_type</span><span class="p">,</span> <span class="n">participant</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="c1"># Add subscriptions for the participant.</span>
+            <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">TopicSubscription</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">participant_topic_type</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="n">agent_type</span><span class="p">))</span>
+            <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">TopicSubscription</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_topic_type</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="n">agent_type</span><span class="p">))</span>
+
+        <span class="c1"># Register the group chat manager.</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_group_chat_manager_class</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="n">engine</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="n">group_chat_manager_agent_type</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+            <span class="n">agent_builder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_create_group_chat_manager_factory</span><span class="p">(</span>
+                <span class="n">group_topic_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_topic_type</span><span class="p">,</span>
+                <span class="n">output_topic_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_topic_type</span><span class="p">,</span>
+                <span class="n">participant_topic_types</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">,</span>
+                <span class="n">participant_descriptions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_participant_descriptions</span><span class="p">,</span>
+                <span class="n">termination_condition</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_termination_condition</span><span class="p">,</span>
+                <span class="n">max_turns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_turns</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="c1"># Add subscriptions for the group chat manager.</span>
+        <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span>
+            <span class="n">TopicSubscription</span><span class="p">(</span>
+                <span class="n">topic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_chat_manager_topic_type</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="n">group_chat_manager_agent_type</span><span class="o">.</span><span class="n">type</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span>
+            <span class="n">TopicSubscription</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_topic_type</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="n">group_chat_manager_agent_type</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">collect_output_messages</span><span class="p">(</span>
+            <span class="n">_runtime</span><span class="p">:</span> <span class="n">ClosureContext</span><span class="p">,</span>
+            <span class="n">message</span><span class="p">:</span> <span class="n">GroupChatStart</span> <span class="o">|</span> <span class="n">GroupChatMessage</span> <span class="o">|</span> <span class="n">GroupChatTermination</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Collect output messages from the group chat.&quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">GroupChatStart</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">messages</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">messages</span><span class="p">:</span>
+                        <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">GroupChatMessage</span><span class="p">):</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">GroupChatTermination</span><span class="p">):</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_stop_reason</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+
+        <span class="k">await</span> <span class="n">ClosureAgent</span><span class="o">.</span><span class="n">register_closure</span><span class="p">(</span>
+            <span class="n">engine</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_collector_agent_type</span><span class="p">,</span>
+            <span class="n">closure</span><span class="o">=</span><span class="n">collect_output_messages</span><span class="p">,</span>
+            <span class="n">subscriptions</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">TopicSubscription</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_topic_type</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_collector_agent_type</span><span class="p">),</span>
+            <span class="p">],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="BaseGroupChat.run">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.run">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the team and return the result. The base implementation uses</span>
+<span class="sd">        :meth:`run_stream` to run the team and then returns the final result.</span>
+<span class="sd">        Once the team is stopped, the termination condition is reset.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task (str | ChatMessage | Sequence[ChatMessage] | None): The task to run the team with. Can be a string, a single :class:`ChatMessage` , or a list of :class:`ChatMessage`.</span>
+<span class="sd">            cancellation_token (CancellationToken | None): The cancellation token to kill the task immediately.</span>
+<span class="sd">                Setting the cancellation token potentially put the team in an inconsistent state,</span>
+<span class="sd">                and it may not reset the termination condition.</span>
+<span class="sd">                To gracefully stop the team, use :class:`~agentopera.chatflow.conditions.ExternalTermination` instead.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            result: The result of the task as :class:`~agentopera.chatflow.base.TaskResult`. The result contains the messages produced by the team and the stop reason.</span>
+
+<span class="sd">        Example using the :class:`~agentopera.chatflow.teams.RoundRobinGroupChat` team:</span>
+
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(&quot;Assistant1&quot;, model_client=model_client)</span>
+<span class="sd">                agent2 = AssistantAgent(&quot;Assistant2&quot;, model_client=model_client)</span>
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)</span>
+
+<span class="sd">                result = await team.run(task=&quot;Count from 1 to 10, respond one at a time.&quot;)</span>
+<span class="sd">                print(result)</span>
+
+<span class="sd">                # Run the team again without a task to continue the previous task.</span>
+<span class="sd">                result = await team.run()</span>
+<span class="sd">                print(result)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">        Example using the :class:`~agentopera.core.CancellationToken` to cancel the task:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(&quot;Assistant1&quot;, model_client=model_client)</span>
+<span class="sd">                agent2 = AssistantAgent(&quot;Assistant2&quot;, model_client=model_client)</span>
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)</span>
+
+<span class="sd">                cancellation_token = CancellationToken()</span>
+
+<span class="sd">                # Create a task to run the team in the background.</span>
+<span class="sd">                run_task = asyncio.create_task(</span>
+<span class="sd">                    team.run(</span>
+<span class="sd">                        task=&quot;Count from 1 to 10, respond one at a time.&quot;,</span>
+<span class="sd">                        cancellation_token=cancellation_token,</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Wait for 1 second and then cancel the task.</span>
+<span class="sd">                await asyncio.sleep(1)</span>
+<span class="sd">                cancellation_token.cancel()</span>
+
+<span class="sd">                # This will raise a cancellation error.</span>
+<span class="sd">                await run_task</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">TaskResult</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span>
+            <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">TaskResult</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">message</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;The stream should have returned the final result.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseGroupChat.run_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.run_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">TaskResult</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the team and produces a stream of messages and the final result</span>
+<span class="sd">        of the type :class:`~agentopera.chatflow.base.TaskResult` as the last item in the stream. Once the</span>
+<span class="sd">        team is stopped, the termination condition is reset.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            If an agent produces :class:`~agentopera.chatflow.messages.ModelClientStreamingChunkEvent`,</span>
+<span class="sd">            the message will be yielded in the stream but it will not be included in the</span>
+<span class="sd">            :attr:`~agentopera.chatflow.base.TaskResult.messages`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            task (str | ChatMessage | Sequence[ChatMessage] | None): The task to run the team with. Can be a string, a single :class:`ChatMessage` , or a list of :class:`ChatMessage`.</span>
+<span class="sd">            cancellation_token (CancellationToken | None): The cancellation token to kill the task immediately.</span>
+<span class="sd">                Setting the cancellation token potentially put the team in an inconsistent state,</span>
+<span class="sd">                and it may not reset the termination condition.</span>
+<span class="sd">                To gracefully stop the team, use :class:`~agentopera.chatflow.conditions.ExternalTermination` instead.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            stream: an :class:`~collections.abc.AsyncGenerator` that yields :class:`~agentopera.chatflow.messages.AgentEvent`, :class:`~agentopera.chatflow.messages.ChatMessage`, and the final result :class:`~agentopera.chatflow.base.TaskResult` as the last item in the stream.</span>
+
+<span class="sd">        Example using the :class:`~agentopera.chatflow.teams.RoundRobinGroupChat` team:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(&quot;Assistant1&quot;, model_client=model_client)</span>
+<span class="sd">                agent2 = AssistantAgent(&quot;Assistant2&quot;, model_client=model_client)</span>
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)</span>
+
+<span class="sd">                stream = team.run_stream(task=&quot;Count from 1 to 10, respond one at a time.&quot;)</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+<span class="sd">                # Run the team again without a task to continue the previous task.</span>
+<span class="sd">                stream = team.run_stream()</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">        Example using the :class:`~agentopera.core.CancellationToken` to cancel the task:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(&quot;Assistant1&quot;, model_client=model_client)</span>
+<span class="sd">                agent2 = AssistantAgent(&quot;Assistant2&quot;, model_client=model_client)</span>
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)</span>
+
+<span class="sd">                cancellation_token = CancellationToken()</span>
+
+<span class="sd">                # Create a task to run the team in the background.</span>
+<span class="sd">                run_task = asyncio.create_task(</span>
+<span class="sd">                    Console(</span>
+<span class="sd">                        team.run_stream(</span>
+<span class="sd">                            task=&quot;Count from 1 to 10, respond one at a time.&quot;,</span>
+<span class="sd">                            cancellation_token=cancellation_token,</span>
+<span class="sd">                        )</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Wait for 1 second and then cancel the task.</span>
+<span class="sd">                await asyncio.sleep(1)</span>
+<span class="sd">                cancellation_token.cancel()</span>
+
+<span class="sd">                # This will raise a cancellation error.</span>
+<span class="sd">                await run_task</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Create the messages list if the task is a string or a chat message.</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Task list cannot be empty.&quot;</span><span class="p">)</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All messages in task list must be valid ChatMessage types&quot;</span><span class="p">)</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The team is already running, it cannot run again until it is stopped.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Start the engine.</span>
+        <span class="c1"># TODO: The engine should be started by a managed context.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="p">)</span>
+
+        <span class="c1"># Start a coroutine to stop the engine and signal the output message queue is complete.</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop_engine</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">stop_when_idle</span><span class="p">()</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">shutdown_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">stop_engine</span><span class="p">())</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Run the team by sending the start message to the group chat manager.</span>
+            <span class="c1"># The group chat manager will start the group chat by relaying the message to the participants</span>
+            <span class="c1"># and the closure agent.</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+                <span class="n">GroupChatStart</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">),</span>
+                <span class="n">recipient</span><span class="o">=</span><span class="n">AgentId</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_chat_manager_topic_type</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span><span class="p">),</span>
+                <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="c1"># Collect the output messages in order.</span>
+            <span class="n">output_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="c1"># Yield the messsages until the queue is empty.</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">message_future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">cancellation_token</span><span class="o">.</span><span class="n">link_future</span><span class="p">(</span><span class="n">message_future</span><span class="p">)</span>
+                <span class="c1"># Wait for the next message, this will raise an exception if the task is cancelled.</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">message_future</span>
+                <span class="k">if</span> <span class="n">message</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">yield</span> <span class="n">message</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">):</span>
+                    <span class="c1"># Skip the model client streaming chunk events.</span>
+                    <span class="k">continue</span>
+                <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+            <span class="c1"># Yield the final result.</span>
+            <span class="k">yield</span> <span class="n">TaskResult</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">output_messages</span><span class="p">,</span> <span class="n">stop_reason</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_stop_reason</span><span class="p">)</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Wait for the shutdown task to finish.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># This will propagate any exceptions raised in the shutdown task.</span>
+                <span class="c1"># We need to ensure we cleanup though.</span>
+                <span class="k">await</span> <span class="n">shutdown_task</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="c1"># Clear the output message queue.</span>
+                <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>
+
+                <span class="c1"># Indicate that the team is no longer running.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="BaseGroupChat.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the team and its participants to their initial state.</span>
+
+<span class="sd">        The team must be stopped before it can be reset.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If the team has not been initialized or is currently running.</span>
+
+<span class="sd">        Example using the :class:`~agentopera.chatflow.teams.RoundRobinGroupChat` team:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import MaxMessageTermination</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                agent1 = AssistantAgent(&quot;Assistant1&quot;, model_client=model_client)</span>
+<span class="sd">                agent2 = AssistantAgent(&quot;Assistant2&quot;, model_client=model_client)</span>
+<span class="sd">                termination = MaxMessageTermination(3)</span>
+<span class="sd">                team = RoundRobinGroupChat([agent1, agent2], termination_condition=termination)</span>
+<span class="sd">                stream = team.run_stream(task=&quot;Count from 1 to 10, respond one at a time.&quot;)</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+<span class="sd">                # Reset the team.</span>
+<span class="sd">                await team.reset()</span>
+<span class="sd">                stream = team.run_stream(task=&quot;Count from 1 to 10, respond one at a time.&quot;)</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The group chat is currently running. It must be stopped before it can be reset.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Start the engine.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Send a reset messages to all participants.</span>
+            <span class="k">for</span> <span class="n">participant_topic_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_participant_topic_types</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+                    <span class="n">GroupChatReset</span><span class="p">(),</span>
+                    <span class="n">recipient</span><span class="o">=</span><span class="n">AgentId</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">participant_topic_type</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="c1"># Send a reset message to the group chat manager.</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+                <span class="n">GroupChatReset</span><span class="p">(),</span>
+                <span class="n">recipient</span><span class="o">=</span><span class="n">AgentId</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_chat_manager_topic_type</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Stop the engine.</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">stop_when_idle</span><span class="p">()</span>
+
+            <span class="c1"># Reset the output message queue.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stop_reason</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_output_message_queue</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span>
+
+            <span class="c1"># Indicate that the team is no longer running.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="BaseGroupChat.save_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the state of the group chat team.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The group chat has not been initialized. It must be run before it can be saved.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The team cannot be saved while it is running.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Save the state of the engine. This will save the state of the participants and the group chat manager.</span>
+            <span class="n">agent_states</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">save_state</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">TeamState</span><span class="p">(</span><span class="n">agent_states</span><span class="o">=</span><span class="n">agent_states</span><span class="p">,</span> <span class="n">team_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Indicate that the team is no longer running.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="BaseGroupChat.load_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the state of the group chat team.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The team cannot be loaded while it is running.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Load the state of the engine. This will load the state of the participants and the group chat manager.</span>
+            <span class="n">team_state</span> <span class="o">=</span> <span class="n">TeamState</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_team_id</span> <span class="o">=</span> <span class="n">team_state</span><span class="o">.</span><span class="n">team_id</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">load_state</span><span class="p">(</span><span class="n">team_state</span><span class="o">.</span><span class="n">agent_states</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Indicate that the team is no longer running.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

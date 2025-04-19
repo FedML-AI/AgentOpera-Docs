@@ -63,7 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="engine.runtime.html">engine.runtime</a></li>
 <li class="toctree-l1"><a class="reference internal" href="engine.telemetry.html">engine.telemetry</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">engine.types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#engine-types-agent">engine.types.agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types.agent">engine.types.agent</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.metadata"><code class="docutils literal notranslate"><span class="pre">Agent.metadata</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.id"><code class="docutils literal notranslate"><span class="pre">Agent.id</span></code></a></li>
@@ -100,6 +100,177 @@
 <li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_engine"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_engine()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_agent_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types.model_context">engine.types.model_context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext.add_message"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.add_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.get_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext.clear"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext.save_state"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.save_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext.load_state"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.load_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContextState"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContextState.messages"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState.messages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContextState.model_config"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.model_context.BufferedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">BufferedChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.BufferedChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">BufferedChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">HeadAndTailChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">HeadAndTailChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.model_context.UnboundedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">UnboundedChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.model_context.UnboundedChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">UnboundedChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types.models">engine.types.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage"><code class="docutils literal notranslate"><span class="pre">AssistantMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage.content"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage.model_config"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage.source"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage.thought"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.thought</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage.type"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.total_usage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.bytes"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.bytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.logprob"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.logprob</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.model_config"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.token"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.top_logprobs"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.top_logprobs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult"><code class="docutils literal notranslate"><span class="pre">CreateResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.cached"><code class="docutils literal notranslate"><span class="pre">CreateResult.cached</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.content"><code class="docutils literal notranslate"><span class="pre">CreateResult.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.finish_reason"><code class="docutils literal notranslate"><span class="pre">CreateResult.finish_reason</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.logprobs"><code class="docutils literal notranslate"><span class="pre">CreateResult.logprobs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.model_config"><code class="docutils literal notranslate"><span class="pre">CreateResult.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.thought"><code class="docutils literal notranslate"><span class="pre">CreateResult.thought</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult.usage"><code class="docutils literal notranslate"><span class="pre">CreateResult.usage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult.call_id"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.call_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult.content"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult.is_error"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.is_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult.model_config"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult.name"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.content"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.model_config"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.type"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.ModelCapabilities"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelCapabilities.function_calling"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.function_calling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelCapabilities.json_output"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.json_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelCapabilities.vision"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.vision</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily"><code class="docutils literal notranslate"><span class="pre">ModelFamily</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.ANY"><code class="docutils literal notranslate"><span class="pre">ModelFamily.ANY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_HAIKU"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_5_HAIKU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_5_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_7_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_7_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_HAIKU"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_HAIKU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_OPUS"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_OPUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_FLASH"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_1_5_FLASH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_PRO"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_1_5_PRO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GEMINI_2_0_FLASH"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_2_0_FLASH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GPT_35"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_35</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GPT_4"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.GPT_4O"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_4O</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.O1"><code class="docutils literal notranslate"><span class="pre">ModelFamily.O1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.O3"><code class="docutils literal notranslate"><span class="pre">ModelFamily.O3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.R1"><code class="docutils literal notranslate"><span class="pre">ModelFamily.R1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ModelFamily.UNKNOWN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.is_claude"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_claude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.is_gemini"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_gemini()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelFamily.is_openai"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_openai()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo"><code class="docutils literal notranslate"><span class="pre">ModelInfo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo.family"><code class="docutils literal notranslate"><span class="pre">ModelInfo.family</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo.function_calling"><code class="docutils literal notranslate"><span class="pre">ModelInfo.function_calling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo.json_output"><code class="docutils literal notranslate"><span class="pre">ModelInfo.json_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo.vision"><code class="docutils literal notranslate"><span class="pre">ModelInfo.vision</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage"><code class="docutils literal notranslate"><span class="pre">RequestUsage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage.completion_tokens"><code class="docutils literal notranslate"><span class="pre">RequestUsage.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">RequestUsage.prompt_tokens</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage"><code class="docutils literal notranslate"><span class="pre">SystemMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage.content"><code class="docutils literal notranslate"><span class="pre">SystemMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage.model_config"><code class="docutils literal notranslate"><span class="pre">SystemMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage.type"><code class="docutils literal notranslate"><span class="pre">SystemMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.TopLogprob"><code class="docutils literal notranslate"><span class="pre">TopLogprob</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.TopLogprob.bytes"><code class="docutils literal notranslate"><span class="pre">TopLogprob.bytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.TopLogprob.logprob"><code class="docutils literal notranslate"><span class="pre">TopLogprob.logprob</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.UserMessage"><code class="docutils literal notranslate"><span class="pre">UserMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.UserMessage.content"><code class="docutils literal notranslate"><span class="pre">UserMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.UserMessage.model_config"><code class="docutils literal notranslate"><span class="pre">UserMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.UserMessage.source"><code class="docutils literal notranslate"><span class="pre">UserMessage.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.UserMessage.type"><code class="docutils literal notranslate"><span class="pre">UserMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage"><code class="docutils literal notranslate"><span class="pre">VercelMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage.content"><code class="docutils literal notranslate"><span class="pre">VercelMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage.model_config"><code class="docutils literal notranslate"><span class="pre">VercelMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage.parts"><code class="docutils literal notranslate"><span class="pre">VercelMessage.parts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage.role"><code class="docutils literal notranslate"><span class="pre">VercelMessage.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage.type"><code class="docutils literal notranslate"><span class="pre">VercelMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.models.validate_model_info"><code class="docutils literal notranslate"><span class="pre">validate_model_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types.msg_channel">engine.types.msg_channel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.msg_channel.DefaultMessageChannel"><code class="docutils literal notranslate"><span class="pre">DefaultMessageChannel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel"><code class="docutils literal notranslate"><span class="pre">MessageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel.from_str"><code class="docutils literal notranslate"><span class="pre">MessageChannel.from_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel.source"><code class="docutils literal notranslate"><span class="pre">MessageChannel.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel.topic"><code class="docutils literal notranslate"><span class="pre">MessageChannel.topic</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types.msg_context">engine.types.msg_context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext"><code class="docutils literal notranslate"><span class="pre">MessageContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext.cancellation_token"><code class="docutils literal notranslate"><span class="pre">MessageContext.cancellation_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext.is_rpc"><code class="docutils literal notranslate"><span class="pre">MessageContext.is_rpc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext.message_channel"><code class="docutils literal notranslate"><span class="pre">MessageContext.message_channel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext.message_id"><code class="docutils literal notranslate"><span class="pre">MessageContext.message_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext.sender"><code class="docutils literal notranslate"><span class="pre">MessageContext.sender</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -237,9 +408,9 @@
              
   <section id="engine-types">
 <h1>engine.types<a class="headerlink" href="#engine-types" title="Link to this heading"></a></h1>
-<section id="engine-types-agent">
-<h2>engine.types.agent<a class="headerlink" href="#engine-types-agent" title="Link to this heading"></a></h2>
-<dl class="py class" id="module-agentopera.engine.types.agent">
+<section id="module-agentopera.engine.types.agent">
+<span id="engine-types-agent"></span><h2>engine.types.agent<a class="headerlink" href="#module-agentopera.engine.types.agent" title="Link to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">Agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
@@ -257,13 +428,13 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.on_message">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.on_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.on_message" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext" title="agentopera.engine.types.msg_context.message_context.MessageContext"><span class="pre">MessageContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.on_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.on_message" title="Link to this definition"></a></dt>
 <dd><p>Message handler for the agent. This should only be called by the engine, not by other agents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>message</strong> (<em>Any</em>) – Received message. Type is one of the types in <cite>subscriptions</cite>.</p></li>
-<li><p><strong>ctx</strong> (<em>MessageContext</em>) – Context of the message.</p></li>
+<li><p><strong>ctx</strong> (<a class="reference internal" href="#agentopera.engine.types.msg_context.MessageContext" title="agentopera.engine.types.msg_context.MessageContext"><em>MessageContext</em></a>) – Context of the message.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -483,6 +654,768 @@ the agent’s constructor:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_agent_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext.current_agent_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-agentopera.engine.types.model_context">
+<span id="engine-types-model-context"></span><h2>engine.types.model_context<a class="headerlink" href="#module-agentopera.engine.types.model_context" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.model_context.</span></span><span class="sig-name descname"><span class="pre">ChatCompletionContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>An abstract base class for defining the interface of a chat completion context.
+A chat completion context lets agents store and retrieve LLM messages.
+It can be implemented with different recall strategies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>initial_messages</strong> (<em>List</em><em>[</em><em>LLMMessage</em><em>] </em><em>| </em><em>None</em>) – The initial messages.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>To create a custom model context that filters out the thought field from AssistantMessage.
+This is useful for reasoning models like DeepSeek R1, which produces
+very long thought that is not needed for subsequent completions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.model_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnboundedChatCompletionContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantMessage</span><span class="p">,</span> <span class="n">LLMMessage</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ReasoningModelContext</span><span class="p">(</span><span class="n">UnboundedChatCompletionContext</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A model context for reasoning models.&quot;&quot;&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]:</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_messages</span><span class="p">()</span>
+        <span class="c1"># Filter out thought field from AssistantMessage.</span>
+        <span class="n">messages_out</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AssistantMessage</span><span class="p">):</span>
+                <span class="n">message</span><span class="o">.</span><span class="n">thought</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">messages_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">messages_out</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext.add_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext.add_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext.add_message" title="Link to this definition"></a></dt>
+<dd><p>Add a message to the context.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext.get_messages">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext.get_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext.get_messages" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext.clear">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the context.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext.save_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContext.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContext.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContext.load_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContextState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.model_context.</span></span><span class="sig-name descname"><span class="pre">ChatCompletionContextState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages:</span> <span class="pre">~typing.List[~agentopera.engine.types.models.types.SystemMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.UserMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.AssistantMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.FunctionExecutionResultMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/chat_completion_context.html#ChatCompletionContextState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContextState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContextState.messages">
+<span class="sig-name descname"><span class="pre">messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContextState.messages" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.ChatCompletionContextState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.model_context.ChatCompletionContextState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.BufferedChatCompletionContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.model_context.</span></span><span class="sig-name descname"><span class="pre">BufferedChatCompletionContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/buffered_chat_completion_context.html#BufferedChatCompletionContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.BufferedChatCompletionContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext" title="agentopera.engine.types.model_context.chat_completion_context.ChatCompletionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a></p>
+<p>A buffered chat completion context that keeps a view of the last n messages,
+where n is the buffer size. The buffer size is set at initialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer_size</strong> (<em>int</em>) – The size of the buffer.</p></li>
+<li><p><strong>initial_messages</strong> (<em>List</em><em>[</em><em>LLMMessage</em><em>] </em><em>| </em><em>None</em>) – The initial messages.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.BufferedChatCompletionContext.get_messages">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/buffered_chat_completion_context.html#BufferedChatCompletionContext.get_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.BufferedChatCompletionContext.get_messages" title="Link to this definition"></a></dt>
+<dd><p>Get at most <cite>buffer_size</cite> recent messages.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.HeadAndTailChatCompletionContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.model_context.</span></span><span class="sig-name descname"><span class="pre">HeadAndTailChatCompletionContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">head_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tail_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/head_and_tail_chat_completion_context.html#HeadAndTailChatCompletionContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext" title="agentopera.engine.types.model_context.chat_completion_context.ChatCompletionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a></p>
+<p>A chat completion context that keeps a view of the first n and last m messages,
+where n is the head size and m is the tail size. The head and tail sizes
+are set at initialization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>head_size</strong> (<em>int</em>) – The size of the head.</p></li>
+<li><p><strong>tail_size</strong> (<em>int</em>) – The size of the tail.</p></li>
+<li><p><strong>initial_messages</strong> (<em>List</em><em>[</em><em>LLMMessage</em><em>] </em><em>| </em><em>None</em>) – The initial messages.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.HeadAndTailChatCompletionContext.get_messages">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/head_and_tail_chat_completion_context.html#HeadAndTailChatCompletionContext.get_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext.get_messages" title="Link to this definition"></a></dt>
+<dd><p>Get at most <cite>head_size</cite> recent messages and <cite>tail_size</cite> oldest messages.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.UnboundedChatCompletionContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.model_context.</span></span><span class="sig-name descname"><span class="pre">UnboundedChatCompletionContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/unbounded_chat_completion_context.html#UnboundedChatCompletionContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.UnboundedChatCompletionContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.types.model_context.ChatCompletionContext" title="agentopera.engine.types.model_context.chat_completion_context.ChatCompletionContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a></p>
+<p>An unbounded chat completion context that keeps a view of the all the messages.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.model_context.UnboundedChatCompletionContext.get_messages">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/model_context/unbounded_chat_completion_context.html#UnboundedChatCompletionContext.get_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.model_context.UnboundedChatCompletionContext.get_messages" title="Link to this definition"></a></dt>
+<dd><p>Get at most <cite>buffer_size</cite> recent messages.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-agentopera.engine.types.models">
+<span id="engine-types-models"></span><h2>engine.types.models<a class="headerlink" href="#module-agentopera.engine.types.models" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">AssistantMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.FunctionCall" title="agentopera.engine.function_call.function_call.FunctionCall"><span class="pre">FunctionCall</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thought</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'AssistantMessage'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'AssistantMessage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#AssistantMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Assistant message are sampled from the language model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.FunctionCall" title="agentopera.engine.function_call.function_call.FunctionCall"><span class="pre">FunctionCall</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage.content" title="Link to this definition"></a></dt>
+<dd><p>The content of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage.source">
+<span class="sig-name descname"><span class="pre">source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage.source" title="Link to this definition"></a></dt>
+<dd><p>The name of the agent that sent this message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage.thought">
+<span class="sig-name descname"><span class="pre">thought</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage.thought" title="Link to this definition"></a></dt>
+<dd><p>The reasoning text for the completion if available. Used for reasoning model and additional text content besides function calls.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.AssistantMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'AssistantMessage'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.AssistantMessage.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">ChatCompletionClient</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.actual_usage">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">actual_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage" title="agentopera.engine.types.models.types.RequestUsage"><span class="pre">RequestUsage</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.actual_usage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.actual_usage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.capabilities">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.ModelCapabilities" title="agentopera.engine.types.models.model_client.ModelCapabilities"><span class="pre">ModelCapabilities</span></a></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.capabilities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.count_tokens">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.count_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.count_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.create">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_create_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.models.CreateResult" title="agentopera.engine.types.models.types.CreateResult"><span class="pre">CreateResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.create" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.create_stream">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_create_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.CreateResult" title="agentopera.engine.types.models.types.CreateResult"><span class="pre">CreateResult</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.create_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.create_stream" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.model_info">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo" title="agentopera.engine.types.models.model_client.ModelInfo"><span class="pre">ModelInfo</span></a></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.model_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.remaining_tokens">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remaining_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.SystemMessage" title="agentopera.engine.types.models.types.SystemMessage"><span class="pre">SystemMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.UserMessage" title="agentopera.engine.types.models.types.UserMessage"><span class="pre">UserMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.AssistantMessage" title="agentopera.engine.types.models.types.AssistantMessage"><span class="pre">AssistantMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="agentopera.engine.types.models.types.FunctionExecutionResultMessage"><span class="pre">FunctionExecutionResultMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.remaining_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.remaining_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionClient.total_usage">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage" title="agentopera.engine.types.models.types.RequestUsage"><span class="pre">RequestUsage</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ChatCompletionClient.total_usage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionClient.total_usage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">ChatCompletionTokenLogprob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logprob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_logprobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.TopLogprob" title="agentopera.engine.types.models.types.TopLogprob"><span class="pre">TopLogprob</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#ChatCompletionTokenLogprob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.bytes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob.logprob">
+<span class="sig-name descname"><span class="pre">logprob</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.logprob" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob.token">
+<span class="sig-name descname"><span class="pre">token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ChatCompletionTokenLogprob.top_logprobs">
+<span class="sig-name descname"><span class="pre">top_logprobs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.TopLogprob" title="agentopera.engine.types.models.types.TopLogprob"><span class="pre">TopLogprob</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob.top_logprobs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">CreateResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finish_reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'stop'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'length'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'function_calls'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'content_filter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'unknown'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.FunctionCall" title="agentopera.engine.function_call.function_call.FunctionCall"><span class="pre">FunctionCall</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage" title="agentopera.engine.types.models.types.RequestUsage"><span class="pre">RequestUsage</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cached</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logprobs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob" title="agentopera.engine.types.models.types.ChatCompletionTokenLogprob"><span class="pre">ChatCompletionTokenLogprob</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thought</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#CreateResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.CreateResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Create result contains the output of a model completion.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.cached">
+<span class="sig-name descname"><span class="pre">cached</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.cached" title="Link to this definition"></a></dt>
+<dd><p>Whether the completion was generated from a cached response.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.function_call.html#agentopera.engine.function_call.FunctionCall" title="agentopera.engine.function_call.function_call.FunctionCall"><span class="pre">FunctionCall</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.content" title="Link to this definition"></a></dt>
+<dd><p>The output of the model completion.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.finish_reason">
+<span class="sig-name descname"><span class="pre">finish_reason</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'stop'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'length'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'function_calls'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'content_filter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'unknown'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.finish_reason" title="Link to this definition"></a></dt>
+<dd><p>The reason the model finished generating the completion.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.logprobs">
+<span class="sig-name descname"><span class="pre">logprobs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.ChatCompletionTokenLogprob" title="agentopera.engine.types.models.types.ChatCompletionTokenLogprob"><span class="pre">ChatCompletionTokenLogprob</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.logprobs" title="Link to this definition"></a></dt>
+<dd><p>The logprobs of the tokens in the completion.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.thought">
+<span class="sig-name descname"><span class="pre">thought</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.thought" title="Link to this definition"></a></dt>
+<dd><p>The reasoning text for the completion if available. Used for reasoning models
+and additional text content besides function calls.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.CreateResult.usage">
+<span class="sig-name descname"><span class="pre">usage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.models.RequestUsage" title="agentopera.engine.types.models.types.RequestUsage"><span class="pre">RequestUsage</span></a></em><a class="headerlink" href="#agentopera.engine.types.models.CreateResult.usage" title="Link to this definition"></a></dt>
+<dd><p>The usage of tokens in the prompt and completion.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">FunctionExecutionResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#FunctionExecutionResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Function execution result contains the output of a function call.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult.call_id">
+<span class="sig-name descname"><span class="pre">call_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult.call_id" title="Link to this definition"></a></dt>
+<dd><p>The ID of the function call. Note this ID may be empty for some models.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult.content" title="Link to this definition"></a></dt>
+<dd><p>The output of the function call.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult.is_error">
+<span class="sig-name descname"><span class="pre">is_error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult.is_error" title="Link to this definition"></a></dt>
+<dd><p>Whether the function call resulted in an error.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResult.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResult.name" title="Link to this definition"></a></dt>
+<dd><p>(New in v0.4.8) The name of the function that was called.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResultMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">FunctionExecutionResultMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult" title="agentopera.engine.types.models.types.FunctionExecutionResult"><span class="pre">FunctionExecutionResult</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'FunctionExecutionResultMessage'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'FunctionExecutionResultMessage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#FunctionExecutionResultMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResultMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Function execution result message contains the output of multiple function calls.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResultMessage.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.engine.types.models.FunctionExecutionResult" title="agentopera.engine.types.models.types.FunctionExecutionResult"><span class="pre">FunctionExecutionResult</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.content" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResultMessage.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.FunctionExecutionResultMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'FunctionExecutionResultMessage'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.FunctionExecutionResultMessage.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelCapabilities">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">ModelCapabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelCapabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelCapabilities" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelCapabilities.function_calling">
+<span class="sig-name descname"><span class="pre">function_calling</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelCapabilities.function_calling" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelCapabilities.json_output">
+<span class="sig-name descname"><span class="pre">json_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelCapabilities.json_output" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelCapabilities.vision">
+<span class="sig-name descname"><span class="pre">vision</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelCapabilities.vision" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">ModelFamily</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelFamily"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A model family is a group of models that share similar characteristics from a capabilities perspective. This is different to discrete supported features such as vision, function calling, and JSON output.</p>
+<p>This namespace class holds constants for the model families that agentopera understands. Other families definitely exist and can be represented by a string, however, agentopera will treat them as unknown.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.ANY">
+<span class="sig-name descname"><span class="pre">ANY</span></span><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.ANY" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Literal</span></code>[‘gpt-4o’, ‘o1’, ‘o3’, ‘gpt-4’, ‘gpt-35’, ‘r1’, ‘gemini-1.5-flash’, ‘gemini-1.5-pro’, ‘gemini-2.0-flash’, ‘claude-3-haiku’, ‘claude-3-sonnet’, ‘claude-3-opus’, ‘claude-3.5-haiku’, ‘claude-3.5-sonnet’, ‘unknown’]</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_HAIKU">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_5_HAIKU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3.5-haiku'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_HAIKU" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_SONNET">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_5_SONNET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3.5-sonnet'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_SONNET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_7_SONNET">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_7_SONNET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3.7-sonnet'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_7_SONNET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_HAIKU">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_HAIKU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3-haiku'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_HAIKU" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_OPUS">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_OPUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3-opus'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_OPUS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.CLAUDE_3_SONNET">
+<span class="sig-name descname"><span class="pre">CLAUDE_3_SONNET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'claude-3-sonnet'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.CLAUDE_3_SONNET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GEMINI_1_5_FLASH">
+<span class="sig-name descname"><span class="pre">GEMINI_1_5_FLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemini-1.5-flash'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_FLASH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GEMINI_1_5_PRO">
+<span class="sig-name descname"><span class="pre">GEMINI_1_5_PRO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemini-1.5-pro'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_PRO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GEMINI_2_0_FLASH">
+<span class="sig-name descname"><span class="pre">GEMINI_2_0_FLASH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gemini-2.0-flash'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GEMINI_2_0_FLASH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GPT_35">
+<span class="sig-name descname"><span class="pre">GPT_35</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gpt-35'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GPT_35" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GPT_4">
+<span class="sig-name descname"><span class="pre">GPT_4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gpt-4'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GPT_4" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.GPT_4O">
+<span class="sig-name descname"><span class="pre">GPT_4O</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gpt-4o'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.GPT_4O" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.O1">
+<span class="sig-name descname"><span class="pre">O1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'o1'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.O1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.O3">
+<span class="sig-name descname"><span class="pre">O3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'o3'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.O3" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.R1">
+<span class="sig-name descname"><span class="pre">R1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r1'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.R1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unknown'</span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.UNKNOWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.is_claude">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_claude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelFamily.is_claude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.is_claude" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.is_gemini">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_gemini</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelFamily.is_gemini"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.is_gemini" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelFamily.is_openai">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_openai</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelFamily.is_openai"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelFamily.is_openai" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">ModelInfo</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#ModelInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.ModelInfo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>ModelInfo is a dictionary that contains information about a model’s properties.
+It is expected to be used in the model_info property of a model client.</p>
+<p>We are expecting this to grow over time as we add more features.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelInfo.family">
+<span class="sig-name descname"><span class="pre">family</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'gpt-4o'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'o1'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'o3'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gpt-4'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gpt-35'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'r1'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gemini-1.5-flash'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gemini-1.5-pro'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gemini-2.0-flash'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'claude-3-haiku'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'claude-3-sonnet'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'claude-3-opus'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'claude-3.5-haiku'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'claude-3.5-sonnet'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'unknown'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelInfo.family" title="Link to this definition"></a></dt>
+<dd><p>Model family should be one of the constants from <a class="reference internal" href="#agentopera.engine.types.models.ModelFamily" title="agentopera.engine.types.models.ModelFamily"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelFamily</span></code></a> or a string representing an unknown model family.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelInfo.function_calling">
+<span class="sig-name descname"><span class="pre">function_calling</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelInfo.function_calling" title="Link to this definition"></a></dt>
+<dd><p>True if the model supports function calling, otherwise False.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelInfo.json_output">
+<span class="sig-name descname"><span class="pre">json_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelInfo.json_output" title="Link to this definition"></a></dt>
+<dd><p>this is different to structured json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the model supports json output, otherwise False. Note</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.ModelInfo.vision">
+<span class="sig-name descname"><span class="pre">vision</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Required</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.ModelInfo.vision" title="Link to this definition"></a></dt>
+<dd><p>True if the model supports vision, aka image input, otherwise False.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.RequestUsage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">RequestUsage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completion_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#RequestUsage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.RequestUsage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.RequestUsage.completion_tokens">
+<span class="sig-name descname"><span class="pre">completion_tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.engine.types.models.RequestUsage.completion_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.RequestUsage.prompt_tokens">
+<span class="sig-name descname"><span class="pre">prompt_tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.engine.types.models.RequestUsage.prompt_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.SystemMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">SystemMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'SystemMessage'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'SystemMessage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#SystemMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.SystemMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>System message contains instructions for the model coming from the developer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Open AI is moving away from using ‘system’ role in favor of ‘developer’ role.
+See <a class="reference external" href="https://cdn.openai.com/spec/model-spec-2024-05-08.html#definitions">Model Spec</a> for more details.
+However, the ‘system’ role is still allowed in their API and will be automatically converted to ‘developer’ role
+on the server side.
+So, you can use <cite>SystemMessage</cite> for developer messages.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.SystemMessage.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.SystemMessage.content" title="Link to this definition"></a></dt>
+<dd><p>The content of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.SystemMessage.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.SystemMessage.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.SystemMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'SystemMessage'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.SystemMessage.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.TopLogprob">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">TopLogprob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logprob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#TopLogprob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.TopLogprob" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.TopLogprob.bytes">
+<span class="sig-name descname"><span class="pre">bytes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.models.TopLogprob.bytes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.TopLogprob.logprob">
+<span class="sig-name descname"><span class="pre">logprob</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#agentopera.engine.types.models.TopLogprob.logprob" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.UserMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">UserMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'UserMessage'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'UserMessage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#UserMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.UserMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>User message contains input from end users, or a catch-all for data provided to the model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.UserMessage.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.UserMessage.content" title="Link to this definition"></a></dt>
+<dd><p>The content of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.UserMessage.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.UserMessage.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.UserMessage.source">
+<span class="sig-name descname"><span class="pre">source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.UserMessage.source" title="Link to this definition"></a></dt>
+<dd><p>The name of the agent that sent this message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.UserMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'UserMessage'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.UserMessage.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">VercelMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">VercelMessagePart</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'VercelMessage'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'VercelMessage'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/models/types.html#VercelMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Vercel message is a message supported by vercel ai sdk.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage.content" title="Link to this definition"></a></dt>
+<dd><p>The content of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage.parts">
+<span class="sig-name descname"><span class="pre">parts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">VercelMessagePart</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage.parts" title="Link to this definition"></a></dt>
+<dd><p>The parts of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage.role">
+<span class="sig-name descname"><span class="pre">role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage.role" title="Link to this definition"></a></dt>
+<dd><p>The role of the message.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.VercelMessage.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'VercelMessage'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.types.models.VercelMessage.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="agentopera.engine.types.models.validate_model_info">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.models.</span></span><span class="sig-name descname"><span class="pre">validate_model_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.models.ModelInfo" title="agentopera.engine.types.models.model_client.ModelInfo"><span class="pre">ModelInfo</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/models/model_client.html#validate_model_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.models.validate_model_info" title="Link to this definition"></a></dt>
+<dd><p>Validates the model info dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the model info dictionary is missing required fields.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-agentopera.engine.types.msg_channel">
+<span id="engine-types-msg-channel"></span><h2>engine.types.msg_channel<a class="headerlink" href="#module-agentopera.engine.types.msg_channel" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_channel.DefaultMessageChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.msg_channel.</span></span><span class="sig-name descname"><span class="pre">DefaultMessageChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/msg_channel/default_message_channel.html#DefaultMessageChannel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.msg_channel.DefaultMessageChannel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel" title="agentopera.engine.types.msg_channel.message_channel.MessageChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">MessageChannel</span></code></a></p>
+<p>DefaultMessageChannel provides a sensible default for the topic and source fields of a MessageChannel.</p>
+<p>If created in the context of a message handler, the source will be set to the agent_id of the message handler, otherwise it will be set to “default”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em><em>, </em><em>optional</em>) – Topic to publish message to. Defaults to “default”.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – Topic source to publish message to. If None, the source will be set to the agent_id of the message handler if in the context of a message handler, otherwise it will be set to “default”. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_channel.MessageChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.msg_channel.</span></span><span class="sig-name descname"><span class="pre">MessageChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/msg_channel/message_channel.html#MessageChannel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.msg_channel.MessageChannel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MessageChannel defines the scope of a broadcast message. In essence, agent engine implements a publish-subscribe model through its broadcast API: when publishing a message, the topic must be specified.</p>
+<p>See here for more information: <span class="xref std std-ref">topic_and_subscription_topic</span></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_channel.MessageChannel.from_str">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/msg_channel/message_channel.html#MessageChannel.from_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.msg_channel.MessageChannel.from_str" title="Link to this definition"></a></dt>
+<dd><p>Convert a string of the format <code class="docutils literal notranslate"><span class="pre">topic/source</span></code> into a MessageChannel</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_channel.MessageChannel.source">
+<span class="sig-name descname"><span class="pre">source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.msg_channel.MessageChannel.source" title="Link to this definition"></a></dt>
+<dd><p>Identifies the context in which an event happened. Adhere’s to the cloud event spec.</p>
+<p>Learn more here: <a class="reference external" href="https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md#source-1">https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md#source-1</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_channel.MessageChannel.topic">
+<span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.msg_channel.MessageChannel.topic" title="Link to this definition"></a></dt>
+<dd><p>Topic of the event that this message channel contains. Adhere’s to the cloud event spec.</p>
+<p>Must match the pattern: ^[w-.:=]+Z</p>
+<p>Learn more here: <a class="reference external" href="https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md#type">https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md#type</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-agentopera.engine.types.msg_context">
+<span id="engine-types-msg-context"></span><h2>engine.types.msg_context<a class="headerlink" href="#module-agentopera.engine.types.msg_context" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.msg_context.</span></span><span class="sig-name descname"><span class="pre">MessageContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">agentopera.engine.types.agent.agent_id.AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel" title="agentopera.engine.types.msg_channel.message_channel.MessageChannel"><span class="pre">agentopera.engine.types.msg_channel.message_channel.MessageChannel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_rpc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">agentopera.engine.types.agent.cancellation_token.CancellationToken</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/msg_context/message_context.html#MessageContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext.cancellation_token">
+<span class="sig-name descname"><span class="pre">cancellation_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></em><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext.cancellation_token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext.is_rpc">
+<span class="sig-name descname"><span class="pre">is_rpc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext.is_rpc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext.message_channel">
+<span class="sig-name descname"><span class="pre">message_channel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.msg_channel.MessageChannel" title="agentopera.engine.types.msg_channel.message_channel.MessageChannel"><span class="pre">MessageChannel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext.message_channel" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext.message_id">
+<span class="sig-name descname"><span class="pre">message_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext.message_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.msg_context.MessageContext.sender">
+<span class="sig-name descname"><span class="pre">sender</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.types.msg_context.MessageContext.sender" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

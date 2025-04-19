@@ -1,0 +1,815 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.agents.web_surfer.playwright_controller &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.agents.web_surfer.playwright_controller</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.agents.web_surfer.playwright_controller</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="c1"># TODO: Fix unfollowed import</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">markitdown</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkItDown</span>  <span class="c1"># type: ignore</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">MarkItDown</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright._impl._errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">PlaywrightError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright._impl._errors</span><span class="w"> </span><span class="kn">import</span> <span class="ne">TimeoutError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">playwright.async_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Download</span><span class="p">,</span> <span class="n">Page</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.types</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">InteractiveRegion</span><span class="p">,</span>
+    <span class="n">VisualViewport</span><span class="p">,</span>
+    <span class="n">interactiveregion_from_dict</span><span class="p">,</span>
+    <span class="n">visualviewport_from_dict</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="PlaywrightController">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PlaywrightController</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A helper class to allow Playwright to interact with web pages to perform actions such as clicking, filling, and scrolling.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        downloads_folder (str | None): The folder to save downloads to. If None, downloads are not saved.</span>
+<span class="sd">        animate_actions (bool): Whether to animate the actions (create fake cursor to click).</span>
+<span class="sd">        viewport_width (int): The width of the viewport.</span>
+<span class="sd">        viewport_height (int): The height of the viewport.</span>
+<span class="sd">        _download_handler (Optional[Callable[[Download], None]]): A function to handle downloads.</span>
+<span class="sd">        to_resize_viewport (bool): Whether to resize the viewport</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">downloads_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">animate_actions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">viewport_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1440</span><span class="p">,</span>
+        <span class="n">viewport_height</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">900</span><span class="p">,</span>
+        <span class="n">_download_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Download</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">to_resize_viewport</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the PlaywrightController.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">animate_actions</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">viewport_width</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">viewport_height</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">viewport_height</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">assert</span> <span class="n">viewport_width</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span> <span class="o">=</span> <span class="n">animate_actions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span> <span class="o">=</span> <span class="n">downloads_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewport_width</span> <span class="o">=</span> <span class="n">viewport_width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">viewport_height</span> <span class="o">=</span> <span class="n">viewport_height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_download_handler</span> <span class="o">=</span> <span class="n">_download_handler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_resize_viewport</span> <span class="o">=</span> <span class="n">to_resize_viewport</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_cursor_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_markdown_converter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Read page_script</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;page_script.js&quot;</span><span class="p">),</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PlaywrightController.sleep">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.sleep">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pause the execution for a specified duration.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            duration (Union[int, float]): The duration to sleep in milliseconds.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">wait_for_timeout</span><span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_interactive_rects">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_interactive_rects">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_interactive_rects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InteractiveRegion</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve interactive regions from the web page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, InteractiveRegion]: A dictionary of interactive regions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="c1"># Read the regions from the DOM</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;MultimodalWebSurfer.getInteractiveRects();&quot;</span><span class="p">))</span>
+
+        <span class="c1"># Convert the results into appropriate types</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+        <span class="n">typed_results</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InteractiveRegion</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+            <span class="n">typed_results</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">interactiveregion_from_dict</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">typed_results</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_visual_viewport">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visual_viewport">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_visual_viewport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VisualViewport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the visual viewport of the web page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            VisualViewport: The visual viewport of the page.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">visualviewport_from_dict</span><span class="p">(</span><span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;MultimodalWebSurfer.getVisualViewport();&quot;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_focused_rect_id">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_focused_rect_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_focused_rect_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the ID of the currently focused element.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The ID of the focused element or None if no control has focus.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;MultimodalWebSurfer.getFocusedElementId();&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_page_metadata">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_metadata">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_page_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve metadata from the web page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str, Any]: A dictionary of page metadata.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;MultimodalWebSurfer.getPageMetadata();&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">result</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.on_new_page">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.on_new_page">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_new_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle actions to perform on a new page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">page</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_handler</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_resize_viewport</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewport_width</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewport_height</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">set_viewport_size</span><span class="p">({</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewport_width</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewport_height</span><span class="p">})</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">add_init_script</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;page_script.js&quot;</span><span class="p">))</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.back">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.back">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">back</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Navigate back to the previous page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">go_back</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.visit_page">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.visit_page">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">visit_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Visit a specified URL.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            url (str): The URL to visit.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[bool, bool]: A tuple indicating whether to reset prior metadata hash and last download.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">reset_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">reset_last_download</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Regular webpage</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">wait_for_load_state</span><span class="p">()</span>
+            <span class="n">reset_prior_metadata_hash</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e_outer</span><span class="p">:</span>
+            <span class="c1"># Downloaded file</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span> <span class="ow">and</span> <span class="s2">&quot;net::ERR_ABORTED&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e_outer</span><span class="p">):</span>
+                <span class="k">async</span> <span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_download</span><span class="p">()</span> <span class="k">as</span> <span class="n">download_info</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e_inner</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="s2">&quot;net::ERR_ABORTED&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e_inner</span><span class="p">):</span>
+                            <span class="k">pass</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">e_inner</span>
+                    <span class="n">download</span> <span class="o">=</span> <span class="k">await</span> <span class="n">download_info</span><span class="o">.</span><span class="n">value</span>
+                    <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">downloads_folder</span><span class="p">,</span> <span class="n">download</span><span class="o">.</span><span class="n">suggested_filename</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="n">download</span><span class="o">.</span><span class="n">save_as</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+                    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;body style=</span><span class="se">\&quot;</span><span class="s2">margin: 20px;</span><span class="se">\&quot;</span><span class="s2">&gt;&lt;h1&gt;Successfully downloaded &#39;</span><span class="si">{</span><span class="n">download</span><span class="o">.</span><span class="n">suggested_filename</span><span class="si">}</span><span class="s2">&#39; to local path:&lt;br&gt;&lt;br&gt;</span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&lt;/h1&gt;&lt;/body&gt;&quot;</span>
+                    <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span>
+                        <span class="s2">&quot;data:text/html;base64,&quot;</span> <span class="o">+</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="n">reset_last_download</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">e_outer</span>
+        <span class="k">return</span> <span class="n">reset_prior_metadata_hash</span><span class="p">,</span> <span class="n">reset_last_download</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.page_down">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_down">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">page_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scroll the page down by one viewport height minus 50 pixels.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">viewport_height</span><span class="o">-</span><span class="mi">50</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.page_up">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_up">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">page_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scroll the page up by one viewport height minus 50 pixels.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;window.scrollBy(0, -</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">viewport_height</span><span class="o">-</span><span class="mi">50</span><span class="si">}</span><span class="s2">);&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.gradual_cursor_animation">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.gradual_cursor_animation">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">gradual_cursor_animation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">start_x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">start_y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end_x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end_y</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Animate the cursor movement gradually from start to end coordinates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            start_x (float): The starting x-coordinate.</span>
+<span class="sd">            start_y (float): The starting y-coordinate.</span>
+<span class="sd">            end_x (float): The ending x-coordinate.</span>
+<span class="sd">            end_y (float): The ending y-coordinate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># animation helper</span>
+        <span class="n">steps</span> <span class="o">=</span> <span class="mi">20</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">start_x</span> <span class="o">+</span> <span class="p">(</span><span class="n">end_x</span> <span class="o">-</span> <span class="n">start_x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">step</span> <span class="o">/</span> <span class="n">steps</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">start_y</span> <span class="o">+</span> <span class="p">(</span><span class="n">end_y</span> <span class="o">-</span> <span class="n">start_y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">step</span> <span class="o">/</span> <span class="n">steps</span><span class="p">)</span>
+            <span class="c1"># await page.mouse.move(x, y, steps=1)</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                (function() </span><span class="se">{{</span>
+<span class="s2">                    let cursor = document.getElementById(&#39;red-cursor&#39;);</span>
+<span class="s2">                    cursor.style.left = &#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">px&#39;;</span>
+<span class="s2">                    cursor.style.top = &#39;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">px&#39;;</span>
+<span class="s2">                </span><span class="se">}}</span><span class="s2">)();</span>
+<span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_cursor_position</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.add_cursor_box">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.add_cursor_box">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add_cursor_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a red cursor box around the element with the given identifier.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># animation helper</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            (function() </span><span class="se">{{</span>
+<span class="s2">                let elm = document.querySelector(&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;);</span>
+<span class="s2">                if (elm) </span><span class="se">{{</span>
+<span class="s2">                    elm.style.transition = &#39;border 0.3s ease-in-out&#39;;</span>
+<span class="s2">                    elm.style.border = &#39;2px solid red&#39;;</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">)();</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+
+        <span class="c1"># Create a red cursor</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            (function() {</span>
+<span class="s2">                let cursor = document.createElement(&#39;div&#39;);</span>
+<span class="s2">                cursor.id = &#39;red-cursor&#39;;</span>
+<span class="s2">                cursor.style.width = &#39;10px&#39;;</span>
+<span class="s2">                cursor.style.height = &#39;10px&#39;;</span>
+<span class="s2">                cursor.style.backgroundColor = &#39;red&#39;;</span>
+<span class="s2">                cursor.style.position = &#39;absolute&#39;;</span>
+<span class="s2">                cursor.style.borderRadius = &#39;50%&#39;;</span>
+<span class="s2">                cursor.style.zIndex = &#39;10000&#39;;</span>
+<span class="s2">                document.body.appendChild(cursor);</span>
+<span class="s2">            })();</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.remove_cursor_box">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.remove_cursor_box">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">remove_cursor_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the red cursor box around the element with the given identifier.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Remove the highlight and cursor</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            (function() </span><span class="se">{{</span>
+<span class="s2">                let elm = document.querySelector(&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;);</span>
+<span class="s2">                if (elm) </span><span class="se">{{</span>
+<span class="s2">                    elm.style.border = &#39;&#39;;</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">                let cursor = document.getElementById(&#39;red-cursor&#39;);</span>
+<span class="s2">                if (cursor) </span><span class="se">{{</span>
+<span class="s2">                    cursor.remove();</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">            </span><span class="se">}}</span><span class="s2">)();</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.click_id">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.click_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">click_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Page</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Click the element with the given identifier.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Page | None: The new page if a new page is opened, otherwise None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_page</span><span class="p">:</span> <span class="n">Page</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;</span><span class="p">)</span>
+
+        <span class="c1"># See if it exists</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No such element.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+        <span class="c1"># Click it</span>
+        <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">scroll_into_view_if_needed</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+
+        <span class="n">box</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
+            <span class="c1"># Move cursor to the box slowly</span>
+            <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_cursor_position</span>
+            <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradual_cursor_animation</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Give it a chance to open a new page</span>
+                <span class="k">async</span> <span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_event</span><span class="p">(</span><span class="s2">&quot;popup&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="k">as</span> <span class="n">page_info</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+                    <span class="n">new_page</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page_info</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_page</span><span class="p">,</span> <span class="n">Page</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_new_page</span><span class="p">(</span><span class="n">new_page</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Give it a chance to open a new page</span>
+                <span class="k">async</span> <span class="k">with</span> <span class="n">page</span><span class="o">.</span><span class="n">expect_event</span><span class="p">(</span><span class="s2">&quot;popup&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="k">as</span> <span class="n">page_info</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+                    <span class="n">new_page</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page_info</span><span class="o">.</span><span class="n">value</span>  <span class="c1"># type: ignore</span>
+                    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_page</span><span class="p">,</span> <span class="n">Page</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_new_page</span><span class="p">(</span><span class="n">new_page</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">new_page</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.hover_id">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.hover_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hover_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Hover the mouse over the element with the given identifier.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;</span><span class="p">)</span>
+
+        <span class="c1"># See if it exists</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No such element.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+        <span class="c1"># Hover over it</span>
+        <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">scroll_into_view_if_needed</span><span class="p">()</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+
+        <span class="n">box</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
+            <span class="c1"># Move cursor to the box slowly</span>
+            <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_cursor_position</span>
+            <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradual_cursor_animation</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">mouse</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.fill_id">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.fill_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fill_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">press_enter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fill the element with the given identifier with the specified value.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+<span class="sd">            value (str): The value to fill.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">locator</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;</span><span class="p">)</span>
+
+        <span class="c1"># See if it exists</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No such element.&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+        <span class="c1"># Fill it</span>
+        <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">scroll_into_view_if_needed</span><span class="p">()</span>
+        <span class="n">box</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">bounding_box</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span>
+            <span class="c1"># Move cursor to the box slowly</span>
+            <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_cursor_position</span>
+            <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">box</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradual_cursor_animation</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+        <span class="c1"># Focus on the element</span>
+        <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">:</span>
+            <span class="c1"># fill char by char to mimic human speed for short text and type fast for long text</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">delay_typing_speed</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">delay_typing_speed</span> <span class="o">=</span> <span class="mi">10</span>
+            <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">press_sequentially</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="n">delay_typing_speed</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">PlaywrightError</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">press_sequentially</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">press_enter</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">target</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="s2">&quot;Enter&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">animate_actions</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove_cursor_box</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.scroll_id">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.scroll_id">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">scroll_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scroll the element with the given identifier in the specified direction.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            identifier (str): The element identifier.</span>
+<span class="sd">            direction (str): The direction to scroll (&quot;up&quot; or &quot;down&quot;).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        (function() </span><span class="se">{{</span>
+<span class="s2">            let elm = document.querySelector(&quot;[__elementId=&#39;</span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">&#39;]&quot;);</span>
+<span class="s2">            if (elm) </span><span class="se">{{</span>
+<span class="s2">                if (&quot;</span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2">&quot; == &quot;up&quot;) </span><span class="se">{{</span>
+<span class="s2">                    elm.scrollTop = Math.max(0, elm.scrollTop - elm.clientHeight);</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">                else </span><span class="se">{{</span>
+<span class="s2">                    elm.scrollTop = Math.min(elm.scrollHeight - elm.clientHeight, elm.scrollTop + elm.clientHeight);</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">            </span><span class="se">}}</span>
+<span class="s2">        </span><span class="se">}}</span><span class="s2">)();</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_webpage_text">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_webpage_text">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_webpage_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">,</span> <span class="n">n_lines</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the text content of the web page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+<span class="sd">            n_lines (int): The number of lines to return from the page inner text.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The text content of the page.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">text_in_viewport</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;() =&gt; {</span>
+<span class="s2">                return document.body.innerText;</span>
+<span class="s2">            }&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="n">text_in_viewport</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text_in_viewport</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[:</span><span class="n">n_lines</span><span class="p">])</span>
+            <span class="c1"># remove empty lines</span>
+            <span class="n">text_in_viewport</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text_in_viewport</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()])</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text_in_viewport</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">text_in_viewport</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_visible_text">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visible_text">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_visible_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the text content of the browser viewport (approximately).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The text content of the page.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_page_script</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;MultimodalWebSurfer.getVisibleText();&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="PlaywrightController.get_page_markdown">
+<a class="viewcode-back" href="../../../../agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_markdown">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_page_markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Page</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the markdown content of the web page.</span>
+<span class="sd">        Currently not implemented.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            page (Page): The Playwright page object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The markdown content of the page.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markdown_converter</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">MarkItDown</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_markdown_converter</span> <span class="o">=</span> <span class="n">MarkItDown</span><span class="p">()</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="k">await</span> <span class="n">page</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="s2">&quot;document.documentElement.outerHTML;&quot;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markdown_converter</span><span class="o">.</span><span class="n">convert_stream</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">html</span><span class="p">),</span> <span class="n">file_extension</span><span class="o">=</span><span class="s2">&quot;.html&quot;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">page</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;text_content&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text_content</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">text_content</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_webpage_text</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">n_lines</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

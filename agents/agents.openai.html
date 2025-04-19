@@ -67,7 +67,27 @@
 <p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="agents.html">agents</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.openai</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.openai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.produced_message_types"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.threads"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.threads</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.runs"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.runs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.messages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.handle_text_message"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.handle_text_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_reset"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_code_interpreter"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_code_interpreter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_file_search"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_file_search()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_uploaded_files"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_uploaded_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_assistant"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_assistant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_vector_store"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_vector_store()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.save_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.openai.OpenAIAssistantAgent.load_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.load_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="agents.magentic_one.html">agents.magentic_one</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.magentic_one_team.html">agents.magentic_one_team</a></li>
 <li class="toctree-l1"><a class="reference internal" href="agents.web_surfer.html">agents.web_surfer</a></li>
@@ -155,8 +175,235 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="agents-openai">
-<h1>agents.openai<a class="headerlink" href="#agents-openai" title="Link to this heading"></a></h1>
+  <section id="module-agentopera.agents.openai">
+<span id="agents-openai"></span><h1>agents.openai<a class="headerlink" href="#module-agentopera.agents.openai" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.agents.openai.</span></span><span class="sig-name descname"><span class="pre">OpenAIAssistantAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncOpenAI</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AsyncAzureOpenAI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'code_interpreter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'file_search'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assistant_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thread_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'auto'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ResponseFormatText</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ResponseFormatJSONObject</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ResponseFormatJSONSchema</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool_resources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ToolResources</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent" title="agentopera.chatflow.agents.base_chat_agent.BaseChatAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseChatAgent</span></code></a></p>
+<p>An agent implementation that uses the Assistant API to generate responses.</p>
+<p>Installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;agentopera[openai]&quot;</span>
+<span class="c1"># pip install &quot;agentopera[openai,azure]&quot;  # For Azure OpenAI Assistant</span>
+</pre></div>
+</div>
+<p>This agent leverages the Assistant API to create AI assistants with capabilities like:</p>
+<ul class="simple">
+<li><p>Code interpretation and execution</p></li>
+<li><p>File handling and search</p></li>
+<li><p>Custom function calling</p></li>
+<li><p>Multi-turn conversations</p></li>
+</ul>
+<p>The agent maintains a thread of conversation and can use various tools including</p>
+<ul class="simple">
+<li><p>Code interpreter: For executing code and working with files</p></li>
+<li><p>File search: For searching through uploaded documents</p></li>
+<li><p>Custom functions: For extending capabilities with user-defined tools</p></li>
+</ul>
+<p>Key Features:</p>
+<ul class="simple">
+<li><p>Supports multiple file formats including code, documents, images</p></li>
+<li><p>Can handle up to 128 tools per assistant</p></li>
+<li><p>Maintains conversation context in threads</p></li>
+<li><p>Supports file uploads for code interpreter and search</p></li>
+<li><p>Vector store integration for efficient file search</p></li>
+<li><p>Automatic file parsing and embedding</p></li>
+</ul>
+<p>You can use an existing thread or assistant by providing the <cite>thread_id</cite> or <cite>assistant_id</cite> parameters.</p>
+<p class="rubric">Examples</p>
+<p>Use the assistant to analyze data in a CSV file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncOpenAI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.agents.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIAssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMessage</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">example</span><span class="p">():</span>
+    <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+
+    <span class="c1"># Create an OpenAI client</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">AsyncOpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;your-base-url&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create an assistant with code interpreter</span>
+    <span class="n">assistant</span> <span class="o">=</span> <span class="n">OpenAIAssistantAgent</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Python Helper&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Helps with Python programming&quot;</span><span class="p">,</span>
+        <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+        <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;You are a helpful Python programming assistant.&quot;</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;code_interpreter&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Upload files for the assistant to use</span>
+    <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">on_upload_for_code_interpreter</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+
+    <span class="c1"># Get response from the assistant</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">on_messages</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Analyze the data in data.csv&quot;</span><span class="p">)],</span> <span class="n">cancellation_token</span>
+    <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="c1"># Clean up resources</span>
+    <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">delete_uploaded_files</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">delete_assistant</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Use Azure OpenAI Assistant with AAD authentication:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncAzureOpenAI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAzureCredential</span><span class="p">,</span> <span class="n">get_bearer_token_provider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.agents.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIAssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMessage</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">example</span><span class="p">():</span>
+    <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+
+    <span class="c1"># Create an Azure OpenAI client</span>
+    <span class="n">token_provider</span> <span class="o">=</span> <span class="n">get_bearer_token_provider</span><span class="p">(</span><span class="n">DefaultAzureCredential</span><span class="p">())</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">AsyncAzureOpenAI</span><span class="p">(</span>
+        <span class="n">azure_deployment</span><span class="o">=</span><span class="s2">&quot;YOUR_AZURE_DEPLOYMENT&quot;</span><span class="p">,</span>
+        <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;YOUR_API_VERSION&quot;</span><span class="p">,</span>
+        <span class="n">azure_endpoint</span><span class="o">=</span><span class="s2">&quot;YOUR_AZURE_ENDPOINT&quot;</span><span class="p">,</span>
+        <span class="n">azure_ad_token_provider</span><span class="o">=</span><span class="n">token_provider</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Create an assistant with code interpreter</span>
+    <span class="n">assistant</span> <span class="o">=</span> <span class="n">OpenAIAssistantAgent</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Python Helper&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Helps with Python programming&quot;</span><span class="p">,</span>
+        <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
+        <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;You are a helpful Python programming assistant.&quot;</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;code_interpreter&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Get response from the assistant</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">on_messages</span><span class="p">([</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello.&quot;</span><span class="p">)],</span> <span class="n">cancellation_token</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="c1"># Clean up resources</span>
+    <span class="k">await</span> <span class="n">assistant</span><span class="o">.</span><span class="n">delete_assistant</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">example</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the assistant</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Description of the assistant’s purpose</p></li>
+<li><p><strong>client</strong> (<em>AsyncOpenAI</em><em> | </em><em>AsyncAzureOpenAI</em>) – OpenAI client or Azure OpenAI client instance</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – Model to use (e.g. “gpt-4”)</p></li>
+<li><p><strong>instructions</strong> (<em>str</em>) – System instructions for the assistant</p></li>
+<li><p><strong>tools</strong> (<em>Optional</em><em>[</em><em>Iterable</em><em>[</em><em>Union</em><em>[</em><em>Literal</em><em>[</em><em>&quot;code_interpreter&quot;</em><em>, </em><em>&quot;file_search&quot;</em><em>]</em><em>, </em><em>Tool</em><em> | </em><em>Callable</em><em>[</em><em>...</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>Callable</em><em>[</em><em>...</em><em>, </em><em>Awaitable</em><em>[</em><em>Any</em><em>]</em><em>]</em><em>]</em><em>]</em><em>]</em>) – Tools the assistant can use</p></li>
+<li><p><strong>assistant_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – ID of existing assistant to use</p></li>
+<li><p><strong>thread_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – ID of existing thread to use</p></li>
+<li><p><strong>metadata</strong> (<em>Optional</em><em>[</em><em>object</em><em>]</em>) – Additional metadata for the assistant</p></li>
+<li><p><strong>response_format</strong> (<em>Optional</em><em>[</em><em>AssistantResponseFormatOptionParam</em><em>]</em>) – Response format settings</p></li>
+<li><p><strong>temperature</strong> (<em>Optional</em><em>[</em><em>float</em><em>]</em>) – Temperature for response generation</p></li>
+<li><p><strong>tool_resources</strong> (<em>Optional</em><em>[</em><em>ToolResources</em><em>]</em>) – Additional tool configuration</p></li>
+<li><p><strong>top_p</strong> (<em>Optional</em><em>[</em><em>float</em><em>]</em>) – Top p sampling parameter</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.produced_message_types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">produced_message_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.produced_message_types" title="Link to this definition"></a></dt>
+<dd><p>The types of messages that the assistant agent produces.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.threads">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threads</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">AsyncThreads</span></em><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.threads" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.runs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">AsyncRuns</span></em><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.runs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.messages">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">AsyncMessages</span></em><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.messages" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.on_messages">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../chatflow/chatflow.base.html#agentopera.chatflow.base.Response" title="agentopera.chatflow.base.chat_agent.Response"><span class="pre">Response</span></a></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.on_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_messages" title="Link to this definition"></a></dt>
+<dd><p>Handle incoming messages and return a response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.on_messages_stream">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_messages_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../chatflow/chatflow.base.html#agentopera.chatflow.base.Response" title="agentopera.chatflow.base.chat_agent.Response"><span class="pre">Response</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.on_messages_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_messages_stream" title="Link to this definition"></a></dt>
+<dd><p>Handle incoming messages and return a response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.handle_text_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_text_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.handle_text_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.handle_text_message" title="Link to this definition"></a></dt>
+<dd><p>Handle regular text messages by adding them to the thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.on_reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.on_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_reset" title="Link to this definition"></a></dt>
+<dd><p>Handle reset command by deleting new messages and runs since initialization.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_code_interpreter">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_upload_for_code_interpreter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.on_upload_for_code_interpreter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_code_interpreter" title="Link to this definition"></a></dt>
+<dd><p>Handle file uploads for the code interpreter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_file_search">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_upload_for_file_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.on_upload_for_file_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_file_search" title="Link to this definition"></a></dt>
+<dd><p>Handle file uploads for file search.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.delete_uploaded_files">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_uploaded_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.delete_uploaded_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_uploaded_files" title="Link to this definition"></a></dt>
+<dd><p>Delete all files that were uploaded by this agent instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.delete_assistant">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.delete_assistant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_assistant" title="Link to this definition"></a></dt>
+<dd><p>Delete the assistant if it was created by this instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.delete_vector_store">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_vector_store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.delete_vector_store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.delete_vector_store" title="Link to this definition"></a></dt>
+<dd><p>Delete the vector store if it was created by this instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.save_state" title="Link to this definition"></a></dt>
+<dd><p>Export state. Default implementation for stateless agents.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.openai.OpenAIAssistantAgent.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/openai/openai_assistant_agent.html#OpenAIAssistantAgent.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.openai.OpenAIAssistantAgent.load_state" title="Link to this definition"></a></dt>
+<dd><p>Restore agent from saved state. Default implementation for stateless agents.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

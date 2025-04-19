@@ -422,7 +422,21 @@ from the source code docstrings.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow/chatflow.team.html">chatflow.team</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.run"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.run_stream"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.run_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.reset"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.save_state"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.BaseGroupChat.load_state"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.load_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.RoundRobinGroupChat"><code class="docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.SelectorGroupChat"><code class="docutils literal notranslate"><span class="pre">SelectorGroupChat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.Swarm"><code class="docutils literal notranslate"><span class="pre">Swarm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.team.html#agentopera.chatflow.team.MagenticOneGroupChat"><code class="docutils literal notranslate"><span class="pre">MagenticOneGroupChat</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="chatflow/chatflow.ui.html">chatflow.ui</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.ui.html#agentopera.chatflow.ui.Console"><code class="docutils literal notranslate"><span class="pre">Console()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="chatflow/chatflow.ui.html#agentopera.chatflow.ui.UserInputManager"><code class="docutils literal notranslate"><span class="pre">UserInputManager</span></code></a><ul>
@@ -529,14 +543,6 @@ from the source code docstrings.</p>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.id"><code class="docutils literal notranslate"><span class="pre">ClosureContext.id</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.send_message"><code class="docutils literal notranslate"><span class="pre">ClosureContext.send_message()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.publish_message"><code class="docutils literal notranslate"><span class="pre">ClosureContext.publish_message()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken"><code class="docutils literal notranslate"><span class="pre">CancellationToken</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.cancel"><code class="docutils literal notranslate"><span class="pre">CancellationToken.cancel()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.is_cancelled"><code class="docutils literal notranslate"><span class="pre">CancellationToken.is_cancelled()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.reset"><code class="docutils literal notranslate"><span class="pre">CancellationToken.reset()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.add_callback"><code class="docutils literal notranslate"><span class="pre">CancellationToken.add_callback()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.link_future"><code class="docutils literal notranslate"><span class="pre">CancellationToken.link_future()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.RoutedAgent"><code class="docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a><ul>
@@ -739,13 +745,48 @@ from the source code docstrings.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html">engine.types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#engine-types-agent">engine.types.agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.agent">engine.types.agent</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentId"><code class="docutils literal notranslate"><span class="pre">AgentId</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentType"><code class="docutils literal notranslate"><span class="pre">AgentType</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentMetadata"><code class="docutils literal notranslate"><span class="pre">AgentMetadata</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.CancellationToken"><code class="docutils literal notranslate"><span class="pre">CancellationToken</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentInstantiationContext"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.model_context">engine.types.model_context</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContextState"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.BufferedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">BufferedChatCompletionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">HeadAndTailChatCompletionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.UnboundedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">UnboundedChatCompletionContext</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.models">engine.types.models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage"><code class="docutils literal notranslate"><span class="pre">AssistantMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult"><code class="docutils literal notranslate"><span class="pre">CreateResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResultMessage"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelCapabilities"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily"><code class="docutils literal notranslate"><span class="pre">ModelFamily</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo"><code class="docutils literal notranslate"><span class="pre">ModelInfo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.RequestUsage"><code class="docutils literal notranslate"><span class="pre">RequestUsage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.SystemMessage"><code class="docutils literal notranslate"><span class="pre">SystemMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.TopLogprob"><code class="docutils literal notranslate"><span class="pre">TopLogprob</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage"><code class="docutils literal notranslate"><span class="pre">UserMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage"><code class="docutils literal notranslate"><span class="pre">VercelMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.validate_model_info"><code class="docutils literal notranslate"><span class="pre">validate_model_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.msg_channel">engine.types.msg_channel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.DefaultMessageChannel"><code class="docutils literal notranslate"><span class="pre">DefaultMessageChannel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.MessageChannel"><code class="docutils literal notranslate"><span class="pre">MessageChannel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.msg_context">engine.types.msg_context</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext"><code class="docutils literal notranslate"><span class="pre">MessageContext</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types">others</a><ul>
@@ -799,14 +840,6 @@ from the source code docstrings.</p>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.id"><code class="docutils literal notranslate"><span class="pre">ClosureContext.id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.send_message"><code class="docutils literal notranslate"><span class="pre">ClosureContext.send_message()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.ClosureContext.publish_message"><code class="docutils literal notranslate"><span class="pre">ClosureContext.publish_message()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken"><code class="docutils literal notranslate"><span class="pre">CancellationToken</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.cancel"><code class="docutils literal notranslate"><span class="pre">CancellationToken.cancel()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.is_cancelled"><code class="docutils literal notranslate"><span class="pre">CancellationToken.is_cancelled()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.reset"><code class="docutils literal notranslate"><span class="pre">CancellationToken.reset()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.add_callback"><code class="docutils literal notranslate"><span class="pre">CancellationToken.add_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.CancellationToken.link_future"><code class="docutils literal notranslate"><span class="pre">CancellationToken.link_future()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="engine/engine.agent.html#agentopera.engine.agent.RoutedAgent"><code class="docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a><ul>
@@ -1008,7 +1041,7 @@ from the source code docstrings.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="engine/engine.types.html">engine.types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#engine-types-agent">engine.types.agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.agent">engine.types.agent</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.Agent.metadata"><code class="docutils literal notranslate"><span class="pre">Agent.metadata</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.Agent.id"><code class="docutils literal notranslate"><span class="pre">Agent.id</span></code></a></li>
@@ -1045,6 +1078,177 @@ from the source code docstrings.</p>
 <li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentInstantiationContext"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentInstantiationContext.current_engine"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_engine()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_agent_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.model_context">engine.types.model_context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext.add_message"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.add_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.get_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext.clear"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext.save_state"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.save_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContext.load_state"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContext.load_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContextState"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContextState.messages"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState.messages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.ChatCompletionContextState.model_config"><code class="docutils literal notranslate"><span class="pre">ChatCompletionContextState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.BufferedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">BufferedChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.BufferedChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">BufferedChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">HeadAndTailChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.HeadAndTailChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">HeadAndTailChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.UnboundedChatCompletionContext"><code class="docutils literal notranslate"><span class="pre">UnboundedChatCompletionContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.model_context.UnboundedChatCompletionContext.get_messages"><code class="docutils literal notranslate"><span class="pre">UnboundedChatCompletionContext.get_messages()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.models">engine.types.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage"><code class="docutils literal notranslate"><span class="pre">AssistantMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage.content"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage.model_config"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage.source"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage.thought"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.thought</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.AssistantMessage.type"><code class="docutils literal notranslate"><span class="pre">AssistantMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">ChatCompletionClient.total_usage()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob.bytes"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.bytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob.logprob"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.logprob</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob.model_config"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob.token"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ChatCompletionTokenLogprob.top_logprobs"><code class="docutils literal notranslate"><span class="pre">ChatCompletionTokenLogprob.top_logprobs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult"><code class="docutils literal notranslate"><span class="pre">CreateResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.cached"><code class="docutils literal notranslate"><span class="pre">CreateResult.cached</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.content"><code class="docutils literal notranslate"><span class="pre">CreateResult.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.finish_reason"><code class="docutils literal notranslate"><span class="pre">CreateResult.finish_reason</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.logprobs"><code class="docutils literal notranslate"><span class="pre">CreateResult.logprobs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.model_config"><code class="docutils literal notranslate"><span class="pre">CreateResult.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.thought"><code class="docutils literal notranslate"><span class="pre">CreateResult.thought</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.CreateResult.usage"><code class="docutils literal notranslate"><span class="pre">CreateResult.usage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult.call_id"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.call_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult.content"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult.is_error"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.is_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult.model_config"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResult.name"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResult.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResultMessage"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResultMessage.content"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResultMessage.model_config"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.FunctionExecutionResultMessage.type"><code class="docutils literal notranslate"><span class="pre">FunctionExecutionResultMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelCapabilities"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelCapabilities.function_calling"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.function_calling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelCapabilities.json_output"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.json_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelCapabilities.vision"><code class="docutils literal notranslate"><span class="pre">ModelCapabilities.vision</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily"><code class="docutils literal notranslate"><span class="pre">ModelFamily</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.ANY"><code class="docutils literal notranslate"><span class="pre">ModelFamily.ANY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_HAIKU"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_5_HAIKU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_5_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_5_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_7_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_7_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_HAIKU"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_HAIKU</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_OPUS"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_OPUS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.CLAUDE_3_SONNET"><code class="docutils literal notranslate"><span class="pre">ModelFamily.CLAUDE_3_SONNET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_FLASH"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_1_5_FLASH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GEMINI_1_5_PRO"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_1_5_PRO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GEMINI_2_0_FLASH"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GEMINI_2_0_FLASH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GPT_35"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_35</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GPT_4"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.GPT_4O"><code class="docutils literal notranslate"><span class="pre">ModelFamily.GPT_4O</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.O1"><code class="docutils literal notranslate"><span class="pre">ModelFamily.O1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.O3"><code class="docutils literal notranslate"><span class="pre">ModelFamily.O3</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.R1"><code class="docutils literal notranslate"><span class="pre">ModelFamily.R1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.UNKNOWN"><code class="docutils literal notranslate"><span class="pre">ModelFamily.UNKNOWN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.is_claude"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_claude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.is_gemini"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_gemini()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelFamily.is_openai"><code class="docutils literal notranslate"><span class="pre">ModelFamily.is_openai()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo"><code class="docutils literal notranslate"><span class="pre">ModelInfo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo.family"><code class="docutils literal notranslate"><span class="pre">ModelInfo.family</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo.function_calling"><code class="docutils literal notranslate"><span class="pre">ModelInfo.function_calling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo.json_output"><code class="docutils literal notranslate"><span class="pre">ModelInfo.json_output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.ModelInfo.vision"><code class="docutils literal notranslate"><span class="pre">ModelInfo.vision</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.RequestUsage"><code class="docutils literal notranslate"><span class="pre">RequestUsage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.RequestUsage.completion_tokens"><code class="docutils literal notranslate"><span class="pre">RequestUsage.completion_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.RequestUsage.prompt_tokens"><code class="docutils literal notranslate"><span class="pre">RequestUsage.prompt_tokens</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.SystemMessage"><code class="docutils literal notranslate"><span class="pre">SystemMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.SystemMessage.content"><code class="docutils literal notranslate"><span class="pre">SystemMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.SystemMessage.model_config"><code class="docutils literal notranslate"><span class="pre">SystemMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.SystemMessage.type"><code class="docutils literal notranslate"><span class="pre">SystemMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.TopLogprob"><code class="docutils literal notranslate"><span class="pre">TopLogprob</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.TopLogprob.bytes"><code class="docutils literal notranslate"><span class="pre">TopLogprob.bytes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.TopLogprob.logprob"><code class="docutils literal notranslate"><span class="pre">TopLogprob.logprob</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage"><code class="docutils literal notranslate"><span class="pre">UserMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage.content"><code class="docutils literal notranslate"><span class="pre">UserMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage.model_config"><code class="docutils literal notranslate"><span class="pre">UserMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage.source"><code class="docutils literal notranslate"><span class="pre">UserMessage.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.UserMessage.type"><code class="docutils literal notranslate"><span class="pre">UserMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage"><code class="docutils literal notranslate"><span class="pre">VercelMessage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage.content"><code class="docutils literal notranslate"><span class="pre">VercelMessage.content</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage.model_config"><code class="docutils literal notranslate"><span class="pre">VercelMessage.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage.parts"><code class="docutils literal notranslate"><span class="pre">VercelMessage.parts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage.role"><code class="docutils literal notranslate"><span class="pre">VercelMessage.role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.VercelMessage.type"><code class="docutils literal notranslate"><span class="pre">VercelMessage.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.models.validate_model_info"><code class="docutils literal notranslate"><span class="pre">validate_model_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.msg_channel">engine.types.msg_channel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.DefaultMessageChannel"><code class="docutils literal notranslate"><span class="pre">DefaultMessageChannel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.MessageChannel"><code class="docutils literal notranslate"><span class="pre">MessageChannel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.MessageChannel.from_str"><code class="docutils literal notranslate"><span class="pre">MessageChannel.from_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.MessageChannel.source"><code class="docutils literal notranslate"><span class="pre">MessageChannel.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_channel.MessageChannel.topic"><code class="docutils literal notranslate"><span class="pre">MessageChannel.topic</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="engine/engine.types.html#module-agentopera.engine.types.msg_context">engine.types.msg_context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext"><code class="docutils literal notranslate"><span class="pre">MessageContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext.cancellation_token"><code class="docutils literal notranslate"><span class="pre">MessageContext.cancellation_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext.is_rpc"><code class="docutils literal notranslate"><span class="pre">MessageContext.is_rpc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext.message_channel"><code class="docutils literal notranslate"><span class="pre">MessageContext.message_channel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext.message_id"><code class="docutils literal notranslate"><span class="pre">MessageContext.message_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="engine/engine.types.html#agentopera.engine.types.msg_context.MessageContext.sender"><code class="docutils literal notranslate"><span class="pre">MessageContext.sender</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1094,7 +1298,27 @@ from the source code docstrings.</p>
 <p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="agents/agents.html">agents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.openai.html">agents.openai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.produced_message_types"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.produced_message_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.threads"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.threads</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.runs"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.runs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.messages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.handle_text_message"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.handle_text_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_reset"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_code_interpreter"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_code_interpreter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_file_search"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_file_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_uploaded_files"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_uploaded_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_assistant"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_assistant()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_vector_store"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_vector_store()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.save_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.save_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.load_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.load_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.magentic_one.html">agents.magentic_one</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="agents/agents.magentic_one.html#agentopera.agents.magentic_one.MagenticOneCoderAgent"><code class="docutils literal notranslate"><span class="pre">MagenticOneCoderAgent</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="agents/agents.magentic_one.html#agentopera.agents.magentic_one.MagenticOneCoderAgent.component_provider_override"><code class="docutils literal notranslate"><span class="pre">MagenticOneCoderAgent.component_provider_override</span></code></a></li>
@@ -1103,7 +1327,47 @@ from the source code docstrings.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
-<li class="toctree-l2"><a class="reference internal" href="agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.web_surfer.html">agents.web_surfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.DEFAULT_START_PAGE"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.DEFAULT_START_PAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.VIEWPORT_HEIGHT"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.VIEWPORT_HEIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.VIEWPORT_WIDTH"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.VIEWPORT_WIDTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.MLM_HEIGHT"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.MLM_HEIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.MLM_WIDTH"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.MLM_WIDTH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.SCREENSHOT_TOKENS"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.SCREENSHOT_TOKENS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.close"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.produced_message_types"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.produced_message_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_reset"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_messages_stream()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController"><code class="docutils literal notranslate"><span class="pre">PlaywrightController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.sleep"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.sleep()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_interactive_rects"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_interactive_rects()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visual_viewport"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_visual_viewport()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_focused_rect_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_focused_rect_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_metadata"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_page_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.on_new_page"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.on_new_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.back"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.back()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.visit_page"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.visit_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_down"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.page_down()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_up"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.page_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.gradual_cursor_animation"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.gradual_cursor_animation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.add_cursor_box"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.add_cursor_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.remove_cursor_box"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.remove_cursor_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.click_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.click_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.hover_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.hover_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.fill_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.fill_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.scroll_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.scroll_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_webpage_text"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_webpage_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visible_text"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_visible_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_markdown"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_page_markdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.video_surfer.html">agents.video_surfer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="agents/agents.video_surfer.html#agentopera.agents.video_surfer.VideoSurfer"><code class="docutils literal notranslate"><span class="pre">VideoSurfer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="agents/agents.video_surfer.html#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">VideoSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
@@ -1113,11 +1377,41 @@ from the source code docstrings.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.file_surfer.html">agents.file_surfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer"><code class="docutils literal notranslate"><span class="pre">FileSurfer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.DEFAULT_SYSTEM_MESSAGES"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_SYSTEM_MESSAGES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.produced_message_types"><code class="docutils literal notranslate"><span class="pre">FileSurfer.produced_message_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_messages"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_reset"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.code_executor.html">agents.code_executor</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/agents.openai.html">agents.openai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.produced_message_types"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.threads"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.threads</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.runs"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.runs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.messages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_messages"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_messages_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.handle_text_message"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.handle_text_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_reset"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_code_interpreter"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_code_interpreter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.on_upload_for_file_search"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.on_upload_for_file_search()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_uploaded_files"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_uploaded_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_assistant"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_assistant()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.delete_vector_store"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.delete_vector_store()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.save_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.openai.html#agentopera.agents.openai.OpenAIAssistantAgent.load_state"><code class="docutils literal notranslate"><span class="pre">OpenAIAssistantAgent.load_state()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="agents/agents.magentic_one.html">agents.magentic_one</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.magentic_one.html#agentopera.agents.magentic_one.MagenticOneCoderAgent"><code class="docutils literal notranslate"><span class="pre">MagenticOneCoderAgent</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="agents/agents.magentic_one.html#agentopera.agents.magentic_one.MagenticOneCoderAgent.component_provider_override"><code class="docutils literal notranslate"><span class="pre">MagenticOneCoderAgent.component_provider_override</span></code></a></li>
@@ -1126,7 +1420,47 @@ from the source code docstrings.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
-<li class="toctree-l1"><a class="reference internal" href="agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/agents.web_surfer.html">agents.web_surfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.DEFAULT_START_PAGE"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.DEFAULT_START_PAGE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.VIEWPORT_HEIGHT"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.VIEWPORT_HEIGHT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.VIEWPORT_WIDTH"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.VIEWPORT_WIDTH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.MLM_HEIGHT"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.MLM_HEIGHT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.MLM_WIDTH"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.MLM_WIDTH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.SCREENSHOT_TOKENS"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.SCREENSHOT_TOKENS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.close"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.produced_message_types"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_reset"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.MultimodalWebSurfer.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">MultimodalWebSurfer.on_messages_stream()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController"><code class="docutils literal notranslate"><span class="pre">PlaywrightController</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.sleep"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.sleep()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_interactive_rects"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_interactive_rects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visual_viewport"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_visual_viewport()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_focused_rect_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_focused_rect_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_metadata"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_page_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.on_new_page"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.on_new_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.back"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.back()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.visit_page"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.visit_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_down"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.page_down()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.page_up"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.page_up()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.gradual_cursor_animation"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.gradual_cursor_animation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.add_cursor_box"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.add_cursor_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.remove_cursor_box"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.remove_cursor_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.click_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.click_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.hover_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.hover_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.fill_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.fill_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.scroll_id"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.scroll_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_webpage_text"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_webpage_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_visible_text"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_visible_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.web_surfer.html#agentopera.agents.web_surfer.PlaywrightController.get_page_markdown"><code class="docutils literal notranslate"><span class="pre">PlaywrightController.get_page_markdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="agents/agents.video_surfer.html">agents.video_surfer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="agents/agents.video_surfer.html#agentopera.agents.video_surfer.VideoSurfer"><code class="docutils literal notranslate"><span class="pre">VideoSurfer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="agents/agents.video_surfer.html#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">VideoSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
@@ -1136,7 +1470,17 @@ from the source code docstrings.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents/agents.file_surfer.html">agents.file_surfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer"><code class="docutils literal notranslate"><span class="pre">FileSurfer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.DEFAULT_SYSTEM_MESSAGES"><code class="docutils literal notranslate"><span class="pre">FileSurfer.DEFAULT_SYSTEM_MESSAGES</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.produced_message_types"><code class="docutils literal notranslate"><span class="pre">FileSurfer.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_messages"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="agents/agents.file_surfer.html#agentopera.agents.file_surfer.FileSurfer.on_reset"><code class="docutils literal notranslate"><span class="pre">FileSurfer.on_reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="agents/agents.code_executor.html">agents.code_executor</a></li>
 </ul>
 </div>
@@ -1453,10 +1797,107 @@ from the source code docstrings.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html">models.anthropic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_type"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_config_schema"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_config_schema</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_provider_override"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_provider_override</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.model_info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.tools"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.tools</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.tool_choice"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.tool_choice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.max_tokens"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.max_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.temperature"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.temperature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.top_p"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.top_p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.top_k"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.top_k</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.stop_sequences"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.stop_sequences</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.response_format"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.response_format</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.metadata"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.api_key"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.api_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.base_url"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.base_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model_capabilities"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model_capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model_info"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.timeout"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.timeout</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.max_retries"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.max_retries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.default_headers"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.default_headers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.tools"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.tools</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.tool_choice"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.tool_choice</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.model"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.max_tokens"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.max_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.temperature"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.temperature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.top_p"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.top_k"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_k</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.stop_sequences"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stop_sequences</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.metadata"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="models/models.azure.html">models.azure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/models.ollama.html">models.ollama</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/models.replay.html">models.replay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.ollama.html">models.ollama</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_type"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_config_schema"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_config_schema</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_provider_override"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_provider_override</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.follow_redirects"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.follow_redirects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.timeout"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.timeout</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.headers"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.headers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.options"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.options</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.model"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.host"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.replay.html">models.replay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.set_cached_bool_value"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.set_cached_bool_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.reset"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="models/models.cache.html">models.cache</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/models.utils.html">models.utils</a></li>
 </ul>
@@ -1520,10 +1961,107 @@ from the source code docstrings.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/models.anthropic.html">models.anthropic</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_type"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_config_schema"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_config_schema</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicChatCompletionClient.component_provider_override"><code class="docutils literal notranslate"><span class="pre">AnthropicChatCompletionClient.component_provider_override</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.BaseAnthropicChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">BaseAnthropicChatCompletionClient.model_info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.tools"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.tools</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.tool_choice"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.tool_choice</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.max_tokens"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.max_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.temperature"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.temperature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.top_p"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.top_p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.top_k"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.top_k</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.stop_sequences"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.stop_sequences</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.response_format"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.response_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.metadata"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.api_key"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.api_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.base_url"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.base_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model_capabilities"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model_capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.model_info"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.model_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.timeout"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.timeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.max_retries"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.max_retries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfiguration.default_headers"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfiguration.default_headers</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.tools"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.tools</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.AnthropicClientConfigurationConfigModel.tool_choice"><code class="docutils literal notranslate"><span class="pre">AnthropicClientConfigurationConfigModel.tool_choice</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.model"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.max_tokens"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.max_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.temperature"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.temperature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.top_p"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.top_k"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_k</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.stop_sequences"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stop_sequences</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.metadata"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.anthropic.html#agentopera.models.anthropic.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="models/models.azure.html">models.azure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/models.ollama.html">models.ollama</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/models.ollama.html">models.ollama</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_type"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_config_schema"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_config_schema</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.OllamaChatCompletionClient.component_provider_override"><code class="docutils literal notranslate"><span class="pre">OllamaChatCompletionClient.component_provider_override</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.follow_redirects"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.follow_redirects</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.timeout"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.timeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.headers"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.headers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.BaseOllamaClientConfigurationConfigModel.options"><code class="docutils literal notranslate"><span class="pre">BaseOllamaClientConfigurationConfigModel.options</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.model"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.host"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.host</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.ollama.html#agentopera.models.ollama.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models/models.replay.html">models.replay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.set_cached_bool_value"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.set_cached_bool_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.model_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.reset"><code class="docutils literal notranslate"><span class="pre">ReplayChatCompletionClient.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="models/models.cache.html">models.cache</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models/models.utils.html">models.utils</a></li>
 </ul>

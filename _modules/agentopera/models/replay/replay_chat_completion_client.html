@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.models.replay.replay_chat_completion_client &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.models.replay.replay_chat_completion_client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.models.replay.replay_chat_completion_client</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">EVENT_LOGGER_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ChatCompletionClient</span><span class="p">,</span>
+    <span class="n">CreateResult</span><span class="p">,</span>
+    <span class="n">LLMMessage</span><span class="p">,</span>
+    <span class="n">ModelCapabilities</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+    <span class="n">ModelFamily</span><span class="p">,</span>
+    <span class="n">ModelInfo</span><span class="p">,</span>
+    <span class="n">RequestUsage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">ToolSchema</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">EVENT_LOGGER_NAME</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReplayChatCompletionClient</span><span class="p">(</span><span class="n">ChatCompletionClient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A mock chat completion client that replays predefined responses using an index-based approach.</span>
+
+<span class="sd">    This class simulates a chat completion client by replaying a predefined list of responses. It supports both single completion and streaming responses. The responses can be either strings or CreateResult objects. The client now uses an index-based approach to access the responses, allowing for resetting the state.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        The responses can be either strings or CreateResult objects.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        chat_completions (Sequence[Union[str, CreateResult]]): A list of predefined responses to replay.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError(&quot;No more mock responses available&quot;): If the list of provided outputs are exhausted.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">    Simple chat completion client to return pre-defined responses.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from agentopera.core.types.models import UserMessage</span>
+<span class="sd">            from agentopera.models.replay import ReplayChatCompletionClient</span>
+
+
+<span class="sd">            async def example():</span>
+<span class="sd">                chat_completions = [</span>
+<span class="sd">                    &quot;Hello, how can I assist you today?&quot;,</span>
+<span class="sd">                    &quot;I&#39;m happy to help with any questions you have.&quot;,</span>
+<span class="sd">                    &quot;Is there anything else I can assist you with?&quot;,</span>
+<span class="sd">                ]</span>
+<span class="sd">                client = ReplayChatCompletionClient(chat_completions)</span>
+<span class="sd">                messages = [UserMessage(content=&quot;What can you do?&quot;, source=&quot;user&quot;)]</span>
+<span class="sd">                response = await client.create(messages)</span>
+<span class="sd">                print(response.content)  # Output: &quot;Hello, how can I assist you today?&quot;</span>
+
+<span class="sd">    Simple streaming chat completion client to return pre-defined responses</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core.types.models import UserMessage</span>
+<span class="sd">            from agentopera.models.replay import ReplayChatCompletionClient</span>
+
+
+<span class="sd">            async def example():</span>
+<span class="sd">                chat_completions = [</span>
+<span class="sd">                    &quot;Hello, how can I assist you today?&quot;,</span>
+<span class="sd">                    &quot;I&#39;m happy to help with any questions you have.&quot;,</span>
+<span class="sd">                    &quot;Is there anything else I can assist you with?&quot;,</span>
+<span class="sd">                ]</span>
+<span class="sd">                client = ReplayChatCompletionClient(chat_completions)</span>
+<span class="sd">                messages = [UserMessage(content=&quot;What can you do?&quot;, source=&quot;user&quot;)]</span>
+
+<span class="sd">                async for token in client.create_stream(messages):</span>
+<span class="sd">                    print(token, end=&quot;&quot;)  # Output: &quot;Hello, how can I assist you today?&quot;</span>
+
+<span class="sd">                async for token in client.create_stream(messages):</span>
+<span class="sd">                    print(token, end=&quot;&quot;)  # Output: &quot;I&#39;m happy to help with any questions you have.&quot;</span>
+
+<span class="sd">                asyncio.run(example())</span>
+
+<span class="sd">    Using `.reset` to reset the chat client state</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core.types.models import UserMessage</span>
+<span class="sd">            from agentopera.models.replay import ReplayChatCompletionClient</span>
+
+
+<span class="sd">            async def example():</span>
+<span class="sd">                chat_completions = [</span>
+<span class="sd">                    &quot;Hello, how can I assist you today?&quot;,</span>
+<span class="sd">                ]</span>
+<span class="sd">                client = ReplayChatCompletionClient(chat_completions)</span>
+<span class="sd">                messages = [UserMessage(content=&quot;What can you do?&quot;, source=&quot;user&quot;)]</span>
+<span class="sd">                response = await client.create(messages)</span>
+<span class="sd">                print(response.content)  # Output: &quot;Hello, how can I assist you today?&quot;</span>
+
+<span class="sd">                response = await client.create(messages)  # Raises ValueError(&quot;No more mock responses available&quot;)</span>
+
+<span class="sd">                client.reset()  # Reset the client state (current index of message and token usages)</span>
+<span class="sd">                response = await client.create(messages)</span>
+<span class="sd">                print(response.content)  # Output: &quot;Hello, how can I assist you today?&quot; again</span>
+
+
+<span class="sd">            asyncio.run(example())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__protocol__</span><span class="p">:</span> <span class="n">ChatCompletionClient</span>
+
+    <span class="c1"># TODO: Support FunctionCall in responses</span>
+    <span class="c1"># TODO: Support logprobs in Responses</span>
+    <span class="c1"># TODO: Support model capabilities</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">chat_completions</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">]],</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chat_completions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provided_message_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span> <span class="o">=</span> <span class="n">ModelInfo</span><span class="p">(</span>
+            <span class="n">vision</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">function_calling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">json_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">ModelFamily</span><span class="o">.</span><span class="n">UNKNOWN</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_available_tokens</span> <span class="o">=</span> <span class="mi">10000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_bool_value</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.create">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">json_output</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_create_args</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CreateResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the next completion from the list.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No more mock responses available&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span><span class="p">]</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">prompt_token_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">output_token_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="n">prompt_token_count</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="n">output_token_count</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">CreateResult</span><span class="p">(</span>
+                <span class="n">finish_reason</span><span class="o">=</span><span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_bool_value</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span>
+                <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">prompt_token_count</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_total_usage</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.create_stream">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.create_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="n">json_output</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_create_args</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the next completion as a stream.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No more mock responses available&quot;</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chat_completions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span><span class="p">]</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">prompt_token_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">output_tokens</span><span class="p">,</span> <span class="n">output_token_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="n">prompt_token_count</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="n">output_token_count</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">output_tokens</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_tokens</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">token</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">token</span>
+            <span class="k">yield</span> <span class="n">CreateResult</span><span class="p">(</span>
+                <span class="n">finish_reason</span><span class="o">=</span><span class="s2">&quot;stop&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">usage</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_bool_value</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_total_usage</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span>
+                <span class="n">prompt_tokens</span><span class="o">=</span><span class="n">prompt_token_count</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+            <span class="p">)</span>
+            <span class="k">yield</span> <span class="n">response</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_total_usage</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.actual_usage">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.actual_usage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">actual_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RequestUsage</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.total_usage">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.total_usage">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RequestUsage</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.count_tokens">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.count_tokens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">count_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">token_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenize</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">token_count</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.remaining_tokens">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.remaining_tokens">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remaining_tokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tool</span> <span class="o">|</span> <span class="n">ToolSchema</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_available_tokens</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.set_cached_bool_value">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.set_cached_bool_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_cached_bool_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_bool_value</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_tokenize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">LLMMessage</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="n">total_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">all_tokens</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">tokens</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">total_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+            <span class="n">all_tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">messages</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># type: ignore [reportAttributeAccessIssue]</span>
+                <span class="n">tokens</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>  <span class="c1"># type: ignore [reportAttributeAccessIssue]</span>
+                <span class="n">total_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+                <span class="n">all_tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Token count has been done only on string content&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># type: ignore [reportAttributeAccessIssue, union-attr]</span>
+                    <span class="n">tokens</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>  <span class="c1"># type: ignore [reportAttributeAccessIssue, union-attr]</span>
+                    <span class="n">total_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+                    <span class="n">all_tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Token count has been done only on string content&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">all_tokens</span><span class="p">,</span> <span class="n">total_tokens</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_total_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="o">.</span><span class="n">completion_tokens</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span><span class="o">.</span><span class="n">prompt_tokens</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelCapabilities</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return mock capabilities.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;capabilities is deprecated, use model_info instead&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">model_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelInfo</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_info</span>
+
+<div class="viewcode-block" id="ReplayChatCompletionClient.reset">
+<a class="viewcode-back" href="../../../../models/models.replay.html#agentopera.models.replay.ReplayChatCompletionClient.reset">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the client state and usage to its initial state.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cur_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_current_index</span> <span class="o">=</span> <span class="mi">0</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

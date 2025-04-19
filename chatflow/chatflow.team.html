@@ -50,7 +50,21 @@
 <li class="toctree-l1"><a class="reference internal" href="chatflow.conditions.html">chatflow.conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chatflow.media.html">chatflow.media</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chatflow.state.html">chatflow.state</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">chatflow.team</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">chatflow.team</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.run"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.run_stream"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.run_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.reset"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.save_state"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.load_state"><code class="docutils literal notranslate"><span class="pre">BaseGroupChat.load_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.team.RoundRobinGroupChat"><code class="docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.team.SelectorGroupChat"><code class="docutils literal notranslate"><span class="pre">SelectorGroupChat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.team.Swarm"><code class="docutils literal notranslate"><span class="pre">Swarm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.team.MagenticOneGroupChat"><code class="docutils literal notranslate"><span class="pre">MagenticOneGroupChat</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="chatflow.ui.html">chatflow.ui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chatflow.utils.html">chatflow.utils</a></li>
 </ul>
@@ -154,8 +168,640 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="chatflow-team">
-<h1>chatflow.team<a class="headerlink" href="#chatflow-team" title="Link to this heading"></a></h1>
+  <section id="module-agentopera.chatflow.team">
+<span id="chatflow-team"></span><h1>chatflow.team<a class="headerlink" href="#module-agentopera.chatflow.team" title="Link to this heading"></a></h1>
+<p>This module provides implementation of various pre-defined multi-agent teams.
+Each team inherits from the BaseGroupChat class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.team.</span></span><span class="sig-name descname"><span class="pre">BaseGroupChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.chat_agent.ChatAgent"><span class="pre">ChatAgent</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_chat_manager_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">SequentialRoutedAgent</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">termination_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_turns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.Team" title="agentopera.chatflow.base.team.Team"><code class="xref py py-class docutils literal notranslate"><span class="pre">Team</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The base class for group chat teams.</p>
+<p>To implement a group chat team, first create a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChatManager</span></code> and then
+create a subclass of <a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat" title="agentopera.chatflow.team.BaseGroupChat"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a> that uses the group chat manager.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat.run">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.task.TaskResult"><span class="pre">TaskResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat.run" title="Link to this definition"></a></dt>
+<dd><p>Run the team and return the result. The base implementation uses
+<a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat.run_stream" title="agentopera.chatflow.team.BaseGroupChat.run_stream"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run_stream()</span></code></a> to run the team and then returns the final result.
+Once the team is stopped, the termination condition is reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<em>str</em><em> | </em><em>ChatMessage</em><em> | </em><em>Sequence</em><em>[</em><em>ChatMessage</em><em>] </em><em>| </em><em>None</em>) – The task to run the team with. Can be a string, a single <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code> , or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code>.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em>) – The cancellation token to kill the task immediately.
+Setting the cancellation token potentially put the team in an inconsistent state,
+and it may not reset the termination condition.
+To gracefully stop the team, use <a class="reference internal" href="chatflow.conditions.html#agentopera.chatflow.conditions.ExternalTermination" title="agentopera.chatflow.conditions.ExternalTermination"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExternalTermination</span></code></a> instead.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the task as <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code></a>. The result contains the messages produced by the team and the stop reason.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+</dl>
+<p>Example using the <code class="xref py py-class docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code> team:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">team</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># Run the team again without a task to continue the previous task.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">team</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Example using the <code class="xref py py-class docutils literal notranslate"><span class="pre">CancellationToken</span></code> to cancel the task:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+
+    <span class="c1"># Create a task to run the team in the background.</span>
+    <span class="n">run_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+        <span class="n">team</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">,</span>
+            <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Wait for 1 second and then cancel the task.</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cancellation_token</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+
+    <span class="c1"># This will raise a cancellation error.</span>
+    <span class="k">await</span> <span class="n">run_task</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat.run_stream">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.task.TaskResult"><span class="pre">TaskResult</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat.run_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat.run_stream" title="Link to this definition"></a></dt>
+<dd><p>Run the team and produces a stream of messages and the final result
+of the type <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code></a> as the last item in the stream. Once the
+team is stopped, the termination condition is reset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If an agent produces <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelClientStreamingChunkEvent</span></code>,
+the message will be yielded in the stream but it will not be included in the
+<a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult.messages" title="agentopera.chatflow.base.TaskResult.messages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">messages</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>task</strong> (<em>str</em><em> | </em><em>ChatMessage</em><em> | </em><em>Sequence</em><em>[</em><em>ChatMessage</em><em>] </em><em>| </em><em>None</em>) – The task to run the team with. Can be a string, a single <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code> , or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code>.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em>) – The cancellation token to kill the task immediately.
+Setting the cancellation token potentially put the team in an inconsistent state,
+and it may not reset the termination condition.
+To gracefully stop the team, use <a class="reference internal" href="chatflow.conditions.html#agentopera.chatflow.conditions.ExternalTermination" title="agentopera.chatflow.conditions.ExternalTermination"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExternalTermination</span></code></a> instead.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an <code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncGenerator</span></code> that yields <code class="xref py py-class docutils literal notranslate"><span class="pre">AgentEvent</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code>, and the final result <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code></a> as the last item in the stream.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>stream</p>
+</dd>
+</dl>
+<p>Example using the <code class="xref py py-class docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code> team:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="c1"># Run the team again without a task to continue the previous task.</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">()</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Example using the <code class="xref py py-class docutils literal notranslate"><span class="pre">CancellationToken</span></code> to cancel the task:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+
+    <span class="c1"># Create a task to run the team in the background.</span>
+    <span class="n">run_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+        <span class="n">Console</span><span class="p">(</span>
+            <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">,</span>
+                <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Wait for 1 second and then cancel the task.</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cancellation_token</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+
+    <span class="c1"># This will raise a cancellation error.</span>
+    <span class="k">await</span> <span class="n">run_task</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the team and its participants to their initial state.</p>
+<p>The team must be stopped before it can be reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – If the team has not been initialized or is currently running.</p>
+</dd>
+</dl>
+<p>Example using the <code class="xref py py-class docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code> team:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="c1"># Reset the team.</span>
+    <span class="k">await</span> <span class="n">team</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Count from 1 to 10, respond one at a time.&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of the group chat team.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.BaseGroupChat.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/team/base_group_chat.html#BaseGroupChat.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.BaseGroupChat.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of the group chat team.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.RoundRobinGroupChat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.team.</span></span><span class="sig-name descname"><span class="pre">RoundRobinGroupChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.chat_agent.ChatAgent"><span class="pre">ChatAgent</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">termination_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_turns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/team/round_robin_group_chat.html#RoundRobinGroupChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.RoundRobinGroupChat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat" title="agentopera.chatflow.team.base_group_chat.BaseGroupChat"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a></p>
+<p>A team that runs a group chat with participants taking turns in a round-robin fashion
+to publish a message to all.</p>
+<p>If a single participant is in the team, the participant will be the only speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>participants</strong> (<em>List</em><em>[</em><a class="reference internal" href="chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent" title="agentopera.chatflow.agents.BaseChatAgent"><em>BaseChatAgent</em></a><em>]</em>) – The participants in the group chat.</p></li>
+<li><p><strong>termination_condition</strong> (<a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.TerminationCondition"><em>TerminationCondition</em></a><em>, </em><em>optional</em>) – The termination condition for the group chat. Defaults to None.
+Without a termination condition, the group chat will run indefinitely.</p></li>
+<li><p><strong>max_turns</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If no participants are provided or if participant names are not unique.</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<p>A team with one participant with tools:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMentionTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;The weather in </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2"> is sunny.&quot;</span>
+
+    <span class="n">assistant</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Assistant&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">get_weather</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">assistant</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;What&#39;s the weather in New York?&quot;</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>A team with multiple participants:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMentionTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant1&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span><span class="s2">&quot;Assistant2&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Tell me some jokes.&quot;</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.SelectorGroupChat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.team.</span></span><span class="sig-name descname"><span class="pre">SelectorGroupChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.chat_agent.ChatAgent"><span class="pre">ChatAgent</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.model_client.ChatCompletionClient"><span class="pre">ChatCompletionClient</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">termination_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_turns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'You</span> <span class="pre">are</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">role</span> <span class="pre">play</span> <span class="pre">game.</span> <span class="pre">The</span> <span class="pre">following</span> <span class="pre">roles</span> <span class="pre">are</span> <span class="pre">available:\n{roles}.\nRead</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">conversation.</span> <span class="pre">Then</span> <span class="pre">select</span> <span class="pre">the</span> <span class="pre">next</span> <span class="pre">role</span> <span class="pre">from</span> <span class="pre">{participants}</span> <span class="pre">to</span> <span class="pre">play.</span> <span class="pre">Only</span> <span class="pre">return</span> <span class="pre">the</span> <span class="pre">role.\n\n{history}\n\nRead</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">conversation.</span> <span class="pre">Then</span> <span class="pre">select</span> <span class="pre">the</span> <span class="pre">next</span> <span class="pre">role</span> <span class="pre">from</span> <span class="pre">{participants}</span> <span class="pre">to</span> <span class="pre">play.</span> <span class="pre">Only</span> <span class="pre">return</span> <span class="pre">the</span> <span class="pre">role.\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_repeated_speaker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_selector_attempts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.VercelMessage" title="agentopera.engine.types.models.types.VercelMessage"><span class="pre">VercelMessage</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/team/selector_group_chat.html#SelectorGroupChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.SelectorGroupChat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat" title="agentopera.chatflow.team.base_group_chat.BaseGroupChat"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a></p>
+<p>A group chat team that have participants takes turn to publish a message
+to all, using a ChatCompletion model to select the next speaker after each message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>participants</strong> (<em>List</em><em>[</em><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.ChatAgent"><em>ChatAgent</em></a><em>]</em>) – The participants in the group chat,
+must have unique names and at least two participants.</p></li>
+<li><p><strong>model_client</strong> (<a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.ChatCompletionClient"><em>ChatCompletionClient</em></a>) – The ChatCompletion model client used
+to select the next speaker.</p></li>
+<li><p><strong>termination_condition</strong> (<a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.TerminationCondition"><em>TerminationCondition</em></a><em>, </em><em>optional</em>) – The termination condition for the group chat. Defaults to None.
+Without a termination condition, the group chat will run indefinitely.</p></li>
+<li><p><strong>max_turns</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.</p></li>
+<li><p><strong>selector_prompt</strong> (<em>str</em><em>, </em><em>optional</em>) – The prompt template to use for selecting the next speaker.
+Available fields: ‘{roles}’, ‘{participants}’, and ‘{history}’.</p></li>
+<li><p><strong>allow_repeated_speaker</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include the previous speaker in the list of candidates to be selected for the next turn.
+Defaults to False. The model may still select the previous speaker – a warning will be logged if this happens.</p></li>
+<li><p><strong>max_selector_attempts</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of attempts to select a speaker using the model. Defaults to 3.
+If the model fails to select a speaker after the maximum number of attempts, the previous speaker will be used if available,
+otherwise the first participant will be used.</p></li>
+<li><p><strong>selector_func</strong> (<em>Callable</em><em>[</em><em>[</em><em>Sequence</em><em>[</em><em>AgentEvent</em><em> | </em><em>ChatMessage</em><em>]</em><em>]</em><em>, </em><em>str</em><em> | </em><em>None</em><em>]</em><em>, </em><em>optional</em>) – A custom selector
+function that takes the conversation history and returns the name of the next speaker.
+If provided, this function will be used to override the model to select the next speaker.
+If the function returns None, the model will be used to select the next speaker.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the number of participants is less than two or if the selector prompt is invalid.</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<p>A team with multiple participants:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectorGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMentionTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lookup_hotel</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Here are some hotels in </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">: hotel1, hotel2, hotel3.&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">lookup_flight</span><span class="p">(</span><span class="n">origin</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">destination</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Here are some flights from </span><span class="si">{</span><span class="n">origin</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">destination</span><span class="si">}</span><span class="s2">: flight1, flight2, flight3.&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">book_trip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Your trip is booked!&quot;</span>
+
+    <span class="n">travel_advisor</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Travel_Advisor&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">book_trip</span><span class="p">],</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Helps with travel planning.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">hotel_agent</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Hotel_Agent&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">lookup_hotel</span><span class="p">],</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Helps with hotel booking.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">flight_agent</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Flight_Agent&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">lookup_flight</span><span class="p">],</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Helps with flight booking.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">SelectorGroupChat</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">travel_advisor</span><span class="p">,</span> <span class="n">hotel_agent</span><span class="p">,</span> <span class="n">flight_agent</span><span class="p">],</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+        <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Book a 3-day trip to new york.&quot;</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>A team with a custom selector function:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectorGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMentionTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">ChatMessage</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_calculation</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">answer</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Correct!&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Incorrect!&quot;</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Agent1&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;For calculation&quot;</span><span class="p">,</span>
+        <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;Calculate the sum of two numbers&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Agent2&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">,</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">check_calculation</span><span class="p">],</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;For checking calculation&quot;</span><span class="p">,</span>
+        <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;Check the answer and respond with &#39;Correct!&#39; or &#39;Incorrect!&#39;&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">selector_func</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="s2">&quot;Incorrect!&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Agent1&quot;</span>
+        <span class="k">if</span> <span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s2">&quot;Agent1&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Agent2&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;Correct!&quot;</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">SelectorGroupChat</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+        <span class="n">selector_func</span><span class="o">=</span><span class="n">selector_func</span><span class="p">,</span>
+        <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;What is 1 + 1?&quot;</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.Swarm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.team.</span></span><span class="sig-name descname"><span class="pre">Swarm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.chat_agent.ChatAgent"><span class="pre">ChatAgent</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">termination_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_turns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/team/swarm_group_chat.html#Swarm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.Swarm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat" title="agentopera.chatflow.team.base_group_chat.BaseGroupChat"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a></p>
+<p>A group chat team that selects the next speaker based on handoff message only.</p>
+<p>The first participant in the list of participants is the initial speaker.
+The next speaker is selected based on the <code class="xref py py-class docutils literal notranslate"><span class="pre">HandoffMessage</span></code> message
+sent by the current speaker. If no handoff message is sent, the current speaker
+continues to be the speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>participants</strong> (<em>List</em><em>[</em><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.ChatAgent"><em>ChatAgent</em></a><em>]</em>) – The agents participating in the group chat. The first agent in the list is the initial speaker.</p></li>
+<li><p><strong>termination_condition</strong> (<a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.TerminationCondition"><em>TerminationCondition</em></a><em>, </em><em>optional</em>) – The termination condition for the group chat. Defaults to None.
+Without a termination condition, the group chat will run indefinitely.</p></li>
+<li><p><strong>max_turns</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of turns in the group chat before stopping. Defaults to None, meaning no limit.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Basic example:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">Swarm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent1</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+        <span class="n">handoffs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">],</span>
+        <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;You are Alice and you only answer questions about yourself.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">agent2</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span> <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;You are Bob and your birthday is on 1st January.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Swarm</span><span class="p">([</span><span class="n">agent1</span><span class="p">,</span> <span class="n">agent2</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;What is bob&#39;s birthday?&quot;</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Using the <a class="reference internal" href="chatflow.conditions.html#agentopera.chatflow.conditions.HandoffTermination" title="agentopera.chatflow.conditions.HandoffTermination"><code class="xref py py-class docutils literal notranslate"><span class="pre">HandoffTermination</span></code></a> for human-in-the-loop handoff:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">Swarm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">HandoffTermination</span><span class="p">,</span> <span class="n">MaxMessageTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">HandoffMessage</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+        <span class="n">handoffs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
+        <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;You are Alice and you only answer questions about yourself, ask the user for help if needed.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">HandoffTermination</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">Swarm</span><span class="p">([</span><span class="n">agent</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="c1"># Start the conversation.</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;What is bob&#39;s birthday?&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Resume with user feedback.</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span>
+        <span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="n">HandoffMessage</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Bob&#39;s birthday is on 1st January.&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.team.MagenticOneGroupChat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.team.</span></span><span class="sig-name descname"><span class="pre">MagenticOneGroupChat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.chat_agent.ChatAgent"><span class="pre">ChatAgent</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.model_client.ChatCompletionClient"><span class="pre">ChatCompletionClient</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">termination_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_turns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_stalls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_answer_prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\nWe</span> <span class="pre">are</span> <span class="pre">working</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">task:\n{task}\n\nWe</span> <span class="pre">have</span> <span class="pre">completed</span> <span class="pre">the</span> <span class="pre">task.\n\nThe</span> <span class="pre">above</span> <span class="pre">messages</span> <span class="pre">contain</span> <span class="pre">the</span> <span class="pre">conversation</span> <span class="pre">that</span> <span class="pre">took</span> <span class="pre">place</span> <span class="pre">to</span> <span class="pre">complete</span> <span class="pre">the</span> <span class="pre">task.\n\nBased</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">information</span> <span class="pre">gathered,</span> <span class="pre">provide</span> <span class="pre">the</span> <span class="pre">final</span> <span class="pre">answer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">request.\nThe</span> <span class="pre">answer</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">phrased</span> <span class="pre">as</span> <span class="pre">if</span> <span class="pre">you</span> <span class="pre">were</span> <span class="pre">speaking</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">user.\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/team/magentic_one/magentic_one_group_chat.html#MagenticOneGroupChat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.team.MagenticOneGroupChat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.team.BaseGroupChat" title="agentopera.chatflow.team.base_group_chat.BaseGroupChat"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChat</span></code></a></p>
+<p>A team that runs a group chat with participants managed by the MagenticOneOrchestrator.</p>
+<p>The orchestrator handles the conversation flow, ensuring that the task is completed
+efficiently by managing the participants’ interactions.</p>
+<p>The orchestrator is based on the Magentic-One architecture, which is a generalist multi-agent system for solving complex tasks (see references below).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>participants</strong> (<em>List</em><em>[</em><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.ChatAgent" title="agentopera.chatflow.base.ChatAgent"><em>ChatAgent</em></a><em>]</em>) – The participants in the group chat.</p></li>
+<li><p><strong>model_client</strong> (<a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.models.ChatCompletionClient" title="agentopera.engine.types.models.ChatCompletionClient"><em>ChatCompletionClient</em></a>) – The model client used for generating responses.</p></li>
+<li><p><strong>termination_condition</strong> (<a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.TerminationCondition"><em>TerminationCondition</em></a><em>, </em><em>optional</em>) – The termination condition for the group chat. Defaults to None.
+Without a termination condition, the group chat will run based on the orchestrator logic or until the maximum number of turns is reached.</p></li>
+<li><p><strong>max_turns</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of turns in the group chat before stopping. Defaults to 20.</p></li>
+<li><p><strong>max_stalls</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of stalls allowed before re-planning. Defaults to 3.</p></li>
+<li><p><strong>final_answer_prompt</strong> (<em>str</em><em>, </em><em>optional</em>) – The LLM prompt used to generate the final answer or response from the team’s transcript. A default (sensible for GPT-4o class models) is provided.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – In orchestration logic if progress ledger does not have required keys or if next speaker is not valid.</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<p>MagenticOneGroupChat with one assistant agent:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">MagenticOneGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+
+    <span class="n">assistant</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;Assistant&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">team</span> <span class="o">=</span> <span class="n">MagenticOneGroupChat</span><span class="p">([</span><span class="n">assistant</span><span class="p">],</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Provide a different proof to Fermat last theorem&quot;</span><span class="p">))</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="rubric">References</p>
+<p>If you use the MagenticOneGroupChat in your work, please cite the following paper:</p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">fourney2024magentic</span><span class="p">,</span>
+<span class="w">    </span><span class="na">title</span><span class="p">=</span><span class="s">{Magentic-one: A generalist multi-agent system for solving complex tasks}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">author</span><span class="p">=</span><span class="s">{Fourney, Adam and Bansal, Gagan and Mozannar, Hussein and Tan, Cheng and Salinas, Eduardo and Niedtner, Friederike and Proebsting, Grace and Bassman, Griffin and Gerrits, Jack and Alber, Jacob and others}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">journal</span><span class="p">=</span><span class="s">{arXiv preprint arXiv:2411.04468}</span><span class="p">,</span>
+<span class="w">    </span><span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 
 
