@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>memory &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="memory.graphrag" href="memory.graphrag.html" />
+    <link rel="prev" title="models.utils" href="../models/models.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">memory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.Memory"><code class="docutils literal notranslate"><span class="pre">Memory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.Memory.update_context"><code class="docutils literal notranslate"><span class="pre">Memory.update_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.Memory.query"><code class="docutils literal notranslate"><span class="pre">Memory.query()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.Memory.add"><code class="docutils literal notranslate"><span class="pre">Memory.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.Memory.clear"><code class="docutils literal notranslate"><span class="pre">Memory.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.Memory.close"><code class="docutils literal notranslate"><span class="pre">Memory.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.MemoryContent"><code class="docutils literal notranslate"><span class="pre">MemoryContent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryContent.content"><code class="docutils literal notranslate"><span class="pre">MemoryContent.content</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryContent.mime_type"><code class="docutils literal notranslate"><span class="pre">MemoryContent.mime_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryContent.metadata"><code class="docutils literal notranslate"><span class="pre">MemoryContent.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryContent.model_config"><code class="docutils literal notranslate"><span class="pre">MemoryContent.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryContent.serialize_mime_type"><code class="docutils literal notranslate"><span class="pre">MemoryContent.serialize_mime_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult"><code class="docutils literal notranslate"><span class="pre">MemoryQueryResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult.results"><code class="docutils literal notranslate"><span class="pre">MemoryQueryResult.results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult.model_config"><code class="docutils literal notranslate"><span class="pre">MemoryQueryResult.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.UpdateContextResult"><code class="docutils literal notranslate"><span class="pre">UpdateContextResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.UpdateContextResult.memories"><code class="docutils literal notranslate"><span class="pre">UpdateContextResult.memories</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.UpdateContextResult.model_config"><code class="docutils literal notranslate"><span class="pre">UpdateContextResult.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.MemoryMimeType"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryMimeType.TEXT"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType.TEXT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryMimeType.JSON"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType.JSON</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryMimeType.MARKDOWN"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType.MARKDOWN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryMimeType.IMAGE"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType.IMAGE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.MemoryMimeType.BINARY"><code class="docutils literal notranslate"><span class="pre">MemoryMimeType.BINARY</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.memory.ListMemory"><code class="docutils literal notranslate"><span class="pre">ListMemory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.name"><code class="docutils literal notranslate"><span class="pre">ListMemory.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.content"><code class="docutils literal notranslate"><span class="pre">ListMemory.content</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.update_context"><code class="docutils literal notranslate"><span class="pre">ListMemory.update_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.query"><code class="docutils literal notranslate"><span class="pre">ListMemory.query()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.add"><code class="docutils literal notranslate"><span class="pre">ListMemory.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.clear"><code class="docutils literal notranslate"><span class="pre">ListMemory.clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.memory.ListMemory.close"><code class="docutils literal notranslate"><span class="pre">ListMemory.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">memory</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/memory/memory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.memory">
+<span id="memory"></span><h1>memory<a class="headerlink" href="#module-agentopera.memory" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.Memory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">Memory</span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Protocol defining the interface for memory implementations.</p>
+<p>A memory is the storage for data that can be used to enrich or modify the model context.</p>
+<p>A memory implementation can use any storage mechanism, such as a list, a database, or a file system.
+It can also use any retrieval mechanism, such as vector search or text search.
+It is up to the implementation to decide how to store and retrieve data.</p>
+<p>It is also a memory implementation’s responsibility to update the model context
+with relevant memory content based on the current model context and querying the memory store.</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">ListMemory</span></code> for an example implementation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.Memory.update_context">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ChatCompletionContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.memory.UpdateContextResult" title="agentopera.memory.base_memory.UpdateContextResult"><span class="pre">UpdateContextResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory.update_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory.update_context" title="Link to this definition"></a></dt>
+<dd><p>Update the provided model context using relevant memory content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_context</strong> – The context to update.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>UpdateContextResult containing relevant memories</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.Memory.query">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult" title="agentopera.memory.base_memory.MemoryQueryResult"><span class="pre">MemoryQueryResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory.query" title="Link to this definition"></a></dt>
+<dd><p>Query the memory store and return relevant entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Query content item</p></li>
+<li><p><strong>cancellation_token</strong> – Optional token to cancel operation</p></li>
+<li><p><strong>**kwargs</strong> – Additional implementation-specific parameters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>MemoryQueryResult containing memory entries with relevance scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.Memory.add">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory.add" title="Link to this definition"></a></dt>
+<dd><p>Add a new content to memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> – The memory content to add</p></li>
+<li><p><strong>cancellation_token</strong> – Optional token to cancel operation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.Memory.clear">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear all entries from memory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.Memory.close">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#Memory.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.Memory.close" title="Link to this definition"></a></dt>
+<dd><p>Clean up any resources used by the memory implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryContent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mime_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.memory.MemoryMimeType" title="agentopera.memory.base_memory.MemoryMimeType"><span class="pre">MemoryMimeType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#MemoryContent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.MemoryContent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>A memory content item.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a></em><a class="headerlink" href="#agentopera.memory.MemoryContent.content" title="Link to this definition"></a></dt>
+<dd><p>The content of the memory item. It can be a string, bytes, dict, or <code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent.mime_type">
+<span class="sig-name descname"><span class="pre">mime_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.memory.MemoryMimeType" title="agentopera.memory.base_memory.MemoryMimeType"><span class="pre">MemoryMimeType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.memory.MemoryContent.mime_type" title="Link to this definition"></a></dt>
+<dd><p>The MIME type of the memory content.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.memory.MemoryContent.metadata" title="Link to this definition"></a></dt>
+<dd><p>Metadata associated with the memory item.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True}</span></em><a class="headerlink" href="#agentopera.memory.MemoryContent.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryContent.serialize_mime_type">
+<span class="sig-name descname"><span class="pre">serialize_mime_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mime_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.memory.MemoryMimeType" title="agentopera.memory.base_memory.MemoryMimeType"><span class="pre">MemoryMimeType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#MemoryContent.serialize_mime_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.MemoryContent.serialize_mime_type" title="Link to this definition"></a></dt>
+<dd><p>Serialize the MIME type to a string.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryQueryResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryQueryResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#MemoryQueryResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.MemoryQueryResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Result of a memory <code class="xref py py-meth docutils literal notranslate"><span class="pre">query()</span></code> operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryQueryResult.results">
+<span class="sig-name descname"><span class="pre">results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.memory.MemoryQueryResult.results" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryQueryResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.memory.MemoryQueryResult.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.UpdateContextResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">UpdateContextResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult" title="agentopera.memory.base_memory.MemoryQueryResult"><span class="pre">MemoryQueryResult</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#UpdateContextResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.UpdateContextResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Result of a memory <code class="xref py py-meth docutils literal notranslate"><span class="pre">update_context()</span></code> operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.UpdateContextResult.memories">
+<span class="sig-name descname"><span class="pre">memories</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.memory.MemoryQueryResult" title="agentopera.memory.base_memory.MemoryQueryResult"><span class="pre">MemoryQueryResult</span></a></em><a class="headerlink" href="#agentopera.memory.UpdateContextResult.memories" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.UpdateContextResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.memory.UpdateContextResult.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryMimeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/memory/base_memory.html#MemoryMimeType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.MemoryMimeType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Supported MIME types for memory content.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType.TEXT">
+<span class="sig-name descname"><span class="pre">TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text/plain'</span></em><a class="headerlink" href="#agentopera.memory.MemoryMimeType.TEXT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'application/json'</span></em><a class="headerlink" href="#agentopera.memory.MemoryMimeType.JSON" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType.MARKDOWN">
+<span class="sig-name descname"><span class="pre">MARKDOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'text/markdown'</span></em><a class="headerlink" href="#agentopera.memory.MemoryMimeType.MARKDOWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType.IMAGE">
+<span class="sig-name descname"><span class="pre">IMAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'image/*'</span></em><a class="headerlink" href="#agentopera.memory.MemoryMimeType.IMAGE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.memory.MemoryMimeType.BINARY">
+<span class="sig-name descname"><span class="pre">BINARY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'application/octet-stream'</span></em><a class="headerlink" href="#agentopera.memory.MemoryMimeType.BINARY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.memory.</span></span><span class="sig-name descname"><span class="pre">ListMemory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_contents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.memory.Memory" title="agentopera.memory.base_memory.Memory"><code class="xref py py-class docutils literal notranslate"><span class="pre">Memory</span></code></a></p>
+<p>Simple chronological list-based memory implementation.</p>
+<p>This memory implementation stores contents in a list and retrieves them in
+chronological order. It has an <cite>update_context</cite> method that updates model contexts
+by appending all stored memories.</p>
+<p>The memory content can be directly accessed and modified through the content property,
+allowing external applications to manage memory contents directly.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListMemory</span><span class="p">,</span> <span class="n">MemoryContent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.model_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">BufferedChatCompletionContext</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Initialize memory</span>
+    <span class="n">memory</span> <span class="o">=</span> <span class="n">ListMemory</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;chat_history&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Add memory content</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">MemoryContent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;User prefers formal language&quot;</span><span class="p">,</span> <span class="n">mime_type</span><span class="o">=</span><span class="s2">&quot;text/plain&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">memory</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+    <span class="c1"># Directly modify memory contents</span>
+    <span class="n">memory</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="p">[</span><span class="n">MemoryContent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;New preference&quot;</span><span class="p">,</span> <span class="n">mime_type</span><span class="o">=</span><span class="s2">&quot;text/plain&quot;</span><span class="p">)]</span>
+
+    <span class="c1"># Create a model context</span>
+    <span class="n">model_context</span> <span class="o">=</span> <span class="n">BufferedChatCompletionContext</span><span class="p">(</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># Update a model context with memory</span>
+    <span class="k">await</span> <span class="n">memory</span><span class="o">.</span><span class="n">update_context</span><span class="p">(</span><span class="n">model_context</span><span class="p">)</span>
+
+    <span class="c1"># See the updated model context</span>
+    <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">get_messages</span><span class="p">())</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> – Optional identifier for this memory instance</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.memory.ListMemory.name" title="Link to this definition"></a></dt>
+<dd><p>Get the memory instance identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Memory instance name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.content">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.memory.ListMemory.content" title="Link to this definition"></a></dt>
+<dd><p>Get the current memory contents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of stored memory contents</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[<a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.MemoryContent">MemoryContent</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.update_context">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ChatCompletionContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.memory.UpdateContextResult" title="agentopera.memory.base_memory.UpdateContextResult"><span class="pre">UpdateContextResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory.update_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory.update_context" title="Link to this definition"></a></dt>
+<dd><p>Update the model context by appending memory content.</p>
+<p>This method mutates the provided model_context by adding all memories as a
+SystemMessage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_context</strong> – The context to update. Will be mutated if memories exist.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>UpdateContextResult containing the memories that were added to the context</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.query">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.memory.MemoryQueryResult" title="agentopera.memory.base_memory.MemoryQueryResult"><span class="pre">MemoryQueryResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory.query" title="Link to this definition"></a></dt>
+<dd><p>Return all memories without any filtering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – Ignored in this implementation</p></li>
+<li><p><strong>cancellation_token</strong> – Optional token to cancel operation</p></li>
+<li><p><strong>**kwargs</strong> – Additional parameters (ignored)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>MemoryQueryResult containing all stored memories</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.add">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.memory.MemoryContent" title="agentopera.memory.base_memory.MemoryContent"><span class="pre">MemoryContent</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory.add" title="Link to this definition"></a></dt>
+<dd><p>Add new content to memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> – Memory content to store</p></li>
+<li><p><strong>cancellation_token</strong> – Optional token to cancel operation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.clear">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear all memory content.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.memory.ListMemory.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/memory/list_memory.html#ListMemory.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.memory.ListMemory.close" title="Link to this definition"></a></dt>
+<dd><p>Cleanup resources if needed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../models/models.utils.html" class="btn btn-neutral float-left" title="models.utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="memory.graphrag.html" class="btn btn-neutral float-right" title="memory.graphrag" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

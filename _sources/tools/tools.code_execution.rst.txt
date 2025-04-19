@@ -1,0 +1,8 @@
+tools.code_execution
+===================
+
+.. automodule:: agentopera.tools.code_execution
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

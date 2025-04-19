@@ -1,0 +1,8 @@
+models.azure
+============
+
+.. automodule:: agentopera.models.azure
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

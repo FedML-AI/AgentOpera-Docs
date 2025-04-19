@@ -1,0 +1,8 @@
+models.ollama
+=============
+
+.. automodule:: agentopera.models.ollama
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

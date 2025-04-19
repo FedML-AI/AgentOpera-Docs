@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>router.workers &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="router.user" href="router.user.html" />
+    <link rel="prev" title="router" href="router.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="router.html">router</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="router.html#agentopera.router.AgentFactory"><code class="docutils literal notranslate"><span class="pre">AgentFactory</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html#agentopera.router.AgentRegistry"><code class="docutils literal notranslate"><span class="pre">AgentRegistry</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html#agentopera.router.IntentRegistry"><code class="docutils literal notranslate"><span class="pre">IntentRegistry</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html#agentopera.router.SemanticRouterAgent"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.html#agentopera.router.LLMIntentClassifier"><code class="docutils literal notranslate"><span class="pre">LLMIntentClassifier</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">router.workers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.ChatAgent"><code class="docutils literal notranslate"><span class="pre">ChatAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.ChatAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">ChatAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.VercelAIAgent"><code class="docutils literal notranslate"><span class="pre">VercelAIAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.VercelAIAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">VercelAIAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariAIAgent"><code class="docutils literal notranslate"><span class="pre">MessariAIAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MessariAIAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">MessariAIAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.get_sentiment"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.get_sentiment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.handle_message"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.handle_message()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.FinanceAnalysisFlowAgent"><code class="docutils literal notranslate"><span class="pre">FinanceAnalysisFlowAgent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.PaperFlowAgent"><code class="docutils literal notranslate"><span class="pre">PaperFlowAgent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.get_market_data"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.get_market_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.get_sorted_crypto_data"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.get_sorted_crypto_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CailaAgent"><code class="docutils literal notranslate"><span class="pre">CailaAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CailaAgent.message_handler"><code class="docutils literal notranslate"><span class="pre">CailaAgent.message_handler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.CailaAgent.fetch_and_transform_data"><code class="docutils literal notranslate"><span class="pre">CailaAgent.fetch_and_transform_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.yield_initial_message"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.yield_initial_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.handle_metadata"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.handle_metadata()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.fetch_and_transform_data"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.fetch_and_transform_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.message_handler"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.message_handler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="router.user.html">router.user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.session.html">router.session</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">router.workers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.ChatAgent"><code class="docutils literal notranslate"><span class="pre">ChatAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.ChatAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">ChatAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.VercelAIAgent"><code class="docutils literal notranslate"><span class="pre">VercelAIAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.VercelAIAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">VercelAIAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.MessariAIAgent"><code class="docutils literal notranslate"><span class="pre">MessariAIAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariAIAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">MessariAIAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.get_sentiment"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.get_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoSentimentAgent.handle_message"><code class="docutils literal notranslate"><span class="pre">CryptoSentimentAgent.handle_message()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.FinanceAnalysisFlowAgent"><code class="docutils literal notranslate"><span class="pre">FinanceAnalysisFlowAgent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.PaperFlowAgent"><code class="docutils literal notranslate"><span class="pre">PaperFlowAgent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.get_market_data"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.get_market_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoMarketAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">CryptoMarketAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.get_sorted_crypto_data"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.get_sorted_crypto_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CryptoTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">CryptoTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.CailaAgent"><code class="docutils literal notranslate"><span class="pre">CailaAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CailaAgent.message_handler"><code class="docutils literal notranslate"><span class="pre">CailaAgent.message_handler()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.CailaAgent.fetch_and_transform_data"><code class="docutils literal notranslate"><span class="pre">CailaAgent.fetch_and_transform_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MemeTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">MemeTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent.name"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.OnchainTrendAgent.my_message_handler"><code class="docutils literal notranslate"><span class="pre">OnchainTrendAgent.my_message_handler()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.yield_initial_message"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.yield_initial_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.handle_metadata"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.handle_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.fetch_and_transform_data"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.fetch_and_transform_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.workers.MessariChatAgent.message_handler"><code class="docutils literal notranslate"><span class="pre">MessariChatAgent.message_handler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="router.html">router</a></li>
+      <li class="breadcrumb-item active">router.workers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/router/router.workers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.router.workers">
+<span id="router-workers"></span><h1>router.workers<a class="headerlink" href="#module-agentopera.router.workers" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.ChatAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">ChatAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/chat_agent.html#ChatAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.ChatAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting chat via an external API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.ChatAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/chat_agent.html#ChatAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.ChatAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.VercelAIAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">VercelAIAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/vercel_agent.html#VercelAIAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.VercelAIAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.VercelAIAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/vercel_agent.html#VercelAIAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.VercelAIAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariAIAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">MessariAIAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'https://api.messari.io/ai/v1'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_agent.html#MessariAIAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariAIAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A RoutedAgent that utilizes Messari AI’s streaming API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariAIAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_agent.html#MessariAIAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariAIAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages and streams AI responses from Messari with chunk tracking.
+- First chunk → <cite>TextMessage</cite> (source=”user”)
+- Middle chunks → <cite>ModelClientStreamingChunkEvent</cite>
+- Last chunk → <cite>StopMessage</cite></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoSentimentAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">CryptoSentimentAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/sentiment_agent.html#CryptoSentimentAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoSentimentAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting crypto sentiment analysis via an external API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoSentimentAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#agentopera.router.workers.CryptoSentimentAgent.name" title="Link to this definition"></a></dt>
+<dd><p>init the agent instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoSentimentAgent.get_sentiment">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'7'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/sentiment_agent.html#CryptoSentimentAgent.get_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoSentimentAgent.get_sentiment" title="Link to this definition"></a></dt>
+<dd><p>Get the crypto sentiment of the crypto market</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoSentimentAgent.handle_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/sentiment_agent.html#CryptoSentimentAgent.handle_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoSentimentAgent.handle_message" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.FinanceAnalysisFlowAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">FinanceAnalysisFlowAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/custom_flow_agent.html#FinanceAnalysisFlowAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.FinanceAnalysisFlowAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../zerocode/zerocode.html#agentopera.zerocode.BaseFlowAgent" title="agentopera.zerocode.base_flow_agent.BaseFlowAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFlowAgent</span></code></a></p>
+<p>A specific flow agent for finance analysis.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.PaperFlowAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">PaperFlowAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/custom_flow_agent.html#PaperFlowAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.PaperFlowAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../zerocode/zerocode.html#agentopera.zerocode.BaseFlowAgent" title="agentopera.zerocode.base_flow_agent.BaseFlowAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFlowAgent</span></code></a></p>
+<p>A specific flow agent for academic paper search functionality.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoMarketAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">CryptoMarketAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/market_agent.html#CryptoMarketAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoMarketAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting historical market data via an external API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoMarketAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#agentopera.router.workers.CryptoMarketAgent.name" title="Link to this definition"></a></dt>
+<dd><p>init the agent instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoMarketAgent.get_market_data">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_market_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stock_ticket_symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/market_agent.html#CryptoMarketAgent.get_market_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoMarketAgent.get_market_data" title="Link to this definition"></a></dt>
+<dd><p>Get market data for a given symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stock_ticket_symbol</strong> (<em>str</em>) – The stock ticker symbol to fetch data for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Dict with market cap</p></li>
+<li><p>Dict of historical data, where each key is a range and each value is a list of {timestamp, price}</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoMarketAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/market_agent.html#CryptoMarketAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoMarketAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoTrendAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">CryptoTrendAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/trend_agent.html#CryptoTrendAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoTrendAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting crypto trend analysis via an external API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoTrendAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#agentopera.router.workers.CryptoTrendAgent.name" title="Link to this definition"></a></dt>
+<dd><p>init the agent instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoTrendAgent.get_sorted_crypto_data">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_sorted_crypto_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'10'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'market_cap'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">market_cap_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">market_cap_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_24h_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_24h_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent_change_24h_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent_change_24h_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/trend_agent.html#CryptoTrendAgent.get_sorted_crypto_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoTrendAgent.get_sorted_crypto_data" title="Link to this definition"></a></dt>
+<dd><p>Fetches and sorts cryptocurrency data from CoinMarketCap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<em>str</em>) – The number of cryptocurrencies to retrieve. Must be an integer, default is 10.</p></li>
+<li><p><strong>sort_by</strong> (<em>str</em>) – The variable to sort by. Must be one of the supported CoinMarketCap sort parameters.</p></li>
+<li><p><strong>following</strong> (<em>The valid input should be one</em><em> of </em><em>the</em>) – “name” “symbol” “date_added” “market_cap” “market_cap_strict”</p></li>
+<li><p><strong>&quot;percent_change_7d&quot;</strong> (<em>&quot;price&quot; &quot;circulating_supply&quot; &quot;total_supply&quot; &quot;max_supply&quot; &quot;num_market_pairs&quot; &quot;volume_24h&quot; &quot;percent_change_1h&quot; &quot;percent_change_24h&quot;</em>) – </p></li>
+<li><p><strong>&quot;volume_30d&quot;</strong> (<em>&quot;market_cap_by_total_supply_strict&quot; &quot;volume_7d&quot;</em>) – </p></li>
+<li><p><strong>sort_dir</strong> (<em>str</em>) – The direction to sort. Must be either ‘asc’ or ‘desc’.</p></li>
+<li><p><strong>price_min</strong> (<em>float</em>) – The minimum price to filter by.</p></li>
+<li><p><strong>price_max</strong> (<em>float</em>) – The maximum price to filter by.</p></li>
+<li><p><strong>market_cap_min</strong> (<em>float</em>) – The minimum market cap to filter by.</p></li>
+<li><p><strong>market_cap_max</strong> (<em>float</em>) – The maximum market cap to filter by.</p></li>
+<li><p><strong>volume_24h_min</strong> (<em>float</em>) – The minimum volume to filter by.</p></li>
+<li><p><strong>volume_24h_max</strong> (<em>float</em>) – The maximum volume to filter by.</p></li>
+<li><p><strong>percent_change_24h_min</strong> (<em>float</em>) – The minimum percent change to filter by.</p></li>
+<li><p><strong>percent_change_24h_max</strong> (<em>float</em>) – The maximum percent change to filter by.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of dicts with ‘name’ and the selected sorted variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CryptoTrendAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/trend_agent.html#CryptoTrendAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CryptoTrendAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.CailaAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">CailaAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/caila_agent.html#CailaAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CailaAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DeveloperAgent</span></code></p>
+<p>Caila agent for weather information.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CailaAgent.message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/caila_agent.html#CailaAgent.message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CailaAgent.message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages and streams response chunks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.CailaAgent.fetch_and_transform_data">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fetch_and_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/caila_agent.html#CailaAgent.fetch_and_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.CailaAgent.fetch_and_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Fetch data from the Caila agent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.MemeTrendAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">MemeTrendAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/meme_trend_agent.html#MemeTrendAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MemeTrendAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting meme trend analysis via an external API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.router.workers.MemeTrendAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#agentopera.router.workers.MemeTrendAgent.name" title="Link to this definition"></a></dt>
+<dd><p>init the agent instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MemeTrendAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/meme_trend_agent.html#MemeTrendAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MemeTrendAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.OnchainTrendAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">OnchainTrendAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/workers/onchain_trend_agent.html#OnchainTrendAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.OnchainTrendAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<p>A specialized agent for conducting onchain trend analysis via an external API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.router.workers.OnchainTrendAgent.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#agentopera.router.workers.OnchainTrendAgent.name" title="Link to this definition"></a></dt>
+<dd><p>init the agent instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.OnchainTrendAgent.my_message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">my_message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/onchain_trend_agent.html#OnchainTrendAgent.my_message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.OnchainTrendAgent.my_message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages, performing deep research and streaming responses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariChatAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.workers.</span></span><span class="sig-name descname"><span class="pre">MessariChatAgent</span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_chat_agent.html#MessariChatAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariChatAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DeveloperAgent</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariChatAgent.yield_initial_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yield_initial_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_first_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_chat_agent.html#MessariChatAgent.yield_initial_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariChatAgent.yield_initial_message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariChatAgent.handle_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_first_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_chat_agent.html#MessariChatAgent.handle_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariChatAgent.handle_metadata" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariChatAgent.fetch_and_transform_data">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fetch_and_transform_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_chat_agent.html#MessariChatAgent.fetch_and_transform_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariChatAgent.fetch_and_transform_data" title="Link to this definition"></a></dt>
+<dd><p>Streams responses from an external API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.workers.MessariChatAgent.message_handler">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">message_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/workers/messari_chat_agent.html#MessariChatAgent.message_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.workers.MessariChatAgent.message_handler" title="Link to this definition"></a></dt>
+<dd><p>Handles messages and streams response chunks.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="router.html" class="btn btn-neutral float-left" title="router" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="router.user.html" class="btn btn-neutral float-right" title="router.user" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

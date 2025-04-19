@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.mcp.factory &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.mcp.factory</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.mcp.factory</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">McpServerParams</span><span class="p">,</span> <span class="n">SseServerParams</span><span class="p">,</span> <span class="n">StdioServerParams</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_mcp_server_session</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.sse</span><span class="w"> </span><span class="kn">import</span> <span class="n">SseMcpToolAdapter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.stdio</span><span class="w"> </span><span class="kn">import</span> <span class="n">StdioMcpToolAdapter</span>
+
+
+<div class="viewcode-block" id="mcp_server_tools">
+<a class="viewcode-back" href="../../../mcp/mcp.html#agentopera.mcp.mcp_server_tools">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">mcp_server_tools</span><span class="p">(</span>
+    <span class="n">server_params</span><span class="p">:</span> <span class="n">McpServerParams</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">StdioMcpToolAdapter</span> <span class="o">|</span> <span class="n">SseMcpToolAdapter</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a list of MCP tool adapters that can be used with AgentOpera agents.</span>
+
+<span class="sd">    This factory function connects to an MCP server and returns adapters for all available tools.</span>
+<span class="sd">    The adapters can be directly assigned to an AgentOpera agent&#39;s tools list.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        server_params (McpServerParams): Connection parameters for the MCP server.</span>
+<span class="sd">            Can be either StdioServerParams for command-line tools or</span>
+<span class="sd">            SseServerParams for HTTP/SSE services.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list[StdioMcpToolAdapter | SseMcpToolAdapter]: A list of tool adapters ready to use</span>
+<span class="sd">            with AgentOpera agents.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        **Local file system MCP service over standard I/O example:**</span>
+
+<span class="sd">        Install the filesystem server package from npm (requires Node.js 16+ and npm).</span>
+
+<span class="sd">        .. code-block:: bash</span>
+
+<span class="sd">            npm install -g @modelcontextprotocol/server-filesystem</span>
+
+<span class="sd">        Create an agent that can use all tools from the local filesystem MCP server.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from pathlib import Path</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.agents.tools.mcp import StdioServerParams, mcp_server_tools</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Setup server params for local filesystem access</span>
+<span class="sd">                desktop = str(Path.home() / &quot;Desktop&quot;)</span>
+<span class="sd">                server_params = StdioServerParams(</span>
+<span class="sd">                    command=&quot;npx.cmd&quot;, args=[&quot;-y&quot;, &quot;@modelcontextprotocol/server-filesystem&quot;, desktop]</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Get all available tools from the server</span>
+<span class="sd">                tools = await mcp_server_tools(server_params)</span>
+
+<span class="sd">                # Create an agent that can use all the tools</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    name=&quot;file_manager&quot;,</span>
+<span class="sd">                    model_client=OpenAIChatCompletionClient(model=&quot;gpt-4&quot;),</span>
+<span class="sd">                    tools=tools,  # type: ignore</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # The agent can now use any of the filesystem tools</span>
+<span class="sd">                await agent.run(task=&quot;Create a file called test.txt with some content&quot;, cancellation_token=CancellationToken())</span>
+
+
+<span class="sd">            if __name__ == &quot;__main__&quot;:</span>
+<span class="sd">                asyncio.run(main())</span>
+
+<span class="sd">        **Local fetch MCP service over standard I/O example:**</span>
+
+<span class="sd">        Install the `mcp-server-fetch` package.</span>
+
+<span class="sd">        .. code-block:: bash</span>
+
+<span class="sd">            pip install mcp-server-fetch</span>
+
+<span class="sd">        Create an agent that can use the `fetch` tool from the local MCP server.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.agents.tools.mcp import StdioServerParams, mcp_server_tools</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Get the fetch tool from mcp-server-fetch.</span>
+<span class="sd">                fetch_mcp_server = StdioServerParams(command=&quot;uvx&quot;, args=[&quot;mcp-server-fetch&quot;])</span>
+<span class="sd">                tools = await mcp_server_tools(fetch_mcp_server)</span>
+
+<span class="sd">                # Create an agent that can use the fetch tool.</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+<span class="sd">                agent = AssistantAgent(name=&quot;fetcher&quot;, model_client=model_client, tools=tools, reflect_on_tool_use=True)  # type: ignore</span>
+
+<span class="sd">                # Let the agent fetch the content of a URL and summarize it.</span>
+<span class="sd">                result = await agent.run(task=&quot;Summarize the content of https://en.wikipedia.org/wiki/Seattle&quot;)</span>
+<span class="sd">                print(result.messages[-1].content)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">        **Remote MCP service over SSE example:**</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from agentopera.agents.tools.mcp import SseServerParams, mcp_server_tools</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Setup server params for remote service</span>
+<span class="sd">                server_params = SseServerParams(url=&quot;https://api.example.com/mcp&quot;, headers={&quot;Authorization&quot;: &quot;Bearer token&quot;})</span>
+
+<span class="sd">                # Get all available tools</span>
+<span class="sd">                tools = await mcp_server_tools(server_params)</span>
+
+<span class="sd">                # Create an agent with all tools</span>
+<span class="sd">                agent = AssistantAgent(name=&quot;tool_user&quot;, model_client=OpenAIChatCompletionClient(model=&quot;gpt-4&quot;), tools=tools)  # type: ignore</span>
+
+<span class="sd">    For more examples and detailed usage, see the samples directory in the package repository.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">create_mcp_server_session</span><span class="p">(</span><span class="n">server_params</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">server_params</span><span class="p">,</span> <span class="n">StdioServerParams</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">StdioMcpToolAdapter</span><span class="p">(</span><span class="n">server_params</span><span class="o">=</span><span class="n">server_params</span><span class="p">,</span> <span class="n">tool</span><span class="o">=</span><span class="n">tool</span><span class="p">)</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="o">.</span><span class="n">tools</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">server_params</span><span class="p">,</span> <span class="n">SseServerParams</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">SseMcpToolAdapter</span><span class="p">(</span><span class="n">server_params</span><span class="o">=</span><span class="n">server_params</span><span class="p">,</span> <span class="n">tool</span><span class="o">=</span><span class="n">tool</span><span class="p">)</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="o">.</span><span class="n">tools</span><span class="p">]</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported server params type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">server_params</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

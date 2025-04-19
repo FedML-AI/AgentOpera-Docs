@@ -1,0 +1,14 @@
+tools
+=====
+
+.. automodule:: agentopera.tools
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   tools.http
+   tools.code_execution 

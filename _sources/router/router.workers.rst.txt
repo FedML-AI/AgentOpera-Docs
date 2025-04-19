@@ -1,0 +1,8 @@
+router.workers
+==============
+
+.. automodule:: agentopera.router.workers
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

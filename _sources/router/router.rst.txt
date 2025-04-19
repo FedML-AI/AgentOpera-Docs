@@ -1,0 +1,16 @@
+router
+======
+
+.. automodule:: agentopera.router
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   router.test
+   router.workers
+   router.user
+   router.session 

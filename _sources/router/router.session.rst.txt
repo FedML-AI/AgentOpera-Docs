@@ -1,0 +1,8 @@
+router.session
+==============
+
+.. automodule:: agentopera.router.session
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

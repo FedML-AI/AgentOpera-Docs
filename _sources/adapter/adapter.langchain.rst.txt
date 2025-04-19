@@ -1,0 +1,8 @@
+adapter.langchain
+================
+
+.. automodule:: agentopera.adapter.langchain
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

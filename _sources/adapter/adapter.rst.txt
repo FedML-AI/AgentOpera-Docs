@@ -1,0 +1,13 @@
+adapter
+=======
+
+.. automodule:: agentopera.adapter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 
+
+.. toctree::
+   :maxdepth: 1
+   
+   adapter.langchain 

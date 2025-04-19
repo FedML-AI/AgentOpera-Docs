@@ -1,0 +1,13 @@
+types
+=====
+
+.. automodule:: agentopera.types
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   types.cache_store 

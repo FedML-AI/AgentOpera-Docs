@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.router.semantic_router_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.router.semantic_router_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.router.semantic_router_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMessage</span><span class="p">,</span> <span class="n">MultiModalMessage</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.msg_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultMessageChannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.msg_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">message_handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.utils.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.semantic_router_components</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentRegistryBase</span><span class="p">,</span> <span class="n">IntentClassifierBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">AUTO_MODE_MODEL_INDENTIFIER</span><span class="p">,</span> <span class="n">VERCEL_PROVIDED_GROUPS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..ui.vercel_ai_request</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserRequestMetadata</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.user.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">USER_CONTEXT</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.utils.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">ROUTER_TIMEOUT_IN_SECONDS</span> <span class="o">=</span> <span class="mf">50.0</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">posthog</span><span class="w"> </span><span class="kn">import</span> <span class="n">Posthog</span>
+
+<div class="viewcode-block" id="SemanticRouterAgent">
+<a class="viewcode-back" href="../../../router/router.html#agentopera.router.SemanticRouterAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SemanticRouterAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;Semantic Router Agent&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">posthog</span> <span class="o">=</span> <span class="n">Posthog</span><span class="p">(</span><span class="n">project_api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;NEXT_PUBLIC_POSTHOG_KEY&#39;</span><span class="p">),</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;https://us.i.posthog.com&#39;</span><span class="p">,</span> <span class="n">enable_exception_autocapture</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        
+<div class="viewcode-block" id="SemanticRouterAgent.initialize">
+<a class="viewcode-back" href="../../../router/router.html#agentopera.router.SemanticRouterAgent.initialize">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">agent_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">agent_id</span><span class="o">.</span><span class="n">key</span>
+        <span class="n">intent</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">registry</span> <span class="o">=</span> <span class="k">await</span> <span class="n">USER_CONTEXT</span><span class="o">.</span><span class="n">get_or_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span> <span class="o">=</span> <span class="n">classifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span> <span class="o">=</span> <span class="n">registry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Router Init] user=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="si">}</span><span class="s2">, intents=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intent</span><span class="o">.</span><span class="n">intent_descriptions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+    <span class="c1"># The User has sent a message that needs to be routed</span>
+<div class="viewcode-block" id="SemanticRouterAgent.route_to_agent">
+<a class="viewcode-back" href="../../../router/router.html#agentopera.router.SemanticRouterAgent.route_to_agent">[docs]</a>
+    <span class="nd">@message_handler</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">route_to_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TextMessage</span> <span class="o">|</span> <span class="n">MultiModalMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialized</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">ctx</span><span class="o">.</span><span class="n">message_channel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+         <span class="c1"># Rebuild context from user-specific config</span>
+        <span class="n">intent</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">registry</span> <span class="o">=</span> <span class="k">await</span> <span class="n">USER_CONTEXT</span><span class="o">.</span><span class="n">get_or_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span> <span class="o">=</span> <span class="n">classifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span> <span class="o">=</span> <span class="n">registry</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Router Config Reloaded] user=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="si">}</span><span class="s2">, intents=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">intent</span><span class="o">.</span><span class="n">intent_descriptions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Intent Mapping] </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span><span class="o">.</span><span class="n">intent_registry</span><span class="o">.</span><span class="n">agent_intent_mapping</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># each user has a unique session_id</span>
+        <span class="n">session_id</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;session_id&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="c1"># classify which agent to route the message</span>
+        <span class="n">agent_id</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_agent_id</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="c1"># Log the selected agent id with session_id </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_log</span><span class="p">(</span><span class="n">agent_id</span><span class="o">=</span><span class="n">agent_id</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
+
+        <span class="n">group</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Router </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> ===&gt; agent_id = </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">, session_id = </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">, group = </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">contact_agent</span><span class="p">(</span><span class="n">agent_id</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">session_id</span><span class="p">)</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_determine_agent_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TextMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determine the correct agent based on message metadata or intent.&quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Step 1: Check frontend specification</span>
+        <span class="n">frontend_agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_user_frontend_specification</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">frontend_agent</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">frontend_agent</span>
+
+        <span class="c1"># Step 2: Check if a specific model is provided</span>
+        <span class="k">if</span> <span class="n">model</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">model</span> <span class="o">!=</span> <span class="n">AUTO_MODE_MODEL_INDENTIFIER</span><span class="p">:</span>
+                <span class="c1"># If a model is explicitly provided and is not &quot;chainopera-default&quot;:</span>
+                <span class="c1"># 1. If the model name is registered in the agent registry, use it as the agent_id.</span>
+                <span class="c1"># 2. If the model is not registered, assume it is managed by the Vercel backend </span>
+                <span class="c1">#    and assign &quot;vercel&quot; as the agent_id.</span>
+
+                <span class="n">agents</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">get_agents</span><span class="p">()</span>
+                <span class="n">agent_id</span> <span class="o">=</span> <span class="n">model</span> <span class="k">if</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">agents</span> <span class="k">else</span> <span class="s2">&quot;vercel&quot;</span>
+
+                <span class="c1"># classify intent for group validation</span>
+                <span class="k">if</span> <span class="n">agent_id</span> <span class="o">==</span> <span class="s2">&quot;vercel&quot;</span><span class="p">:</span>
+                    <span class="n">intent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identify_intent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+                    <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_vercel_group</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">agent_id</span>
+
+        <span class="c1"># Step 3: No specific model → Classify intent</span>
+        <span class="n">intent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_identify_intent</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="n">agent_id</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_agent</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+
+        <span class="c1"># Step 4: Update &quot;group&quot; for Vercel AI Agent</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="o">==</span> <span class="n">AUTO_MODE_MODEL_INDENTIFIER</span> <span class="ow">and</span> <span class="n">agent_id</span> <span class="o">==</span> <span class="s2">&quot;vercel&quot;</span><span class="p">:</span>
+            <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_vercel_group</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">agent_id</span>
+
+    <span class="c1">## Identify the intent of the user message</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_identify_intent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TextMessage</span> <span class="o">|</span> <span class="n">MultiModalMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classifier</span><span class="o">.</span><span class="n">classify_intent</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ROUTER_TIMEOUT_IN_SECONDS</span><span class="p">)</span>
+
+    <span class="c1">## Use a lookup, search, or LLM to identify the most relevant agent for the intent</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_find_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Identified intent: </span><span class="si">{</span><span class="n">intent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">agent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">get_agent</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">agent</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No relevant agent found for intent: &quot;</span> <span class="o">+</span> <span class="n">intent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;termination&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_user_frontend_specification</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TextMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks the frontend group specification for routing.</span>
+
+<span class="sd">        If the user specifies the group as &quot;extreme,&quot; the request is routed to &quot;vercel.&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message (TextMessage): The user message.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[str]: &quot;vercel&quot; if the group is &quot;extreme,&quot; otherwise None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">UserRequestMetadata</span><span class="o">.</span><span class="n">decode_headers</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;headers&quot;</span><span class="p">,</span> <span class="p">{}))</span>
+        <span class="k">if</span> <span class="s2">&quot;x-chat-mode&quot;</span> <span class="ow">in</span> <span class="n">headers</span> <span class="ow">and</span> <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;x-chat-mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;reasoning&quot;</span><span class="p">:</span>
+            <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;chainopera-think&quot;</span>
+            <span class="k">return</span> <span class="s2">&quot;vercel&quot;</span>
+
+        <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;extreme&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;vercel&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_determine_vercel_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intent</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determines the correct group for Vercel-provided agents based on intent.</span>
+
+<span class="sd">        - Special case: `deep_research_intent` → `&quot;extreme&quot;`</span>
+<span class="sd">        - Other intents must be in `&lt;group&gt;_intent` format.</span>
+<span class="sd">        - If valid, extracts `&lt;group&gt;` from `&lt;group&gt;_intent`.</span>
+<span class="sd">        - If invalid, defaults to `&quot;chat&quot;`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            intent (str): The classified intent.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The determined group.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">intent</span> <span class="o">==</span> <span class="s2">&quot;deep_research_intent&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;extreme&quot;</span>
+
+        <span class="k">if</span> <span class="n">intent</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_intent&quot;</span><span class="p">):</span>
+            <span class="n">group</span> <span class="o">=</span> <span class="n">intent</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Extract group before &quot;_intent&quot;</span>
+            <span class="k">if</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">VERCEL_PROVIDED_GROUPS</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">group</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected intent format or invalid group: </span><span class="si">{</span><span class="n">intent</span><span class="si">}</span><span class="s2">. Defaulting to &#39;chat&#39;.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;chat&quot;</span>  <span class="c1"># Default fallback</span>
+    
+<div class="viewcode-block" id="SemanticRouterAgent.event_log">
+<a class="viewcode-back" href="../../../router/router.html#agentopera.router.SemanticRouterAgent.event_log">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">event_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Logs the agent selection event to PostHog.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            session_id (str): The ID of the current customer session.</span>
+<span class="sd">            agent_id (str): The ID of the agent handling the message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;$set&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;agent_id&quot;</span><span class="p">:</span> <span class="n">agent_id</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">posthog</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span>
+            <span class="n">distinct_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;/api/chat: </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">event</span><span class="o">=</span><span class="s2">&quot;chat&quot;</span><span class="p">,</span>
+            <span class="n">properties</span><span class="o">=</span><span class="n">properties</span>
+        <span class="p">)</span></div>
+
+
+    <span class="c1">## Forward user message to the appropriate agent, or end the thread.</span>
+<div class="viewcode-block" id="SemanticRouterAgent.contact_agent">
+<a class="viewcode-back" href="../../../router/router.html#agentopera.router.SemanticRouterAgent.contact_agent">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">contact_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TextMessage</span> <span class="o">|</span> <span class="n">MultiModalMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">,</span> <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Routing to agent_type </span><span class="si">{}</span><span class="s2">, content = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">agent_name</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">else</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">TextMessage</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;routing text message with message id </span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">message_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish_message</span><span class="p">(</span>
+                <span class="n">TextMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> 
+                    <span class="n">context</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">context</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> 
+                    <span class="n">metadata</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                <span class="n">DefaultMessageChannel</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">session_id</span><span class="p">),</span>
+                <span class="n">message_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">message_id</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;routing to multi modal message&quot;</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">publish_message</span><span class="p">(</span>
+                <span class="n">MultiModalMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">message</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                <span class="n">DefaultMessageChannel</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">session_id</span><span class="p">),</span>
+                <span class="n">message_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">message_id</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;publish_message is done for agent_type </span><span class="si">{}</span><span class="s2">, message_id = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">agent_name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">message_id</span><span class="p">))</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+agents
+======
+
+.. automodule:: agentopera.agents
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   agents.openai
+   agents.magentic_one
+   agents.magentic_one_team
+   agents.web_surfer
+   agents.video_surfer
+   agents.file_surfer
+   agents.code_executor 

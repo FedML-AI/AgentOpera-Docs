@@ -1,0 +1,19 @@
+models
+======
+
+.. automodule:: agentopera.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   models.openai
+   models.anthropic
+   models.azure
+   models.ollama
+   models.replay
+   models.cache
+   models.utils 

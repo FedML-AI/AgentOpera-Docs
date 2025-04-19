@@ -1,0 +1,8 @@
+agents.web_surfer
+================
+
+.. automodule:: agentopera.agents.web_surfer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

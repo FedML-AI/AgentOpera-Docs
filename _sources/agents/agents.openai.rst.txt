@@ -1,0 +1,8 @@
+agents.openai
+=============
+
+.. automodule:: agentopera.agents.openai
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

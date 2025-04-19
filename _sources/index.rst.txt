@@ -34,3 +34,90 @@ from the source code docstrings.
    engine/engine.runtime
    engine/engine.telemetry
    engine/engine.types
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Agents Module
+   
+   agents/agents
+   agents/agents.openai
+   agents/agents.magentic_one
+   agents/agents.magentic_one_team
+   agents/agents.web_surfer
+   agents/agents.video_surfer
+   agents/agents.file_surfer
+   agents/agents.code_executor
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Router Module
+   
+   router/router
+   router/router.workers
+   router/router.user
+   router/router.session
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Models Module
+   
+   models/models
+   models/models.openai
+   models/models.anthropic
+   models/models.azure
+   models/models.ollama
+   models/models.replay
+   models/models.cache
+   models/models.utils
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Memory Module
+   
+   memory/memory
+   memory/memory.graphrag
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Tools Module
+   
+   tools/tools
+   tools/tools.http
+   tools/tools.code_execution
+
+.. toctree::
+   :maxdepth: 4
+   :caption: UI Module
+   
+   ui/ui
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Utils Module
+   
+   utils/utils
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Adapter Module
+   
+   adapter/adapter
+   adapter/adapter.langchain
+
+.. toctree::
+   :maxdepth: 4
+   :caption: MCP Module
+   
+   mcp/mcp
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Zerocode Module
+   
+   zerocode/zerocode
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Edge Module
+   
+   edge/edge

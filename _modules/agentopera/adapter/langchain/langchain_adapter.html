@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.adapter.langchain.langchain_adapter &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.adapter.langchain.langchain_adapter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.adapter.langchain.langchain_adapter</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">create_model</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTool</span> <span class="k">as</span> <span class="n">LangChainTool</span>
+
+
+<div class="viewcode-block" id="LangChainToolAdapter">
+<a class="viewcode-back" href="../../../../adapter/adapter.langchain.html#agentopera.adapter.langchain.LangChainToolAdapter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LangChainToolAdapter</span><span class="p">(</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Allows you to wrap a LangChain tool and make it available to agentopera.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        This class requires the :code:`langchain` extra for the :code:`agentopera` package.</span>
+
+<span class="sd">        .. code-block:: bash</span>
+
+<span class="sd">            pip install -U &quot;agentopera[langchain]&quot;</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        langchain_tool (LangChainTool): A LangChain tool to wrap</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        Use the `PythonAstREPLTool` from the `langchain_experimental` package to</span>
+<span class="sd">        create a tool that allows you to interact with a Pandas DataFrame.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            import pandas as pd</span>
+<span class="sd">            from langchain_experimental.tools.python.tool import PythonAstREPLTool</span>
+<span class="sd">            from agentopera.agents.tools.langchain import LangChainToolAdapter</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                df = pd.read_csv(&quot;https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/titanic.csv&quot;)  # type: ignore</span>
+<span class="sd">                tool = LangChainToolAdapter(PythonAstREPLTool(locals={&quot;df&quot;: df}))</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    &quot;assistant&quot;,</span>
+<span class="sd">                    tools=[tool],</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    system_message=&quot;Use the `df` variable to access the dataset.&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                await Console(</span>
+<span class="sd">                    agent.on_messages_stream(</span>
+<span class="sd">                        [TextMessage(content=&quot;What&#39;s the average age of the passengers?&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        This example demonstrates how to use the `SQLDatabaseToolkit` from the `langchain_community`</span>
+<span class="sd">        package to interact with an SQLite database.</span>
+<span class="sd">        It uses the :class:`~agentopera.chatflow.team.RoundRobinGroupChat` to iterate the single agent over multiple steps.</span>
+<span class="sd">        If you want to one step at a time, you can just call `run_stream` method of the</span>
+<span class="sd">        :class:`~agentopera.chatflow.agents.AssistantAgent` class directly.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            import sqlite3</span>
+
+<span class="sd">            import requests</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.conditions import TextMentionTermination</span>
+<span class="sd">            from agentopera.chatflow.teams import RoundRobinGroupChat</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.agents.tools.langchain import LangChainToolAdapter</span>
+<span class="sd">            from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit</span>
+<span class="sd">            from langchain_community.utilities.sql_database import SQLDatabase</span>
+<span class="sd">            from langchain_openai import ChatOpenAI</span>
+<span class="sd">            from sqlalchemy import Engine, create_engine</span>
+<span class="sd">            from sqlalchemy.pool import StaticPool</span>
+
+
+<span class="sd">            def get_engine_for_chinook_db() -&gt; Engine:</span>
+<span class="sd">                url = &quot;https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sql&quot;</span>
+<span class="sd">                response = requests.get(url)</span>
+<span class="sd">                sql_script = response.text</span>
+<span class="sd">                connection = sqlite3.connect(&quot;:memory:&quot;, check_same_thread=False)</span>
+<span class="sd">                connection.executescript(sql_script)</span>
+<span class="sd">                return create_engine(</span>
+<span class="sd">                    &quot;sqlite://&quot;,</span>
+<span class="sd">                    creator=lambda: connection,</span>
+<span class="sd">                    poolclass=StaticPool,</span>
+<span class="sd">                    connect_args={&quot;check_same_thread&quot;: False},</span>
+<span class="sd">                )</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create the engine and database wrapper.</span>
+<span class="sd">                engine = get_engine_for_chinook_db()</span>
+<span class="sd">                db = SQLDatabase(engine)</span>
+
+<span class="sd">                # Create the toolkit.</span>
+<span class="sd">                llm = ChatOpenAI(temperature=0)</span>
+<span class="sd">                toolkit = SQLDatabaseToolkit(db=db, llm=llm)</span>
+
+<span class="sd">                # Create the LangChain tool adapter for every tool in the toolkit.</span>
+<span class="sd">                tools = [LangChainToolAdapter(tool) for tool in toolkit.get_tools()]</span>
+
+<span class="sd">                # Create the chat completion client.</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(model=&quot;gpt-4o&quot;)</span>
+
+<span class="sd">                # Create the assistant agent.</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    &quot;assistant&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    tools=tools,  # type: ignore</span>
+<span class="sd">                    model_client_stream=True,</span>
+<span class="sd">                    system_message=&quot;Respond with &#39;TERMINATE&#39; if the task is completed.&quot;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Create termination condition.</span>
+<span class="sd">                termination = TextMentionTermination(&quot;TERMINATE&quot;)</span>
+
+<span class="sd">                # Create a round-robin group chat to iterate the single agent over multiple steps.</span>
+<span class="sd">                chat = RoundRobinGroupChat([agent], termination_condition=termination)</span>
+
+<span class="sd">                # Run the chat.</span>
+<span class="sd">                await Console(chat.run_stream(task=&quot;Show some tables in the database&quot;))</span>
+
+
+<span class="sd">            if __name__ == &quot;__main__&quot;:</span>
+<span class="sd">                asyncio.run(main())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">langchain_tool</span><span class="p">:</span> <span class="n">LangChainTool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="p">:</span> <span class="n">LangChainTool</span> <span class="o">=</span> <span class="n">langchain_tool</span>
+
+        <span class="c1"># Extract name and description</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="c1"># Determine the callable method</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="p">,</span> <span class="s2">&quot;func&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">func</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">func</span>  <span class="c1"># type: ignore</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="p">,</span> <span class="s2">&quot;_run&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">_run</span><span class="p">):</span>  <span class="c1"># type: ignore</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">_run</span>  <span class="c1"># type: ignore</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The provided LangChain tool &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; does not have a callable &#39;func&#39; or &#39;_run&#39; method.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Determine args_type</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">args_schema</span><span class="p">:</span>  <span class="c1"># pyright: ignore</span>
+            <span class="n">args_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_langchain_tool</span><span class="o">.</span><span class="n">args_schema</span>  <span class="c1"># pyright: ignore</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Infer args_type from the callable&#39;s signature</span>
+            <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+            <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">annotation</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">&quot;self&quot;</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">Parameter</span><span class="o">.</span><span class="n">VAR_POSITIONAL</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">Parameter</span><span class="o">.</span><span class="n">VAR_KEYWORD</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="n">args_type</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">Args&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">fields</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="c1"># Note: type ignore is used due to a LangChain typing limitation</span>
+
+        <span class="c1"># Ensure args_type is a subclass of BaseModel</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">args_type</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to create a valid Pydantic v2 model for </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Assume return_type as Any if not specified</span>
+        <span class="n">return_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">object</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">args_type</span><span class="p">,</span> <span class="n">return_type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LangChainToolAdapter.run">
+<a class="viewcode-back" href="../../../../adapter/adapter.langchain.html#agentopera.adapter.langchain.LangChainToolAdapter.run">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="c1"># Prepare arguments</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+
+        <span class="c1"># Determine if the callable is asynchronous</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Run in a thread to avoid blocking the event loop</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_call_sync</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_call_sync</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callable</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

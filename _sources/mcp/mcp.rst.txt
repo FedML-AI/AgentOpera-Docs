@@ -1,0 +1,8 @@
+mcp
+===
+
+.. automodule:: agentopera.mcp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

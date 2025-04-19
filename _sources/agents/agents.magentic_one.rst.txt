@@ -1,0 +1,8 @@
+agents.magentic_one
+=================
+
+.. automodule:: agentopera.agents.magentic_one
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agents.video_surfer &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="agents.file_surfer" href="agents.file_surfer.html" />
+    <link rel="prev" title="agents.web_surfer" href="agents.web_surfer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.video_surfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.agents.video_surfer.VideoSurfer"><code class="docutils literal notranslate"><span class="pre">VideoSurfer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_DESCRIPTION"><code class="docutils literal notranslate"><span class="pre">VideoSurfer.DEFAULT_DESCRIPTION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_SYSTEM_MESSAGE"><code class="docutils literal notranslate"><span class="pre">VideoSurfer.DEFAULT_SYSTEM_MESSAGE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.agents.video_surfer.VideoSurfer.vs_transribe_video_screenshot"><code class="docutils literal notranslate"><span class="pre">VideoSurfer.vs_transribe_video_screenshot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="agents.html">agents</a></li>
+      <li class="breadcrumb-item active">agents.video_surfer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/agents/agents.video_surfer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="agents-video-surfer">
+<h1>agents.video_surfer<a class="headerlink" href="#agents-video-surfer" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-agentopera.agents.video_surfer">
+<dt class="sig sig-object py" id="agentopera.agents.video_surfer.VideoSurfer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.agents.video_surfer.</span></span><span class="sig-name descname"><span class="pre">VideoSurfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ChatCompletionClient</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.BaseTool" title="agentopera.engine.function_call.base.BaseTool"><span class="pre">BaseTool</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BaseModel</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">BaseModel</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/agents/video_surfer/video_surfer.html#VideoSurfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.video_surfer.VideoSurfer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent" title="agentopera.chatflow.agents.assistant_agent.AssistantAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssistantAgent</span></code></a></p>
+<p>VideoSurfer is a specialized agent designed to answer questions about a local video file.</p>
+<p>Installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;agentopera[video-surfer]&quot;</span>
+</pre></div>
+</div>
+<p>This agent utilizes various tools to extract information from the video, such as its length, screenshots at specific timestamps, and audio transcriptions. It processes these elements to provide detailed answers to user queries.</p>
+<p>Available tools:</p>
+<ul class="simple">
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">extract_audio()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">get_video_length()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">transcribe_audio_with_timestamps()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">get_screenshot_at()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">save_screenshot()</span></code></p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">transcribe_video_screenshot()</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the agent.</p></li>
+<li><p><strong>model_client</strong> (<em>ChatCompletionClient</em>) – The model client used for generating responses.</p></li>
+<li><p><strong>tools</strong> (<em>List</em><em>[</em><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.BaseTool" title="agentopera.engine.function_call.BaseTool"><em>BaseTool</em></a><em>[</em><em>BaseModel</em><em>, </em><em>BaseModel</em><em>]  </em><em>| </em><em>Callable</em><em>[</em><em>...</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>Callable</em><em>[</em><em>...</em><em>, </em><em>Awaitable</em><em>[</em><em>Any</em><em>]</em><em>]</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – A list of tools or functions the agent can use. If not provided, defaults to all video tools from the action space.</p></li>
+<li><p><strong>description</strong> (<em>str</em><em>, </em><em>optional</em>) – A brief description of the agent. Defaults to “An agent that can answer questions about a local video.”.</p></li>
+<li><p><strong>system_message</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The system message guiding the agent’s behavior. Defaults to a predefined message.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example usage:</p>
+<p>The following example demonstrates how to create an video surfing agent with
+a model client and generate a response to a simple query about a local video
+called video.mp4.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextMentionTermination</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">RoundRobinGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.agents.video_surfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoSurfer</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main function to run the video agent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Define an agent</span>
+    <span class="n">video_agent</span> <span class="o">=</span> <span class="n">VideoSurfer</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VideoSurfer&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-2024-08-06&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Define termination condition</span>
+    <span class="n">termination</span> <span class="o">=</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Define a team</span>
+    <span class="n">agent_team</span> <span class="o">=</span> <span class="n">RoundRobinGroupChat</span><span class="p">([</span><span class="n">video_agent</span><span class="p">],</span> <span class="n">termination_condition</span><span class="o">=</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="c1"># Run the team and stream messages to the console</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">agent_team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;How does Adam define complex tasks in video.mp4? What concrete example of complex does his use? Can you save this example to disk as well?&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The following example demonstrates how to create and use a VideoSurfer and UserProxyAgent with MagenticOneGroupChat.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.teams</span><span class="w"> </span><span class="kn">import</span> <span class="n">MagenticOneGroupChat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserProxyAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.agents.video_surfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoSurfer</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main function to run the video agent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-2024-08-06&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Define an agent</span>
+    <span class="n">video_agent</span> <span class="o">=</span> <span class="n">VideoSurfer</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VideoSurfer&quot;</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span>
+        <span class="p">)</span>
+
+    <span class="n">web_surfer_agent</span> <span class="o">=</span> <span class="n">UserProxyAgent</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;User&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Define a team</span>
+    <span class="n">agent_team</span> <span class="o">=</span> <span class="n">MagenticOneGroupChat</span><span class="p">([</span><span class="n">web_surfer_agent</span><span class="p">,</span> <span class="n">video_agent</span><span class="p">],</span> <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,)</span>
+
+    <span class="c1"># Run the team and stream messages to the console</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">agent_team</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="s2">&quot;Find a latest video about magentic one on youtube and extract quotes from it that make sense.&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.agents.video_surfer.VideoSurfer.DEFAULT_DESCRIPTION">
+<span class="sig-name descname"><span class="pre">DEFAULT_DESCRIPTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'An</span> <span class="pre">agent</span> <span class="pre">that</span> <span class="pre">can</span> <span class="pre">answer</span> <span class="pre">questions</span> <span class="pre">about</span> <span class="pre">a</span> <span class="pre">local</span> <span class="pre">video.'</span></em><a class="headerlink" href="#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_DESCRIPTION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.agents.video_surfer.VideoSurfer.DEFAULT_SYSTEM_MESSAGE">
+<span class="sig-name descname"><span class="pre">DEFAULT_SYSTEM_MESSAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'\n</span>&#160;&#160;&#160; <span class="pre">You</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">agent</span> <span class="pre">that</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">expert</span> <span class="pre">at</span> <span class="pre">answering</span> <span class="pre">questions</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">video.\n</span>&#160;&#160;&#160; <span class="pre">When</span> <span class="pre">asked</span> <span class="pre">to</span> <span class="pre">answer</span> <span class="pre">a</span> <span class="pre">question</span> <span class="pre">about</span> <span class="pre">a</span> <span class="pre">video,</span> <span class="pre">you</span> <span class="pre">should:\n</span>&#160;&#160;&#160; <span class="pre">1.</span> <span class="pre">Check</span> <span class="pre">if</span> <span class="pre">that</span> <span class="pre">video</span> <span class="pre">is</span> <span class="pre">available</span> <span class="pre">locally.\n</span>&#160;&#160;&#160; <span class="pre">2.</span> <span class="pre">Use</span> <span class="pre">the</span> <span class="pre">transcription</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">which</span> <span class="pre">part</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">video</span> <span class="pre">the</span> <span class="pre">question</span> <span class="pre">is</span> <span class="pre">referring</span> <span class="pre">to.\n</span>&#160;&#160;&#160; <span class="pre">3.</span> <span class="pre">Optionally</span> <span class="pre">use</span> <span class="pre">screenshots</span> <span class="pre">from</span> <span class="pre">those</span> <span class="pre">timestamps\n</span>&#160;&#160;&#160; <span class="pre">4.</span> <span class="pre">Provide</span> <span class="pre">a</span> <span class="pre">detailed</span> <span class="pre">answer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">question.\n</span>&#160;&#160;&#160; <span class="pre">Reply</span> <span class="pre">with</span> <span class="pre">TERMINATE</span> <span class="pre">when</span> <span class="pre">the</span> <span class="pre">task</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">completed.\n</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#agentopera.agents.video_surfer.VideoSurfer.DEFAULT_SYSTEM_MESSAGE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.agents.video_surfer.VideoSurfer.vs_transribe_video_screenshot">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vs_transribe_video_screenshot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/agents/video_surfer/video_surfer.html#VideoSurfer.vs_transribe_video_screenshot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.agents.video_surfer.VideoSurfer.vs_transribe_video_screenshot" title="Link to this definition"></a></dt>
+<dd><p>Transcribes the video screenshot at a specific timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_path</strong> (<em>str</em>) – Path to the video file.</p></li>
+<li><p><strong>timestamp</strong> (<em>float</em>) – Timestamp to take the screenshot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transcription of the video screenshot.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="agents.web_surfer.html" class="btn btn-neutral float-left" title="agents.web_surfer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="agents.file_surfer.html" class="btn btn-neutral float-right" title="agents.file_surfer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tools.code_execution &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ui" href="../ui/ui.html" />
+    <link rel="prev" title="tools.http" href="tools.http.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tools.html">tools</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tools.http.html">tools.http</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tools.code_execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput.code"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput.code</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput.model_config"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.success"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.output"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.ser_model"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.ser_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.model_config"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.PythonCodeExecutionTool"><code class="docutils literal notranslate"><span class="pre">PythonCodeExecutionTool</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.tools.code_execution.PythonCodeExecutionTool.run"><code class="docutils literal notranslate"><span class="pre">PythonCodeExecutionTool.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.http.html">tools.http</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tools.code_execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput.code"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput.code</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput.model_config"><code class="docutils literal notranslate"><span class="pre">CodeExecutionInput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.success"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.success</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.output"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.output</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.ser_model"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.ser_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult.model_config"><code class="docutils literal notranslate"><span class="pre">CodeExecutionResult.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.tools.code_execution.PythonCodeExecutionTool"><code class="docutils literal notranslate"><span class="pre">PythonCodeExecutionTool</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.tools.code_execution.PythonCodeExecutionTool.run"><code class="docutils literal notranslate"><span class="pre">PythonCodeExecutionTool.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tools.html">tools</a></li>
+      <li class="breadcrumb-item active">tools.code_execution</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tools/tools.code_execution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tools-code-execution">
+<h1>tools.code_execution<a class="headerlink" href="#tools-code-execution" title="Link to this heading"></a></h1>
+<dl class="py class" id="module-agentopera.tools.code_execution">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.tools.code_execution.</span></span><span class="sig-name descname"><span class="pre">CodeExecutionInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/tools/code_execution/code_execution.html#CodeExecutionInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionInput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionInput.code">
+<span class="sig-name descname"><span class="pre">code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionInput.code" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionInput.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionInput.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.tools.code_execution.</span></span><span class="sig-name descname"><span class="pre">CodeExecutionResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/tools/code_execution/code_execution.html#CodeExecutionResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionResult.success">
+<span class="sig-name descname"><span class="pre">success</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionResult.success" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionResult.output">
+<span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionResult.output" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionResult.ser_model">
+<span class="sig-name descname"><span class="pre">ser_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/tools/code_execution/code_execution.html#CodeExecutionResult.ser_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionResult.ser_model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.CodeExecutionResult.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.tools.code_execution.CodeExecutionResult.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.PythonCodeExecutionTool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.tools.code_execution.</span></span><span class="sig-name descname"><span class="pre">PythonCodeExecutionTool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">executor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CodeExecutor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/tools/code_execution/code_execution.html#PythonCodeExecutionTool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.tools.code_execution.PythonCodeExecutionTool" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.BaseTool" title="agentopera.engine.function_call.base.BaseTool"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTool</span></code></a>[<a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput" title="agentopera.tools.code_execution.code_execution.CodeExecutionInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">CodeExecutionInput</span></code></a>, <a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult" title="agentopera.tools.code_execution.code_execution.CodeExecutionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CodeExecutionResult</span></code></a>]</p>
+<p>A tool that executes Python code in a code executor and returns output.</p>
+<p>Example executors:</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">agentopera.agents.code_executors.local.LocalCommandLineCodeExecutor</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">agentopera.agents.code_executors.docker.DockerCommandLineCodeExecutor</span></code></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">agentopera.agents.code_executors.azure.ACADynamicSessionsCodeExecutor</span></code></p></li>
+</ul>
+<p>Example usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="s2">&quot;agentopera&quot;</span><span class="w"> </span><span class="s2">&quot;agentopera[openai]&quot;</span><span class="w"> </span><span class="s2">&quot;yfinance&quot;</span><span class="w"> </span><span class="s2">&quot;matplotlib&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.code_executors.local</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalCommandLineCodeExecutor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.agents.tools.code_execution</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonCodeExecutionTool</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">tool</span> <span class="o">=</span> <span class="n">PythonCodeExecutionTool</span><span class="p">(</span><span class="n">LocalCommandLineCodeExecutor</span><span class="p">(</span><span class="n">work_dir</span><span class="o">=</span><span class="s2">&quot;coding&quot;</span><span class="p">))</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">AssistantAgent</span><span class="p">(</span>
+        <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">),</span> <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span> <span class="n">reflect_on_tool_use</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">await</span> <span class="n">Console</span><span class="p">(</span>
+        <span class="n">agent</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span>
+            <span class="n">task</span><span class="o">=</span><span class="s2">&quot;Create a plot of MSFT stock prices in 2024 and save it to a file. Use yfinance and matplotlib.&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>executor</strong> (<em>CodeExecutor</em>) – The code executor that will be used to execute the code blocks.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.tools.code_execution.PythonCodeExecutionTool.run">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionInput" title="agentopera.tools.code_execution.code_execution.CodeExecutionInput"><span class="pre">CodeExecutionInput</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.tools.code_execution.CodeExecutionResult" title="agentopera.tools.code_execution.code_execution.CodeExecutionResult"><span class="pre">CodeExecutionResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/tools/code_execution/code_execution.html#PythonCodeExecutionTool.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.tools.code_execution.PythonCodeExecutionTool.run" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tools.http.html" class="btn btn-neutral float-left" title="tools.http" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ui/ui.html" class="btn btn-neutral float-right" title="ui" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

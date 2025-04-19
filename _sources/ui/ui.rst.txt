@@ -1,0 +1,8 @@
+ui
+==
+
+.. automodule:: agentopera.ui
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

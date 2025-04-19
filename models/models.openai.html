@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>models.openai &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="models.anthropic" href="models.anthropic.html" />
+    <link rel="prev" title="models" href="models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.html">router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../router/router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="models.html">models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models.openai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.OpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">OpenAIChatCompletionClient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIChatCompletionClient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_from_config"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create_from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.model_info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_endpoint"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_endpoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_deployment"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_deployment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.api_version"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.api_version</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_ad_token"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_ad_token</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.organization"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.organization</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.base_url"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.base_url</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.api_key"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.api_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.timeout"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.timeout</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.max_retries"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.max_retries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_capabilities</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.add_name_prefixes"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.add_name_prefixes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.default_headers"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.default_headers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.frequency_penalty"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.frequency_penalty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.logit_bias"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.logit_bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.max_tokens"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.max_tokens</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.n"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.presence_penalty"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.presence_penalty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.seed"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.seed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.stop"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.temperature"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.temperature</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.top_p"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.user"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.stream_options"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stream_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.azure.html">models.azure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.ollama.html">models.ollama</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.replay.html">models.replay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.cache.html">models.cache</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.utils.html">models.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">models.openai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.OpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">OpenAIChatCompletionClient</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIChatCompletionClient</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_from_config"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create_from_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_stream"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.create_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.actual_usage"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.actual_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.total_usage"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.total_usage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.count_tokens"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.count_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.remaining_tokens"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.remaining_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient.model_info</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_endpoint"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_endpoint</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_deployment"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_deployment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.api_version"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.api_version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_ad_token"><code class="docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel.azure_ad_token</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.organization"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.organization</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.base_url"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.base_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.api_key"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.api_key</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.timeout"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.timeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.max_retries"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.max_retries</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_capabilities"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_capabilities</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_info"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.add_name_prefixes"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.add_name_prefixes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.default_headers"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.default_headers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.frequency_penalty"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.frequency_penalty</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.logit_bias"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.logit_bias</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.max_tokens"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.max_tokens</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.n"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.n</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.presence_penalty"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.presence_penalty</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.response_format"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.response_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.seed"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.seed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.stop"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stop</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.temperature"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.temperature</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.top_p"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.top_p</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.user"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.user</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.stream_options"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.stream_options</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel.model_config"><code class="docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="models.html">models</a></li>
+      <li class="breadcrumb-item active">models.openai</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/models/models.openai.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.models.openai">
+<span id="models-openai"></span><h1>models.openai<a class="headerlink" href="#module-agentopera.models.openai" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.OpenAIChatCompletionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">OpenAIChatCompletionClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#OpenAIChatCompletionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.OpenAIChatCompletionClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient" title="agentopera.models.openai.openai_client.BaseOpenAIChatCompletionClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient</span></code></a></p>
+<p>Chat completion client for OpenAI hosted models.</p>
+<p>To use this client, you must install the <cite>openai</cite> extra:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;agentopera[openai]&quot;</span>
+</pre></div>
+</div>
+<p>You can also use this client for OpenAI-compatible ChatCompletion endpoints.
+<strong>Using this client for non-OpenAI models is not tested or guaranteed.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em>) – Which OpenAI model to use.</p></li>
+<li><p><strong>api_key</strong> (<em>optional</em><em>, </em><em>str</em>) – The API key to use. <strong>Required if ‘OPENAI_API_KEY’ is not found in the environment variables.</strong></p></li>
+<li><p><strong>organization</strong> (<em>optional</em><em>, </em><em>str</em>) – The organization ID to use.</p></li>
+<li><p><strong>base_url</strong> (<em>optional</em><em>, </em><em>str</em>) – The base URL to use. <strong>Required if the model is not hosted on OpenAI.</strong></p></li>
+<li><p><strong>timeout</strong> – (optional, float): The timeout for the request in seconds.</p></li>
+<li><p><strong>max_retries</strong> (<em>optional</em><em>, </em><em>int</em>) – The maximum number of retries to attempt.</p></li>
+<li><p><strong>model_info</strong> (<em>optional</em><em>, </em><em>ModelInfo</em>) – The capabilities of the model. <strong>Required if the model name is not a valid OpenAI model.</strong></p></li>
+<li><p><strong>frequency_penalty</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>logit_bias</strong> – (optional, dict[str, int]):</p></li>
+<li><p><strong>max_tokens</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>n</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>presence_penalty</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>response_format</strong> (<em>optional</em><em>, </em><em>literal</em><em>[</em><em>&quot;json_object&quot;</em><em>, </em><em>&quot;text&quot;</em><em>] </em><em>| </em><em>pydantic.BaseModel</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>stop</strong> (<em>optional</em><em>, </em><em>str</em><em> | </em><em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>temperature</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>top_p</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>user</strong> (<em>optional</em><em>, </em><em>str</em>) – </p></li>
+<li><p><strong>default_headers</strong> (<em>optional</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Custom headers; useful for authentication or other custom requirements.</p></li>
+<li><p><strong>add_name_prefixes</strong> (<em>optional</em><em>, </em><em>bool</em>) – Whether to prepend the <cite>source</cite> value
+to each <code class="xref py py-class docutils literal notranslate"><span class="pre">UserMessage</span></code> content. E.g.,
+“this is content” becomes “Reviewer said: this is content.”
+This can be useful for models that do not support the <cite>name</cite> field in
+message. Defaults to False.</p></li>
+<li><p><strong>stream_options</strong> (<em>optional</em><em>, </em><em>dict</em>) – Additional options for streaming. Currently only <cite>include_usage</cite> is supported.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>The following code snippet shows how to use the client with an OpenAI model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserMessage</span>
+
+<span class="n">openai_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-2024-08-06&quot;</span><span class="p">,</span>
+    <span class="c1"># api_key=&quot;sk-...&quot;, # Optional if you have an OPENAI_API_KEY environment variable set.</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">openai_client</span><span class="o">.</span><span class="n">create</span><span class="p">([</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;What is the capital of France?&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)])</span>  <span class="c1"># type: ignore</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To use the client with a non-OpenAI model, you need to provide the base URL of the model and the model info.
+For example, to use Ollama, you can use the following code snippet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelFamily</span>
+
+<span class="n">custom_model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-r1:1.5b&quot;</span><span class="p">,</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:11434/v1&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;placeholder&quot;</span><span class="p">,</span>
+    <span class="n">model_info</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;vision&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;function_calling&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;json_output&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="n">ModelFamily</span><span class="o">.</span><span class="n">R1</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>To use structured output as well as function calling, you can use the following code snippet:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AssistantMessage</span><span class="p">,</span>
+    <span class="n">FunctionExecutionResult</span><span class="p">,</span>
+    <span class="n">FunctionExecutionResultMessage</span><span class="p">,</span>
+    <span class="n">SystemMessage</span><span class="p">,</span>
+    <span class="n">UserMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionTool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="c1"># Define the structured output format.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AgentResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">thoughts</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">response</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;happy&quot;</span><span class="p">,</span> <span class="s2">&quot;sad&quot;</span><span class="p">,</span> <span class="s2">&quot;neutral&quot;</span><span class="p">]</span>
+
+
+<span class="c1"># Define the function to be called as a tool.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sentiment_analysis</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given a text, return the sentiment.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;happy&quot;</span> <span class="k">if</span> <span class="s2">&quot;happy&quot;</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">&quot;sad&quot;</span> <span class="k">if</span> <span class="s2">&quot;sad&quot;</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">else</span> <span class="s2">&quot;neutral&quot;</span>
+
+
+<span class="c1"># Create a FunctionTool instance with `strict=True`,</span>
+<span class="c1"># which is required for structured output mode.</span>
+<span class="n">tool</span> <span class="o">=</span> <span class="n">FunctionTool</span><span class="p">(</span><span class="n">sentiment_analysis</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Sentiment Analysis&quot;</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create an OpenAIChatCompletionClient instance.</span>
+<span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">,</span>
+    <span class="n">response_format</span><span class="o">=</span><span class="n">AgentResponse</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+<span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Generate a response using the tool.</span>
+    <span class="n">response1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Analyze input text sentiment using the tool provided.&quot;</span><span class="p">),</span>
+            <span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;I am happy.&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">tool</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response1</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="c1"># Should be a list of tool calls.</span>
+    <span class="c1"># [FunctionCall(name=&quot;sentiment_analysis&quot;, arguments={&quot;text&quot;: &quot;I am happy.&quot;}, ...)]</span>
+
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response1</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+    <span class="n">response2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Analyze input text sentiment using the tool provided.&quot;</span><span class="p">),</span>
+            <span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;I am happy.&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">),</span>
+            <span class="n">AssistantMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">response1</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;assistant&quot;</span><span class="p">),</span>
+            <span class="n">FunctionExecutionResultMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="p">[</span><span class="n">FunctionExecutionResult</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;happy&quot;</span><span class="p">,</span> <span class="n">call_id</span><span class="o">=</span><span class="n">response1</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">is_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sentiment_analysis&quot;</span><span class="p">)]</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response2</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="c1"># Should be a structured output.</span>
+    <span class="c1"># {&quot;thoughts&quot;: &quot;The user is happy.&quot;, &quot;response&quot;: &quot;happy&quot;}</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>To load the client from a configuration, you can use the <cite>load_component</cite> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatCompletionClient</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;provider&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenAIChatCompletionClient&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="s2">&quot;REPLACE_WITH_YOUR_API_KEY&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ChatCompletionClient</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To view the full list of available configuration options, see the <a class="reference internal" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel" title="agentopera.models.openai.OpenAIClientConfigurationConfigModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpenAIClientConfigurationConfigModel</span></code></a> class.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIChatCompletionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">AzureOpenAIChatCompletionClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#AzureOpenAIChatCompletionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIChatCompletionClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient" title="agentopera.models.openai.openai_client.BaseOpenAIChatCompletionClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOpenAIChatCompletionClient</span></code></a></p>
+<p>Chat completion client for Azure OpenAI hosted models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>str</em>) – Which OpenAI model to use.</p></li>
+<li><p><strong>azure_endpoint</strong> (<em>str</em>) – The endpoint for the Azure model. <strong>Required for Azure models.</strong></p></li>
+<li><p><strong>azure_deployment</strong> (<em>str</em>) – Deployment name for the Azure model. <strong>Required for Azure models.</strong></p></li>
+<li><p><strong>api_version</strong> (<em>str</em>) – The API version to use. <strong>Required for Azure models.</strong></p></li>
+<li><p><strong>azure_ad_token</strong> (<em>str</em>) – The Azure AD token to use. Provide this or <cite>azure_ad_token_provider</cite> for token-based authentication.</p></li>
+<li><p><strong>azure_ad_token_provider</strong> (<em>optional</em><em>, </em><em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>Awaitable</em><em>[</em><em>str</em><em>]</em><em>] </em><em>| </em><em>AzureTokenProvider</em>) – The Azure AD token provider to use. Provide this or <cite>azure_ad_token</cite> for token-based authentication.</p></li>
+<li><p><strong>api_key</strong> (<em>optional</em><em>, </em><em>str</em>) – The API key to use, use this if you are using key based authentication. It is optional if you are using Azure AD token based authentication or <cite>AZURE_OPENAI_API_KEY</cite> environment variable.</p></li>
+<li><p><strong>timeout</strong> – (optional, float): The timeout for the request in seconds.</p></li>
+<li><p><strong>max_retries</strong> (<em>optional</em><em>, </em><em>int</em>) – The maximum number of retries to attempt.</p></li>
+<li><p><strong>model_info</strong> (<em>optional</em><em>, </em><em>ModelInfo</em>) – The capabilities of the model. <strong>Required if the model name is not a valid OpenAI model.</strong></p></li>
+<li><p><strong>frequency_penalty</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>logit_bias</strong> – (optional, dict[str, int]):</p></li>
+<li><p><strong>max_tokens</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>n</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>presence_penalty</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>response_format</strong> (<em>optional</em><em>, </em><em>literal</em><em>[</em><em>&quot;json_object&quot;</em><em>, </em><em>&quot;text&quot;</em><em>]</em>) – </p></li>
+<li><p><strong>seed</strong> (<em>optional</em><em>, </em><em>int</em>) – </p></li>
+<li><p><strong>stop</strong> (<em>optional</em><em>, </em><em>str</em><em> | </em><em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>temperature</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>top_p</strong> (<em>optional</em><em>, </em><em>float</em>) – </p></li>
+<li><p><strong>user</strong> (<em>optional</em><em>, </em><em>str</em>) – </p></li>
+<li><p><strong>default_headers</strong> (<em>optional</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Custom headers; useful for authentication or other custom requirements.</p></li>
+</ul>
+</dd>
+</dl>
+<p>To use this client, you must install the <cite>azure</cite> and <cite>openai</cite> extensions:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;agentopera[openai,azure]&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To use the client, you need to provide your deployment id, Azure Cognitive Services endpoint,
+api version, and model capabilities.
+For authentication, you can either provide an API key or an Azure Active Directory (AAD) token credential.</p>
+<p>The following code snippet shows how to use AAD authentication.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureOpenAIChatCompletionClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultAzureCredential</span><span class="p">,</span> <span class="n">get_bearer_token_provider</span>
+
+<span class="c1"># Create the token provider</span>
+<span class="n">token_provider</span> <span class="o">=</span> <span class="n">get_bearer_token_provider</span><span class="p">(</span><span class="n">DefaultAzureCredential</span><span class="p">(),</span> <span class="s2">&quot;https://cognitiveservices.azure.com/.default&quot;</span><span class="p">)</span>
+
+<span class="n">az_model_client</span> <span class="o">=</span> <span class="n">AzureOpenAIChatCompletionClient</span><span class="p">(</span>
+    <span class="n">azure_deployment</span><span class="o">=</span><span class="s2">&quot;{your-azure-deployment}&quot;</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;{deployed-model, such as &#39;gpt-4o&#39;}&quot;</span><span class="p">,</span>
+    <span class="n">api_version</span><span class="o">=</span><span class="s2">&quot;2024-06-01&quot;</span><span class="p">,</span>
+    <span class="n">azure_endpoint</span><span class="o">=</span><span class="s2">&quot;https://{your-custom-endpoint}.openai.azure.com/&quot;</span><span class="p">,</span>
+    <span class="n">azure_ad_token_provider</span><span class="o">=</span><span class="n">token_provider</span><span class="p">,</span>  <span class="c1"># Optional if you choose key-based authentication.</span>
+    <span class="c1"># api_key=&quot;sk-...&quot;, # For key-based authentication. `AZURE_OPENAI_API_KEY` environment variable can also be used instead.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>To load the client that uses identity based aith from a configuration, you can use the <cite>load_component</cite> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatCompletionClient</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;provider&quot;</span><span class="p">:</span> <span class="s2">&quot;AzureOpenAIChatCompletionClient&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4o-2024-05-13&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;azure_endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://{your-custom-endpoint}.openai.azure.com/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;azure_deployment&quot;</span><span class="p">:</span> <span class="s2">&quot;{your-azure-deployment}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;api_version&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-06-01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;azure_ad_token_provider&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;provider&quot;</span><span class="p">:</span> <span class="s2">&quot;agentopera.agents.auth.azure.AzureTokenProvider&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;provider_kind&quot;</span><span class="p">:</span> <span class="s2">&quot;DefaultAzureCredential&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://cognitiveservices.azure.com/.default&quot;</span><span class="p">],</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">ChatCompletionClient</span><span class="o">.</span><span class="n">load_component</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To view the full list of available configuration options, see the <a class="reference internal" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel" title="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">AzureOpenAIClientConfigurationConfigModel</span></code></a> class.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Right now only <cite>DefaultAzureCredential</cite> is supported with no additional args passed to it.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">BaseOpenAIChatCompletionClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncOpenAI</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AsyncAzureOpenAI</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_capabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelCapabilities</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelInfo</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_name_prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatCompletionClient</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.create_from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ChatCompletionClient</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.create_from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_from_config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.create">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SystemMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AssistantMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">FunctionExecutionResultMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_create_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CreateResult</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.create_stream">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SystemMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AssistantMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">FunctionExecutionResultMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_create_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_consecutive_empty_chunk_tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">CreateResult</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.create_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.create_stream" title="Link to this definition"></a></dt>
+<dd><p>Creates an AsyncGenerator that will yield a  stream of chat completions based on the provided messages and tools.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>messages</strong> (<em>Sequence</em><em>[</em><em>LLMMessage</em><em>]</em>) – A sequence of messages to be processed.</p></li>
+<li><p><strong>tools</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.Tool"><em>Tool</em></a><em> | </em><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.ToolSchema"><em>ToolSchema</em></a><em>]</em><em>, </em><em>optional</em>) – A sequence of tools to be used in the completion. Defaults to <cite>[]</cite>.</p></li>
+<li><p><strong>json_output</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em><em>, </em><em>optional</em>) – If True, the output will be in JSON format. Defaults to None.</p></li>
+<li><p><strong>extra_create_args</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Additional arguments for the creation process. Default to <cite>{}</cite>.</p></li>
+<li><p><strong>cancellation_token</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em>]</em><em>, </em><em>optional</em>) – A token to cancel the operation. Defaults to None.</p></li>
+<li><p><strong>max_consecutive_empty_chunk_tolerance</strong> (<em>int</em>) – [Deprecated] The maximum number of consecutive empty chunks to tolerate before raising a ValueError. This seems to only be needed to set when using <cite>AzureOpenAIChatCompletionClient</cite>. Defaults to 0. This parameter is deprecated, empty chunks will be skipped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>AsyncGenerator[Union[str, CreateResult], None]</em> – A generator yielding the completion results as they are produced.</p>
+</dd>
+</dl>
+<p>In streaming, the default behaviour is not return token usage counts. See: [OpenAI API reference for possible args](<a class="reference external" href="https://platform.openai.com/docs/api-reference/chat/create">https://platform.openai.com/docs/api-reference/chat/create</a>).
+However <cite>extra_create_args={“stream_options”: {“include_usage”: True}}</cite> will (if supported by the accessed API)
+return a final chunk with usage set to a RequestUsage object having prompt and completion token counts,
+all preceding chunks will have usage as None. See: [stream_options](<a class="reference external" href="https://platform.openai.com/docs/api-reference/chat/create#chat-create-stream_options">https://platform.openai.com/docs/api-reference/chat/create#chat-create-stream_options</a>).</p>
+<dl class="simple">
+<dt>Other examples of OPENAI supported arguments that can be included in <cite>extra_create_args</cite>:</dt><dd><ul class="simple">
+<li><p><cite>temperature</cite> (float): Controls the randomness of the output. Higher values (e.g., 0.8) make the output more random, while lower values (e.g., 0.2) make it more focused and deterministic.</p></li>
+<li><p><cite>max_tokens</cite> (int): The maximum number of tokens to generate in the completion.</p></li>
+<li><p><cite>top_p</cite> (float): An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass.</p></li>
+<li><p><cite>frequency_penalty</cite> (float): A value between -2.0 and 2.0 that penalizes new tokens based on their existing frequency in the text so far, decreasing the likelihood of repeated phrases.</p></li>
+<li><p><cite>presence_penalty</cite> (float): A value between -2.0 and 2.0 that penalizes new tokens based on whether they appear in the text so far, encouraging the model to talk about new topics.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.actual_usage">
+<span class="sig-name descname"><span class="pre">actual_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RequestUsage</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.actual_usage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.actual_usage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.total_usage">
+<span class="sig-name descname"><span class="pre">total_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RequestUsage</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.total_usage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.total_usage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.count_tokens">
+<span class="sig-name descname"><span class="pre">count_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SystemMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AssistantMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">FunctionExecutionResultMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.count_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.count_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.remaining_tokens">
+<span class="sig-name descname"><span class="pre">remaining_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">SystemMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">AssistantMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">FunctionExecutionResultMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tools</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.Tool" title="agentopera.engine.function_call.base.Tool"><span class="pre">Tool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.ToolSchema" title="agentopera.engine.function_call.base.ToolSchema"><span class="pre">ToolSchema</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/agentopera/models/openai/openai_client.html#BaseOpenAIChatCompletionClient.remaining_tokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.remaining_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.capabilities">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelCapabilities</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.capabilities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIChatCompletionClient.model_info">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelInfo</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIChatCompletionClient.model_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">AzureOpenAIClientConfigurationConfigModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logit_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presence_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ResponseFormat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StreamOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_capabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelCapabilities</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelInfo</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_name_prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azure_endpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azure_deployment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azure_ad_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/config.html#AzureOpenAIClientConfigurationConfigModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel" title="agentopera.models.openai.config.BaseOpenAIClientConfigurationConfigModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_endpoint">
+<span class="sig-name descname"><span class="pre">azure_endpoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_endpoint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_deployment">
+<span class="sig-name descname"><span class="pre">azure_deployment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_deployment" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.api_version">
+<span class="sig-name descname"><span class="pre">api_version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.api_version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_ad_token">
+<span class="sig-name descname"><span class="pre">azure_ad_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.AzureOpenAIClientConfigurationConfigModel.azure_ad_token" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.OpenAIClientConfigurationConfigModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">OpenAIClientConfigurationConfigModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logit_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presence_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ResponseFormat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StreamOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_capabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelCapabilities</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelInfo</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_name_prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">organization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/config.html#OpenAIClientConfigurationConfigModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel" title="agentopera.models.openai.config.BaseOpenAIClientConfigurationConfigModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseOpenAIClientConfigurationConfigModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.OpenAIClientConfigurationConfigModel.organization">
+<span class="sig-name descname"><span class="pre">organization</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.organization" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.OpenAIClientConfigurationConfigModel.base_url">
+<span class="sig-name descname"><span class="pre">base_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.base_url" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.OpenAIClientConfigurationConfigModel.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.models.openai.OpenAIClientConfigurationConfigModel.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">BaseOpenAIClientConfigurationConfigModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logit_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presence_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ResponseFormat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StreamOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_capabilities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelCapabilities</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelInfo</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_name_prefixes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_headers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/config.html#BaseOpenAIClientConfigurationConfigModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.models.openai.CreateArgumentsConfigModel" title="agentopera.models.openai.config.CreateArgumentsConfigModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateArgumentsConfigModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model">
+<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.api_key">
+<span class="sig-name descname"><span class="pre">api_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.api_key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.timeout" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.max_retries">
+<span class="sig-name descname"><span class="pre">max_retries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.max_retries" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_capabilities">
+<span class="sig-name descname"><span class="pre">model_capabilities</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelCapabilities</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_capabilities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_info">
+<span class="sig-name descname"><span class="pre">model_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelInfo</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.add_name_prefixes">
+<span class="sig-name descname"><span class="pre">add_name_prefixes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.add_name_prefixes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.default_headers">
+<span class="sig-name descname"><span class="pre">default_headers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.default_headers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.models.openai.BaseOpenAIClientConfigurationConfigModel.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.models.openai.</span></span><span class="sig-name descname"><span class="pre">CreateArgumentsConfigModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logit_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presence_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ResponseFormat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StreamOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/models/openai/config.html#CreateArgumentsConfigModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.frequency_penalty">
+<span class="sig-name descname"><span class="pre">frequency_penalty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.frequency_penalty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.logit_bias">
+<span class="sig-name descname"><span class="pre">logit_bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.logit_bias" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.max_tokens">
+<span class="sig-name descname"><span class="pre">max_tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.max_tokens" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.n">
+<span class="sig-name descname"><span class="pre">n</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.n" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.presence_penalty">
+<span class="sig-name descname"><span class="pre">presence_penalty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.presence_penalty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.response_format">
+<span class="sig-name descname"><span class="pre">response_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ResponseFormat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.response_format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.seed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.stop" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.temperature">
+<span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.temperature" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.top_p">
+<span class="sig-name descname"><span class="pre">top_p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.top_p" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.user">
+<span class="sig-name descname"><span class="pre">user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.user" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.stream_options">
+<span class="sig-name descname"><span class="pre">stream_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StreamOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.stream_options" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.models.openai.CreateArgumentsConfigModel.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.models.openai.CreateArgumentsConfigModel.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="models.anthropic.html" class="btn btn-neutral float-right" title="models.anthropic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

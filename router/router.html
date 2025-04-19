@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>router &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="router.workers" href="router.workers.html" />
+    <link rel="prev" title="agents.code_executor" href="../agents/agents.code_executor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Agents Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.html">agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.openai.html">agents.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one.html">agents.magentic_one</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.magentic_one_team.html">agents.magentic_one_team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.web_surfer.html">agents.web_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.video_surfer.html">agents.video_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.file_surfer.html">agents.file_surfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../agents/agents.code_executor.html">agents.code_executor</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Router Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">router</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.AgentFactory"><code class="docutils literal notranslate"><span class="pre">AgentFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentFactory.create_agent_registry"><code class="docutils literal notranslate"><span class="pre">AgentFactory.create_agent_registry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentFactory.create_intent_classifier"><code class="docutils literal notranslate"><span class="pre">AgentFactory.create_intent_classifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentFactory.create_intent_registry"><code class="docutils literal notranslate"><span class="pre">AgentFactory.create_intent_registry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.AgentRegistry"><code class="docutils literal notranslate"><span class="pre">AgentRegistry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentRegistry.get_agent"><code class="docutils literal notranslate"><span class="pre">AgentRegistry.get_agent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentRegistry.get_agents"><code class="docutils literal notranslate"><span class="pre">AgentRegistry.get_agents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentRegistry.get_agent_description"><code class="docutils literal notranslate"><span class="pre">AgentRegistry.get_agent_description()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.AgentRegistry.get_agent_descriptions"><code class="docutils literal notranslate"><span class="pre">AgentRegistry.get_agent_descriptions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.IntentRegistry"><code class="docutils literal notranslate"><span class="pre">IntentRegistry</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.from_api_data"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.from_api_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.merge"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.merge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_all_intents"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_all_intents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_schema_override"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_schema_override()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_description"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_description()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_agent_for_intent"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_agent_for_intent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_all_agents"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_all_agents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_agent_description"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_agent_description()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.IntentRegistry.get_tool_schemas"><code class="docutils literal notranslate"><span class="pre">IntentRegistry.get_tool_schemas()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.SemanticRouterAgent"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.SemanticRouterAgent.initialize"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent.initialize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.SemanticRouterAgent.route_to_agent"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent.route_to_agent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.SemanticRouterAgent.event_log"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent.event_log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.SemanticRouterAgent.contact_agent"><code class="docutils literal notranslate"><span class="pre">SemanticRouterAgent.contact_agent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.router.LLMIntentClassifier"><code class="docutils literal notranslate"><span class="pre">LLMIntentClassifier</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.router.LLMIntentClassifier.classify_intent"><code class="docutils literal notranslate"><span class="pre">LLMIntentClassifier.classify_intent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="router.workers.html">router.workers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.user.html">router.user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="router.session.html">router.session</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.session.html">router.session</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Models Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.html">models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.openai.html">models.openai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.anthropic.html">models.anthropic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.azure.html">models.azure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.ollama.html">models.ollama</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.replay.html">models.replay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.cache.html">models.cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/models.utils.html">models.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Memory Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.html">memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory/memory.graphrag.html">memory.graphrag</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tools Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.http.html">tools.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/tools.code_execution.html">tools.code_execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ui/ui.html">ui</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Utils Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/utils.html">utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adapter Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.html">adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adapter/adapter.langchain.html">adapter.langchain</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MCP Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mcp/mcp.html">mcp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Zerocode Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zerocode/zerocode.html">zerocode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Edge Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../edge/edge.html">edge</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">router</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/router/router.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.router">
+<span id="router"></span><h1>router<a class="headerlink" href="#module-agentopera.router" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.AgentFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.</span></span><span class="sig-name descname"><span class="pre">AgentFactory</span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentFactory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentFactory.create_agent_registry">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_agent_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AgentRegistryBase</span></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentFactory.create_agent_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentFactory.create_agent_registry" title="Link to this definition"></a></dt>
+<dd><p>Creates an AgentRegistry from an IntentRegistry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>intent_registry</strong> (<a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.IntentRegistry"><em>IntentRegistry</em></a>) – The shared config source.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A runtime-compatible registry.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AgentRegistryBase</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentFactory.create_intent_classifier">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_intent_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.router.LLMIntentClassifier" title="agentopera.router.intent_classifier.LLMIntentClassifier"><span class="pre">LLMIntentClassifier</span></a></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentFactory.create_intent_classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentFactory.create_intent_classifier" title="Link to this definition"></a></dt>
+<dd><p>Creates an LLM-powered intent classifier using the provided intent registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>intent_registry</strong> (<a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.IntentRegistry"><em>IntentRegistry</em></a>) – The shared config source.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured classifier using OpenAI-compatible tools.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#agentopera.router.LLMIntentClassifier" title="agentopera.router.LLMIntentClassifier">LLMIntentClassifier</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentFactory.create_intent_registry">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_intent_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_descriptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_intent_mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_descriptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentFactory.create_intent_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentFactory.create_intent_registry" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.AgentRegistry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.</span></span><span class="sig-name descname"><span class="pre">AgentRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentRegistry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentRegistry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AgentRegistryBase</span></code></p>
+<p>Runtime-compatible agent registry adapter.</p>
+<p>Wraps around <cite>IntentRegistry</cite> to expose methods required by
+SemanticRouterAgent and other runtime components.</p>
+<p>Responsibilities:
+- Asynchronously fetch agents based on classified intent
+- Serve agent metadata for monitoring and validation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentRegistry.get_agent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentRegistry.get_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentRegistry.get_agent" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the agent type corresponding to a given intent.</p>
+<p>Falls back to ‘chat’ if intent is not mapped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>intent</strong> – The intent for which to retrieve an agent.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The agent type (e.g., ‘chat’, ‘vercel’, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentRegistry.get_agents">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_agents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentRegistry.get_agents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentRegistry.get_agents" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the set of all registered agent IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A set of agent IDs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentRegistry.get_agent_description">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_agent_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentRegistry.get_agent_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentRegistry.get_agent_description" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the description of a specific agent by its ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent_id</strong> – The agent ID for which to retrieve the description.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The agent’s description.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.AgentRegistry.get_agent_descriptions">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_agent_descriptions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/agent_registry.html#AgentRegistry.get_agent_descriptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.AgentRegistry.get_agent_descriptions" title="Link to this definition"></a></dt>
+<dd><p>Retrieves descriptions of all registered agents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary mapping agent IDs to their descriptions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.</span></span><span class="sig-name descname"><span class="pre">IntentRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_descriptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_intent_mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_descriptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema_overrides</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Internal configuration holder for intent and agent relationships.</p>
+<p>This class is designed to manage:
+- Intent descriptions for classification models
+- Mapping from intent → agent_id
+- Mapping from agent_id → descriptions</p>
+<p>It acts as the source of truth for the classifier and agent registry.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.from_api_data">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_api_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">UserAgentInfo</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.from_api_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.from_api_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.merge" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_all_intents">
+<span class="sig-name descname"><span class="pre">get_all_intents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_all_intents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_all_intents" title="Link to this definition"></a></dt>
+<dd><p>Returns all available intent keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_schema_override">
+<span class="sig-name descname"><span class="pre">get_schema_override</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_schema_override"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_schema_override" title="Link to this definition"></a></dt>
+<dd><p>Returns all overriding schemas if any</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_description">
+<span class="sig-name descname"><span class="pre">get_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_description" title="Link to this definition"></a></dt>
+<dd><p>Returns description for a specific intent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_agent_for_intent">
+<span class="sig-name descname"><span class="pre">get_agent_for_intent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_agent_for_intent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_agent_for_intent" title="Link to this definition"></a></dt>
+<dd><p>Returns agent_id associated with the given intent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_all_agents">
+<span class="sig-name descname"><span class="pre">get_all_agents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_all_agents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_all_agents" title="Link to this definition"></a></dt>
+<dd><p>Returns all registered agent IDs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_agent_description">
+<span class="sig-name descname"><span class="pre">get_agent_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_agent_description"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_agent_description" title="Link to this definition"></a></dt>
+<dd><p>Returns description for the specified agent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.IntentRegistry.get_tool_schemas">
+<span class="sig-name descname"><span class="pre">get_tool_schemas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_registry.html#IntentRegistry.get_tool_schemas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.IntentRegistry.get_tool_schemas" title="Link to this definition"></a></dt>
+<dd><p>Builds OpenAI-compatible tool definitions for all registered intents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of function tool schema dictionaries for OpenAI-compatible models.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.SemanticRouterAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.</span></span><span class="sig-name descname"><span class="pre">SemanticRouterAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/semantic_router_agent.html#SemanticRouterAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.SemanticRouterAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent" title="agentopera.engine.agent.routed_agent.RoutedAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoutedAgent</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.SemanticRouterAgent.initialize">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/semantic_router_agent.html#SemanticRouterAgent.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.SemanticRouterAgent.initialize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.SemanticRouterAgent.route_to_agent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">route_to_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/semantic_router_agent.html#SemanticRouterAgent.route_to_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.SemanticRouterAgent.route_to_agent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.SemanticRouterAgent.event_log">
+<span class="sig-name descname"><span class="pre">event_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/semantic_router_agent.html#SemanticRouterAgent.event_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.SemanticRouterAgent.event_log" title="Link to this definition"></a></dt>
+<dd><p>Logs the agent selection event to PostHog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session_id</strong> (<em>str</em>) – The ID of the current customer session.</p></li>
+<li><p><strong>agent_id</strong> (<em>str</em>) – The ID of the agent handling the message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.SemanticRouterAgent.contact_agent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contact_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/router/semantic_router_agent.html#SemanticRouterAgent.contact_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.SemanticRouterAgent.contact_agent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.router.LLMIntentClassifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.router.</span></span><span class="sig-name descname"><span class="pre">LLMIntentClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intent_registry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.router.IntentRegistry" title="agentopera.router.intent_registry.IntentRegistry"><span class="pre">IntentRegistry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Llama-3.1-8B-Instruct'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/router/intent_classifier.html#LLMIntentClassifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.LLMIntentClassifier" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntentClassifierBase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.router.LLMIntentClassifier.classify_intent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">classify_intent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">80.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/router/intent_classifier.html#LLMIntentClassifier.classify_intent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.router.LLMIntentClassifier.classify_intent" title="Link to this definition"></a></dt>
+<dd><p>Returns the intent with the highest confidence score.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="router.workers.html">router.workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.user.html">router.user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.session.html">router.session</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../agents/agents.code_executor.html" class="btn btn-neutral float-left" title="agents.code_executor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="router.workers.html" class="btn btn-neutral float-right" title="router.workers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

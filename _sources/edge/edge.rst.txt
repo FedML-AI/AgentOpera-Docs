@@ -1,0 +1,8 @@
+edge
+====
+
+.. automodule:: agentopera.edge
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

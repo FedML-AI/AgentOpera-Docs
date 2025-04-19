@@ -6,3 +6,14 @@ engine
    :undoc-members:
    :show-inheritance:
    :member-order: bysource
+
+.. toctree::
+   :maxdepth: 1
+   
+   engine.agent
+   engine.function_call
+   engine.protocol
+   engine.runtime
+   engine.subscription
+   engine.telemetry
+   engine.types
