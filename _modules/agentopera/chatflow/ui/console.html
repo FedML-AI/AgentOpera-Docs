@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.ui.console &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.ui.console</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.ui.console</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">iscoroutinefunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">RequestUsage</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserProxyAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span><span class="p">,</span> <span class="n">TaskResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">ModelClientStreamingChunkEvent</span><span class="p">,</span>
+    <span class="n">MultiModalMessage</span><span class="p">,</span>
+    <span class="n">UserInputRequestedEvent</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_running_in_iterm</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TERM_PROGRAM&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;iTerm.app&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_output_a_tty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">isatty</span><span class="p">()</span>
+
+
+<span class="n">SyncInputFunc</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+<span class="n">AsyncInputFunc</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+<span class="n">InputFuncType</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">SyncInputFunc</span><span class="p">,</span> <span class="n">AsyncInputFunc</span><span class="p">]</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">TaskResult</span> <span class="o">|</span> <span class="n">Response</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="UserInputManager">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.ui.html#agentopera.chatflow.ui.UserInputManager">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserInputManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">InputFuncType</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
+
+<div class="viewcode-block" id="UserInputManager.get_wrapped_callback">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.ui.html#agentopera.chatflow.ui.UserInputManager.get_wrapped_callback">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_wrapped_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncInputFunc</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">user_input_func_wrapper</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="c1"># Lookup the event for the prompt, if it exists wait for it.</span>
+            <span class="c1"># If it doesn&#39;t exist, create it and store it.</span>
+            <span class="c1"># Get request ID:</span>
+            <span class="n">request_id</span> <span class="o">=</span> <span class="n">UserProxyAgent</span><span class="o">.</span><span class="n">InputRequestContext</span><span class="o">.</span><span class="n">request_id</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">request_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">:</span>
+                <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">event</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span>
+
+            <span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">iscoroutinefunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">):</span>
+                <span class="c1"># Cast to AsyncInputFunc for proper typing</span>
+                <span class="n">async_func</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">AsyncInputFunc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">async_func</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Cast to SyncInputFunc for proper typing</span>
+                <span class="n">sync_func</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">SyncInputFunc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+                <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">sync_func</span><span class="p">,</span> <span class="n">prompt</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">user_input_func_wrapper</span></div>
+
+
+<div class="viewcode-block" id="UserInputManager.notify_event_received">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.ui.html#agentopera.chatflow.ui.UserInputManager.notify_event_received">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">notify_event_received</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">request_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_events</span><span class="p">[</span><span class="n">request_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">aprint</span><span class="p">(</span><span class="n">output</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Awaitable</span><span class="p">[</span><span class="kc">None</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="n">flush</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Console">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.ui.html#agentopera.chatflow.ui.Console">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">Console</span><span class="p">(</span>
+    <span class="n">stream</span><span class="p">:</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">T</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">no_inline_images</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">output_stats</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">user_input_manager</span><span class="p">:</span> <span class="n">UserInputManager</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Consumes the message stream from :meth:`~agentopera.chatflow.base.TaskRunner.run_stream`</span>
+<span class="sd">    or :meth:`~agentopera.chatflow.base.ChatAgent.on_messages_stream` and renders the messages to the console.</span>
+<span class="sd">    Returns the last processed TaskResult or Response.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        `output_stats` is experimental and the stats may not be accurate.</span>
+<span class="sd">        It will be improved in future releases.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        stream (AsyncGenerator[AgentEvent | ChatMessage | TaskResult, None] | AsyncGenerator[AgentEvent | ChatMessage | Response, None]): Message stream to render.</span>
+<span class="sd">            This can be from :meth:`~agentopera.chatflow.base.TaskRunner.run_stream` or :meth:`~agentopera.chatflow.base.ChatAgent.on_messages_stream`.</span>
+<span class="sd">        no_inline_images (bool, optional): If terminal is iTerm2 will render images inline. Use this to disable this behavior. Defaults to False.</span>
+<span class="sd">        output_stats (bool, optional): (Experimental) If True, will output a summary of the messages and inline token usage info. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        last_processed: A :class:`~agentopera.chatflow.base.TaskResult` if the stream is from :meth:`~agentopera.chatflow.base.TaskRunner.run_stream`</span>
+<span class="sd">            or a :class:`~agentopera.chatflow.base.Response` if the stream is from :meth:`~agentopera.chatflow.base.ChatAgent.on_messages_stream`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">render_image_iterm</span> <span class="o">=</span> <span class="n">_is_running_in_iterm</span><span class="p">()</span> <span class="ow">and</span> <span class="n">_is_output_a_tty</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">no_inline_images</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">total_usage</span> <span class="o">=</span> <span class="n">RequestUsage</span><span class="p">(</span><span class="n">prompt_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">completion_tokens</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">last_processed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">streaming_chunks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">TaskResult</span><span class="p">):</span>
+            <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+            <span class="k">if</span> <span class="n">output_stats</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2"> Summary </span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Number of messages: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Finish reason: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">stop_reason</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Total prompt tokens: </span><span class="si">{</span><span class="n">total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Total completion tokens: </span><span class="si">{</span><span class="n">total_usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># mypy ignore</span>
+            <span class="n">last_processed</span> <span class="o">=</span> <span class="n">message</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+            <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+            <span class="c1"># Print final response.</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">_message_to_str</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="p">,</span><span class="w"> </span><span class="n">render_image_iterm</span><span class="o">=</span><span class="n">render_image_iterm</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">models_usage</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">output_stats</span><span class="p">:</span>
+                    <span class="n">output</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;[Prompt tokens: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="si">}</span><span class="s2">, Completion tokens: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="si">}</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">total_usage</span><span class="o">.</span><span class="n">completion_tokens</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+                <span class="n">total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span>
+            <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Print summary.</span>
+            <span class="k">if</span> <span class="n">output_stats</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">inner_messages</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">num_inner_messages</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">inner_messages</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">num_inner_messages</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2"> Summary </span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Number of inner messages: </span><span class="si">{</span><span class="n">num_inner_messages</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Total prompt tokens: </span><span class="si">{</span><span class="n">total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Total completion tokens: </span><span class="si">{</span><span class="n">total_usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># mypy ignore</span>
+            <span class="n">last_processed</span> <span class="o">=</span> <span class="n">message</span>  <span class="c1"># type: ignore</span>
+        <span class="c1"># We don&#39;t want to print UserInputRequestedEvent messages, we just use them to signal the user input event.</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">UserInputRequestedEvent</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">user_input_manager</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">user_input_manager</span><span class="o">.</span><span class="n">notify_event_received</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">request_id</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Cast required for mypy to be happy</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">streaming_chunks</span><span class="p">:</span>
+                <span class="c1"># Print message sender.</span>
+                <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">):</span>
+                <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="n">streaming_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">streaming_chunks</span><span class="p">:</span>
+                    <span class="n">streaming_chunks</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                    <span class="c1"># Chunked messages are already printed, so we just print a newline.</span>
+                    <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Print message content.</span>
+                    <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span><span class="n">_message_to_str</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">render_image_iterm</span><span class="o">=</span><span class="n">render_image_iterm</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">output_stats</span><span class="p">:</span>
+                        <span class="k">await</span> <span class="n">aprint</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;[Prompt tokens: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span><span class="si">}</span><span class="s2">, Completion tokens: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">,</span>
+                            <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="n">total_usage</span><span class="o">.</span><span class="n">completion_tokens</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+                    <span class="n">total_usage</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span>
+
+    <span class="k">if</span> <span class="n">last_processed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No TaskResult or Response was processed.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">last_processed</span></div>
+
+
+
+<span class="c1"># iTerm2 image rendering protocol: https://iterm2.com/documentation-images.html</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_image_to_iterm</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">to_base64</span><span class="p">()</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\033</span><span class="s2">]1337;File=inline=1:</span><span class="si">{</span><span class="n">image_data</span><span class="si">}</span><span class="se">\a\n</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_message_to_str</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">render_image_iterm</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">render_image_iterm</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_image_to_iterm</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;image&gt;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

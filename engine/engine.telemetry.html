@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>engine.telemetry &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="engine.types" href="engine.types.html" />
+    <link rel="prev" title="engine.runtime" href="engine.runtime.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">engine.telemetry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata"><code class="docutils literal notranslate"><span class="pre">EnvelopeMetadata</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata.traceparent"><code class="docutils literal notranslate"><span class="pre">EnvelopeMetadata.traceparent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata.tracestate"><code class="docutils literal notranslate"><span class="pre">EnvelopeMetadata.tracestate</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.telemetry.get_telemetry_envelope_metadata"><code class="docutils literal notranslate"><span class="pre">get_telemetry_envelope_metadata()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.telemetry.get_telemetry_grpc_metadata"><code class="docutils literal notranslate"><span class="pre">get_telemetry_grpc_metadata()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.telemetry.TraceHelper"><code class="docutils literal notranslate"><span class="pre">TraceHelper</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.TraceHelper.trace_block"><code class="docutils literal notranslate"><span class="pre">TraceHelper.trace_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig"><code class="docutils literal notranslate"><span class="pre">MessageRuntimeTracingConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.name"><code class="docutils literal notranslate"><span class="pre">MessageRuntimeTracingConfig.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.build_attributes"><code class="docutils literal notranslate"><span class="pre">MessageRuntimeTracingConfig.build_attributes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_name"><code class="docutils literal notranslate"><span class="pre">MessageRuntimeTracingConfig.get_span_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_kind"><code class="docutils literal notranslate"><span class="pre">MessageRuntimeTracingConfig.get_span_kind()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">engine.telemetry</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/engine/engine.telemetry.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.engine.telemetry">
+<span id="engine-telemetry"></span><h1>engine.telemetry<a class="headerlink" href="#module-agentopera.engine.telemetry" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.EnvelopeMetadata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.telemetry.</span></span><span class="sig-name descname"><span class="pre">EnvelopeMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traceparent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracestate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/propagation.html#EnvelopeMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.EnvelopeMetadata" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Metadata for an envelope.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.EnvelopeMetadata.traceparent">
+<span class="sig-name descname"><span class="pre">traceparent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.telemetry.EnvelopeMetadata.traceparent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.EnvelopeMetadata.tracestate">
+<span class="sig-name descname"><span class="pre">tracestate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.engine.telemetry.EnvelopeMetadata.tracestate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.get_telemetry_envelope_metadata">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.telemetry.</span></span><span class="sig-name descname"><span class="pre">get_telemetry_envelope_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata" title="agentopera.engine.telemetry.propagation.EnvelopeMetadata"><span class="pre">EnvelopeMetadata</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/propagation.html#get_telemetry_envelope_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.get_telemetry_envelope_metadata" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the telemetry envelope metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The envelope metadata containing the traceparent and tracestate.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata" title="agentopera.engine.telemetry.EnvelopeMetadata">EnvelopeMetadata</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.get_telemetry_grpc_metadata">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.telemetry.</span></span><span class="sig-name descname"><span class="pre">get_telemetry_grpc_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">existingMetadata</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/propagation.html#get_telemetry_grpc_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.get_telemetry_grpc_metadata" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the telemetry gRPC metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>existingMetadata</strong> (<em>Optional</em><em>[</em><em>Mapping</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>]</em>) – The existing metadata to include in the gRPC metadata.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The gRPC metadata containing the traceparent and tracestate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.TraceHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.telemetry.</span></span><span class="sig-name descname"><span class="pre">TraceHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracer_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TracerProvider</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instrumentation_builder_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TracingConfig</span><span class="p"><span class="pre">[</span></span><span class="pre">Operation</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Destination</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ExtraAttributes</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing.html#TraceHelper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.TraceHelper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Operation</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">Destination</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">ExtraAttributes</span></code>]</p>
+<p>TraceHelper is a utility class to assist with tracing operations using OpenTelemetry.</p>
+<p>This class provides a context manager <cite>trace_block</cite> to create and manage spans for tracing operations,
+following semantic conventions and supporting nested spans through metadata contexts.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.TraceHelper.trace_block">
+<span class="sig-name descname"><span class="pre">trace_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Operation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Destination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.engine.telemetry.EnvelopeMetadata" title="agentopera.engine.telemetry.propagation.EnvelopeMetadata"><span class="pre">EnvelopeMetadata</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraAttributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ExtraAttributes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SpanKind</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">links</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Link</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record_exception</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_status_on_exception</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_on_exit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Span</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing.html#TraceHelper.trace_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.TraceHelper.trace_block" title="Link to this definition"></a></dt>
+<dd><p>Thin wrapper on top of start_as_current_span.
+1. It helps us follow semantic conventions
+2. It helps us get contexts from metadata so we can get nested spans</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> (<em>MessagingOperation</em>) – The messaging operation being performed.</p></li>
+<li><p><strong>destination</strong> (<em>MessagingDestination</em>) – The messaging destination being used.</p></li>
+<li><p><strong>Optional</strong><strong>[</strong><strong>TelemetryMetadataContainer</strong><strong>]</strong> (<em>parent</em>) – The parent telemetry metadta context</p></li>
+<li><p><strong>kind</strong> (<em>SpanKind</em><em>, </em><em>optional</em>) – The kind of span. If not provided, it maps to PRODUCER or CONSUMER depending on the operation.</p></li>
+<li><p><strong>extraAttributes</strong> (<em>ExtraAttributes</em><em>, </em><em>optional</em>) – Additional defined attributes for the span. Defaults to None.</p></li>
+<li><p><strong>attributes</strong> (<em>Optional</em><em>[</em><em>types.Attributes</em><em>]</em><em>, </em><em>optional</em>) – Additional non-defined attributes for the span. Defaults to None.</p></li>
+<li><p><strong>links</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>Link</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – Links to other spans. Defaults to None.</p></li>
+<li><p><strong>start_time</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – The start time of the span. Defaults to None.</p></li>
+<li><p><strong>record_exception</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to record exceptions. Defaults to True.</p></li>
+<li><p><strong>set_status_on_exception</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to set the status on exception. Defaults to True.</p></li>
+<li><p><strong>end_on_exit</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to end the span on exit. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Iterator[Span]</em> – The span object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.MessageRuntimeTracingConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.telemetry.</span></span><span class="sig-name descname"><span class="pre">MessageRuntimeTracingConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing_config.html#MessageRuntimeTracingConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TracingConfig</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Literal</span></code>[‘create’, ‘send’, ‘publish’, ‘receive’, ‘intercept’, ‘process’, ‘ack’], <code class="xref py py-obj docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentId</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MessageChannel</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]], <code class="xref py py-class docutils literal notranslate"><span class="pre">ExtraMessageRuntimeAttributes</span></code>]</p>
+<p>A class that defines the configuration for message runtime instrumentation.</p>
+<p>This class implements the TracingConfig protocol and provides
+the name of the module being instrumented and the attributes for the
+instrumentation configuration.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.MessageRuntimeTracingConfig.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.name" title="Link to this definition"></a></dt>
+<dd><p>Returns:
+The name of the module that is being instrumented.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.MessageRuntimeTracingConfig.build_attributes">
+<span class="sig-name descname"><span class="pre">build_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'create'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'send'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'publish'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'receive'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'intercept'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'process'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ack'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MessageChannel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extraAttributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ExtraMessageRuntimeAttributes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing_config.html#MessageRuntimeTracingConfig.build_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.build_attributes" title="Link to this definition"></a></dt>
+<dd><p>Builds the attributes for the instrumentation configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The attributes for the instrumentation configuration.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_name">
+<span class="sig-name descname"><span class="pre">get_span_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'create'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'send'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'publish'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'receive'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'intercept'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'process'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ack'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MessageChannel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing_config.html#MessageRuntimeTracingConfig.get_span_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_name" title="Link to this definition"></a></dt>
+<dd><p>Returns the span name based on the given operation and destination.
+Semantic Conventions - <a class="reference external" href="https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-name">https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-name</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operation</strong> (<em>MessagingOperation</em>) – The messaging operation.</p></li>
+<li><p><strong>destination</strong> (<em>Optional</em><em>[</em><em>MessagingDestination</em><em>]</em>) – The messaging destination.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The span name.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_kind">
+<span class="sig-name descname"><span class="pre">get_span_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'create'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'send'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'publish'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'receive'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'intercept'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'process'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ack'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SpanKind</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/telemetry/tracing_config.html#MessageRuntimeTracingConfig.get_span_kind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.telemetry.MessageRuntimeTracingConfig.get_span_kind" title="Link to this definition"></a></dt>
+<dd><p>Determines the span kind based on the given messaging operation.
+Semantic Conventions - <a class="reference external" href="https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-kind">https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#span-kind</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>operation</strong> (<em>MessagingOperation</em>) – The messaging operation.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The span kind based on the messaging operation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SpanKind</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="engine.runtime.html" class="btn btn-neutral float-left" title="engine.runtime" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="engine.types.html" class="btn btn-neutral float-right" title="engine.types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

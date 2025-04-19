@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.subscription.topic_subscription &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.subscription.topic_subscription</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.subscription.topic_subscription</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">AgentType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.subscription</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subscription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.msg_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageChannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CantHandleException</span>
+
+
+<div class="viewcode-block" id="TopicSubscription">
+<a class="viewcode-back" href="../../../../engine/engine.html#agentopera.engine.TopicSubscription">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TopicSubscription</span><span class="p">(</span><span class="n">Subscription</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This subscription matches on topics based on the topic and maps to agents using the source of the topic as the agent key.</span>
+
+<span class="sd">    This subscription causes each source to have its own agent instance.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from agentopera.core import TopicSubscription</span>
+
+<span class="sd">            subscription = TopicSubscription(topic=&quot;t1&quot;, agent_type=&quot;a1&quot;)</span>
+
+<span class="sd">        In this case:</span>
+
+<span class="sd">        - A message_channel with topic `t1` and source `s1` will be handled by an agent of type `a1` with key `s1`</span>
+<span class="sd">        - A message_channel with topic `t1` and source `s2` will be handled by an agent of type `a1` with key `s2`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        topic (str): Topic to match against</span>
+<span class="sd">        agent_type (str): Agent type to handle this subscription</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">AgentType</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_topic</span> <span class="o">=</span> <span class="n">topic</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">agent_type</span><span class="p">,</span> <span class="n">AgentType</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_type</span> <span class="o">=</span> <span class="n">agent_type</span><span class="o">.</span><span class="n">type</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_agent_type</span> <span class="o">=</span> <span class="n">agent_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">topic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">agent_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_type</span>
+
+<div class="viewcode-block" id="TopicSubscription.is_match">
+<a class="viewcode-back" href="../../../../engine/engine.html#agentopera.engine.TopicSubscription.is_match">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">message_channel</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topic</span></div>
+
+
+<div class="viewcode-block" id="TopicSubscription.map_to_agent">
+<a class="viewcode-back" href="../../../../engine/engine.html#agentopera.engine.TopicSubscription.map_to_agent">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">map_to_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_match</span><span class="p">(</span><span class="n">message_channel</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">CantHandleException</span><span class="p">(</span><span class="s2">&quot;MessageChannel does not match the subscription&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">AgentId</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_type</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">message_channel</span><span class="o">.</span><span class="n">source</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TopicSubscription</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_type</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">agent_type</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">topic</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

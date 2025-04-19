@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.runtime.agent_engine &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.runtime.agent_engine</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.runtime.agent_engine</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">overload</span><span class="p">,</span> <span class="n">runtime_checkable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">AgentType</span><span class="p">,</span> <span class="n">AgentMetadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageSerializer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..subscription.subscription</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subscription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.msg_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageChannel</span>
+
+<span class="c1"># Undeliverable - error</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Agent</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="AgentEngine">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine">[docs]</a>
+<span class="nd">@runtime_checkable</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AgentEngine</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<div class="viewcode-block" id="AgentEngine.send_message">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.send_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_message</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">recipient</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Send a message to an agent and get a response.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message (Any): The message to send.</span>
+<span class="sd">            recipient (AgentId): The agent to send the message to.</span>
+<span class="sd">            sender (AgentId | None, optional): Agent which sent the message. Should **only** be None if this was sent from no agent, such as directly to the engine externally. Defaults to None.</span>
+<span class="sd">            cancellation_token (CancellationToken | None, optional): Token used to cancel an in progress . Defaults to None.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            CantHandleException: If the recipient cannot handle the message.</span>
+<span class="sd">            UndeliverableException: If the message cannot be delivered.</span>
+<span class="sd">            Other: Any other exception raised by the recipient.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Any: The response from the agent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.publish_message">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.publish_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">publish_message</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Publish a message to all agents in the given namespace, or if no namespace is provided, the namespace of the sender.</span>
+
+<span class="sd">        No responses are expected from publishing.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message (Any): The message to publish.</span>
+<span class="sd">            message_channel (MessageChannel): The message channel to publish the message to.</span>
+<span class="sd">            sender (AgentId | None, optional): The agent which sent the message. Defaults to None.</span>
+<span class="sd">            cancellation_token (CancellationToken | None, optional): Token used to cancel an in progress. Defaults to None.</span>
+<span class="sd">            message_id (str | None, optional): The message id. If None, a new message id will be generated. Defaults to None. This message id must be unique. and is recommended to be a UUID.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            UndeliverableException: If the message cannot be delivered.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.register_agent_builder">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.register_agent_builder">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">register_agent_builder</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">AgentType</span><span class="p">,</span>
+        <span class="n">agent_builder</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">T</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">expected_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register an agent factory with the engine associated with a specific type. The type must be unique. This API does not add any subscriptions.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            This is a low level API and usually the agent class&#39;s `register` method should be used instead, as this also handles subscriptions automatically.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from dataclasses import dataclass</span>
+
+<span class="sd">            from agentopera.core import AgentEngine, MessageContext, RoutedAgent, event</span>
+<span class="sd">            from agentopera.core.types.models import UserMessage</span>
+
+
+<span class="sd">            @dataclass</span>
+<span class="sd">            class MyMessage:</span>
+<span class="sd">                content: str</span>
+
+
+<span class="sd">            class MyAgent(RoutedAgent):</span>
+<span class="sd">                def __init__(self) -&gt; None:</span>
+<span class="sd">                    super().__init__(&quot;My core agent&quot;)</span>
+
+<span class="sd">                @event</span>
+<span class="sd">                async def handler(self, message: UserMessage, context: MessageContext) -&gt; None:</span>
+<span class="sd">                    print(&quot;Event received: &quot;, message.content)</span>
+
+
+<span class="sd">            async def my_agent_factory():</span>
+<span class="sd">                return MyAgent()</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                engine: AgentEngine = ...  # type: ignore</span>
+<span class="sd">                await engine.register_agent_builder(&quot;my_agent&quot;, lambda: MyAgent())</span>
+
+
+<span class="sd">            import asyncio</span>
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            type (str): The type of agent this factory creates. It is not the same as agent class name. The `type` parameter is used to differentiate between different factory functions rather than agent classes.</span>
+<span class="sd">            agent_factory (Callable[[], T]): The factory that creates the agent, where T is a concrete Agent type. Inside the factory, use `agentopera.core.AgentInstantiationContext` to access variables like the current engine and agent ID.</span>
+<span class="sd">            expected_class (type[T] | None, optional): The expected class of the agent, used for engine validation of the factory. Defaults to None. If None, no validation is performed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">lazy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">AgentType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">lazy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="AgentEngine.get">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.get">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span></div>
+
+        <span class="bp">self</span><span class="p">,</span> <span class="n">id_or_type</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="n">AgentType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">lazy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="AgentEngine.save_state">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the state of the entire engine, including all hosted agents. The only way to restore the state is to pass it to :meth:`load_state`.</span>
+
+<span class="sd">        The structure of the state is implementation defined and can be any JSON serializable object.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Mapping[str, Any]: The saved state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.load_state">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the state of the entire engine, including all hosted agents. The state should be the same as the one returned by :meth:`save_state`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            state (Mapping[str, Any]): The saved state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.agent_metadata">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.agent_metadata">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentMetadata</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the metadata for an agent.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            agent (AgentId): The agent id.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            AgentMetadata: The agent metadata.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.agent_save_state">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.agent_save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the state of a single agent.</span>
+
+<span class="sd">        The structure of the state is implementation defined and can be any JSON serializable object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            agent (AgentId): The agent id.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Mapping[str, Any]: The saved state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.agent_load_state">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.agent_load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the state of a single agent.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            agent (AgentId): The agent id.</span>
+<span class="sd">            state (Mapping[str, Any]): The saved state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.subscribe">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.subscribe">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subscription</span><span class="p">:</span> <span class="n">Subscription</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new subscription that the engine should fulfill when processing published messages</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            subscription (Subscription): The subscription to add</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.unsubscribe">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.unsubscribe">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a subscription from the engine</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id (str): id of the subscription to remove</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            LookupError: If the subscription does not exist</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="AgentEngine.register_msg_serializer">
+<a class="viewcode-back" href="../../../../engine/engine.runtime.html#agentopera.engine.runtime.AgentEngine.register_msg_serializer">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_msg_serializer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">:</span> <span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a new message serialization serializer to the engine</span>
+
+<span class="sd">        Note: This will deduplicate serializers based on the type_name and data_content_type properties</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            serializer (MessageSerializer[Any] | Sequence[MessageSerializer[Any]]): The serializer/s to add</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

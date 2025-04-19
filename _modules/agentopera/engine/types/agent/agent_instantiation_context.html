@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.types.agent.agent_instantiation_context &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.types.agent.agent_instantiation_context</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.types.agent.agent_instantiation_context</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">contextvars</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextVar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="c1"># Use TYPE_CHECKING to avoid circular imports</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span>
+
+
+<div class="viewcode-block" id="AgentInstantiationContext">
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.runtime.AgentInstantiationContext">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AgentInstantiationContext</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A static class that provides context for agent instantiation.</span>
+
+<span class="sd">    This static class can be used to access the current engine and agent ID</span>
+<span class="sd">    during agent instantiation -- inside the factory function or the agent&#39;s</span>
+<span class="sd">    class constructor.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        Get the current engine and agent ID inside the factory function and</span>
+<span class="sd">        the agent&#39;s constructor:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from dataclasses import dataclass</span>
+
+<span class="sd">            from agentopera.core import (</span>
+<span class="sd">                AgentId,</span>
+<span class="sd">                AgentInstantiationContext,</span>
+<span class="sd">                MessageContext,</span>
+<span class="sd">                RoutedAgent,</span>
+<span class="sd">                LocalAgentEngine,</span>
+<span class="sd">                message_handler,</span>
+<span class="sd">            )</span>
+
+
+<span class="sd">            @dataclass</span>
+<span class="sd">            class TestMessage:</span>
+<span class="sd">                content: str</span>
+
+
+<span class="sd">            class TestAgent(RoutedAgent):</span>
+<span class="sd">                def __init__(self, description: str):</span>
+<span class="sd">                    super().__init__(description)</span>
+<span class="sd">                    # Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+<span class="sd">                    _ = AgentInstantiationContext.current_engine()</span>
+<span class="sd">                    # Get the current agent ID.</span>
+<span class="sd">                    agent_id = AgentInstantiationContext.current_agent_id()</span>
+<span class="sd">                    print(f&quot;Current AgentID from constructor: {agent_id}&quot;)</span>
+
+<span class="sd">                @message_handler</span>
+<span class="sd">                async def handle_test_message(self, message: TestMessage, ctx: MessageContext) -&gt; None:</span>
+<span class="sd">                    print(f&quot;Received message: {message.content}&quot;)</span>
+
+
+<span class="sd">            def test_agent_factory() -&gt; TestAgent:</span>
+<span class="sd">                # Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+<span class="sd">                _ = AgentInstantiationContext.current_engine()</span>
+<span class="sd">                # Get the current agent ID.</span>
+<span class="sd">                agent_id = AgentInstantiationContext.current_agent_id()</span>
+<span class="sd">                print(f&quot;Current AgentID from factory: {agent_id}&quot;)</span>
+<span class="sd">                return TestAgent(description=&quot;Test agent&quot;)</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create a LocalAgentEngine instance.</span>
+<span class="sd">                agent_engine = LocalAgentEngine()</span>
+
+<span class="sd">                # Start the engine.</span>
+<span class="sd">                agent_engine.start()</span>
+
+<span class="sd">                # Register the agent type with a factory function.</span>
+<span class="sd">                await agent_engine.register_agent_builder(&quot;test_agent&quot;, test_agent_factory)</span>
+
+<span class="sd">                # Send a message to the agent. The engine will instantiate the agent and call the message handler.</span>
+<span class="sd">                await agent_engine.send_message(TestMessage(content=&quot;Hello, world!&quot;), AgentId(&quot;test_agent&quot;, &quot;default&quot;))</span>
+
+<span class="sd">                # Stop the engine.</span>
+<span class="sd">                await agent_engine.stop()</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="s2">&quot;AgentInstantiationContext cannot be instantiated. It is a static class that provides context management for agent instantiation.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">_AGENT_INSTANTIATION_CONTEXT_VAR</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ContextVar</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="s1">&#39;AgentEngine&#39;</span><span class="p">,</span> <span class="s1">&#39;AgentId&#39;</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">ContextVar</span><span class="p">(</span>
+        <span class="s2">&quot;_AGENT_INSTANTIATION_CONTEXT_VAR&quot;</span>
+    <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">populate_context</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="s1">&#39;AgentEngine&#39;</span><span class="p">,</span> <span class="s1">&#39;AgentId&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:meta private:&quot;&quot;&quot;</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">_AGENT_INSTANTIATION_CONTEXT_VAR</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">yield</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">_AGENT_INSTANTIATION_CONTEXT_VAR</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AgentInstantiationContext.current_engine">
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.runtime.AgentInstantiationContext.current_engine">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current_engine</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;AgentEngine&#39;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_AGENT_INSTANTIATION_CONTEXT_VAR</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;AgentInstantiationContext.engine() must be called within an instantiation context such as when the AgentEngine is instantiating an agent. Mostly likely this was caused by directly instantiating an agent instead of using the AgentEngine to do so.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+
+
+<div class="viewcode-block" id="AgentInstantiationContext.current_agent_id">
+<a class="viewcode-back" href="../../../../../engine/engine.types.html#agentopera.engine.runtime.AgentInstantiationContext.current_agent_id">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current_agent_id</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;AgentId&#39;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_AGENT_INSTANTIATION_CONTEXT_VAR</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;AgentInstantiationContext.agent_id() must be called within an instantiation context such as when the AgentEngine is instantiating an agent. Mostly likely this was caused by directly instantiating an agent instead of using the AgentEngine to do so.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span> </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

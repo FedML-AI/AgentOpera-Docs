@@ -1,0 +1,8 @@
+engine.agent
+=============
+
+.. automodule:: agentopera.engine.agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource

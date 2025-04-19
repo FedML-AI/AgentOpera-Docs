@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.base.task &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.base.task</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.base.task</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">ChatMessage</span>
+
+
+<div class="viewcode-block" id="TaskResult">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.base.html#agentopera.chatflow.base.TaskResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Result of running a task.&quot;&quot;&quot;</span>
+
+    <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Messages produced by the task.&quot;&quot;&quot;</span>
+
+    <span class="n">stop_reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The reason the task stopped.&quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="TaskRunner">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.base.html#agentopera.chatflow.base.TaskRunner">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskRunner</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A task runner.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TaskRunner.run">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.base.html#agentopera.chatflow.base.TaskRunner.run">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the task and return the result.</span>
+
+<span class="sd">        The task can be a string, a single message, or a sequence of messages.</span>
+
+<span class="sd">        The runner is stateful and a subsequent call to this method will continue</span>
+<span class="sd">        from where the previous call left off. If the task is not specified,</span>
+<span class="sd">        the runner will continue with the current task.&quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="TaskRunner.run_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.base.html#agentopera.chatflow.base.TaskRunner.run_stream">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">TaskResult</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the task and produces a stream of messages and the final result</span>
+<span class="sd">        :class:`TaskResult` as the last item in the stream.</span>
+
+<span class="sd">        The task can be a string, a single message, or a sequence of messages.</span>
+
+<span class="sd">        The runner is stateful and a subsequent call to this method will continue</span>
+<span class="sd">        from where the previous call left off. If the task is not specified,</span>
+<span class="sd">        the runner will continue with the current task.&quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

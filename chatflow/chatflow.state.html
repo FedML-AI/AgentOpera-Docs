@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chatflow.state &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="chatflow.team" href="chatflow.team.html" />
+    <link rel="prev" title="chatflow.media" href="chatflow.media.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">chatflow.state</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.BaseState"><code class="docutils literal notranslate"><span class="pre">BaseState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseState.type"><code class="docutils literal notranslate"><span class="pre">BaseState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseState.version"><code class="docutils literal notranslate"><span class="pre">BaseState.version</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseState.model_config"><code class="docutils literal notranslate"><span class="pre">BaseState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.AssistantAgentState"><code class="docutils literal notranslate"><span class="pre">AssistantAgentState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.AssistantAgentState.llm_context"><code class="docutils literal notranslate"><span class="pre">AssistantAgentState.llm_context</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.AssistantAgentState.type"><code class="docutils literal notranslate"><span class="pre">AssistantAgentState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.AssistantAgentState.model_config"><code class="docutils literal notranslate"><span class="pre">AssistantAgentState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState"><code class="docutils literal notranslate"><span class="pre">BaseGroupChatManagerState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState.message_thread"><code class="docutils literal notranslate"><span class="pre">BaseGroupChatManagerState.message_thread</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState.current_turn"><code class="docutils literal notranslate"><span class="pre">BaseGroupChatManagerState.current_turn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState.type"><code class="docutils literal notranslate"><span class="pre">BaseGroupChatManagerState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState.model_config"><code class="docutils literal notranslate"><span class="pre">BaseGroupChatManagerState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.ChatAgentContainerState"><code class="docutils literal notranslate"><span class="pre">ChatAgentContainerState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.ChatAgentContainerState.agent_state"><code class="docutils literal notranslate"><span class="pre">ChatAgentContainerState.agent_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.ChatAgentContainerState.message_buffer"><code class="docutils literal notranslate"><span class="pre">ChatAgentContainerState.message_buffer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.ChatAgentContainerState.type"><code class="docutils literal notranslate"><span class="pre">ChatAgentContainerState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.ChatAgentContainerState.model_config"><code class="docutils literal notranslate"><span class="pre">ChatAgentContainerState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.RoundRobinManagerState"><code class="docutils literal notranslate"><span class="pre">RoundRobinManagerState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.RoundRobinManagerState.next_speaker_index"><code class="docutils literal notranslate"><span class="pre">RoundRobinManagerState.next_speaker_index</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.RoundRobinManagerState.type"><code class="docutils literal notranslate"><span class="pre">RoundRobinManagerState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.RoundRobinManagerState.model_config"><code class="docutils literal notranslate"><span class="pre">RoundRobinManagerState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.SelectorManagerState"><code class="docutils literal notranslate"><span class="pre">SelectorManagerState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SelectorManagerState.previous_speaker"><code class="docutils literal notranslate"><span class="pre">SelectorManagerState.previous_speaker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SelectorManagerState.type"><code class="docutils literal notranslate"><span class="pre">SelectorManagerState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SelectorManagerState.model_config"><code class="docutils literal notranslate"><span class="pre">SelectorManagerState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.SwarmManagerState"><code class="docutils literal notranslate"><span class="pre">SwarmManagerState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SwarmManagerState.current_speaker"><code class="docutils literal notranslate"><span class="pre">SwarmManagerState.current_speaker</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SwarmManagerState.type"><code class="docutils literal notranslate"><span class="pre">SwarmManagerState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SwarmManagerState.model_config"><code class="docutils literal notranslate"><span class="pre">SwarmManagerState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.task"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.task</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.facts"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.facts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.plan"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.plan</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.n_rounds"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.n_rounds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.n_stalls"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.n_stalls</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.type"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.model_config"><code class="docutils literal notranslate"><span class="pre">MagenticOneOrchestratorState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.TeamState"><code class="docutils literal notranslate"><span class="pre">TeamState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.TeamState.agent_states"><code class="docutils literal notranslate"><span class="pre">TeamState.agent_states</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.TeamState.team_id"><code class="docutils literal notranslate"><span class="pre">TeamState.team_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.TeamState.type"><code class="docutils literal notranslate"><span class="pre">TeamState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.TeamState.model_config"><code class="docutils literal notranslate"><span class="pre">TeamState.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.state.SocietyOfMindAgentState"><code class="docutils literal notranslate"><span class="pre">SocietyOfMindAgentState</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SocietyOfMindAgentState.inner_team_state"><code class="docutils literal notranslate"><span class="pre">SocietyOfMindAgentState.inner_team_state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SocietyOfMindAgentState.type"><code class="docutils literal notranslate"><span class="pre">SocietyOfMindAgentState.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.state.SocietyOfMindAgentState.model_config"><code class="docutils literal notranslate"><span class="pre">SocietyOfMindAgentState.model_config</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">chatflow.state</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chatflow/chatflow.state.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.chatflow.state">
+<span id="chatflow-state"></span><h1>chatflow.state<a class="headerlink" href="#module-agentopera.chatflow.state" title="Link to this heading"></a></h1>
+<p>State management for agents, teams and termination conditions.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">BaseState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BaseState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1.0.0'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#BaseState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.BaseState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Base class for all saveable state</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseState.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseState.version" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.AssistantAgentState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">AssistantAgentState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'AssistantAgentState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">llm_context:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#AssistantAgentState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.AssistantAgentState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseState" title="agentopera.chatflow.state.states.BaseState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseState</span></code></a></p>
+<p>State for an assistant agent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.AssistantAgentState.llm_context">
+<span class="sig-name descname"><span class="pre">llm_context</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.AssistantAgentState.llm_context" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.AssistantAgentState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.AssistantAgentState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.AssistantAgentState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.AssistantAgentState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseGroupChatManagerState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">BaseGroupChatManagerState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'BaseGroupChatManagerState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_thread:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.ToolCallRequestEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallExecutionEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MemoryQueryEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.UserInputRequestedEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ModelClientStreamingChunkEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ThoughtEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_turn:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#BaseGroupChatManagerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.BaseGroupChatManagerState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseState" title="agentopera.chatflow.state.states.BaseState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseState</span></code></a></p>
+<p>Base state for all group chat managers.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseGroupChatManagerState.message_thread">
+<span class="sig-name descname"><span class="pre">message_thread</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseGroupChatManagerState.message_thread" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseGroupChatManagerState.current_turn">
+<span class="sig-name descname"><span class="pre">current_turn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseGroupChatManagerState.current_turn" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseGroupChatManagerState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseGroupChatManagerState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.BaseGroupChatManagerState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.BaseGroupChatManagerState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.ChatAgentContainerState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">ChatAgentContainerState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'ChatAgentContainerState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_state:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_buffer:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#ChatAgentContainerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.ChatAgentContainerState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseState" title="agentopera.chatflow.state.states.BaseState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseState</span></code></a></p>
+<p>State for a container of chat agents.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.ChatAgentContainerState.agent_state">
+<span class="sig-name descname"><span class="pre">agent_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.ChatAgentContainerState.agent_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.ChatAgentContainerState.message_buffer">
+<span class="sig-name descname"><span class="pre">message_buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.ChatAgentContainerState.message_buffer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.ChatAgentContainerState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.ChatAgentContainerState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.ChatAgentContainerState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.ChatAgentContainerState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.RoundRobinManagerState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">RoundRobinManagerState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'RoundRobinManagerState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_thread:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.ToolCallRequestEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallExecutionEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MemoryQueryEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.UserInputRequestedEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ModelClientStreamingChunkEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ThoughtEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_turn:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_speaker_index:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#RoundRobinManagerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.RoundRobinManagerState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState" title="agentopera.chatflow.state.states.BaseGroupChatManagerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChatManagerState</span></code></a></p>
+<p>State for <code class="xref py py-class docutils literal notranslate"><span class="pre">RoundRobinGroupChat</span></code> manager.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.RoundRobinManagerState.next_speaker_index">
+<span class="sig-name descname"><span class="pre">next_speaker_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.chatflow.state.RoundRobinManagerState.next_speaker_index" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.RoundRobinManagerState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.RoundRobinManagerState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.RoundRobinManagerState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.RoundRobinManagerState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SelectorManagerState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">SelectorManagerState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'SelectorManagerState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_thread:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.ToolCallRequestEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallExecutionEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MemoryQueryEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.UserInputRequestedEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ModelClientStreamingChunkEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ThoughtEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_turn:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">previous_speaker:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#SelectorManagerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.SelectorManagerState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState" title="agentopera.chatflow.state.states.BaseGroupChatManagerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChatManagerState</span></code></a></p>
+<p>State for <code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorGroupChat</span></code> manager.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SelectorManagerState.previous_speaker">
+<span class="sig-name descname"><span class="pre">previous_speaker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.chatflow.state.SelectorManagerState.previous_speaker" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SelectorManagerState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.SelectorManagerState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SelectorManagerState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.SelectorManagerState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SwarmManagerState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">SwarmManagerState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'SwarmManagerState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_thread:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.ToolCallRequestEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallExecutionEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MemoryQueryEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.UserInputRequestedEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ModelClientStreamingChunkEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ThoughtEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_turn:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_speaker:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#SwarmManagerState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.SwarmManagerState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState" title="agentopera.chatflow.state.states.BaseGroupChatManagerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChatManagerState</span></code></a></p>
+<p>State for <code class="xref py py-class docutils literal notranslate"><span class="pre">Swarm</span></code> manager.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SwarmManagerState.current_speaker">
+<span class="sig-name descname"><span class="pre">current_speaker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.SwarmManagerState.current_speaker" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SwarmManagerState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.SwarmManagerState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SwarmManagerState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.SwarmManagerState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">MagenticOneOrchestratorState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'MagenticOneOrchestratorState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_thread:</span> <span class="pre">~typing.List[~agentopera.chatflow.messages.ToolCallRequestEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallExecutionEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MemoryQueryEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.UserInputRequestedEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ModelClientStreamingChunkEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ThoughtEvent</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.TextMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.MultiModalMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.StopMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.ToolCallSummaryMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.chatflow.messages.HandoffMessage</span> <span class="pre">|</span> <span class="pre">~agentopera.engine.types.models.types.VercelMessage]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_turn:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facts:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plan:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_rounds:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_stalls:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#MagenticOneOrchestratorState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseGroupChatManagerState" title="agentopera.chatflow.state.states.BaseGroupChatManagerState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseGroupChatManagerState</span></code></a></p>
+<p>State for <code class="xref py py-class docutils literal notranslate"><span class="pre">MagneticOneGroupChat</span></code> orchestrator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.task">
+<span class="sig-name descname"><span class="pre">task</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.task" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.facts">
+<span class="sig-name descname"><span class="pre">facts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.facts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.plan">
+<span class="sig-name descname"><span class="pre">plan</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.plan" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.n_rounds">
+<span class="sig-name descname"><span class="pre">n_rounds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.n_rounds" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.n_stalls">
+<span class="sig-name descname"><span class="pre">n_stalls</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.n_stalls" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.MagenticOneOrchestratorState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.MagenticOneOrchestratorState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.TeamState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">TeamState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'TeamState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_states:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">team_id:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#TeamState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.TeamState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseState" title="agentopera.chatflow.state.states.BaseState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseState</span></code></a></p>
+<p>State for a team of agents.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.TeamState.agent_states">
+<span class="sig-name descname"><span class="pre">agent_states</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.TeamState.agent_states" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.TeamState.team_id">
+<span class="sig-name descname"><span class="pre">team_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.TeamState.team_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.TeamState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.TeamState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.TeamState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.TeamState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SocietyOfMindAgentState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.state.</span></span><span class="sig-name descname"><span class="pre">SocietyOfMindAgentState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'SocietyOfMindAgentState'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'1.0.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_team_state:</span> <span class="pre">~typing.Mapping[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">~typing.Any]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/state/states.html#SocietyOfMindAgentState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.state.SocietyOfMindAgentState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.state.BaseState" title="agentopera.chatflow.state.states.BaseState"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseState</span></code></a></p>
+<p>State for a Society of Mind agent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SocietyOfMindAgentState.inner_team_state">
+<span class="sig-name descname"><span class="pre">inner_team_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.state.SocietyOfMindAgentState.inner_team_state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SocietyOfMindAgentState.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.state.SocietyOfMindAgentState.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.state.SocietyOfMindAgentState.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.state.SocietyOfMindAgentState.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chatflow.media.html" class="btn btn-neutral float-left" title="chatflow.media" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chatflow.team.html" class="btn btn-neutral float-right" title="chatflow.team" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.runtime.local.local_agent_engine &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.runtime.local.local_agent_engine</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.runtime.local.local_agent_engine</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancelledError</span><span class="p">,</span> <span class="n">Future</span><span class="p">,</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">Task</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">opentelemetry.trace</span><span class="w"> </span><span class="kn">import</span> <span class="n">TracerProvider</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">...logging</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentConstructionExceptionEvent</span><span class="p">,</span>
+    <span class="n">DeliveryStage</span><span class="p">,</span>
+    <span class="n">MessageEvent</span><span class="p">,</span>
+    <span class="n">MessageHandlerExceptionEvent</span><span class="p">,</span>
+    <span class="n">MessageKind</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">QueueShutDown</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queue</span><span class="p">,</span> <span class="n">QueueShutDown</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.agent.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">AgentType</span><span class="p">,</span> <span class="n">AgentMetadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.agent.agent_instantiation_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInstantiationContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..agent_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.msg_context.message_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...message_handler_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageHandlerContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..engine_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubscriptionManager</span><span class="p">,</span> <span class="n">get_impl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSON_DATA_CONTENT_TYPE</span><span class="p">,</span> <span class="n">MessageSerializer</span><span class="p">,</span> <span class="n">SerializationRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...subscription.subscription</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subscription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...telemetry</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvelopeMetadata</span><span class="p">,</span> <span class="n">MessageRuntimeTracingConfig</span><span class="p">,</span> <span class="n">TraceHelper</span><span class="p">,</span> <span class="n">get_telemetry_envelope_metadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.msg_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageChannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...types.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageDroppedException</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;agentopera.core&quot;</span><span class="p">)</span>
+<span class="n">event_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;agentopera.core.events&quot;</span><span class="p">)</span>
+
+<span class="c1"># We use a type parameter in some functions which shadows the built-in `type` function.</span>
+<span class="c1"># This is a workaround to avoid shadowing the built-in `type` function.</span>
+<span class="n">type_func_alias</span> <span class="o">=</span> <span class="nb">type</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PublishMessageEnvelope</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A message envelope for publishing messages to all agents that can handle</span>
+<span class="sd">    the message of the type T.&quot;&quot;&quot;</span>
+
+    <span class="n">message</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="n">EnvelopeMetadata</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SendMessageEnvelope</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A message envelope for sending a message to a specific agent that can handle</span>
+<span class="sd">    the message of the type T.&quot;&quot;&quot;</span>
+
+    <span class="n">message</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">recipient</span><span class="p">:</span> <span class="n">AgentId</span>
+    <span class="n">future</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="n">EnvelopeMetadata</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResponseMessageEnvelope</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A message envelope for sending a response to a message.&quot;&quot;&quot;</span>
+
+    <span class="n">message</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">future</span><span class="p">:</span> <span class="n">Future</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+    <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span>
+    <span class="n">recipient</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="n">EnvelopeMetadata</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Agent</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RunContext</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">:</span> <span class="n">LocalAgentEngine</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="n">engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stopped</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stopped</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+                <span class="k">return</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">_process_next</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stopped</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">immediate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_task</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop_when_idle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stopped</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">immediate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_task</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop_when</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">check_period</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">check_condition</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">condition</span><span class="p">():</span>
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">check_period</span><span class="p">)</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">check_condition</span><span class="p">())</span>
+
+<div class="viewcode-block" id="LocalAgentEngine">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalAgentEngine</span><span class="p">(</span><span class="n">AgentEngine</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A single-threaded agent engine that processes all messages using a single asyncio queue.</span>
+<span class="sd">    Messages are delivered in the order they are received, and the engine processes</span>
+<span class="sd">    each message in a separate asyncio task concurrently.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        This engine is suitable for development and standalone applications.</span>
+<span class="sd">        It is not suitable for high-throughput or high-concurrency scenarios.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tracer_provider (TracerProvider, optional): The tracer provider to use for tracing. Defaults to None.</span>
+<span class="sd">        ignore_unhandled_exceptions (bool, optional): Whether to ignore unhandled exceptions in that occur in agent event handlers. Any background exceptions will be raised on the next call to `process_next` or from an awaited `stop`, `stop_when_idle` or `stop_when`. Note, this does not apply to RPC handlers. Defaults to True.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        A simple example of creating a engine, registering an agent, sending a message and stopping the engine:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from dataclasses import dataclass</span>
+
+<span class="sd">            from agentopera.core import AgentId, MessageContext, RoutedAgent, LocalAgentEngine, message_handler</span>
+
+
+<span class="sd">            @dataclass</span>
+<span class="sd">            class MyMessage:</span>
+<span class="sd">                content: str</span>
+
+
+<span class="sd">            class MyAgent(RoutedAgent):</span>
+<span class="sd">                @message_handler</span>
+<span class="sd">                async def handle_my_message(self, message: MyMessage, ctx: MessageContext) -&gt; None:</span>
+<span class="sd">                    print(f&quot;Received message: {message.content}&quot;)</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create a engine and register the agent</span>
+<span class="sd">                engine = LocalAgentEngine()</span>
+<span class="sd">                await MyAgent.register(engine, &quot;my_agent&quot;, lambda: MyAgent(&quot;My agent&quot;))</span>
+
+<span class="sd">                # Start the engine, send a message and stop the engine</span>
+<span class="sd">                engine.start()</span>
+<span class="sd">                await engine.send_message(MyMessage(&quot;Hello, world!&quot;), recipient=AgentId(&quot;my_agent&quot;, &quot;default&quot;))</span>
+<span class="sd">                await engine.stop()</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        An example of creating a engine, registering an agent, publishing a message and stopping the engine:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from dataclasses import dataclass</span>
+
+<span class="sd">            from agentopera.core import (</span>
+<span class="sd">                DefaultTopicId,</span>
+<span class="sd">                MessageContext,</span>
+<span class="sd">                RoutedAgent,</span>
+<span class="sd">                LocalAgentEngine,</span>
+<span class="sd">                default_subscription,</span>
+<span class="sd">                message_handler,</span>
+<span class="sd">            )</span>
+
+
+<span class="sd">            @dataclass</span>
+<span class="sd">            class MyMessage:</span>
+<span class="sd">                content: str</span>
+
+
+<span class="sd">            # The agent is subscribed to the default topic.</span>
+<span class="sd">            @default_subscription</span>
+<span class="sd">            class MyAgent(RoutedAgent):</span>
+<span class="sd">                @message_handler</span>
+<span class="sd">                async def handle_my_message(self, message: MyMessage, ctx: MessageContext) -&gt; None:</span>
+<span class="sd">                    print(f&quot;Received message: {message.content}&quot;)</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create a engine and register the agent</span>
+<span class="sd">                engine = LocalAgentEngine()</span>
+<span class="sd">                await MyAgent.register(engine, &quot;my_agent&quot;, lambda: MyAgent(&quot;My agent&quot;))</span>
+
+<span class="sd">                # Start the engine.</span>
+<span class="sd">                engine.start()</span>
+<span class="sd">                # Publish a message to the default topic that the agent is subscribed to.</span>
+<span class="sd">                await engine.publish_message(MyMessage(&quot;Hello, world!&quot;), DefaultTopicId())</span>
+<span class="sd">                # Wait for the message to be processed and then stop the engine.</span>
+<span class="sd">                await engine.stop_when_idle()</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tracer_provider</span><span class="p">:</span> <span class="n">TracerProvider</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ignore_unhandled_exceptions</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span> <span class="o">=</span> <span class="n">TraceHelper</span><span class="p">(</span><span class="n">tracer_provider</span><span class="p">,</span> <span class="n">MessageRuntimeTracingConfig</span><span class="p">(</span><span class="s2">&quot;LocalAgentEngine&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="p">:</span> <span class="n">Queue</span><span class="p">[</span><span class="n">PublishMessageEnvelope</span> <span class="o">|</span> <span class="n">SendMessageEnvelope</span> <span class="o">|</span> <span class="n">ResponseMessageEnvelope</span><span class="p">]</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+        <span class="c1"># (namespace, type) -&gt; List[AgentId]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span>
+            <span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Agent</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Agent</span><span class="p">]]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentEngine</span><span class="p">,</span> <span class="n">AgentId</span><span class="p">],</span> <span class="n">Agent</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Agent</span><span class="p">]]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">AgentId</span><span class="p">,</span> <span class="n">Agent</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">Task</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_manager</span> <span class="o">=</span> <span class="n">SubscriptionManager</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span><span class="p">:</span> <span class="n">RunContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_serialization_registry</span> <span class="o">=</span> <span class="n">SerializationRegistry</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ignore_unhandled_handler_exceptions</span> <span class="o">=</span> <span class="n">ignore_unhandled_exceptions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span><span class="p">:</span> <span class="ne">BaseException</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unprocessed_messages_count</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">qsize</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_known_agent_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># Returns the response of the message</span>
+<div class="viewcode-block" id="LocalAgentEngine.send_message">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.send_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_message</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">recipient</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">message_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">message_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="n">MessageEvent</span><span class="p">(</span>
+                <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message</span><span class="p">),</span>
+                <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                <span class="n">receiver</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span>
+                <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">DIRECT</span><span class="p">,</span>
+                <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">SEND</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span>
+            <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="n">recipient</span><span class="p">,</span>
+            <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">extraAttributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;message_type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
+        <span class="p">):</span>
+            <span class="n">future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">create_future</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">recipient</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_known_agent_names</span><span class="p">:</span>
+                <span class="n">future</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Recipient not found&quot;</span><span class="p">))</span>
+
+            <span class="n">content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;__dict__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">message</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending message of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">recipient</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+                <span class="n">SendMessageEnvelope</span><span class="p">(</span>
+                    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                    <span class="n">recipient</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span>
+                    <span class="n">future</span><span class="o">=</span><span class="n">future</span><span class="p">,</span>
+                    <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="n">get_telemetry_envelope_metadata</span><span class="p">(),</span>
+                    <span class="n">message_id</span><span class="o">=</span><span class="n">message_id</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">cancellation_token</span><span class="o">.</span><span class="n">link_future</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="k">await</span> <span class="n">future</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.publish_message">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.publish_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">publish_message</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">sender</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span>
+            <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+            <span class="n">message_channel</span><span class="p">,</span>
+            <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">extraAttributes</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;message_type&quot;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">},</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;__dict__&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">message</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Publishing message of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> to all subscribers: </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">message_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">message_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+            <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">MessageEvent</span><span class="p">(</span>
+                    <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message</span><span class="p">),</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">receiver</span><span class="o">=</span><span class="n">message_channel</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">PUBLISH</span><span class="p">,</span>
+                    <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">SEND</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+                <span class="n">PublishMessageEnvelope</span><span class="p">(</span>
+                    <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                    <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">message_channel</span><span class="o">=</span><span class="n">message_channel</span><span class="p">,</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="n">get_telemetry_envelope_metadata</span><span class="p">(),</span>
+                    <span class="n">message_id</span><span class="o">=</span><span class="n">message_id</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.save_state">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">state</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">:</span>
+            <span class="n">state</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent_id</span><span class="p">))</span><span class="o">.</span><span class="n">save_state</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">state</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.load_state">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">agent_id_str</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+            <span class="n">agent_id</span> <span class="o">=</span> <span class="n">AgentId</span><span class="o">.</span><span class="n">from_str</span><span class="p">(</span><span class="n">agent_id_str</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">agent_id</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_known_agent_names</span><span class="p">:</span>
+                <span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent_id</span><span class="p">))</span><span class="o">.</span><span class="n">load_state</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)])</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_process_send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_envelope</span><span class="p">:</span> <span class="n">SendMessageEnvelope</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span><span class="s2">&quot;send&quot;</span><span class="p">,</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">metadata</span><span class="p">):</span>
+            <span class="n">recipient</span> <span class="o">=</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span>
+
+            <span class="k">if</span> <span class="n">recipient</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_known_agent_names</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Agent type &#39;</span><span class="si">{</span><span class="n">recipient</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">&#39; does not exist.&quot;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">sender_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">)</span> <span class="k">if</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;Unknown&quot;</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Calling message handler for </span><span class="si">{</span><span class="n">recipient</span><span class="si">}</span><span class="s2"> with message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> sent by </span><span class="si">{</span><span class="n">sender_id</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="n">MessageEvent</span><span class="p">(</span>
+                        <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                        <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                        <span class="n">receiver</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span>
+                        <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">DIRECT</span><span class="p">,</span>
+                        <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">DELIVER</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">recipient_agent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">recipient</span><span class="p">)</span>
+
+                <span class="n">message_context</span> <span class="o">=</span> <span class="n">MessageContext</span><span class="p">(</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">message_channel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">is_rpc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">cancellation_token</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">cancellation_token</span><span class="p">,</span>
+                    <span class="n">message_id</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message_id</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">with</span> <span class="n">MessageHandlerContext</span><span class="o">.</span><span class="n">populate_context</span><span class="p">(</span><span class="n">recipient_agent</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
+                    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">recipient_agent</span><span class="o">.</span><span class="n">on_message</span><span class="p">(</span>
+                        <span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+                        <span class="n">ctx</span><span class="o">=</span><span class="n">message_context</span><span class="p">,</span>
+                    <span class="p">)</span>
+            <span class="k">except</span> <span class="n">CancelledError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">cancelled</span><span class="p">():</span>
+                    <span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="n">MessageHandlerExceptionEvent</span><span class="p">(</span>
+                        <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                        <span class="n">handling_agent</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span>
+                        <span class="n">exception</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="n">MessageHandlerExceptionEvent</span><span class="p">(</span>
+                        <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                        <span class="n">handling_agent</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span>
+                        <span class="n">exception</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+
+            <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">MessageEvent</span><span class="p">(</span>
+                    <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="p">,</span>
+                    <span class="n">receiver</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">RESPOND</span><span class="p">,</span>
+                    <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">SEND</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+                <span class="n">ResponseMessageEnvelope</span><span class="p">(</span>
+                    <span class="n">message</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+                    <span class="n">future</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="p">,</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="p">,</span>
+                    <span class="n">recipient</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="n">get_telemetry_envelope_metadata</span><span class="p">(),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_process_publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_envelope</span><span class="p">:</span> <span class="n">PublishMessageEnvelope</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span><span class="s2">&quot;publish&quot;</span><span class="p">,</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">message_channel</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">metadata</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">responses</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">recipients</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_manager</span><span class="o">.</span><span class="n">get_subscribed_recipients</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message_channel</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">recipients</span><span class="p">:</span>
+                    <span class="c1"># Avoid sending the message back to the sender</span>
+                    <span class="k">if</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">agent_id</span> <span class="o">==</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">sender_agent</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">)</span> <span class="k">if</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="p">)</span>
+                    <span class="n">sender_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sender_agent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">if</span> <span class="n">sender_agent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;Unknown&quot;</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Calling message handler for </span><span class="si">{</span><span class="n">agent_id</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2"> with message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> published by </span><span class="si">{</span><span class="n">sender_name</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                        <span class="n">MessageEvent</span><span class="p">(</span>
+                            <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                            <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                            <span class="n">receiver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">PUBLISH</span><span class="p">,</span>
+                            <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">DELIVER</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="n">message_context</span> <span class="o">=</span> <span class="n">MessageContext</span><span class="p">(</span>
+                        <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                        <span class="n">message_channel</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message_channel</span><span class="p">,</span>
+                        <span class="n">is_rpc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">cancellation_token</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">cancellation_token</span><span class="p">,</span>
+                        <span class="n">message_id</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message_id</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">agent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)</span>
+
+                    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_on_message</span><span class="p">(</span><span class="n">agent</span><span class="p">:</span> <span class="n">Agent</span><span class="p">,</span> <span class="n">message_context</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+                        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span><span class="s2">&quot;process&quot;</span><span class="p">,</span> <span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                            <span class="k">with</span> <span class="n">MessageHandlerContext</span><span class="o">.</span><span class="n">populate_context</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
+                                <span class="k">try</span><span class="p">:</span>
+                                    <span class="k">return</span> <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">on_message</span><span class="p">(</span>
+                                        <span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+                                        <span class="n">ctx</span><span class="o">=</span><span class="n">message_context</span><span class="p">,</span>
+                                    <span class="p">)</span>
+                                <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing publish message for </span><span class="si">{</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                    <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                                        <span class="n">MessageHandlerExceptionEvent</span><span class="p">(</span>
+                                            <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                                            <span class="n">handling_agent</span><span class="o">=</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                                            <span class="n">exception</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
+                                        <span class="p">)</span>
+                                    <span class="p">)</span>
+                                    <span class="k">raise</span> <span class="n">e</span>
+
+                    <span class="n">future</span> <span class="o">=</span> <span class="n">_on_message</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">message_context</span><span class="p">)</span>
+                    <span class="n">responses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+
+                <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">responses</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ignore_unhandled_handler_exceptions</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+            <span class="c1"># TODO if responses are given for a publish</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_envelope</span><span class="p">:</span> <span class="n">ResponseMessageEnvelope</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tracer_helper</span><span class="o">.</span><span class="n">trace_block</span><span class="p">(</span><span class="s2">&quot;ack&quot;</span><span class="p">,</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">metadata</span><span class="p">):</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="vm">__dict__</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;__dict__&quot;</span><span class="p">)</span>
+                <span class="k">else</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span>
+            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Resolving response with message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> for recipient </span><span class="si">{</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="n">MessageEvent</span><span class="p">(</span>
+                    <span class="n">payload</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_try_serialize</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">),</span>
+                    <span class="n">sender</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">sender</span><span class="p">,</span>
+                    <span class="n">receiver</span><span class="o">=</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">recipient</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">MessageKind</span><span class="o">.</span><span class="n">RESPOND</span><span class="p">,</span>
+                    <span class="n">delivery_stage</span><span class="o">=</span><span class="n">DeliveryStage</span><span class="o">.</span><span class="n">DELIVER</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">cancelled</span><span class="p">():</span>
+                <span class="n">message_envelope</span><span class="o">.</span><span class="n">future</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="n">message_envelope</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LocalAgentEngine.process_next">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.process_next">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process the next message in the queue.</span>
+
+<span class="sd">        If there is an unhandled exception in the background task, it will be raised here. `process_next` cannot be called again after an unhandled exception is raised.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_next</span><span class="p">()</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_process_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process the next message in the queue.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">immediate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">message_envelope</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">QueueShutDown</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_background_exception</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">raise</span> <span class="n">e</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+            <span class="k">return</span>
+
+        <span class="k">match</span> <span class="n">message_envelope</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">SendMessageEnvelope</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span> <span class="n">recipient</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span> <span class="n">future</span><span class="o">=</span><span class="n">future</span><span class="p">):</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_process_send</span><span class="p">(</span><span class="n">message_envelope</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">discard</span><span class="p">)</span>
+            <span class="k">case</span> <span class="n">PublishMessageEnvelope</span><span class="p">(</span>
+                <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+                <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span>
+                <span class="n">message_channel</span><span class="o">=</span><span class="n">message_channel</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_process_publish</span><span class="p">(</span><span class="n">message_envelope</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">discard</span><span class="p">)</span>
+            <span class="k">case</span> <span class="n">ResponseMessageEnvelope</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">sender</span><span class="p">,</span> <span class="n">recipient</span><span class="o">=</span><span class="n">recipient</span><span class="p">,</span> <span class="n">future</span><span class="o">=</span><span class="n">future</span><span class="p">):</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_process_response</span><span class="p">(</span><span class="n">message_envelope</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_background_tasks</span><span class="o">.</span><span class="n">discard</span><span class="p">)</span>
+
+        <span class="c1"># Yield control to the message loop to allow other tasks to run</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LocalAgentEngine.start">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.start">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start the engine message processing loop. This runs in a background task.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core import LocalAgentEngine</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                engine = LocalAgentEngine()</span>
+<span class="sd">                engine.start()</span>
+
+<span class="sd">                # ... do other things ...</span>
+
+<span class="sd">                await engine.stop()</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Engine is already started&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="o">=</span> <span class="n">RunContext</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.close">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.close">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calls :meth:`stop` if applicable and the :meth:`Agent.close` method on all instantiated agents&quot;&quot;&quot;</span>
+        <span class="c1"># stop the engine if it hasn&#39;t been stopped yet</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="c1"># close all the agents that have been instantiated</span>
+        <span class="k">for</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">:</span>
+            <span class="n">agent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.stop">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.stop">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Immediately stop the engine message processing loop. The currently processing message will be completed, but all others following it will be discarded.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Engine is not started&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.stop_when_idle">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.stop_when_idle">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop_when_idle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the engine message processing loop when there is</span>
+<span class="sd">        no outstanding message being processed or queued. This is the most common way to stop the engine.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Engine is not started&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span><span class="o">.</span><span class="n">stop_when_idle</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.stop_when">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.stop_when">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stop_when</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the engine message processing loop when the condition is met.</span>
+
+<span class="sd">        .. caution::</span>
+
+<span class="sd">            This method is not recommended to be used, and is here for legacy</span>
+<span class="sd">            reasons. It will spawn a busy loop to continually check the</span>
+<span class="sd">            condition. It is much more efficient to call `stop_when_idle` or</span>
+<span class="sd">            `stop` instead. If you need to stop the engine based on a</span>
+<span class="sd">            condition, consider using a background task and asyncio.Event to</span>
+<span class="sd">            signal when the condition is met and the background task should call</span>
+<span class="sd">            stop.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Engine is not started&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span><span class="o">.</span><span class="n">stop_when</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run_context</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.agent_metadata">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.agent_metadata">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentMetadata</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent</span><span class="p">))</span><span class="o">.</span><span class="n">metadata</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.agent_save_state">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.agent_save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent</span><span class="p">))</span><span class="o">.</span><span class="n">save_state</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.agent_load_state">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.agent_load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">agent_load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">agent</span><span class="p">))</span><span class="o">.</span><span class="n">load_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.register_agent_builder">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.register_agent_builder">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">register_agent_builder</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">AgentType</span><span class="p">,</span>
+        <span class="n">agent_builder</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">T</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">expected_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentType</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="n">AgentType</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Agent with type </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">factory_wrapper</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+            <span class="n">maybe_agent_instance</span> <span class="o">=</span> <span class="n">agent_builder</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">maybe_agent_instance</span><span class="p">):</span>
+                <span class="n">agent_instance</span> <span class="o">=</span> <span class="k">await</span> <span class="n">maybe_agent_instance</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">agent_instance</span> <span class="o">=</span> <span class="n">maybe_agent_instance</span>
+
+            <span class="k">if</span> <span class="n">expected_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">type_func_alias</span><span class="p">(</span><span class="n">agent_instance</span><span class="p">)</span> <span class="o">!=</span> <span class="n">expected_class</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Factory registered using the wrong type.&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">agent_instance</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="p">[</span><span class="nb">type</span><span class="o">.</span><span class="n">type</span><span class="p">]</span> <span class="o">=</span> <span class="n">factory_wrapper</span>
+
+        <span class="k">return</span> <span class="nb">type</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_invoke_agent_factory</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">agent_factory</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">T</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">T</span><span class="p">]]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentEngine</span><span class="p">,</span> <span class="n">AgentId</span><span class="p">],</span> <span class="n">T</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span>
+        <span class="n">agent_id</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">populate_context</span><span class="p">((</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">agent_factory</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">factory_one</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">T</span><span class="p">],</span> <span class="n">agent_factory</span><span class="p">)</span>
+                    <span class="n">agent</span> <span class="o">=</span> <span class="n">factory_one</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">agent_factory</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s2">&quot;Agent factories that take two arguments are deprecated. Use AgentInstantiationContext instead. Two arg factories will be removed in a future version.&quot;</span><span class="p">,</span>
+                        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">factory_two</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentEngine</span><span class="p">,</span> <span class="n">AgentId</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">agent_factory</span><span class="p">)</span>
+                    <span class="n">agent</span> <span class="o">=</span> <span class="n">factory_two</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Agent factory must take 0 or 2 arguments.&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">agent</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="k">await</span> <span class="n">agent</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="n">agent</span>
+
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="n">AgentConstructionExceptionEvent</span><span class="p">(</span>
+                        <span class="n">agent_id</span><span class="o">=</span><span class="n">agent_id</span><span class="p">,</span>
+                        <span class="n">exception</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error constructing agent </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Agent</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">agent_id</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Agent with name </span><span class="si">{</span><span class="n">agent_id</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
+
+        <span class="n">agent_factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_factories</span><span class="p">[</span><span class="n">agent_id</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
+        <span class="n">agent</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invoke_agent_factory</span><span class="p">(</span><span class="n">agent_factory</span><span class="p">,</span> <span class="n">agent_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instantiated_agents</span><span class="p">[</span><span class="n">agent_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">agent</span>
+        <span class="k">return</span> <span class="n">agent</span>
+
+<div class="viewcode-block" id="LocalAgentEngine.subscribe">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.subscribe">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subscription</span><span class="p">:</span> <span class="n">Subscription</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_manager</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">subscription</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.unsubscribe">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.unsubscribe">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">unsubscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subscription_manager</span><span class="o">.</span><span class="n">unsubscribe</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.get">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.get">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">id_or_type</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">|</span> <span class="n">AgentType</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">lazy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">get_impl</span><span class="p">(</span>
+            <span class="n">id_or_type</span><span class="o">=</span><span class="n">id_or_type</span><span class="p">,</span>
+            <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">lazy</span><span class="o">=</span><span class="n">lazy</span><span class="p">,</span>
+            <span class="n">instance_getter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalAgentEngine.register_msg_serializer">
+<a class="viewcode-back" href="../../../../../engine/engine.runtime.html#agentopera.engine.runtime.LocalAgentEngine.register_msg_serializer">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_msg_serializer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">:</span> <span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_serialization_registry</span><span class="o">.</span><span class="n">add_serializer</span><span class="p">(</span><span class="n">serializer</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_try_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">type_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialization_registry</span><span class="o">.</span><span class="n">type_name</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialization_registry</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span>
+                <span class="n">message</span><span class="p">,</span> <span class="n">type_name</span><span class="o">=</span><span class="n">type_name</span><span class="p">,</span> <span class="n">data_content_type</span><span class="o">=</span><span class="n">JSON_DATA_CONTENT_TYPE</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Message could not be serialized&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

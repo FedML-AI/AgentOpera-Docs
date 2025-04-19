@@ -1,0 +1,8 @@
+chatflow.team
+=============
+
+.. automodule:: agentopera.chatflow.team
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.agent.closure_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.agent.closure_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.agent.closure_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">get_type_hints</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">AgentType</span><span class="p">,</span> <span class="n">AgentMetadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent.agent_instantiation_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentInstantiationContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..runtime.agent_engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.msg_context.message_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">try_get_known_serializers_for_type</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..subscription.subscription</span><span class="w"> </span><span class="kn">import</span> <span class="n">Subscription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..subscription.subscription_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubscriptionInstantiationContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.msg_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageChannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..type_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_types</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CantHandleException</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">ClosureAgentType</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;ClosureAgentType&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="s2">&quot;ClosureAgent&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_handled_types_from_closure</span><span class="p">(</span>
+    <span class="n">closure</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ClosureAgent</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">]:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">closure</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Closure must have 4 arguments&quot;</span><span class="p">)</span>
+
+    <span class="n">message_arg_name</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;return&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;return not found in function signature&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the type of the message parameter</span>
+    <span class="n">target_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="n">message_arg_name</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">target_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Message type not found&quot;</span><span class="p">)</span>
+
+    <span class="c1"># print(type_hints)</span>
+    <span class="n">return_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">return_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Return type not found&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">target_types</span>
+
+
+<div class="viewcode-block" id="ClosureContext">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureContext">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClosureContext</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="ClosureContext.send_message">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureContext.send_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_message</span><span class="p">(</span></div>
+
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">recipient</span><span class="p">:</span> <span class="n">AgentId</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">message_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="ClosureContext.publish_message">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureContext.publish_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">publish_message</span><span class="p">(</span></div>
+
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">message_channel</span><span class="p">:</span> <span class="n">MessageChannel</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span></div>
+
+
+
+<div class="viewcode-block" id="ClosureAgent">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClosureAgent</span><span class="p">(</span><span class="n">BaseAgent</span><span class="p">,</span> <span class="n">ClosureContext</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">closure</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ClosureContext</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">unknown_type_policy</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">engine</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_engine</span><span class="p">()</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;ClosureAgent must be instantiated within the context of an AgentEngine. It cannot be directly instantiated.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="p">:</span> <span class="n">AgentEngine</span> <span class="o">=</span> <span class="n">engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">:</span> <span class="n">AgentId</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="n">handled_types</span> <span class="o">=</span> <span class="n">get_handled_types_from_closure</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expected_types</span> <span class="o">=</span> <span class="n">handled_types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_closure</span> <span class="o">=</span> <span class="n">closure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_type_policy</span> <span class="o">=</span> <span class="n">unknown_type_policy</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentMetadata</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">AgentMetadata</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentId</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">engine</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentEngine</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span>
+
+<div class="viewcode-block" id="ClosureAgent.on_message_impl">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureAgent.on_message_impl">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_message_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expected_types</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_type_policy</span> <span class="o">==</span> <span class="s2">&quot;warn&quot;</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_expected_types</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">. Set unknown_type_policy to &#39;error&#39; to raise an exception, or &#39;ignore&#39; to suppress this warning.&quot;</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_type_policy</span> <span class="o">==</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">CantHandleException</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_expected_types</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">. Set unknown_type_policy to &#39;warn&#39; to suppress this exception, or &#39;ignore&#39; to suppress this warning.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ClosureAgent.save_state">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureAgent.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Closure agents do not have state. So this method always returns an empty dictionary.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{}</span></div>
+
+
+<div class="viewcode-block" id="ClosureAgent.load_state">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureAgent.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Closure agents do not have state. So this method does nothing.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ClosureAgent.register_closure">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.ClosureAgent.register_closure">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">register_closure</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">engine</span><span class="p">:</span> <span class="n">AgentEngine</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">closure</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ClosureContext</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">unknown_type_policy</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span>
+        <span class="n">skip_direct_message_subscription</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">subscriptions</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="nb">list</span><span class="p">[</span><span class="n">Subscription</span><span class="p">]</span> <span class="o">|</span> <span class="n">Awaitable</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Subscription</span><span class="p">]]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The closure agent allows you to define an agent using a closure, or function without needing to define a class. It allows values to be extracted out of the engine.</span>
+
+<span class="sd">        The closure can define the type of message which is expected, or `Any` can be used to accept any type of message.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.engine import LocalAgentEngine, MessageContext, ClosureAgent, ClosureContext</span>
+<span class="sd">            from dataclasses import dataclass</span>
+
+<span class="sd">            from agentopera.engine.protocol.subscription.default_subscription import DefaultSubscription</span>
+<span class="sd">            from agentopera.engine.protocol.subscription.default_topic import DefaultTopicId</span>
+
+
+<span class="sd">            @dataclass</span>
+<span class="sd">            class MyMessage:</span>
+<span class="sd">                content: str</span>
+
+
+<span class="sd">            async def main():</span>
+<span class="sd">                queue = asyncio.Queue[MyMessage]()</span>
+
+<span class="sd">                async def output_result(_ctx: ClosureContext, message: MyMessage, ctx: MessageContext) -&gt; None:</span>
+<span class="sd">                    await queue.put(message)</span>
+
+<span class="sd">                engine = LocalAgentEngine()</span>
+<span class="sd">                await ClosureAgent.register_closure(</span>
+<span class="sd">                    engine, &quot;output_result&quot;, output_result, subscriptions=lambda: [DefaultSubscription()]</span>
+<span class="sd">                )</span>
+
+<span class="sd">                engine.start()</span>
+<span class="sd">                await engine.publish_message(MyMessage(&quot;Hello, world!&quot;), DefaultTopicId())</span>
+<span class="sd">                await engine.stop_when_idle()</span>
+
+<span class="sd">                result = await queue.get()</span>
+<span class="sd">                print(result)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            engine (AgentEngine): Engine to register the agent to</span>
+<span class="sd">            type (str): Agent type of registered agent</span>
+<span class="sd">            closure (Callable[[ClosureContext, T, MessageContext], Awaitable[Any]]): Closure to handle messages</span>
+<span class="sd">            unknown_type_policy (Literal[&quot;error&quot;, &quot;warn&quot;, &quot;ignore&quot;], optional): What to do if a type is encountered that does not match the closure type. Defaults to &quot;warn&quot;.</span>
+<span class="sd">            skip_direct_message_subscription (bool, optional): Do not add direct message subscription for this agent. Defaults to False.</span>
+<span class="sd">            description (str, optional): Description of what agent does. Defaults to &quot;&quot;.</span>
+<span class="sd">            subscriptions (Callable[[], list[Subscription]  |  Awaitable[list[Subscription]]] | None, optional): List of subscriptions for this closure agent. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            AgentType: Type of the agent that was registered</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">factory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ClosureAgent</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ClosureAgent</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">closure</span><span class="o">=</span><span class="n">closure</span><span class="p">,</span> <span class="n">unknown_type_policy</span><span class="o">=</span><span class="n">unknown_type_policy</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">_unbound_subscriptions</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Closure agents are expected to have no class subscriptions&quot;</span>
+        <span class="n">agent_type</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">cls</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+            <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+            <span class="n">agent_builder</span><span class="o">=</span><span class="n">factory</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="c1"># There should be no need to process class subscriptions, as the closure agent does not have any subscriptions.s</span>
+            <span class="n">skip_class_subscriptions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">skip_direct_message_subscription</span><span class="o">=</span><span class="n">skip_direct_message_subscription</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">subscriptions_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Subscription</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">subscriptions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">SubscriptionInstantiationContext</span><span class="o">.</span><span class="n">populate_context</span><span class="p">(</span><span class="n">agent_type</span><span class="p">):</span>
+                <span class="n">subscriptions_list_result</span> <span class="o">=</span> <span class="n">subscriptions</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isawaitable</span><span class="p">(</span><span class="n">subscriptions_list_result</span><span class="p">):</span>
+                    <span class="n">subscriptions_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="k">await</span> <span class="n">subscriptions_list_result</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># just ignore mypy here</span>
+                    <span class="n">subscriptions_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">subscriptions_list_result</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="k">for</span> <span class="n">subscription</span> <span class="ow">in</span> <span class="n">subscriptions_list</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">subscription</span><span class="p">)</span>
+
+        <span class="n">handled_types</span> <span class="o">=</span> <span class="n">get_handled_types_from_closure</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message_type</span> <span class="ow">in</span> <span class="n">handled_types</span><span class="p">:</span>
+            <span class="c1"># TODO: support custom serializers</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">try_get_known_serializers_for_type</span><span class="p">(</span><span class="n">message_type</span><span class="p">)</span>
+            <span class="n">engine</span><span class="o">.</span><span class="n">register_msg_serializer</span><span class="p">(</span><span class="n">serializer</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">agent_type</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

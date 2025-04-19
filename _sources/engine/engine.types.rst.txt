@@ -1,0 +1,19 @@
+engine.types
+=============
+
+engine.types.agent
+-----------------
+
+.. automodule:: agentopera.engine.types.agent
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+others
+------
+.. automodule:: agentopera.engine.types
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource 

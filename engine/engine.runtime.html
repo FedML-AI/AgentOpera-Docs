@@ -1,0 +1,1236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>engine.runtime &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="engine.telemetry" href="engine.telemetry.html" />
+    <link rel="prev" title="engine.protocol" href="engine.protocol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">engine.runtime</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.unprocessed_messages_count"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.unprocessed_messages_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.send_message"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.send_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.publish_message"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.publish_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.save_state"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.load_state"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.process_next"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.process_next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.start"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.close"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.stop"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.stop_when_idle"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.stop_when_idle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.stop_when"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.stop_when()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.agent_metadata"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.agent_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.agent_save_state"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.agent_save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.agent_load_state"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.agent_load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.register_agent_builder"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.register_agent_builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.subscribe"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.subscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.unsubscribe"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.unsubscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.get"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.register_msg_serializer"><code class="docutils literal notranslate"><span class="pre">LocalAgentEngine.register_msg_serializer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.start"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.stop"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.stop_when_signal"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.stop_when_signal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.send_message"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.send_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.publish_message"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.publish_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.save_state"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.load_state"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.agent_metadata"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.agent_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.agent_save_state"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.agent_save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.agent_load_state"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.agent_load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.register_agent_builder"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.register_agent_builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.remove_agent"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.remove_agent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.remove_agents_with_type"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.remove_agents_with_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.try_get_underlying_agent_instance"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.try_get_underlying_agent_instance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.subscribe"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.subscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.unsubscribe"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.unsubscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.get"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.register_msg_serializer"><code class="docutils literal notranslate"><span class="pre">DistAgentEngine.register_msg_serializer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngineSrv"><code class="docutils literal notranslate"><span class="pre">DistAgentEngineSrv</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngineSrv.start"><code class="docutils literal notranslate"><span class="pre">DistAgentEngineSrv.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngineSrv.stop"><code class="docutils literal notranslate"><span class="pre">DistAgentEngineSrv.stop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngineSrv.stop_when_signal"><code class="docutils literal notranslate"><span class="pre">DistAgentEngineSrv.stop_when_signal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.SubscriptionManager"><code class="docutils literal notranslate"><span class="pre">SubscriptionManager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.SubscriptionManager.subscriptions"><code class="docutils literal notranslate"><span class="pre">SubscriptionManager.subscriptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.SubscriptionManager.subscribe"><code class="docutils literal notranslate"><span class="pre">SubscriptionManager.subscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.SubscriptionManager.unsubscribe"><code class="docutils literal notranslate"><span class="pre">SubscriptionManager.unsubscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.SubscriptionManager.get_subscribed_recipients"><code class="docutils literal notranslate"><span class="pre">SubscriptionManager.get_subscribed_recipients()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine"><code class="docutils literal notranslate"><span class="pre">AgentEngine</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.send_message"><code class="docutils literal notranslate"><span class="pre">AgentEngine.send_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.publish_message"><code class="docutils literal notranslate"><span class="pre">AgentEngine.publish_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.register_agent_builder"><code class="docutils literal notranslate"><span class="pre">AgentEngine.register_agent_builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.get"><code class="docutils literal notranslate"><span class="pre">AgentEngine.get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.save_state"><code class="docutils literal notranslate"><span class="pre">AgentEngine.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.load_state"><code class="docutils literal notranslate"><span class="pre">AgentEngine.load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.agent_metadata"><code class="docutils literal notranslate"><span class="pre">AgentEngine.agent_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.agent_save_state"><code class="docutils literal notranslate"><span class="pre">AgentEngine.agent_save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.agent_load_state"><code class="docutils literal notranslate"><span class="pre">AgentEngine.agent_load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.subscribe"><code class="docutils literal notranslate"><span class="pre">AgentEngine.subscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.unsubscribe"><code class="docutils literal notranslate"><span class="pre">AgentEngine.unsubscribe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.register_msg_serializer"><code class="docutils literal notranslate"><span class="pre">AgentEngine.register_msg_serializer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.MessageHandlerContext"><code class="docutils literal notranslate"><span class="pre">MessageHandlerContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.MessageHandlerContext.agent_id"><code class="docutils literal notranslate"><span class="pre">MessageHandlerContext.agent_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.runtime.AgentInstantiationContext"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentInstantiationContext.current_engine"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_engine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.runtime.AgentInstantiationContext.current_agent_id"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_agent_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">engine.runtime</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/engine/engine.runtime.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.engine.runtime">
+<span id="engine-runtime"></span><h1>engine.runtime<a class="headerlink" href="#module-agentopera.engine.runtime" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">LocalAgentEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracer_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TracerProvider</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_unhandled_exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.runtime.AgentEngine" title="agentopera.engine.runtime.agent_engine.AgentEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentEngine</span></code></a></p>
+<p>A single-threaded agent engine that processes all messages using a single asyncio queue.
+Messages are delivered in the order they are received, and the engine processes
+each message in a separate asyncio task concurrently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This engine is suitable for development and standalone applications.
+It is not suitable for high-throughput or high-concurrency scenarios.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tracer_provider</strong> (<em>TracerProvider</em><em>, </em><em>optional</em>) – The tracer provider to use for tracing. Defaults to None.</p></li>
+<li><p><strong>ignore_unhandled_exceptions</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to ignore unhandled exceptions in that occur in agent event handlers. Any background exceptions will be raised on the next call to <cite>process_next</cite> or from an awaited <cite>stop</cite>, <cite>stop_when_idle</cite> or <cite>stop_when</cite>. Note, this does not apply to RPC handlers. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>A simple example of creating a engine, registering an agent, sending a message and stopping the engine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentId</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">,</span> <span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">LocalAgentEngine</span><span class="p">,</span> <span class="n">message_handler</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="nd">@message_handler</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_my_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">MyMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Create a engine and register the agent</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">MyAgent</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MyAgent</span><span class="p">(</span><span class="s2">&quot;My agent&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Start the engine, send a message and stop the engine</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">MyMessage</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">),</span> <span class="n">recipient</span><span class="o">=</span><span class="n">AgentId</span><span class="p">(</span><span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">))</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>An example of creating a engine, registering an agent, publishing a message and stopping the engine:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DefaultTopicId</span><span class="p">,</span>
+    <span class="n">MessageContext</span><span class="p">,</span>
+    <span class="n">RoutedAgent</span><span class="p">,</span>
+    <span class="n">LocalAgentEngine</span><span class="p">,</span>
+    <span class="n">default_subscription</span><span class="p">,</span>
+    <span class="n">message_handler</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="c1"># The agent is subscribed to the default topic.</span>
+<span class="nd">@default_subscription</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="nd">@message_handler</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_my_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">MyMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Create a engine and register the agent</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">MyAgent</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MyAgent</span><span class="p">(</span><span class="s2">&quot;My agent&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Start the engine.</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="c1"># Publish a message to the default topic that the agent is subscribed to.</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">publish_message</span><span class="p">(</span><span class="n">MyMessage</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">),</span> <span class="n">DefaultTopicId</span><span class="p">())</span>
+    <span class="c1"># Wait for the message to be processed and then stop the engine.</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">stop_when_idle</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.unprocessed_messages_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unprocessed_messages_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.unprocessed_messages_count" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.send_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recipient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.send_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.send_message" title="Link to this definition"></a></dt>
+<dd><p>Send a message to an agent and get a response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to send.</p></li>
+<li><p><strong>recipient</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent to send the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Agent which sent the message. Should <strong>only</strong> be None if this was sent from no agent, such as directly to the engine externally. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress . Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>CantHandleException</strong> – If the recipient cannot handle the message.</p></li>
+<li><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p></li>
+<li><p><strong>Other</strong> – Any other exception raised by the recipient.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The response from the agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.publish_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">publish_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.publish_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.publish_message" title="Link to this definition"></a></dt>
+<dd><p>Publish a message to all agents in the given namespace, or if no namespace is provided, the namespace of the sender.</p>
+<p>No responses are expected from publishing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to publish.</p></li>
+<li><p><strong>message_channel</strong> (<em>MessageChannel</em>) – The message channel to publish the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – The agent which sent the message. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress. Defaults to None.</p></li>
+<li><p><strong>message_id</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The message id. If None, a new message id will be generated. Defaults to None. This message id must be unique. and is recommended to be a UUID.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of the entire engine, including all hosted agents. The only way to restore the state is to pass it to <a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.load_state" title="agentopera.engine.runtime.LocalAgentEngine.load_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state()</span></code></a>.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The saved state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of the entire engine, including all hosted agents. The state should be the same as the one returned by <a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.save_state" title="agentopera.engine.runtime.LocalAgentEngine.save_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_state()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.process_next">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.process_next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.process_next" title="Link to this definition"></a></dt>
+<dd><p>Process the next message in the queue.</p>
+<p>If there is an unhandled exception in the background task, it will be raised here. <cite>process_next</cite> cannot be called again after an unhandled exception is raised.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.start" title="Link to this definition"></a></dt>
+<dd><p>Start the engine message processing loop. This runs in a background task.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalAgentEngine</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># ... do other things ...</span>
+
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.close" title="Link to this definition"></a></dt>
+<dd><p>Calls <a class="reference internal" href="#agentopera.engine.runtime.LocalAgentEngine.stop" title="agentopera.engine.runtime.LocalAgentEngine.stop"><code class="xref py py-meth docutils literal notranslate"><span class="pre">stop()</span></code></a> if applicable and the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Agent.close()</span></code> method on all instantiated agents</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.stop">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.stop" title="Link to this definition"></a></dt>
+<dd><p>Immediately stop the engine message processing loop. The currently processing message will be completed, but all others following it will be discarded.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.stop_when_idle">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_when_idle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.stop_when_idle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.stop_when_idle" title="Link to this definition"></a></dt>
+<dd><p>Stop the engine message processing loop when there is
+no outstanding message being processed or queued. This is the most common way to stop the engine.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.stop_when">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_when</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.stop_when"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.stop_when" title="Link to this definition"></a></dt>
+<dd><p>Stop the engine message processing loop when the condition is met.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This method is not recommended to be used, and is here for legacy
+reasons. It will spawn a busy loop to continually check the
+condition. It is much more efficient to call <cite>stop_when_idle</cite> or
+<cite>stop</cite> instead. If you need to stop the engine based on a
+condition, consider using a background task and asyncio.Event to
+signal when the condition is met and the background task should call
+stop.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.agent_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.agent_metadata.AgentMetadata"><span class="pre">AgentMetadata</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.agent_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.agent_metadata" title="Link to this definition"></a></dt>
+<dd><p>Get the metadata for an agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The agent metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.AgentMetadata">AgentMetadata</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.agent_save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_save_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.agent_save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.agent_save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of a single agent.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.agent_load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.agent_load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.agent_load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of a single agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p></li>
+<li><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.register_agent_builder">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_agent_builder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.register_agent_builder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.register_agent_builder" title="Link to this definition"></a></dt>
+<dd><p>Register an agent factory with the engine associated with a specific type. The type must be unique. This API does not add any subscriptions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a low level API and usually the agent class’s <cite>register</cite> method should be used instead, as this also handles subscriptions automatically.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">,</span> <span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserMessage</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;My core agent&quot;</span><span class="p">)</span>
+
+    <span class="nd">@event</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">UserMessage</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Event received: &quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_agent_factory</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">MyAgent</span><span class="p">()</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">engine</span><span class="p">:</span> <span class="n">AgentEngine</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># type: ignore</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">register_agent_builder</span><span class="p">(</span><span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MyAgent</span><span class="p">())</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – The type of agent this factory creates. It is not the same as agent class name. The <cite>type</cite> parameter is used to differentiate between different factory functions rather than agent classes.</p></li>
+<li><p><strong>agent_factory</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>T</em><em>]</em>) – The factory that creates the agent, where T is a concrete Agent type. Inside the factory, use <cite>agentopera.core.AgentInstantiationContext</cite> to access variables like the current engine and agent ID.</p></li>
+<li><p><strong>expected_class</strong> (<em>type</em><em>[</em><em>T</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – The expected class of the agent, used for engine validation of the factory. Defaults to None. If None, no validation is performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.subscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><span class="pre">Subscription</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Add a new subscription that the engine should fulfill when processing published messages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subscription</strong> (<a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.Subscription"><em>Subscription</em></a>) – The subscription to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.unsubscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unsubscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.unsubscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.unsubscribe" title="Link to this definition"></a></dt>
+<dd><p>Remove a subscription from the engine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – id of the subscription to remove</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>LookupError</strong> – If the subscription does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.LocalAgentEngine.register_msg_serializer">
+<span class="sig-name descname"><span class="pre">register_msg_serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/local/local_agent_engine.html#LocalAgentEngine.register_msg_serializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.LocalAgentEngine.register_msg_serializer" title="Link to this definition"></a></dt>
+<dd><p>Add a new message serialization serializer to the engine</p>
+<p>Note: This will deduplicate serializers based on the type_name and data_content_type properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>serializer</strong> (<a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>] </em><em>| </em><em>Sequence</em><em>[</em><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>]</em><em>]</em>) – The serializer/s to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">DistAgentEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracer_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TracerProvider</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_grpc_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload_serialization_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'application/json'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.runtime.AgentEngine" title="agentopera.engine.runtime.agent_engine.AgentEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">AgentEngine</span></code></a></p>
+<p>An agent engine for running remote or cross-language agents.</p>
+<p>Agent messaging uses protobufs from <a class="reference external" href="https://github.com/FedML-AI/AgentOpera/blob/main/protos/agent_worker.proto">agent_worker.proto</a> and <code class="docutils literal notranslate"><span class="pre">CloudEvent</span></code> from <a class="reference external" href="https://github.com/FedML-AI/AgentOpera/blob/main/protos/cloudevent.proto">cloudevent.proto</a>.</p>
+<p>Cross-language agents will additionally require all agents use shared protobuf schemas for any message types that are sent between agents.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.start">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.start" title="Link to this definition"></a></dt>
+<dd><p>Start the engine in a background task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.stop">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.stop" title="Link to this definition"></a></dt>
+<dd><p>Stop the engine immediately.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.stop_when_signal">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_when_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Signals</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(Signals.SIGTERM,</span> <span class="pre">Signals.SIGINT)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.stop_when_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.stop_when_signal" title="Link to this definition"></a></dt>
+<dd><p>Stop the engine when a signal is received.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.send_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recipient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.send_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.send_message" title="Link to this definition"></a></dt>
+<dd><p>Send a message to an agent and get a response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to send.</p></li>
+<li><p><strong>recipient</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent to send the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Agent which sent the message. Should <strong>only</strong> be None if this was sent from no agent, such as directly to the engine externally. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress . Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>CantHandleException</strong> – If the recipient cannot handle the message.</p></li>
+<li><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p></li>
+<li><p><strong>Other</strong> – Any other exception raised by the recipient.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The response from the agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.publish_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">publish_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.publish_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.publish_message" title="Link to this definition"></a></dt>
+<dd><p>Publish a message to all agents in the given namespace, or if no namespace is provided, the namespace of the sender.</p>
+<p>No responses are expected from publishing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to publish.</p></li>
+<li><p><strong>message_channel</strong> (<em>MessageChannel</em>) – The message channel to publish the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – The agent which sent the message. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress. Defaults to None.</p></li>
+<li><p><strong>message_id</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The message id. If None, a new message id will be generated. Defaults to None. This message id must be unique. and is recommended to be a UUID.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of the entire engine, including all hosted agents. The only way to restore the state is to pass it to <a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.load_state" title="agentopera.engine.runtime.DistAgentEngine.load_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state()</span></code></a>.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The saved state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of the entire engine, including all hosted agents. The state should be the same as the one returned by <a class="reference internal" href="#agentopera.engine.runtime.DistAgentEngine.save_state" title="agentopera.engine.runtime.DistAgentEngine.save_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_state()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.agent_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.agent_metadata.AgentMetadata"><span class="pre">AgentMetadata</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.agent_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.agent_metadata" title="Link to this definition"></a></dt>
+<dd><p>Get the metadata for an agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The agent metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.AgentMetadata">AgentMetadata</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.agent_save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_save_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.agent_save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.agent_save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of a single agent.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.agent_load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.agent_load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.agent_load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of a single agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p></li>
+<li><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.register_agent_builder">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_agent_builder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.register_agent_builder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.register_agent_builder" title="Link to this definition"></a></dt>
+<dd><p>Register an agent factory with the engine associated with a specific type. The type must be unique. This API does not add any subscriptions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a low level API and usually the agent class’s <cite>register</cite> method should be used instead, as this also handles subscriptions automatically.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">,</span> <span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserMessage</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;My core agent&quot;</span><span class="p">)</span>
+
+    <span class="nd">@event</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">UserMessage</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Event received: &quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_agent_factory</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">MyAgent</span><span class="p">()</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">engine</span><span class="p">:</span> <span class="n">AgentEngine</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># type: ignore</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">register_agent_builder</span><span class="p">(</span><span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MyAgent</span><span class="p">())</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – The type of agent this factory creates. It is not the same as agent class name. The <cite>type</cite> parameter is used to differentiate between different factory functions rather than agent classes.</p></li>
+<li><p><strong>agent_factory</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>T</em><em>]</em>) – The factory that creates the agent, where T is a concrete Agent type. Inside the factory, use <cite>agentopera.core.AgentInstantiationContext</cite> to access variables like the current engine and agent ID.</p></li>
+<li><p><strong>expected_class</strong> (<em>type</em><em>[</em><em>T</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – The expected class of the agent, used for engine validation of the factory. Defaults to None. If None, no validation is performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.remove_agent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.remove_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.remove_agent" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.remove_agents_with_type">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_agents_with_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.remove_agents_with_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.remove_agents_with_type" title="Link to this definition"></a></dt>
+<dd><p>Remove all instantiated agents matching the given type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.try_get_underlying_agent_instance">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">try_get_underlying_agent_instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id:</span> <span class="pre">~agentopera.engine.types.agent.agent_id.AgentId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type:</span> <span class="pre">~typing.Type[~agentopera.engine.runtime.distributed.dist_agent_engine.T]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'agentopera.engine.types.agent.agent.Agent'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.try_get_underlying_agent_instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.try_get_underlying_agent_instance" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.subscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><span class="pre">Subscription</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Add a new subscription that the engine should fulfill when processing published messages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subscription</strong> (<a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.Subscription"><em>Subscription</em></a>) – The subscription to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.unsubscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unsubscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.unsubscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.unsubscribe" title="Link to this definition"></a></dt>
+<dd><p>Remove a subscription from the engine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – id of the subscription to remove</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>LookupError</strong> – If the subscription does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_or_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngine.register_msg_serializer">
+<span class="sig-name descname"><span class="pre">register_msg_serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine.html#DistAgentEngine.register_msg_serializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngine.register_msg_serializer" title="Link to this definition"></a></dt>
+<dd><p>Add a new message serialization serializer to the engine</p>
+<p>Note: This will deduplicate serializers based on the type_name and data_content_type properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>serializer</strong> (<a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>] </em><em>| </em><em>Sequence</em><em>[</em><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>]</em><em>]</em>) – The serializer/s to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngineSrv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">DistAgentEngineSrv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_grpc_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine_srv.html#DistAgentEngineSrv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngineSrv" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngineSrv.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine_srv.html#DistAgentEngineSrv.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngineSrv.start" title="Link to this definition"></a></dt>
+<dd><p>Start the server in a background task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngineSrv.stop">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine_srv.html#DistAgentEngineSrv.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngineSrv.stop" title="Link to this definition"></a></dt>
+<dd><p>Stop the server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.DistAgentEngineSrv.stop_when_signal">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stop_when_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Signals</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(Signals.SIGTERM,</span> <span class="pre">Signals.SIGINT)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/distributed/dist_agent_engine_srv.html#DistAgentEngineSrv.stop_when_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.DistAgentEngineSrv.stop_when_signal" title="Link to this definition"></a></dt>
+<dd><p>Stop the server when a signal is received.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.SubscriptionManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">SubscriptionManager</span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/engine_utils.html#SubscriptionManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.SubscriptionManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.SubscriptionManager.subscriptions">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscriptions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><span class="pre">Subscription</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.engine.runtime.SubscriptionManager.subscriptions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.SubscriptionManager.subscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><span class="pre">Subscription</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/engine_utils.html#SubscriptionManager.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.SubscriptionManager.subscribe" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.SubscriptionManager.unsubscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unsubscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/engine_utils.html#SubscriptionManager.unsubscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.SubscriptionManager.unsubscribe" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.SubscriptionManager.get_subscribed_recipients">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_subscribed_recipients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/engine_utils.html#SubscriptionManager.get_subscribed_recipients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.SubscriptionManager.get_subscribed_recipients" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">AgentEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.send_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recipient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.send_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.send_message" title="Link to this definition"></a></dt>
+<dd><p>Send a message to an agent and get a response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to send.</p></li>
+<li><p><strong>recipient</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent to send the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Agent which sent the message. Should <strong>only</strong> be None if this was sent from no agent, such as directly to the engine externally. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress . Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>CantHandleException</strong> – If the recipient cannot handle the message.</p></li>
+<li><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p></li>
+<li><p><strong>Other</strong> – Any other exception raised by the recipient.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The response from the agent.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.publish_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">publish_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sender</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.publish_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.publish_message" title="Link to this definition"></a></dt>
+<dd><p>Publish a message to all agents in the given namespace, or if no namespace is provided, the namespace of the sender.</p>
+<p>No responses are expected from publishing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – The message to publish.</p></li>
+<li><p><strong>message_channel</strong> (<em>MessageChannel</em>) – The message channel to publish the message to.</p></li>
+<li><p><strong>sender</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – The agent which sent the message. Defaults to None.</p></li>
+<li><p><strong>cancellation_token</strong> (<a class="reference internal" href="engine.agent.html#agentopera.engine.agent.CancellationToken" title="agentopera.engine.agent.CancellationToken"><em>CancellationToken</em></a><em> | </em><em>None</em><em>, </em><em>optional</em>) – Token used to cancel an in progress. Defaults to None.</p></li>
+<li><p><strong>message_id</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The message id. If None, a new message id will be generated. Defaults to None. This message id must be unique. and is recommended to be a UUID.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>UndeliverableException</strong> – If the message cannot be delivered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.register_agent_builder">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_agent_builder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.register_agent_builder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.register_agent_builder" title="Link to this definition"></a></dt>
+<dd><p>Register an agent factory with the engine associated with a specific type. The type must be unique. This API does not add any subscriptions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a low level API and usually the agent class’s <cite>register</cite> method should be used instead, as this also handles subscriptions automatically.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEngine</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">,</span> <span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">event</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserMessage</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;My core agent&quot;</span><span class="p">)</span>
+
+    <span class="nd">@event</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">UserMessage</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Event received: &quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_agent_factory</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">MyAgent</span><span class="p">()</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">engine</span><span class="p">:</span> <span class="n">AgentEngine</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># type: ignore</span>
+    <span class="k">await</span> <span class="n">engine</span><span class="o">.</span><span class="n">register_agent_builder</span><span class="p">(</span><span class="s2">&quot;my_agent&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">MyAgent</span><span class="p">())</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – The type of agent this factory creates. It is not the same as agent class name. The <cite>type</cite> parameter is used to differentiate between different factory functions rather than agent classes.</p></li>
+<li><p><strong>agent_factory</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>T</em><em>]</em>) – The factory that creates the agent, where T is a concrete Agent type. Inside the factory, use <cite>agentopera.core.AgentInstantiationContext</cite> to access variables like the current engine and agent ID.</p></li>
+<li><p><strong>expected_class</strong> (<em>type</em><em>[</em><em>T</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – The expected class of the agent, used for engine validation of the factory. Defaults to None. If None, no validation is performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.get" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lazy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of the entire engine, including all hosted agents. The only way to restore the state is to pass it to <a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.load_state" title="agentopera.engine.runtime.AgentEngine.load_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state()</span></code></a>.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The saved state.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of the entire engine, including all hosted agents. The state should be the same as the one returned by <a class="reference internal" href="#agentopera.engine.runtime.AgentEngine.save_state" title="agentopera.engine.runtime.AgentEngine.save_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_state()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.agent_metadata">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.agent_metadata.AgentMetadata"><span class="pre">AgentMetadata</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.agent_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.agent_metadata" title="Link to this definition"></a></dt>
+<dd><p>Get the metadata for an agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The agent metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.AgentMetadata">AgentMetadata</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.agent_save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_save_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.agent_save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.agent_save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of a single agent.</p>
+<p>The structure of the state is implementation defined and can be any JSON serializable object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.agent_load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.agent_load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.agent_load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of a single agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agent</strong> (<a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><em>AgentId</em></a>) – The agent id.</p></li>
+<li><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – The saved state.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.subscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><span class="pre">Subscription</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Add a new subscription that the engine should fulfill when processing published messages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subscription</strong> (<a class="reference internal" href="engine.html#agentopera.engine.Subscription" title="agentopera.engine.Subscription"><em>Subscription</em></a>) – The subscription to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.unsubscribe">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unsubscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.unsubscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.unsubscribe" title="Link to this definition"></a></dt>
+<dd><p>Remove a subscription from the engine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>str</em>) – id of the subscription to remove</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>LookupError</strong> – If the subscription does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentEngine.register_msg_serializer">
+<span class="sig-name descname"><span class="pre">register_msg_serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.serialization.MessageSerializer"><span class="pre">MessageSerializer</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/runtime/agent_engine.html#AgentEngine.register_msg_serializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentEngine.register_msg_serializer" title="Link to this definition"></a></dt>
+<dd><p>Add a new message serialization serializer to the engine</p>
+<p>Note: This will deduplicate serializers based on the type_name and data_content_type properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>serializer</strong> (<a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>] </em><em>| </em><em>Sequence</em><em>[</em><a class="reference internal" href="engine.html#agentopera.engine.MessageSerializer" title="agentopera.engine.MessageSerializer"><em>MessageSerializer</em></a><em>[</em><em>Any</em><em>]</em><em>]</em>) – The serializer/s to add</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.MessageHandlerContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">MessageHandlerContext</span></span><a class="reference internal" href="../_modules/agentopera/engine/message_handler_context.html#MessageHandlerContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.MessageHandlerContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.MessageHandlerContext.agent_id">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/message_handler_context.html#MessageHandlerContext.agent_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.MessageHandlerContext.agent_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentInstantiationContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.runtime.</span></span><span class="sig-name descname"><span class="pre">AgentInstantiationContext</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentInstantiationContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A static class that provides context for agent instantiation.</p>
+<p>This static class can be used to access the current engine and agent ID
+during agent instantiation – inside the factory function or the agent’s
+class constructor.</p>
+<p class="rubric">Example</p>
+<p>Get the current engine and agent ID inside the factory function and
+the agent’s constructor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentId</span><span class="p">,</span>
+    <span class="n">AgentInstantiationContext</span><span class="p">,</span>
+    <span class="n">MessageContext</span><span class="p">,</span>
+    <span class="n">RoutedAgent</span><span class="p">,</span>
+    <span class="n">LocalAgentEngine</span><span class="p">,</span>
+    <span class="n">message_handler</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+        <span class="c1"># Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_engine</span><span class="p">()</span>
+        <span class="c1"># Get the current agent ID.</span>
+        <span class="n">agent_id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current AgentID from constructor: </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@message_handler</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_test_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TestMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_agent_factory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TestAgent</span><span class="p">:</span>
+    <span class="c1"># Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_engine</span><span class="p">()</span>
+    <span class="c1"># Get the current agent ID.</span>
+    <span class="n">agent_id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current AgentID from factory: </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TestAgent</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test agent&quot;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Create a LocalAgentEngine instance.</span>
+    <span class="n">agent_engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">()</span>
+
+    <span class="c1"># Start the engine.</span>
+    <span class="n">agent_engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Register the agent type with a factory function.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">register_agent_builder</span><span class="p">(</span><span class="s2">&quot;test_agent&quot;</span><span class="p">,</span> <span class="n">test_agent_factory</span><span class="p">)</span>
+
+    <span class="c1"># Send a message to the agent. The engine will instantiate the agent and call the message handler.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">TestMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">),</span> <span class="n">AgentId</span><span class="p">(</span><span class="s2">&quot;test_agent&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Stop the engine.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentInstantiationContext.current_engine">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_engine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.runtime.AgentEngine" title="agentopera.engine.runtime.AgentEngine"><span class="pre">AgentEngine</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext.current_engine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentInstantiationContext.current_engine" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.runtime.AgentInstantiationContext.current_agent_id">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_agent_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext.current_agent_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.runtime.AgentInstantiationContext.current_agent_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="engine.protocol.html" class="btn btn-neutral float-left" title="engine.protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="engine.telemetry.html" class="btn btn-neutral float-right" title="engine.telemetry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>engine &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="engine.agent" href="engine.agent.html" />
+    <link rel="prev" title="chatflow.utils" href="../chatflow/chatflow.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.MessageSerializer"><code class="docutils literal notranslate"><span class="pre">MessageSerializer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.MessageSerializer.data_content_type"><code class="docutils literal notranslate"><span class="pre">MessageSerializer.data_content_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.MessageSerializer.type_name"><code class="docutils literal notranslate"><span class="pre">MessageSerializer.type_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.MessageSerializer.deserialize"><code class="docutils literal notranslate"><span class="pre">MessageSerializer.deserialize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.MessageSerializer.serialize"><code class="docutils literal notranslate"><span class="pre">MessageSerializer.serialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.UnknownPayload"><code class="docutils literal notranslate"><span class="pre">UnknownPayload</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.UnknownPayload.type_name"><code class="docutils literal notranslate"><span class="pre">UnknownPayload.type_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.UnknownPayload.data_content_type"><code class="docutils literal notranslate"><span class="pre">UnknownPayload.data_content_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.UnknownPayload.payload"><code class="docutils literal notranslate"><span class="pre">UnknownPayload.payload</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.JSON_DATA_CONTENT_TYPE"><code class="docutils literal notranslate"><span class="pre">JSON_DATA_CONTENT_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.PROTOBUF_DATA_CONTENT_TYPE"><code class="docutils literal notranslate"><span class="pre">PROTOBUF_DATA_CONTENT_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.ROOT_LOGGER_NAME"><code class="docutils literal notranslate"><span class="pre">ROOT_LOGGER_NAME</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.EVENT_LOGGER_NAME"><code class="docutils literal notranslate"><span class="pre">EVENT_LOGGER_NAME</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.TRACE_LOGGER_NAME"><code class="docutils literal notranslate"><span class="pre">TRACE_LOGGER_NAME</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.DefaultSubscription"><code class="docutils literal notranslate"><span class="pre">DefaultSubscription</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.Subscription"><code class="docutils literal notranslate"><span class="pre">Subscription</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.Subscription.id"><code class="docutils literal notranslate"><span class="pre">Subscription.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.Subscription.is_match"><code class="docutils literal notranslate"><span class="pre">Subscription.is_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.Subscription.map_to_agent"><code class="docutils literal notranslate"><span class="pre">Subscription.map_to_agent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.SubscriptionInstantiationContext"><code class="docutils literal notranslate"><span class="pre">SubscriptionInstantiationContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.SubscriptionInstantiationContext.agent_type"><code class="docutils literal notranslate"><span class="pre">SubscriptionInstantiationContext.agent_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription.id"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription.topic_prefix"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription.topic_prefix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription.agent_type"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription.agent_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription.is_match"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription.is_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicPrefixSubscription.map_to_agent"><code class="docutils literal notranslate"><span class="pre">TopicPrefixSubscription.map_to_agent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.TopicSubscription"><code class="docutils literal notranslate"><span class="pre">TopicSubscription</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicSubscription.id"><code class="docutils literal notranslate"><span class="pre">TopicSubscription.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicSubscription.topic"><code class="docutils literal notranslate"><span class="pre">TopicSubscription.topic</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicSubscription.agent_type"><code class="docutils literal notranslate"><span class="pre">TopicSubscription.agent_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicSubscription.is_match"><code class="docutils literal notranslate"><span class="pre">TopicSubscription.is_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.TopicSubscription.map_to_agent"><code class="docutils literal notranslate"><span class="pre">TopicSubscription.map_to_agent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.default_subscription"><code class="docutils literal notranslate"><span class="pre">default_subscription()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.engine.topic_subscription"><code class="docutils literal notranslate"><span class="pre">topic_subscription()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/engine/engine.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.engine">
+<span id="engine"></span><h1>engine<a class="headerlink" href="#module-agentopera.engine" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.MessageSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">MessageSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/serialization.html#MessageSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.MessageSerializer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.MessageSerializer.data_content_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_content_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.MessageSerializer.data_content_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.MessageSerializer.type_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.MessageSerializer.type_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.MessageSerializer.deserialize">
+<span class="sig-name descname"><span class="pre">deserialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/serialization.html#MessageSerializer.deserialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.MessageSerializer.deserialize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.MessageSerializer.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/serialization.html#MessageSerializer.serialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.MessageSerializer.serialize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.UnknownPayload">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">UnknownPayload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/serialization.html#UnknownPayload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.UnknownPayload" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.UnknownPayload.type_name">
+<span class="sig-name descname"><span class="pre">type_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.UnknownPayload.type_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.UnknownPayload.data_content_type">
+<span class="sig-name descname"><span class="pre">data_content_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.UnknownPayload.data_content_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.UnknownPayload.payload">
+<span class="sig-name descname"><span class="pre">payload</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><a class="headerlink" href="#agentopera.engine.UnknownPayload.payload" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="agentopera.engine.JSON_DATA_CONTENT_TYPE">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">JSON_DATA_CONTENT_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'application/json'</span></em><a class="headerlink" href="#agentopera.engine.JSON_DATA_CONTENT_TYPE" title="Link to this definition"></a></dt>
+<dd><p>The content type for JSON data.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="agentopera.engine.PROTOBUF_DATA_CONTENT_TYPE">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">PROTOBUF_DATA_CONTENT_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'application/x-protobuf'</span></em><a class="headerlink" href="#agentopera.engine.PROTOBUF_DATA_CONTENT_TYPE" title="Link to this definition"></a></dt>
+<dd><p>The content type for Protobuf data.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="agentopera.engine.ROOT_LOGGER_NAME">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">ROOT_LOGGER_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'agentopera.core'</span></em><a class="headerlink" href="#agentopera.engine.ROOT_LOGGER_NAME" title="Link to this definition"></a></dt>
+<dd><p>The name of the root logger.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="agentopera.engine.EVENT_LOGGER_NAME">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">EVENT_LOGGER_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'agentopera.core.events'</span></em><a class="headerlink" href="#agentopera.engine.EVENT_LOGGER_NAME" title="Link to this definition"></a></dt>
+<dd><p>The name of the logger used for structured events.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="agentopera.engine.TRACE_LOGGER_NAME">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">TRACE_LOGGER_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'agentopera.core.trace'</span></em><a class="headerlink" href="#agentopera.engine.TRACE_LOGGER_NAME" title="Link to this definition"></a></dt>
+<dd><p>Logger name used for developer intended trace logging. The content and format of this log should not be depended upon.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.DefaultSubscription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">DefaultSubscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/subscription/default_subscription.html#DefaultSubscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.DefaultSubscription" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.TopicSubscription" title="agentopera.engine.subscription.topic_subscription.TopicSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">TopicSubscription</span></code></a></p>
+<p>The default subscription is designed to be a sensible default for applications that only need global scope for agents.</p>
+<p>This topic by default uses the “default” topic type and attempts to detect the agent type to use based on the instantiation context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em><em>, </em><em>optional</em>) – The topic to subscribe to. Defaults to “default”.</p></li>
+<li><p><strong>agent_type</strong> (<em>str</em><em>, </em><em>optional</em>) – The agent type to use for the subscription. Defaults to None, in which case it will attempt to detect the agent type based on the instantiation context.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.Subscription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">Subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/subscription/subscription.html#Subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.Subscription" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Subscriptions define the topics that an agent is interested in.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.Subscription.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.Subscription.id" title="Link to this definition"></a></dt>
+<dd><p>Get the ID of the subscription.</p>
+<p>Implementations should return a unique ID for the subscription. Usually this is a UUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ID of the subscription.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.Subscription.is_match">
+<span class="sig-name descname"><span class="pre">is_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/subscription.html#Subscription.is_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.Subscription.is_match" title="Link to this definition"></a></dt>
+<dd><p>Check if a given message_channel matches the subscription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the message_channel matches the subscription, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.Subscription.map_to_agent">
+<span class="sig-name descname"><span class="pre">map_to_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/subscription.html#Subscription.map_to_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.Subscription.map_to_agent" title="Link to this definition"></a></dt>
+<dd><p>Map a message_channel to an agent. Should only be called if <cite>is_match</cite> returns True for the given message_channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to map.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ID of the agent that should handle the message_channel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId">AgentId</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CantHandleException</strong> – If the subscription cannot handle the message_channel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.SubscriptionInstantiationContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">SubscriptionInstantiationContext</span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/subscription_context.html#SubscriptionInstantiationContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.SubscriptionInstantiationContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.SubscriptionInstantiationContext.agent_type">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/subscription_context.html#SubscriptionInstantiationContext.agent_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.SubscriptionInstantiationContext.agent_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">TopicPrefixSubscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_prefix_subscription.html#TopicPrefixSubscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subscription</span></code></a></p>
+<p>This subscription matches on topics based on a prefix of the topic and maps to agents using the source of the topic as the agent key.</p>
+<p>This subscription causes each source to have its own agent instance.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">TopicPrefixSubscription</span>
+
+<span class="n">subscription</span> <span class="o">=</span> <span class="n">TopicPrefixSubscription</span><span class="p">(</span><span class="n">topic_prefix</span><span class="o">=</span><span class="s2">&quot;t1&quot;</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="s2">&quot;a1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case:</p>
+<ul class="simple">
+<li><p>A message_channel with topic <cite>t1</cite> and source <cite>s1</cite> will be handled by an agent of type <cite>a1</cite> with key <cite>s1</cite></p></li>
+<li><p>A message_channel with topic <cite>t1</cite> and source <cite>s2</cite> will be handled by an agent of type <cite>a1</cite> with key <cite>s2</cite>.</p></li>
+<li><p>A message_channel with topic <cite>t1SUFFIX</cite> and source <cite>s2</cite> will be handled by an agent of type <cite>a1</cite> with key <cite>s2</cite>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic_prefix</strong> (<em>str</em>) – Topic prefix to match against</p></li>
+<li><p><strong>agent_type</strong> (<em>str</em>) – Agent type to handle this subscription</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription.id" title="Link to this definition"></a></dt>
+<dd><p>Get the ID of the subscription.</p>
+<p>Implementations should return a unique ID for the subscription. Usually this is a UUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ID of the subscription.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription.topic_prefix">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">topic_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription.topic_prefix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription.agent_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription.agent_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription.is_match">
+<span class="sig-name descname"><span class="pre">is_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_prefix_subscription.html#TopicPrefixSubscription.is_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription.is_match" title="Link to this definition"></a></dt>
+<dd><p>Check if a given message_channel matches the subscription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the message_channel matches the subscription, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.TopicPrefixSubscription.map_to_agent">
+<span class="sig-name descname"><span class="pre">map_to_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_prefix_subscription.html#TopicPrefixSubscription.map_to_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicPrefixSubscription.map_to_agent" title="Link to this definition"></a></dt>
+<dd><p>Map a message_channel to an agent. Should only be called if <cite>is_match</cite> returns True for the given message_channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to map.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ID of the agent that should handle the message_channel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId">AgentId</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CantHandleException</strong> – If the subscription cannot handle the message_channel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">TopicSubscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_subscription.html#TopicSubscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicSubscription" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.Subscription" title="agentopera.engine.subscription.subscription.Subscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subscription</span></code></a></p>
+<p>This subscription matches on topics based on the topic and maps to agents using the source of the topic as the agent key.</p>
+<p>This subscription causes each source to have its own agent instance.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">TopicSubscription</span>
+
+<span class="n">subscription</span> <span class="o">=</span> <span class="n">TopicSubscription</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="s2">&quot;t1&quot;</span><span class="p">,</span> <span class="n">agent_type</span><span class="o">=</span><span class="s2">&quot;a1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case:</p>
+<ul class="simple">
+<li><p>A message_channel with topic <cite>t1</cite> and source <cite>s1</cite> will be handled by an agent of type <cite>a1</cite> with key <cite>s1</cite></p></li>
+<li><p>A message_channel with topic <cite>t1</cite> and source <cite>s2</cite> will be handled by an agent of type <cite>a1</cite> with key <cite>s2</cite>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em>) – Topic to match against</p></li>
+<li><p><strong>agent_type</strong> (<em>str</em>) – Agent type to handle this subscription</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicSubscription.id" title="Link to this definition"></a></dt>
+<dd><p>Get the ID of the subscription.</p>
+<p>Implementations should return a unique ID for the subscription. Usually this is a UUID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ID of the subscription.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription.topic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicSubscription.topic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription.agent_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">agent_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.TopicSubscription.agent_type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription.is_match">
+<span class="sig-name descname"><span class="pre">is_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_subscription.html#TopicSubscription.is_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicSubscription.is_match" title="Link to this definition"></a></dt>
+<dd><p>Check if a given message_channel matches the subscription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the message_channel matches the subscription, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.TopicSubscription.map_to_agent">
+<span class="sig-name descname"><span class="pre">map_to_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageChannel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/topic_subscription.html#TopicSubscription.map_to_agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.TopicSubscription.map_to_agent" title="Link to this definition"></a></dt>
+<dd><p>Map a message_channel to an agent. Should only be called if <cite>is_match</cite> returns True for the given message_channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message_channel</strong> (<em>MessageChannel</em>) – MessageChannel to map.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ID of the agent that should handle the message_channel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="engine.types.html#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId">AgentId</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>CantHandleException</strong> – If the subscription cannot handle the message_channel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="agentopera.engine.default_subscription">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">default_subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/default_subscription.html#default_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.default_subscription" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="agentopera.engine.topic_subscription">
+<span class="sig-prename descclassname"><span class="pre">agentopera.engine.</span></span><span class="sig-name descname"><span class="pre">topic_subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseAgentType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/subscription/default_subscription.html#topic_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.topic_subscription" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../chatflow/chatflow.utils.html" class="btn btn-neutral float-left" title="chatflow.utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="engine.agent.html" class="btn btn-neutral float-right" title="engine.agent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

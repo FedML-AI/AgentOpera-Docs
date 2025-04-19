@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.agents.code_executor.code_executor_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.agents.code_executor.code_executor_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.agents.code_executor.code_executor_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.tools.code_execution.code_executors</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeBlock</span><span class="p">,</span> <span class="n">CodeExecutor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">...chatflow.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...chatflow.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">TextMessage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">...chatflow.agents.base_chat_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+
+<div class="viewcode-block" id="CodeExecutorAgent">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.CodeExecutorAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CodeExecutorAgent</span><span class="p">(</span><span class="n">BaseChatAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An agent that extracts and executes code snippets found in received messages and returns the output.</span>
+
+<span class="sd">    It is typically used within a team with another agent that generates code snippets to be executed.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        Consider :class:`~agentopera.agents.tools.code_execution.PythonCodeExecutionTool`</span>
+<span class="sd">        as an alternative to this agent. The tool allows for executing Python code</span>
+<span class="sd">        within a single agent, rather than sending it to a separate agent for execution.</span>
+<span class="sd">        However, the model for the agent will have to generate properly escaped code</span>
+<span class="sd">        string as a parameter to the tool.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name: The name of the agent.</span>
+<span class="sd">        code_executor: The CodeExecutor responsible for executing code received in messages (:py:class:`~agentopera.agents.code_executors.docker.DockerCommandLineCodeExecutor` recommended. See example below)</span>
+<span class="sd">        description (optional): The description of the agent.</span>
+<span class="sd">        sources (optional): Check only messages from the specified agents for the code to execute.</span>
+
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        It is recommended that the `CodeExecutorAgent` agent uses a Docker container to execute code. This ensures that model-generated code is executed in an isolated environment. To use Docker, your environment must have Docker installed and running.</span>
+<span class="sd">        Follow the installation instructions for `Docker &lt;https://docs.docker.com/get-docker/&gt;`_.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        The code executor only processes code that is properly formatted in markdown code blocks using triple backticks.</span>
+<span class="sd">        For example:</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">            ```python</span>
+<span class="sd">            print(&quot;Hello World&quot;)</span>
+<span class="sd">            ```</span>
+
+<span class="sd">            # or</span>
+
+<span class="sd">            ```sh</span>
+<span class="sd">            echo &quot;Hello World&quot;</span>
+<span class="sd">            ```</span>
+
+<span class="sd">    In this example, we show how to set up a `CodeExecutorAgent` agent that uses the</span>
+<span class="sd">    :py:class:`~agentopera.agents.code_executors.docker.DockerCommandLineCodeExecutor`</span>
+<span class="sd">    to execute code snippets in a Docker container. The `work_dir` parameter indicates where all executed files are first saved locally before being executed in the Docker container.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.chatflow.agents import CodeExecutorAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.agents.code_executors.docker import DockerCommandLineCodeExecutor</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+
+
+<span class="sd">            async def run_code_executor_agent() -&gt; None:</span>
+<span class="sd">                # Create a code executor agent that uses a Docker container to execute code.</span>
+<span class="sd">                code_executor = DockerCommandLineCodeExecutor(work_dir=&quot;coding&quot;)</span>
+<span class="sd">                await code_executor.start()</span>
+<span class="sd">                code_executor_agent = CodeExecutorAgent(&quot;code_executor&quot;, code_executor=code_executor)</span>
+
+<span class="sd">                # Run the agent with a given code snippet.</span>
+<span class="sd">                task = TextMessage(</span>
+<span class="sd">                    content=&#39;&#39;&#39;Here is some code</span>
+<span class="sd">            ```python</span>
+<span class="sd">            print(&#39;Hello world&#39;)</span>
+<span class="sd">            ```</span>
+<span class="sd">            &#39;&#39;&#39;,</span>
+<span class="sd">                    source=&quot;user&quot;,</span>
+<span class="sd">                )</span>
+<span class="sd">                response = await code_executor_agent.on_messages([task], CancellationToken())</span>
+<span class="sd">                print(response.chat_message)</span>
+
+<span class="sd">                # Stop the code executor.</span>
+<span class="sd">                await code_executor.stop()</span>
+
+
+<span class="sd">            asyncio.run(run_code_executor_agent())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">code_executor</span><span class="p">:</span> <span class="n">CodeExecutor</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;A computer terminal that performs no other action than running Python scripts (provided to it quoted in ```python code blocks), or sh shell scripts (provided to it quoted in ```sh code blocks).&quot;</span><span class="p">,</span>
+        <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_code_executor</span> <span class="o">=</span> <span class="n">code_executor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">sources</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The types of messages that the code executor agent produces.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">TextMessage</span><span class="p">,)</span>
+
+<div class="viewcode-block" id="CodeExecutorAgent.on_messages">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.CodeExecutorAgent.on_messages">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="c1"># Extract code blocks from the messages.</span>
+        <span class="n">code_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CodeBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">TextMessage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">msg</span><span class="o">.</span><span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
+                    <span class="n">code_blocks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extract_markdown_code_blocks</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">code_blocks</span><span class="p">:</span>
+            <span class="c1"># Execute the code blocks.</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_executor</span><span class="o">.</span><span class="n">execute_code_blocks</span><span class="p">(</span><span class="n">code_blocks</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">)</span>
+
+            <span class="n">code_output</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span>
+            <span class="k">if</span> <span class="n">code_output</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="c1"># No output</span>
+                <span class="n">code_output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The script ran but produced no output to console. The POSIX exit code was: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">exit_code</span><span class="si">}</span><span class="s2">. If you were expecting output, consider revising the script to ensure content is printed to stdout.&quot;</span>
+            <span class="k">elif</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Error</span>
+                <span class="n">code_output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The script ran, then exited with an error (POSIX exit code: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">exit_code</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">Its output was:</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">code_output</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+                <span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;No code blocks found in the thread. Please provide at least one markdown-encoded code block to execute (i.e., quoting code in ```python or ```sh code blocks).&quot;</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CodeExecutorAgent.on_reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.CodeExecutorAgent.on_reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;It it&#39;s a no-op as the code executor agent has no mutable state.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_markdown_code_blocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">markdown_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CodeBlock</span><span class="p">]:</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;```(?:\s*([\w\+\-]+))?\n([\s\S]*?)```&quot;</span><span class="p">)</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">)</span>
+        <span class="n">code_blocks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CodeBlock</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+            <span class="n">language</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">code_content</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">code_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CodeBlock</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">code_content</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="n">language</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">code_blocks</span></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

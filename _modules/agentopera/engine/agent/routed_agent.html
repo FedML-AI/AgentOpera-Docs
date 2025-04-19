@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.agent.routed_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.agent.routed_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.agent.routed_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Coroutine</span><span class="p">,</span>
+    <span class="n">DefaultDict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Literal</span><span class="p">,</span>
+    <span class="n">Protocol</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Type</span><span class="p">,</span>
+    <span class="n">TypeVar</span><span class="p">,</span>
+    <span class="n">cast</span><span class="p">,</span>
+    <span class="n">get_type_hints</span><span class="p">,</span>
+    <span class="n">overload</span><span class="p">,</span>
+    <span class="n">runtime_checkable</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.msg_context.message_context</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..serialization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessageSerializer</span><span class="p">,</span> <span class="n">try_get_known_serializers_for_type</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..type_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnyType</span><span class="p">,</span> <span class="n">get_types</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">CantHandleException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.utils.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">AgentT</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;AgentT&quot;</span><span class="p">)</span>
+<span class="n">ReceivesT</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;ReceivesT&quot;</span><span class="p">)</span>
+<span class="n">ProducesT</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;ProducesT&quot;</span><span class="p">,</span> <span class="n">covariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># TODO: Generic typevar bound binding U to agent type</span>
+<span class="c1"># Can&#39;t do because python doesnt support it</span>
+
+
+<span class="c1"># Pyright and mypy disagree on the variance of ReceivesT. Mypy thinks it should be contravariant here.</span>
+<span class="c1"># Revisit this later to see if we can remove the ignore.</span>
+<span class="nd">@runtime_checkable</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MessageHandler</span><span class="p">(</span><span class="n">Protocol</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]):</span>  <span class="c1"># type: ignore</span>
+    <span class="n">target_types</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span>
+    <span class="n">produces_types</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span>
+    <span class="n">is_message_handler</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span>
+    <span class="n">router</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span>
+
+    <span class="c1"># agent_instance binds to self in the method</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="n">agent_instance</span><span class="p">:</span> <span class="n">AgentT</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProducesT</span><span class="p">:</span> <span class="o">...</span>
+
+
+<span class="c1"># NOTE: this works on concrete types and not inheritance</span>
+<span class="c1"># TODO: Use a protocol for the outer function to check checked arg names</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">message_handler</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">message_handler</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">message_handler</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">],</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<div class="viewcode-block" id="message_handler">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.message_handler">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">message_handler</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+    <span class="n">Callable</span><span class="p">[</span>
+        <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+        <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="o">|</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator for generic message handlers.</span>
+
+<span class="sd">    Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle both event and RPC messages.</span>
+<span class="sd">    These methods must have a specific signature that needs to be followed for it to be valid:</span>
+
+<span class="sd">    - The method must be an `async` method.</span>
+<span class="sd">    - The method must be decorated with the `@message_handler` decorator.</span>
+<span class="sd">    - The method must have exactly 3 arguments:</span>
+<span class="sd">        1. `self`</span>
+<span class="sd">        2. `message`: The message to be handled, this must be type-hinted with the message type that it is intended to handle.</span>
+<span class="sd">        3. `ctx`: A :class:`agentopera.core.MessageContext` object.</span>
+<span class="sd">    - The method must be type hinted with what message types it can return as a response, or it can return `None` if it does not return anything.</span>
+
+<span class="sd">    Handlers can handle more than one message type by accepting a Union of the message types. It can also return more than one message type by returning a Union of the message types.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func: The function to be decorated.</span>
+<span class="sd">        strict: If `True`, the handler will raise an exception if the message type or return type is not in the target types. If `False`, it will log a warning instead.</span>
+<span class="sd">        match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]:</span>
+        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;message&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;message parameter not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;return&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;return not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get the type of the message parameter</span>
+        <span class="n">target_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">target_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Message type not found&quot;</span><span class="p">)</span>
+
+        <span class="c1"># print(type_hints)</span>
+        <span class="n">return_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">return_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Return type not found&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Convert target_types to list and stash</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">AgentT</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProducesT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">CantHandleException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">return_value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">AnyType</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_types</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in return types </span><span class="si">{</span><span class="n">return_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in return types </span><span class="si">{</span><span class="n">return_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">return_value</span>
+
+        <span class="n">wrapper_handler</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span> <span class="n">wrapper</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">target_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">target_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">produces_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">return_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">is_message_handler</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">router</span> <span class="o">=</span> <span class="n">match</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">_message</span><span class="p">,</span> <span class="n">_ctx</span><span class="p">:</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">wrapper_handler</span>
+
+    <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid arguments&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">],</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<div class="viewcode-block" id="event">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.event">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">event</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+    <span class="n">Callable</span><span class="p">[</span>
+        <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]],</span>
+        <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="o">|</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator for event message handlers.</span>
+
+<span class="sd">    Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle event messages.</span>
+<span class="sd">    These methods must have a specific signature that needs to be followed for it to be valid:</span>
+
+<span class="sd">    - The method must be an `async` method.</span>
+<span class="sd">    - The method must be decorated with the `@message_handler` decorator.</span>
+<span class="sd">    - The method must have exactly 3 arguments:</span>
+<span class="sd">        1. `self`</span>
+<span class="sd">        2. `message`: The event message to be handled, this must be type-hinted with the message type that it is intended to handle.</span>
+<span class="sd">        3. `ctx`: A :class:`agentopera.core.MessageContext` object.</span>
+<span class="sd">    - The method must return `None`.</span>
+
+<span class="sd">    Handlers can handle more than one message type by accepting a Union of the message types.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func: The function to be decorated.</span>
+<span class="sd">        strict: If `True`, the handler will raise an exception if the message type is not in the target types. If `False`, it will log a warning instead.</span>
+<span class="sd">        match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;message&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;message parameter not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;return&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;return not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get the type of the message parameter</span>
+        <span class="n">target_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">target_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Message type not found. Please provide a type hint for the message parameter.&quot;</span><span class="p">)</span>
+
+        <span class="n">return_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">return_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Return type not found. Please use `None` as the type hint of the return type.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Convert target_types to list and stash</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">AgentT</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">CantHandleException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">return_value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+            <span class="k">if</span> <span class="n">return_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not None.&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not None. It will be ignored.&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">wrapper_handler</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">wrapper</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">target_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">target_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">produces_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">return_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">is_message_handler</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># Wrap the match function with a check on the is_rpc flag.</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">router</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">_message</span><span class="p">,</span> <span class="n">_ctx</span><span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">is_rpc</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">match</span><span class="p">(</span><span class="n">_message</span><span class="p">,</span> <span class="n">_ctx</span><span class="p">)</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">wrapper_handler</span>
+
+    <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid arguments&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rpc</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rpc</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<span class="nd">@overload</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rpc</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">],</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span>
+    <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+    <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+<span class="p">]:</span> <span class="o">...</span>
+
+
+<div class="viewcode-block" id="rpc">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.rpc">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rpc</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+    <span class="n">Callable</span><span class="p">[</span>
+        <span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]]],</span>
+        <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span>
+    <span class="p">]</span>
+    <span class="o">|</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator for RPC message handlers.</span>
+
+<span class="sd">    Add this decorator to methods in a :class:`RoutedAgent` class that are intended to handle RPC messages.</span>
+<span class="sd">    These methods must have a specific signature that needs to be followed for it to be valid:</span>
+
+<span class="sd">    - The method must be an `async` method.</span>
+<span class="sd">    - The method must be decorated with the `@message_handler` decorator.</span>
+<span class="sd">    - The method must have exactly 3 arguments:</span>
+<span class="sd">        1. `self`</span>
+<span class="sd">        2. `message`: The message to be handled, this must be type-hinted with the message type that it is intended to handle.</span>
+<span class="sd">        3. `ctx`: A :class:`agentopera.core.MessageContext` object.</span>
+<span class="sd">    - The method must be type hinted with what message types it can return as a response, or it can return `None` if it does not return anything.</span>
+
+<span class="sd">    Handlers can handle more than one message type by accepting a Union of the message types. It can also return more than one message type by returning a Union of the message types.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func: The function to be decorated.</span>
+<span class="sd">        strict: If `True`, the handler will raise an exception if the message type or return type is not in the target types. If `False`, it will log a warning instead.</span>
+<span class="sd">        match: A function that takes the message and the context as arguments and returns a boolean. This is used for secondary routing after the message type. For handlers addressing the same message type, the match function is applied in alphabetical order of the handlers and the first matching handler will be called while the rest are skipped. If `None`, the first handler in alphabetical order matching the same message type will be called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">MessageContext</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">]:</span>
+        <span class="n">type_hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;message&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;message parameter not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;return&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">type_hints</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;return not found in function signature&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Get the type of the message parameter</span>
+        <span class="n">target_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">target_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Message type not found&quot;</span><span class="p">)</span>
+
+        <span class="c1"># print(type_hints)</span>
+        <span class="n">return_types</span> <span class="o">=</span> <span class="n">get_types</span><span class="p">(</span><span class="n">type_hints</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">return_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Return type not found&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Convert target_types to list and stash</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">AgentT</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProducesT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">target_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">CantHandleException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Message type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in target types </span><span class="si">{</span><span class="n">target_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">return_value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">AnyType</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_types</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">return_types</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in return types </span><span class="si">{</span><span class="n">return_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Return type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">return_value</span><span class="p">)</span><span class="si">}</span><span class="s2"> not in return types </span><span class="si">{</span><span class="n">return_types</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">return_value</span>
+
+        <span class="n">wrapper_handler</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">AgentT</span><span class="p">,</span> <span class="n">ReceivesT</span><span class="p">,</span> <span class="n">ProducesT</span><span class="p">],</span> <span class="n">wrapper</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">target_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">target_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">produces_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">return_types</span><span class="p">)</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">is_message_handler</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">wrapper_handler</span><span class="o">.</span><span class="n">router</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">_message</span><span class="p">,</span> <span class="n">_ctx</span><span class="p">:</span> <span class="p">(</span><span class="n">_ctx</span><span class="o">.</span><span class="n">is_rpc</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">match</span><span class="p">(</span><span class="n">_message</span><span class="p">,</span> <span class="n">_ctx</span><span class="p">)</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">wrapper_handler</span>
+
+    <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid arguments&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="RoutedAgent">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RoutedAgent</span><span class="p">(</span><span class="n">BaseAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A base class for agents that route messages to handlers based on the type of the message</span>
+<span class="sd">    and optional matching functions.</span>
+
+<span class="sd">    To create a routed agent, subclass this class and add message handlers as methods decorated with</span>
+<span class="sd">    either :func:`event` or :func:`rpc` decorator.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from dataclasses import dataclass</span>
+<span class="sd">        from agentopera.core import MessageContext</span>
+<span class="sd">        from agentopera.core import RoutedAgent, event, rpc</span>
+
+
+<span class="sd">        @dataclass</span>
+<span class="sd">        class Message:</span>
+<span class="sd">            pass</span>
+
+
+<span class="sd">        @dataclass</span>
+<span class="sd">        class MessageWithContent:</span>
+<span class="sd">            content: str</span>
+
+
+<span class="sd">        @dataclass</span>
+<span class="sd">        class Response:</span>
+<span class="sd">            pass</span>
+
+
+<span class="sd">        class MyAgent(RoutedAgent):</span>
+<span class="sd">            def __init__(self):</span>
+<span class="sd">                super().__init__(&quot;MyAgent&quot;)</span>
+
+<span class="sd">            @event</span>
+<span class="sd">            async def handle_event_message(self, message: Message, ctx: MessageContext) -&gt; None:</span>
+<span class="sd">                assert ctx.message_channel is not None</span>
+<span class="sd">                await self.publish_message(MessageWithContent(&quot;event handled&quot;), ctx.message_channel)</span>
+
+<span class="sd">            @rpc(match=lambda message, ctx: message.content == &quot;special&quot;)  # type: ignore</span>
+<span class="sd">            async def handle_special_rpc_message(self, message: MessageWithContent, ctx: MessageContext) -&gt; Response:</span>
+<span class="sd">                return Response()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Self is already bound to the handlers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span>
+            <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
+            <span class="n">List</span><span class="p">[</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">RoutedAgent</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="n">DefaultDict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+        <span class="n">handlers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_discover_handlers</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">message_handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">target_type</span> <span class="ow">in</span> <span class="n">message_handler</span><span class="o">.</span><span class="n">target_types</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="p">[</span><span class="n">target_type</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message_handler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transient_cancel_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+        <span class="c1"># protects the token during reset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cancel_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CancellationToken</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transient_cancel_token</span>
+
+<div class="viewcode-block" id="RoutedAgent.trigger_transient_cancel">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent.trigger_transient_cancel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">trigger_transient_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Triggers the cancel, then resets the token after `delay` seconds.&quot;&quot;&quot;</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_do_transient_cancel</span><span class="p">(</span><span class="n">delay</span><span class="p">))</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_do_transient_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transient_cancel_token</span><span class="o">.</span><span class="n">is_cancelled</span><span class="p">():</span>
+                <span class="k">return</span>  <span class="c1"># already in progress</span>
+
+            <span class="c1"># Cancel it</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transient_cancel_token</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Agent] </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> Cancellation triggered.&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Wait before reset</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+            <span class="c1"># Reset with a new token</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transient_cancel_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Agent] </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> Cancellation token reset.&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RoutedAgent.on_message_impl">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent.on_message_impl">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_message_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle a message by routing it to the appropriate message handler.</span>
+<span class="sd">        Do not override this method in subclasses. Instead, add message handlers as methods decorated with</span>
+<span class="sd">        either the :func:`event` or :func:`rpc` decorator.&quot;&quot;&quot;</span>
+        <span class="n">key_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="n">handlers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handlers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key_type</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="n">handlers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Iterate over all handlers for this matching message type.</span>
+            <span class="c1"># Call the first handler whose router returns True and then return the result.</span>
+            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">router</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="k">await</span> <span class="n">h</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_unhandled_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+<div class="viewcode-block" id="RoutedAgent.on_unhandled_message">
+<a class="viewcode-back" href="../../../../engine/engine.agent.html#agentopera.engine.agent.RoutedAgent.on_unhandled_message">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_unhandled_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when a message is received that does not have a matching message handler.</span>
+<span class="sd">        The default implementation logs an info message.&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unhandled message: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discover_handlers</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+        <span class="n">handlers</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">)):</span>
+                <span class="c1"># Since we are getting it from the class, self is not bound</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="s2">&quot;is_message_handler&quot;</span><span class="p">):</span>
+                    <span class="n">handlers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">MessageHandler</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">handler</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">handlers</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_handles_types</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]:</span>
+        <span class="c1"># TODO handle deduplication</span>
+        <span class="n">handlers</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_discover_handlers</span><span class="p">()</span>
+        <span class="n">types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">MessageSerializer</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">internal_extra_handles_types</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">handler</span><span class="o">.</span><span class="n">target_types</span><span class="p">:</span>
+                <span class="c1"># TODO: support different serializers</span>
+                <span class="n">serializers</span> <span class="o">=</span> <span class="n">try_get_known_serializers_for_type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">serializers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No serializers found for type </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+                <span class="n">types</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">try_get_known_serializers_for_type</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">types</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

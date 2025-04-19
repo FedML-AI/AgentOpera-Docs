@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>engine.types &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="engine.telemetry" href="engine.telemetry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">engine.types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#engine-types-agent">engine.types.agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.Agent"><code class="docutils literal notranslate"><span class="pre">Agent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.metadata"><code class="docutils literal notranslate"><span class="pre">Agent.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.id"><code class="docutils literal notranslate"><span class="pre">Agent.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.on_message"><code class="docutils literal notranslate"><span class="pre">Agent.on_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.save_state"><code class="docutils literal notranslate"><span class="pre">Agent.save_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.load_state"><code class="docutils literal notranslate"><span class="pre">Agent.load_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.Agent.close"><code class="docutils literal notranslate"><span class="pre">Agent.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId"><code class="docutils literal notranslate"><span class="pre">AgentId</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId.from_str"><code class="docutils literal notranslate"><span class="pre">AgentId.from_str()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId.type"><code class="docutils literal notranslate"><span class="pre">AgentId.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId.key"><code class="docutils literal notranslate"><span class="pre">AgentId.key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.AgentType"><code class="docutils literal notranslate"><span class="pre">AgentType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentType.type"><code class="docutils literal notranslate"><span class="pre">AgentType.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.AgentMetadata"><code class="docutils literal notranslate"><span class="pre">AgentMetadata</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentMetadata.type"><code class="docutils literal notranslate"><span class="pre">AgentMetadata.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentMetadata.key"><code class="docutils literal notranslate"><span class="pre">AgentMetadata.key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentMetadata.description"><code class="docutils literal notranslate"><span class="pre">AgentMetadata.description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken"><code class="docutils literal notranslate"><span class="pre">CancellationToken</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken.cancel"><code class="docutils literal notranslate"><span class="pre">CancellationToken.cancel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken.is_cancelled"><code class="docutils literal notranslate"><span class="pre">CancellationToken.is_cancelled()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken.reset"><code class="docutils literal notranslate"><span class="pre">CancellationToken.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken.add_callback"><code class="docutils literal notranslate"><span class="pre">CancellationToken.add_callback()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.CancellationToken.link_future"><code class="docutils literal notranslate"><span class="pre">CancellationToken.link_future()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_engine"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_engine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id"><code class="docutils literal notranslate"><span class="pre">AgentInstantiationContext.current_agent_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-agentopera.engine.types">others</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.CacheStore"><code class="docutils literal notranslate"><span class="pre">CacheStore</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.CacheStore.get"><code class="docutils literal notranslate"><span class="pre">CacheStore.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.CacheStore.set"><code class="docutils literal notranslate"><span class="pre">CacheStore.set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.from_uri"><code class="docutils literal notranslate"><span class="pre">Image.from_uri()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.from_base64"><code class="docutils literal notranslate"><span class="pre">Image.from_base64()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.from_file"><code class="docutils literal notranslate"><span class="pre">Image.from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.to_base64"><code class="docutils literal notranslate"><span class="pre">Image.to_base64()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.data_uri"><code class="docutils literal notranslate"><span class="pre">Image.data_uri</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Image.to_openai_format"><code class="docutils literal notranslate"><span class="pre">Image.to_openai_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.Queue"><code class="docutils literal notranslate"><span class="pre">Queue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.qsize"><code class="docutils literal notranslate"><span class="pre">Queue.qsize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.maxsize"><code class="docutils literal notranslate"><span class="pre">Queue.maxsize</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.empty"><code class="docutils literal notranslate"><span class="pre">Queue.empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.full"><code class="docutils literal notranslate"><span class="pre">Queue.full()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.put"><code class="docutils literal notranslate"><span class="pre">Queue.put()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.put_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.put_nowait()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.get"><code class="docutils literal notranslate"><span class="pre">Queue.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.get_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.get_nowait()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.task_done"><code class="docutils literal notranslate"><span class="pre">Queue.task_done()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.join"><code class="docutils literal notranslate"><span class="pre">Queue.join()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.Queue.shutdown"><code class="docutils literal notranslate"><span class="pre">Queue.shutdown()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.QueueShutDown"><code class="docutils literal notranslate"><span class="pre">QueueShutDown</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.engine.types.InMemoryStore"><code class="docutils literal notranslate"><span class="pre">InMemoryStore</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.InMemoryStore.get"><code class="docutils literal notranslate"><span class="pre">InMemoryStore.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agentopera.engine.types.InMemoryStore.set"><code class="docutils literal notranslate"><span class="pre">InMemoryStore.set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">engine.types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/engine/engine.types.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="engine-types">
+<h1>engine.types<a class="headerlink" href="#engine-types" title="Link to this heading"></a></h1>
+<section id="engine-types-agent">
+<h2>engine.types.agent<a class="headerlink" href="#engine-types-agent" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-agentopera.engine.types.agent">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">Agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.metadata">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.agent.AgentMetadata" title="agentopera.engine.types.agent.agent_metadata.AgentMetadata"><span class="pre">AgentMetadata</span></a></em><a class="headerlink" href="#agentopera.engine.types.agent.Agent.metadata" title="Link to this definition"></a></dt>
+<dd><p>Metadata of the agent.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.agent_id.AgentId"><span class="pre">AgentId</span></a></em><a class="headerlink" href="#agentopera.engine.types.agent.Agent.id" title="Link to this definition"></a></dt>
+<dd><p>ID of the agent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.on_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MessageContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.on_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.on_message" title="Link to this definition"></a></dt>
+<dd><p>Message handler for the agent. This should only be called by the engine, not by other agents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>Any</em>) – Received message. Type is one of the types in <cite>subscriptions</cite>.</p></li>
+<li><p><strong>ctx</strong> (<em>MessageContext</em>) – Context of the message.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response to the message. Can be None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>asyncio.CancelledError</strong> – If the message was cancelled.</p></li>
+<li><p><strong>CantHandleException</strong> – If the agent cannot handle the message.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.save_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the state of the agent. The result must be JSON serializable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.load_state">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load in the state of the agent obtained from <cite>save_state</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>Mapping</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – State of the agent. Must be JSON serializable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.Agent.close">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent.html#Agent.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.Agent.close" title="Link to this definition"></a></dt>
+<dd><p>Called when the engine is closed</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentId">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">AgentId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.engine.types.agent.AgentType" title="agentopera.engine.types.agent.agent_type.AgentType"><span class="pre">AgentType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_id.html#AgentId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentId" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Agent ID uniquely identifies an agent instance within an agent engine - including distributed engine. It is the ‘address’ of the agent instance for receiving messages.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentId.from_str">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_id.html#AgentId.from_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentId.from_str" title="Link to this definition"></a></dt>
+<dd><p>Convert a string of the format <code class="docutils literal notranslate"><span class="pre">type/key</span></code> into an AgentId</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentId.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentId.type" title="Link to this definition"></a></dt>
+<dd><p>An identifier that associates an agent with a specific factory function.</p>
+<p>Strings may only be composed of alphanumeric letters (a-z) and (0-9), or underscores (_).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentId.key">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentId.key" title="Link to this definition"></a></dt>
+<dd><p>Agent instance identifier.</p>
+<p>Strings may only be composed of alphanumeric letters (a-z) and (0-9), or underscores (_).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">AgentType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_type.html#AgentType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentType.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentType.type" title="Link to this definition"></a></dt>
+<dd><p>String representation of this agent type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentMetadata">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">AgentMetadata</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_metadata.html#AgentMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentMetadata" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentMetadata.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentMetadata.type" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentMetadata.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentMetadata.key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentMetadata.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.agent.AgentMetadata.description" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">CancellationToken</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A token used to cancel pending async calls</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken.cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken.cancel" title="Link to this definition"></a></dt>
+<dd><p>Cancel pending async calls linked to this cancellation token.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken.is_cancelled">
+<span class="sig-name descname"><span class="pre">is_cancelled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken.is_cancelled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken.is_cancelled" title="Link to this definition"></a></dt>
+<dd><p>Check if the CancellationToken has been used</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken.reset" title="Link to this definition"></a></dt>
+<dd><p>reset the token state to be re-used</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken.add_callback">
+<span class="sig-name descname"><span class="pre">add_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken.add_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken.add_callback" title="Link to this definition"></a></dt>
+<dd><p>Attach a callback that will be called when cancel is invoked</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.CancellationToken.link_future">
+<span class="sig-name descname"><span class="pre">link_future</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Future</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Future</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/cancellation_token.html#CancellationToken.link_future"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.CancellationToken.link_future" title="Link to this definition"></a></dt>
+<dd><p>Link a pending async call to a token to allow its cancellation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentInstantiationContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.agent.</span></span><span class="sig-name descname"><span class="pre">AgentInstantiationContext</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentInstantiationContext" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A static class that provides context for agent instantiation.</p>
+<p>This static class can be used to access the current engine and agent ID
+during agent instantiation – inside the factory function or the agent’s
+class constructor.</p>
+<p class="rubric">Example</p>
+<p>Get the current engine and agent ID inside the factory function and
+the agent’s constructor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.core</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentId</span><span class="p">,</span>
+    <span class="n">AgentInstantiationContext</span><span class="p">,</span>
+    <span class="n">MessageContext</span><span class="p">,</span>
+    <span class="n">RoutedAgent</span><span class="p">,</span>
+    <span class="n">LocalAgentEngine</span><span class="p">,</span>
+    <span class="n">message_handler</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TestMessage</span><span class="p">:</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestAgent</span><span class="p">(</span><span class="n">RoutedAgent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+        <span class="c1"># Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_engine</span><span class="p">()</span>
+        <span class="c1"># Get the current agent ID.</span>
+        <span class="n">agent_id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current AgentID from constructor: </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@message_handler</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_test_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">TestMessage</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_agent_factory</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TestAgent</span><span class="p">:</span>
+    <span class="c1"># Get the current engine -- we don&#39;t use it here, but it&#39;s available.</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_engine</span><span class="p">()</span>
+    <span class="c1"># Get the current agent ID.</span>
+    <span class="n">agent_id</span> <span class="o">=</span> <span class="n">AgentInstantiationContext</span><span class="o">.</span><span class="n">current_agent_id</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current AgentID from factory: </span><span class="si">{</span><span class="n">agent_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">TestAgent</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test agent&quot;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Create a LocalAgentEngine instance.</span>
+    <span class="n">agent_engine</span> <span class="o">=</span> <span class="n">LocalAgentEngine</span><span class="p">()</span>
+
+    <span class="c1"># Start the engine.</span>
+    <span class="n">agent_engine</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Register the agent type with a factory function.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">register_agent_builder</span><span class="p">(</span><span class="s2">&quot;test_agent&quot;</span><span class="p">,</span> <span class="n">test_agent_factory</span><span class="p">)</span>
+
+    <span class="c1"># Send a message to the agent. The engine will instantiate the agent and call the message handler.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">TestMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">),</span> <span class="n">AgentId</span><span class="p">(</span><span class="s2">&quot;test_agent&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Stop the engine.</span>
+    <span class="k">await</span> <span class="n">agent_engine</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentInstantiationContext.current_engine">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_engine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="engine.runtime.html#agentopera.engine.runtime.AgentEngine" title="agentopera.engine.runtime.AgentEngine"><span class="pre">AgentEngine</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext.current_engine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_engine" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">current_agent_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.agent.AgentId" title="agentopera.engine.types.agent.AgentId"><span class="pre">AgentId</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/agent/agent_instantiation_context.html#AgentInstantiationContext.current_agent_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.agent.AgentInstantiationContext.current_agent_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-agentopera.engine.types">
+<span id="others"></span><h2>others<a class="headerlink" href="#module-agentopera.engine.types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.CacheStore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.</span></span><span class="sig-name descname"><span class="pre">CacheStore</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#CacheStore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.CacheStore" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>This protocol defines the basic interface for store/cache operations.</p>
+<p>Sub-classes should handle the lifecycle of underlying storage.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.CacheStore.get">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#CacheStore.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.CacheStore.get" title="Link to this definition"></a></dt>
+<dd><p>Retrieve an item from the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key identifying the item in the store.</p></li>
+<li><p><strong>default</strong> (<em>optional</em>) – The default value to return if the key is not found.
+Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value associated with the key if found, else the default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.CacheStore.set">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#CacheStore.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.CacheStore.set" title="Link to this definition"></a></dt>
+<dd><p>Set an item in the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key under which the item is to be stored.</p></li>
+<li><p><strong>value</strong> – The value to be stored in the store.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>abstract base class, defines the interface of image object.</p>
+<p>all image implementations must implement this protocol to ensure compatibility with the message system.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.from_uri">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image.from_uri"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image.from_uri" title="Link to this definition"></a></dt>
+<dd><p>create image object from image uri.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – image uri, usually in data uri format</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>image object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BaseImage</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the uri format is invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.from_base64">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_base64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image.from_base64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image.from_base64" title="Link to this definition"></a></dt>
+<dd><p>create image object from base64 encoded string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>base64_str</strong> (<em>str</em>) – base64 encoded string of image</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>image object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BaseImage</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.from_file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.engine.types.Image" title="agentopera.engine.types.image.Image"><span class="pre">Image</span></a></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image.from_file" title="Link to this definition"></a></dt>
+<dd><p>create image object from file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>Path</em>) – path of image file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>image object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BaseImage</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.to_base64">
+<span class="sig-name descname"><span class="pre">to_base64</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image.to_base64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image.to_base64" title="Link to this definition"></a></dt>
+<dd><p>convert image to base64 encoded string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>base64 encoded string of image</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.data_uri">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data_uri</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.engine.types.Image.data_uri" title="Link to this definition"></a></dt>
+<dd><p>get data uri of image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data uri of image</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Image.to_openai_format">
+<span class="sig-name descname"><span class="pre">to_openai_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">detail</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'auto'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'low'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'high'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/image.html#Image.to_openai_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Image.to_openai_format" title="Link to this definition"></a></dt>
+<dd><p>convert image to openai api compatible format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>detail</strong> (<em>Literal</em><em>[</em><em>&quot;auto&quot;</em><em>, </em><em>&quot;low&quot;</em><em>, </em><em>&quot;high&quot;</em><em>]</em><em>, </em><em>optional</em>) – detail level of image. default to “auto”.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>openai api compatible image format</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.</span></span><span class="sig-name descname"><span class="pre">Queue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maxsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_LoopBoundMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.qsize">
+<span class="sig-name descname"><span class="pre">qsize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.qsize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.qsize" title="Link to this definition"></a></dt>
+<dd><p>Number of items in the queue.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.maxsize">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">maxsize</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#agentopera.engine.types.Queue.maxsize" title="Link to this definition"></a></dt>
+<dd><p>Number of items allowed in the queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.empty" title="Link to this definition"></a></dt>
+<dd><p>Return True if the queue is empty, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.full">
+<span class="sig-name descname"><span class="pre">full</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.full"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.full" title="Link to this definition"></a></dt>
+<dd><p>Return True if there are maxsize items in the queue.</p>
+<p>Note: if the Queue was initialized with maxsize=0 (the default),
+then full() is never True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.put">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.put" title="Link to this definition"></a></dt>
+<dd><p>Put an item into the queue.</p>
+<p>Put an item into the queue. If the queue is full, wait until a free
+slot is available before adding item.</p>
+<p>Raises QueueShutDown if the queue has been shut down.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.put_nowait">
+<span class="sig-name descname"><span class="pre">put_nowait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.put_nowait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.put_nowait" title="Link to this definition"></a></dt>
+<dd><p>Put an item into the queue without blocking.</p>
+<p>If no free slot is immediately available, raise QueueFull.</p>
+<p>Raises QueueShutDown if the queue has been shut down.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.get">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.get" title="Link to this definition"></a></dt>
+<dd><p>Remove and return an item from the queue.</p>
+<p>If queue is empty, wait until an item is available.</p>
+<p>Raises QueueShutDown if the queue has been shut down and is empty, or
+if the queue has been shut down immediately.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.get_nowait">
+<span class="sig-name descname"><span class="pre">get_nowait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.get_nowait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.get_nowait" title="Link to this definition"></a></dt>
+<dd><p>Remove and return an item from the queue.</p>
+<p>Return an item if one is immediately available, else raise QueueEmpty.</p>
+<p>Raises QueueShutDown if the queue has been shut down and is empty, or
+if the queue has been shut down immediately.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.task_done">
+<span class="sig-name descname"><span class="pre">task_done</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.task_done"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.task_done" title="Link to this definition"></a></dt>
+<dd><p>Indicate that a formerly enqueued task is complete.</p>
+<p>Used by queue consumers. For each get() used to fetch a task,
+a subsequent call to task_done() tells the queue that the processing
+on the task is complete.</p>
+<p>If a join() is currently blocking, it will resume when all items have
+been processed (meaning that a task_done() call was received for every
+item that had been put() into the queue).</p>
+<p>shutdown(immediate=True) calls task_done() for each remaining item in
+the queue.</p>
+<p>Raises ValueError if called more times than there were items placed in
+the queue.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.join">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.join"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.join" title="Link to this definition"></a></dt>
+<dd><p>Block until all items in the queue have been gotten and processed.</p>
+<p>The count of unfinished tasks goes up whenever an item is added to the
+queue. The count goes down whenever a consumer calls task_done() to
+indicate that the item was retrieved and all work on it is complete.
+When the count of unfinished tasks drops to zero, join() unblocks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.Queue.shutdown">
+<span class="sig-name descname"><span class="pre">shutdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">immediate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#Queue.shutdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.Queue.shutdown" title="Link to this definition"></a></dt>
+<dd><p>Shut-down the queue, making queue gets and puts raise QueueShutDown.</p>
+<p>By default, gets will only raise once the queue is empty. Set
+‘immediate’ to True to make gets raise immediately instead.</p>
+<p>All blocked callers of put() and get() will be unblocked. If
+‘immediate’, a task is marked as done for each item remaining in
+the queue, which may unblock callers of join().</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="agentopera.engine.types.QueueShutDown">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.</span></span><span class="sig-name descname"><span class="pre">QueueShutDown</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/queue.html#QueueShutDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.QueueShutDown" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when putting on to or getting from a shut-down Queue.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.engine.types.InMemoryStore">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.engine.types.</span></span><span class="sig-name descname"><span class="pre">InMemoryStore</span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#InMemoryStore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.InMemoryStore" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.engine.types.CacheStore" title="agentopera.engine.types.cache_store.CacheStore"><code class="xref py py-class docutils literal notranslate"><span class="pre">CacheStore</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.InMemoryStore.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#InMemoryStore.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.InMemoryStore.get" title="Link to this definition"></a></dt>
+<dd><p>Retrieve an item from the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key identifying the item in the store.</p></li>
+<li><p><strong>default</strong> (<em>optional</em>) – The default value to return if the key is not found.
+Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The value associated with the key if found, else the default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.engine.types.InMemoryStore.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/engine/types/cache_store.html#InMemoryStore.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.engine.types.InMemoryStore.set" title="Link to this definition"></a></dt>
+<dd><p>Set an item in the store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – The key under which the item is to be stored.</p></li>
+<li><p><strong>value</strong> – The value to be stored in the store.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="engine.telemetry.html" class="btn btn-neutral float-left" title="engine.telemetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

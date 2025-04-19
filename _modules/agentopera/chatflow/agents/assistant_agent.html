@@ -1,0 +1,1333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.agents.assistant_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.agents.assistant_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.agents.assistant_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Any</span><span class="p">,</span>
+    <span class="n">AsyncGenerator</span><span class="p">,</span>
+    <span class="n">Awaitable</span><span class="p">,</span>
+    <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">,</span>
+    <span class="n">Mapping</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">,</span>
+    <span class="n">Sequence</span><span class="p">,</span>
+    <span class="n">Tuple</span><span class="p">,</span>
+    <span class="n">Union</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionCall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.model_context</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ChatCompletionContext</span><span class="p">,</span>
+    <span class="n">UnboundedChatCompletionContext</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AssistantMessage</span><span class="p">,</span>
+    <span class="n">ChatCompletionClient</span><span class="p">,</span>
+    <span class="n">CreateResult</span><span class="p">,</span>
+    <span class="n">FunctionExecutionResult</span><span class="p">,</span>
+    <span class="n">FunctionExecutionResultMessage</span><span class="p">,</span>
+    <span class="n">LLMMessage</span><span class="p">,</span>
+    <span class="n">SystemMessage</span><span class="p">,</span>
+    <span class="n">UserMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.function_call</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTool</span><span class="p">,</span> <span class="n">FunctionTool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">EVENT_LOGGER_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Handoff</span> <span class="k">as</span> <span class="n">HandoffBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">HandoffMessage</span><span class="p">,</span>
+    <span class="n">MemoryQueryEvent</span><span class="p">,</span>
+    <span class="n">ModelClientStreamingChunkEvent</span><span class="p">,</span>
+    <span class="n">TextMessage</span><span class="p">,</span>
+    <span class="n">ThoughtEvent</span><span class="p">,</span>
+    <span class="n">ToolCallExecutionEvent</span><span class="p">,</span>
+    <span class="n">ToolCallRequestEvent</span><span class="p">,</span>
+    <span class="n">ToolCallSummaryMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..state</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssistantAgentState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">remove_images</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_chat_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.utils.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">event_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">EVENT_LOGGER_NAME</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="AssistantAgent">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AssistantAgent</span><span class="p">(</span><span class="n">BaseChatAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An agent that provides assistance with tool use.</span>
+
+<span class="sd">    The :meth:`on_messages` returns a :class:`~agentopera.chatflow.base.Response`</span>
+<span class="sd">    in which :attr:`~agentopera.chatflow.base.Response.chat_message` is the final</span>
+<span class="sd">    response message.</span>
+
+<span class="sd">    The :meth:`on_messages_stream` creates an async generator that produces</span>
+<span class="sd">    the inner messages as they are created, and the :class:`~agentopera.chatflow.base.Response`</span>
+<span class="sd">    object as the last item before closing the generator.</span>
+
+<span class="sd">    .. attention::</span>
+
+<span class="sd">        The caller must only pass the new messages to the agent on each call</span>
+<span class="sd">        to the :meth:`on_messages` or :meth:`on_messages_stream` method.</span>
+<span class="sd">        The agent maintains its state between calls to these methods.</span>
+<span class="sd">        Do not pass the entire conversation history to the agent on each call.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        The assistant agent is not thread-safe or coroutine-safe.</span>
+<span class="sd">        It should not be shared between multiple tasks or coroutines, and it should</span>
+<span class="sd">        not call its methods concurrently.</span>
+
+<span class="sd">    The following diagram shows how the assistant agent works:</span>
+
+<span class="sd">    Tool call behavior:</span>
+
+<span class="sd">    * If the model returns no tool call, then the response is immediately returned as a :class:`~agentopera.chatflow.messages.TextMessage` in :attr:`~agentopera.chatflow.base.Response.chat_message`.</span>
+<span class="sd">    * When the model returns tool calls, they will be executed right away:</span>
+<span class="sd">        - When `reflect_on_tool_use` is False (default), the tool call results are returned as a :class:`~agentopera.chatflow.messages.ToolCallSummaryMessage` in :attr:`~agentopera.chatflow.base.Response.chat_message`. `tool_call_summary_format` can be used to customize the tool call summary.</span>
+<span class="sd">        - When `reflect_on_tool_use` is True, the another model inference is made using the tool calls and results, and the text response is returned as a :class:`~agentopera.chatflow.messages.TextMessage` in :attr:`~agentopera.chatflow.base.Response.chat_message`.</span>
+<span class="sd">    * If the model returns multiple tool calls, they will be executed concurrently. To disable parallel tool calls you need to configure the model client. For example, set `parallel_tool_calls=False` for :class:`~agentopera.agents.models.openai.OpenAIChatCompletionClient` and :class:`~agentopera.agents.models.openai.AzureOpenAIChatCompletionClient`.</span>
+
+<span class="sd">    .. tip::</span>
+<span class="sd">        By default, the tool call results are returned as response when tool calls are made.</span>
+<span class="sd">        So it is recommended to pay attention to the formatting of the tools return values,</span>
+<span class="sd">        especially if another agent is expecting them in a specific format.</span>
+<span class="sd">        Use `tool_call_summary_format` to customize the tool call summary, if needed.</span>
+
+<span class="sd">    Hand off behavior:</span>
+
+<span class="sd">    * If a handoff is triggered, a :class:`~agentopera.chatflow.messages.HandoffMessage` will be returned in :attr:`~agentopera.chatflow.base.Response.chat_message`.</span>
+<span class="sd">    * If there are tool calls, they will also be executed right away before returning the handoff.</span>
+<span class="sd">    * The tool calls and results are passed to the target agent through :attr:`~agentopera.chatflow.messages.HandoffMessage.context`.</span>
+
+
+<span class="sd">    .. note::</span>
+<span class="sd">        If multiple handoffs are detected, only the first handoff is executed.</span>
+<span class="sd">        To avoid this, disable parallel tool calls in the model client configuration.</span>
+
+
+<span class="sd">    Limit context size sent to the model:</span>
+
+<span class="sd">    You can limit the number of messages sent to the model by setting</span>
+<span class="sd">    the `model_context` parameter to a :class:`~agentopera.core.model_context.BufferedChatCompletionContext`.</span>
+<span class="sd">    This will limit the number of recent messages sent to the model and can be useful</span>
+<span class="sd">    when the model has a limit on the number of tokens it can process.</span>
+<span class="sd">    You can also create your own model context by subclassing</span>
+<span class="sd">    :class:`~agentopera.core.model_context.ChatCompletionContext`.</span>
+
+<span class="sd">    Streaming mode:</span>
+
+<span class="sd">    The assistant agent can be used in streaming mode by setting `model_client_stream=True`.</span>
+<span class="sd">    In this mode, the :meth:`on_messages_stream` and :meth:`BaseChatAgent.run_stream` methods will also yield</span>
+<span class="sd">    :class:`~agentopera.chatflow.messages.ModelClientStreamingChunkEvent`</span>
+<span class="sd">    messages as the model client produces chunks of response.</span>
+<span class="sd">    The chunk messages will not be included in the final response&#39;s inner messages.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the agent.</span>
+<span class="sd">        model_client (ChatCompletionClient): The model client to use for inference.</span>
+<span class="sd">        tools (List[BaseTool[Any, Any]  | Callable[..., Any] | Callable[..., Awaitable[Any]]] | None, optional): The tools to register with the agent.</span>
+<span class="sd">        handoffs (List[HandoffBase | str] | None, optional): The handoff configurations for the agent,</span>
+<span class="sd">            allowing it to transfer to other agents by responding with a :class:`HandoffMessage`.</span>
+<span class="sd">            The transfer is only executed when the team is in :class:`~agentopera.chatflow.teams.Swarm`.</span>
+<span class="sd">            If a handoff is a string, it should represent the target agent&#39;s name.</span>
+<span class="sd">        model_context (ChatCompletionContext | None, optional): The model context for storing and retrieving :class:`~agentopera.core.models.LLMMessage`. It can be preloaded with initial messages. The initial messages will be cleared when the agent is reset.</span>
+<span class="sd">        description (str, optional): The description of the agent.</span>
+<span class="sd">        system_message (str, optional): The system message for the model. If provided, it will be prepended to the messages in the model context when making an inference. Set to `None` to disable.</span>
+<span class="sd">        model_client_stream (bool, optional): If `True`, the model client will be used in streaming mode.</span>
+<span class="sd">            :meth:`on_messages_stream` and :meth:`BaseChatAgent.run_stream` methods will also yield :class:`~agentopera.chatflow.messages.ModelClientStreamingChunkEvent`</span>
+<span class="sd">            messages as the model client produces chunks of response. Defaults to `False`.</span>
+<span class="sd">        reflect_on_tool_use (bool, optional): If `True`, the agent will make another model inference using the tool call and result</span>
+<span class="sd">            to generate a response. If `False`, the tool call result will be returned as the response. Defaults to `False`.</span>
+<span class="sd">        tool_call_summary_format (str, optional): The format string used to create a tool call summary for every tool call result.</span>
+<span class="sd">            Defaults to &quot;{result}&quot;.</span>
+<span class="sd">            When `reflect_on_tool_use` is `False`, a concatenation of all the tool call summaries, separated by a new line character (&#39;\\n&#39;)</span>
+<span class="sd">            will be returned as the response.</span>
+<span class="sd">            Available variables: `{tool_name}`, `{arguments}`, `{result}`.</span>
+<span class="sd">            For example, `&quot;{tool_name}: {result}&quot;` will create a summary like `&quot;tool_name: result&quot;`.</span>
+<span class="sd">        memory (Sequence[Memory] | None, optional): The memory store to use for the agent. Defaults to `None`.</span>
+<span class="sd">        user_context (bool, optional): If `True`, the user history messages will be included in the model context. Defaults to `True`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If tool names are not unique.</span>
+<span class="sd">        ValueError: If handoff names are not unique.</span>
+<span class="sd">        ValueError: If handoff names are not unique from tool names.</span>
+<span class="sd">        ValueError: If maximum number of tool iterations is less than 1.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        **Example 1: basic agent**</span>
+
+<span class="sd">        The following example demonstrates how to create an assistant agent with</span>
+<span class="sd">        a model client and generate a response to a simple task.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;gpt-4o&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+<span class="sd">                agent = AssistantAgent(name=&quot;assistant&quot;, model_client=model_client)</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;What is the capital of France?&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        **Example 2: model client token streaming**</span>
+
+<span class="sd">        This example demonstrates how to create an assistant agent with</span>
+<span class="sd">        a model client and generate a token stream by setting `model_client_stream=True`.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;gpt-4o&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    name=&quot;assistant&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    model_client_stream=True,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                stream = agent.on_messages_stream(</span>
+<span class="sd">                    [TextMessage(content=&quot;Name two cities in North America.&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                async for message in stream:</span>
+<span class="sd">                    print(message)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39;Two&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; cities&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; in&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; North&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; America&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; are&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; New&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; York&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; City&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; in&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; the&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; United&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; States&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; and&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; Toronto&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; in&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; Canada&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39;.&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39; TERMIN&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            source=&#39;assistant&#39; models_usage=None content=&#39;ATE&#39; type=&#39;ModelClientStreamingChunkEvent&#39;</span>
+<span class="sd">            Response(chat_message=TextMessage(source=&#39;assistant&#39;, models_usage=RequestUsage(prompt_tokens=0, completion_tokens=0), content=&#39;Two cities in North America are New York City in the United States and Toronto in Canada. TERMINATE&#39;, type=&#39;TextMessage&#39;), inner_messages=[])</span>
+
+
+<span class="sd">        **Example 3: agent with tools**</span>
+
+<span class="sd">        The following example demonstrates how to create an assistant agent with</span>
+<span class="sd">        a model client and a tool, generate a stream of messages for a task, and</span>
+<span class="sd">        print the messages to the console using :class:`~agentopera.chatflow.ui.Console`.</span>
+
+<span class="sd">        The tool is a simple function that returns the current time.</span>
+<span class="sd">        Under the hood, the function is wrapped in a :class:`~agentopera.core.tools.FunctionTool`</span>
+<span class="sd">        and used with the agent&#39;s model client. The doc string of the function</span>
+<span class="sd">        is used as the tool description, the function name is used as the tool name,</span>
+<span class="sd">        and the function signature including the type hints is used as the tool arguments.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+
+
+<span class="sd">            async def get_current_time() -&gt; str:</span>
+<span class="sd">                return &quot;The current time is 12:00 PM.&quot;</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;gpt-4o&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+<span class="sd">                agent = AssistantAgent(name=&quot;assistant&quot;, model_client=model_client, tools=[get_current_time])</span>
+
+<span class="sd">                await Console(</span>
+<span class="sd">                    agent.on_messages_stream(</span>
+<span class="sd">                        [TextMessage(content=&quot;What is the current time?&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        **Example 4: agent with structured output and tool**</span>
+
+<span class="sd">        The following example demonstrates how to create an assistant agent with</span>
+<span class="sd">        a model client configured to use structured output and a tool.</span>
+<span class="sd">        Note that you need to use :class:`~agentopera.core.tools.FunctionTool` to create the tool</span>
+<span class="sd">        and the `strict=True` is required for structured output mode.</span>
+<span class="sd">        Because the model is configured to use structured output, the output</span>
+<span class="sd">        reflection response will be a JSON formatted string.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from typing import Literal</span>
+
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.chatflow.ui import Console</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.core.tools import FunctionTool</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from pydantic import BaseModel</span>
+
+
+<span class="sd">            # Define the structured output format.</span>
+<span class="sd">            class AgentResponse(BaseModel):</span>
+<span class="sd">                thoughts: str</span>
+<span class="sd">                response: Literal[&quot;happy&quot;, &quot;sad&quot;, &quot;neutral&quot;]</span>
+
+
+<span class="sd">            # Define the function to be called as a tool.</span>
+<span class="sd">            def sentiment_analysis(text: str) -&gt; str:</span>
+<span class="sd">                \&quot;\&quot;\&quot;Given a text, return the sentiment.\&quot;\&quot;\&quot;</span>
+<span class="sd">                return &quot;happy&quot; if &quot;happy&quot; in text else &quot;sad&quot; if &quot;sad&quot; in text else &quot;neutral&quot;</span>
+
+
+<span class="sd">            # Create a FunctionTool instance with `strict=True`,</span>
+<span class="sd">            # which is required for structured output mode.</span>
+<span class="sd">            tool = FunctionTool(sentiment_analysis, description=&quot;Sentiment Analysis&quot;, strict=True)</span>
+
+<span class="sd">            # Create an OpenAIChatCompletionClient instance that uses the structured output format.</span>
+<span class="sd">            model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                model=&quot;gpt-4o-mini&quot;,</span>
+<span class="sd">                response_format=AgentResponse,  # type: ignore</span>
+<span class="sd">            )</span>
+
+<span class="sd">            # Create an AssistantAgent instance that uses the tool and model client.</span>
+<span class="sd">            agent = AssistantAgent(</span>
+<span class="sd">                name=&quot;assistant&quot;,</span>
+<span class="sd">                model_client=model_client,</span>
+<span class="sd">                tools=[tool],</span>
+<span class="sd">                system_message=&quot;Use the tool to analyze sentiment.&quot;,</span>
+<span class="sd">                reflect_on_tool_use=True,  # Use reflection to have the agent generate a formatted response.</span>
+<span class="sd">            )</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                stream = agent.on_messages_stream([TextMessage(content=&quot;I am happy today!&quot;, source=&quot;user&quot;)], CancellationToken())</span>
+<span class="sd">                await Console(stream)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">            ---------- assistant ----------</span>
+<span class="sd">            [FunctionCall(id=&#39;call_tIZjAVyKEDuijbBwLY6RHV2p&#39;, arguments=&#39;{&quot;text&quot;:&quot;I am happy today!&quot;}&#39;, name=&#39;sentiment_analysis&#39;)]</span>
+<span class="sd">            ---------- assistant ----------</span>
+<span class="sd">            [FunctionExecutionResult(content=&#39;happy&#39;, call_id=&#39;call_tIZjAVyKEDuijbBwLY6RHV2p&#39;, is_error=False)]</span>
+<span class="sd">            ---------- assistant ----------</span>
+<span class="sd">            {&quot;thoughts&quot;:&quot;The user expresses a clear positive emotion by stating they are happy today, suggesting an upbeat mood.&quot;,&quot;response&quot;:&quot;happy&quot;}</span>
+
+<span class="sd">        **Example 5: agent with bounded model context**</span>
+
+<span class="sd">        The following example shows how to use a</span>
+<span class="sd">        :class:`~agentopera.core.model_context.BufferedChatCompletionContext`</span>
+<span class="sd">        that only keeps the last 2 messages (1 user + 1 assistant).</span>
+<span class="sd">        Bounded model context is useful when the model has a limit on the</span>
+<span class="sd">        number of tokens it can process.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.core.model_context import BufferedChatCompletionContext</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create a model client.</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;gpt-4o-mini&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Create a model context that only keeps the last 2 messages (1 user + 1 assistant).</span>
+<span class="sd">                model_context = BufferedChatCompletionContext(buffer_size=2)</span>
+
+<span class="sd">                # Create an AssistantAgent instance with the model client and context.</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    name=&quot;assistant&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    model_context=model_context,</span>
+<span class="sd">                    system_message=&quot;You are a helpful assistant.&quot;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;Name two cities in North America.&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response.chat_message.content)  # type: ignore</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;My favorite color is blue.&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response.chat_message.content)  # type: ignore</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;Did I ask you any question?&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response.chat_message.content)  # type: ignore</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">            Two cities in North America are New York City and Toronto.</span>
+<span class="sd">            That&#39;s great! Blue is often associated with calmness and serenity. Do you have a specific shade of blue that you like, or any particular reason why it&#39;s your favorite?</span>
+<span class="sd">            No, you didn&#39;t ask a question. I apologize for any misunderstanding. If you have something specific you&#39;d like to discuss or ask, feel free to let me know!</span>
+
+<span class="sd">        **Example 6: agent with memory**</span>
+
+<span class="sd">        The following example shows how to use a list-based memory with the assistant agent.</span>
+<span class="sd">        The memory is preloaded with some initial content.</span>
+<span class="sd">        Under the hood, the memory is used to update the model context</span>
+<span class="sd">        before making an inference, using the :meth:`~agentopera.core.memory.Memory.update_context` method.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.core.memory import ListMemory, MemoryContent</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                # Create a model client.</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;gpt-4o-mini&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+
+<span class="sd">                # Create a list-based memory with some initial content.</span>
+<span class="sd">                memory = ListMemory()</span>
+<span class="sd">                await memory.add(MemoryContent(content=&quot;User likes pizza.&quot;, mime_type=&quot;text/plain&quot;))</span>
+<span class="sd">                await memory.add(MemoryContent(content=&quot;User dislikes cheese.&quot;, mime_type=&quot;text/plain&quot;))</span>
+
+<span class="sd">                # Create an AssistantAgent instance with the model client and memory.</span>
+<span class="sd">                agent = AssistantAgent(</span>
+<span class="sd">                    name=&quot;assistant&quot;,</span>
+<span class="sd">                    model_client=model_client,</span>
+<span class="sd">                    memory=[memory],</span>
+<span class="sd">                    system_message=&quot;You are a helpful assistant.&quot;,</span>
+<span class="sd">                )</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;One idea for a dinner.&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response.chat_message.content)  # type: ignore</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        .. code-block:: text</span>
+
+<span class="sd">            How about making a delicious pizza without cheese? You can create a flavorful veggie pizza with a variety of toppings. Here&#39;s a quick idea:</span>
+
+<span class="sd">            **Veggie Tomato Sauce Pizza**</span>
+<span class="sd">            - Start with a pizza crust (store-bought or homemade).</span>
+<span class="sd">            - Spread a layer of marinara or tomato sauce evenly over the crust.</span>
+<span class="sd">            - Top with your favorite vegetables like bell peppers, mushrooms, onions, olives, and spinach.</span>
+<span class="sd">            - Add some protein if you’d like, such as grilled chicken or pepperoni (ensure it&#39;s cheese-free).</span>
+<span class="sd">            - Sprinkle with herbs like oregano and basil, and maybe a drizzle of olive oil.</span>
+<span class="sd">            - Bake according to the crust instructions until the edges are golden and the veggies are cooked.</span>
+
+<span class="sd">            Serve it with a side salad or some garlic bread to complete the meal! Enjoy your dinner!</span>
+
+<span class="sd">        **Example 7: agent with `o1-mini`**</span>
+
+<span class="sd">        The following example shows how to use `o1-mini` model with the assistant agent.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.models.openai import OpenAIChatCompletionClient</span>
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+
+
+<span class="sd">            async def main() -&gt; None:</span>
+<span class="sd">                model_client = OpenAIChatCompletionClient(</span>
+<span class="sd">                    model=&quot;o1-mini&quot;,</span>
+<span class="sd">                    # api_key = &quot;your_openai_api_key&quot;</span>
+<span class="sd">                )</span>
+<span class="sd">                # The system message is not supported by the o1 series model.</span>
+<span class="sd">                agent = AssistantAgent(name=&quot;assistant&quot;, model_client=model_client, system_message=None)</span>
+
+<span class="sd">                response = await agent.on_messages(</span>
+<span class="sd">                    [TextMessage(content=&quot;What is the capital of France?&quot;, source=&quot;user&quot;)], CancellationToken()</span>
+<span class="sd">                )</span>
+<span class="sd">                print(response)</span>
+
+
+<span class="sd">            asyncio.run(main())</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            The `o1-preview` and `o1-mini` models do not support system message and function calling.</span>
+<span class="sd">            So the `system_message` should be set to `None` and the `tools` and `handoffs` should not be set.</span>
+<span class="sd">            See `o1 beta limitations &lt;https://platform.openai.com/docs/guides/reasoning#beta-limitations&gt;`_ for more details.</span>
+
+
+<span class="sd">        **Example 8: agent using reasoning model with custom model context.**</span>
+
+<span class="sd">        The following example shows how to use a reasoning model (DeepSeek R1) with the assistant agent.</span>
+<span class="sd">        The model context is used to filter out the thought field from the assistant message.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from typing import List</span>
+
+<span class="sd">            from agentopera.chatflow.agents import AssistantAgent</span>
+<span class="sd">            from agentopera.core.model_context import UnboundedChatCompletionContext</span>
+<span class="sd">            from agentopera.core.types.models import AssistantMessage, LLMMessage, ModelFamily</span>
+<span class="sd">            from agentopera.models.ollama import OllamaChatCompletionClient</span>
+
+
+<span class="sd">            class ReasoningModelContext(UnboundedChatCompletionContext):</span>
+<span class="sd">                \&quot;\&quot;\&quot;A model context for reasoning models.\&quot;\&quot;\&quot;</span>
+
+<span class="sd">                async def get_messages(self) -&gt; List[LLMMessage]:</span>
+<span class="sd">                    messages = await super().get_messages()</span>
+<span class="sd">                    # Filter out thought field from AssistantMessage.</span>
+<span class="sd">                    messages_out: List[LLMMessage] = []</span>
+<span class="sd">                    for message in messages:</span>
+<span class="sd">                        if isinstance(message, AssistantMessage):</span>
+<span class="sd">                            message.thought = None</span>
+<span class="sd">                        messages_out.append(message)</span>
+<span class="sd">                    return messages_out</span>
+
+
+<span class="sd">            # Create an instance of the model client for DeepSeek R1 hosted locally on Ollama.</span>
+<span class="sd">            model_client = OllamaChatCompletionClient(</span>
+<span class="sd">                model=&quot;deepseek-r1:8b&quot;,</span>
+<span class="sd">                model_info={</span>
+<span class="sd">                    &quot;vision&quot;: False,</span>
+<span class="sd">                    &quot;function_calling&quot;: False,</span>
+<span class="sd">                    &quot;json_output&quot;: False,</span>
+<span class="sd">                    &quot;family&quot;: ModelFamily.R1,</span>
+<span class="sd">                },</span>
+<span class="sd">            )</span>
+
+<span class="sd">            agent = AssistantAgent(</span>
+<span class="sd">                &quot;reasoning_agent&quot;,</span>
+<span class="sd">                model_client=model_client,</span>
+<span class="sd">                model_context=ReasoningModelContext(),  # Use the custom model context.</span>
+<span class="sd">            )</span>
+
+
+<span class="sd">            async def run_reasoning_agent() -&gt; None:</span>
+<span class="sd">                result = await agent.run(task=&quot;What is the capital of France?&quot;)</span>
+<span class="sd">                print(result)</span>
+
+
+<span class="sd">            asyncio.run(run_reasoning_agent())</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">handoffs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">HandoffBase</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;An agent that provides assistance with ability to use tools.&quot;</span><span class="p">,</span>
+        <span class="n">system_message</span><span class="p">:</span> <span class="p">(</span>
+            <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+        <span class="p">)</span> <span class="o">=</span> <span class="s2">&quot;You are a helpful AI assistant. Solve tasks using your tools. Reply with TERMINATE when the task has been completed.&quot;</span><span class="p">,</span>
+        <span class="n">model_client_stream</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">reflect_on_tool_use</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">tool_call_summary_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{result}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">memory</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">use_context</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span> <span class="o">=</span> <span class="n">model_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_client_stream</span> <span class="o">=</span> <span class="n">model_client_stream</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">memory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">memory</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span> <span class="o">=</span> <span class="n">memory</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Memory, List[Memory], or None, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">memory</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_system_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">SystemMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">system_message</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_system_messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_system_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">system_message</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
+        <span class="c1"># Handoff tools.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handoff_tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handoffs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HandoffBase</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">handoffs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;function_calling&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The model does not support function calling, which is needed for handoffs.&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">handoff</span> <span class="ow">in</span> <span class="n">handoffs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handoff</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">handoff</span> <span class="o">=</span> <span class="n">HandoffBase</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">handoff</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handoff</span><span class="p">,</span> <span class="n">HandoffBase</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handoff_tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handoff</span><span class="o">.</span><span class="n">handoff_tool</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handoffs</span><span class="p">[</span><span class="n">handoff</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">handoff</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported handoff type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">handoff</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Check if handoff tool names are unique.</span>
+        <span class="n">handoff_tool_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handoff_tools</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">handoff_tool_names</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">handoff_tool_names</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handoff names must be unique: </span><span class="si">{</span><span class="n">handoff_tool_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Check if handoff tool names not in tool names.</span>
+        <span class="n">tool_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">name</span> <span class="ow">in</span> <span class="n">tool_names</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">handoff_tool_names</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Handoff names must be unique from tool names. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Handoff names: </span><span class="si">{</span><span class="n">handoff_tool_names</span><span class="si">}</span><span class="s2">; tool names: </span><span class="si">{</span><span class="n">tool_names</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span> <span class="o">=</span> <span class="n">model_context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span> <span class="o">=</span> <span class="n">UnboundedChatCompletionContext</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reflect_on_tool_use</span> <span class="o">=</span> <span class="n">reflect_on_tool_use</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tool_call_summary_format</span> <span class="o">=</span> <span class="n">tool_call_summary_format</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_use_context</span> <span class="o">=</span> <span class="n">use_context</span>
+        
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+        <span class="n">message_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">TextMessage</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handoffs</span><span class="p">:</span>
+            <span class="n">message_types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">HandoffMessage</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="p">:</span>
+            <span class="n">message_types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ToolCallSummaryMessage</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">message_types</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="AssistantAgent.add_tools">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.add_tools">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds tools to the agent, ensuring they are properly validated and unique.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tools: A list of tools or functions to be added.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If the tool names are not unique or unsupported tool type.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tools</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;function_calling&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The model does not support function calling.&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">BaseTool</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">tool</span><span class="p">):</span>
+                    <span class="n">description</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="s2">&quot;__doc__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">tool</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FunctionTool</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported tool type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Check if tool names are unique.</span>
+            <span class="n">tool_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tool_names</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tool_names</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tool names must be unique: </span><span class="si">{</span><span class="n">tool_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="n">event_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> tools. Total tools: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AssistantAgent.on_messages">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.on_messages">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages_stream</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">message</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;The stream should have returned the final result.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AssistantAgent.check_cancelled">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.check_cancelled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_cancelled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">,</span> <span class="n">where</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">is_cancelled</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">] Cancelled during </span><span class="si">{</span><span class="n">where</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="AssistantAgent.on_messages_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.on_messages_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Response</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process the incoming messages with the assistant agent and yield events/responses as they happen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Gather all relevant state here</span>
+        <span class="n">agent_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">model_context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span>
+        <span class="n">memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span>
+        <span class="n">system_messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_system_messages</span>
+        <span class="n">tools</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span>
+        <span class="n">handoff_tools</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handoff_tools</span>
+        <span class="n">handoffs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handoffs</span>
+        <span class="n">model_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client</span>
+        <span class="n">model_client_stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_client_stream</span>
+        <span class="n">reflect_on_tool_use</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reflect_on_tool_use</span>
+        <span class="n">tool_call_summary_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tool_call_summary_format</span>
+
+        <span class="c1"># clear model context if caller does not want to use context</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_context</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="c1"># STEP 1: Add new user/handoff messages to the model context</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_messages_to_context</span><span class="p">(</span>
+            <span class="n">model_context</span><span class="o">=</span><span class="n">model_context</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_cancelled</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">,</span> <span class="s2">&quot;_add_messages_to_context&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="c1"># STEP 2: Update model context with any relevant memory</span>
+        <span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">event_msg</span> <span class="ow">in</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_model_context_with_memory</span><span class="p">(</span>
+            <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span>
+            <span class="n">model_context</span><span class="o">=</span><span class="n">model_context</span><span class="p">,</span>
+            <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_cancelled</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">,</span> <span class="s2">&quot;update_model_context&quot;</span><span class="p">):</span>
+                <span class="k">return</span>
+            <span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_msg</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">event_msg</span>
+
+        <span class="c1"># STEP 3: Run the first inference</span>
+        <span class="n">model_result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">inference_output</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_llm</span><span class="p">(</span>
+            <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+            <span class="n">model_client_stream</span><span class="o">=</span><span class="n">model_client_stream</span><span class="p">,</span>
+            <span class="n">system_messages</span><span class="o">=</span><span class="n">system_messages</span><span class="p">,</span>
+            <span class="n">model_context</span><span class="o">=</span><span class="n">model_context</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+            <span class="n">handoff_tools</span><span class="o">=</span><span class="n">handoff_tools</span><span class="p">,</span>
+            <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+            <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inference_output</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">):</span>
+                <span class="n">model_result</span> <span class="o">=</span> <span class="n">inference_output</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Streaming chunk event</span>
+                <span class="k">yield</span> <span class="n">inference_output</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_cancelled</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">,</span> <span class="s2">&quot;LLM_calling&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="k">assert</span> <span class="n">model_result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;No model result was produced.&quot;</span>
+
+        <span class="c1"># --- NEW: If the model produced a hidden &quot;thought,&quot; yield it as an event ---</span>
+        <span class="k">if</span> <span class="n">model_result</span><span class="o">.</span><span class="n">thought</span><span class="p">:</span>
+            <span class="n">thought_event</span> <span class="o">=</span> <span class="n">ThoughtEvent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">thought</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">thought_event</span>
+            <span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thought_event</span><span class="p">)</span>
+
+        <span class="c1"># Add the assistant message to the model context (including thought if present)</span>
+        <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span>
+            <span class="n">AssistantMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                <span class="n">thought</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="s2">&quot;thought&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_cancelled</span><span class="p">(</span><span class="n">cancellation_token</span><span class="p">,</span> <span class="s2">&quot;add_assistant_message&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="c1"># STEP 4: Process the model output</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">output_event</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_model_result</span><span class="p">(</span>
+            <span class="n">model_result</span><span class="o">=</span><span class="n">model_result</span><span class="p">,</span>
+            <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+            <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+            <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+            <span class="n">model_context</span><span class="o">=</span><span class="n">model_context</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+            <span class="n">handoff_tools</span><span class="o">=</span><span class="n">handoff_tools</span><span class="p">,</span>
+            <span class="n">handoffs</span><span class="o">=</span><span class="n">handoffs</span><span class="p">,</span>
+            <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+            <span class="n">model_client_stream</span><span class="o">=</span><span class="n">model_client_stream</span><span class="p">,</span>
+            <span class="n">reflect_on_tool_use</span><span class="o">=</span><span class="n">reflect_on_tool_use</span><span class="p">,</span>
+            <span class="n">tool_call_summary_format</span><span class="o">=</span><span class="n">tool_call_summary_format</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">yield</span> <span class="n">output_event</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_add_messages_to_context</span><span class="p">(</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span><span class="p">,</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add incoming user (and possibly handoff) messages to the model context.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">):</span>
+                <span class="c1"># Add handoff context to the model context.</span>
+                <span class="k">for</span> <span class="n">context_msg</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">context</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">context_msg</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">UserMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">msg</span><span class="o">.</span><span class="n">source</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_update_model_context_with_memory</span><span class="p">(</span>
+        <span class="n">memory</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Memory</span><span class="p">]],</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span><span class="p">,</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MemoryQueryEvent</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If memory modules are present, update the model context and return the events produced.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MemoryQueryEvent</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">memory</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">mem</span> <span class="ow">in</span> <span class="n">memory</span><span class="p">:</span>
+                <span class="n">update_context_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">mem</span><span class="o">.</span><span class="n">update_context</span><span class="p">(</span><span class="n">model_context</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">update_context_result</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">update_context_result</span><span class="o">.</span><span class="n">memories</span><span class="o">.</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">memory_query_event_msg</span> <span class="o">=</span> <span class="n">MemoryQueryEvent</span><span class="p">(</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">update_context_result</span><span class="o">.</span><span class="n">memories</span><span class="o">.</span><span class="n">results</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">memory_query_event_msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">events</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_call_llm</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">model_client_stream</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">system_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">SystemMessage</span><span class="p">],</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">handoff_tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">CreateResult</span><span class="p">,</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform a model inference and yield either streaming chunk events or the final CreateResult.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_messages</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">get_messages</span><span class="p">()</span>
+        <span class="n">llm_messages</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_compatible_context</span><span class="p">(</span><span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span> <span class="n">messages</span><span class="o">=</span><span class="n">system_messages</span> <span class="o">+</span> <span class="n">all_messages</span><span class="p">)</span>
+
+        <span class="n">all_tools</span> <span class="o">=</span> <span class="n">tools</span> <span class="o">+</span> <span class="n">handoff_tools</span>
+
+        <span class="k">if</span> <span class="n">model_client_stream</span><span class="p">:</span>
+            <span class="n">model_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CreateResult</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create_stream</span><span class="p">(</span>
+                <span class="n">llm_messages</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">all_tools</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span>
+            <span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">):</span>
+                    <span class="n">model_result</span> <span class="o">=</span> <span class="n">chunk</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid chunk type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">model_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;No final model result in streaming mode.&quot;</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">model_result</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">llm_messages</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">all_tools</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span>
+            <span class="p">)</span>
+            <span class="k">yield</span> <span class="n">model_result</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_process_model_result</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model_result</span><span class="p">:</span> <span class="n">CreateResult</span><span class="p">,</span>
+        <span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">],</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">,</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">handoff_tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">handoffs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HandoffBase</span><span class="p">],</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">model_client_stream</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">reflect_on_tool_use</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">tool_call_summary_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Response</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle final or partial responses from model_result, including tool calls, handoffs,</span>
+<span class="sd">        and reflection if needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># If direct text response (string)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span>
+                <span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                    <span class="n">models_usage</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Otherwise, we have function calls</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FunctionCall</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">model_result</span><span class="o">.</span><span class="n">content</span>
+        <span class="p">)</span>
+
+        <span class="c1"># STEP 4A: Yield ToolCallRequestEvent</span>
+        <span class="n">tool_call_msg</span> <span class="o">=</span> <span class="n">ToolCallRequestEvent</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+            <span class="n">models_usage</span><span class="o">=</span><span class="n">model_result</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">event_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">tool_call_msg</span><span class="p">)</span>
+        <span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool_call_msg</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">tool_call_msg</span>
+
+        <span class="c1"># STEP 4B: Execute tool calls</span>
+        <span class="n">executed_calls_and_results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">[</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">_execute_tool_call</span><span class="p">(</span>
+                    <span class="n">tool_call</span><span class="o">=</span><span class="n">call</span><span class="p">,</span>
+                    <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+                    <span class="n">handoff_tools</span><span class="o">=</span><span class="n">handoff_tools</span><span class="p">,</span>
+                    <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                    <span class="n">cancellation_token</span><span class="o">=</span><span class="n">cancellation_token</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">model_result</span><span class="o">.</span><span class="n">content</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">exec_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">executed_calls_and_results</span><span class="p">]</span>
+
+        <span class="c1"># Yield ToolCallExecutionEvent</span>
+        <span class="n">tool_call_result_msg</span> <span class="o">=</span> <span class="n">ToolCallExecutionEvent</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">exec_results</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">event_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">tool_call_result_msg</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">FunctionExecutionResultMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">exec_results</span><span class="p">))</span>
+        <span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tool_call_result_msg</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">tool_call_result_msg</span>
+
+        <span class="c1"># STEP 4C: Check for handoff</span>
+        <span class="n">handoff_output</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_check_and_handle_handoff</span><span class="p">(</span>
+            <span class="n">model_result</span><span class="o">=</span><span class="n">model_result</span><span class="p">,</span>
+            <span class="n">executed_calls_and_results</span><span class="o">=</span><span class="n">executed_calls_and_results</span><span class="p">,</span>
+            <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+            <span class="n">handoffs</span><span class="o">=</span><span class="n">handoffs</span><span class="p">,</span>
+            <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">handoff_output</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">handoff_output</span>
+            <span class="k">return</span>
+
+        <span class="c1"># STEP 4D: Reflect or summarize tool results</span>
+        <span class="k">if</span> <span class="n">reflect_on_tool_use</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">reflection_response</span> <span class="ow">in</span> <span class="n">AssistantAgent</span><span class="o">.</span><span class="n">_reflect_on_tool_use_flow</span><span class="p">(</span>
+                <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
+                <span class="n">model_client_stream</span><span class="o">=</span><span class="n">model_client_stream</span><span class="p">,</span>
+                <span class="n">model_context</span><span class="o">=</span><span class="n">model_context</span><span class="p">,</span>
+                <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+            <span class="p">):</span>
+                <span class="k">yield</span> <span class="n">reflection_response</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">AssistantAgent</span><span class="o">.</span><span class="n">_summarize_tool_use</span><span class="p">(</span>
+                <span class="n">executed_calls_and_results</span><span class="o">=</span><span class="n">executed_calls_and_results</span><span class="p">,</span>
+                <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+                <span class="n">handoffs</span><span class="o">=</span><span class="n">handoffs</span><span class="p">,</span>
+                <span class="n">tool_call_summary_format</span><span class="o">=</span><span class="n">tool_call_summary_format</span><span class="p">,</span>
+                <span class="n">agent_name</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_and_handle_handoff</span><span class="p">(</span>
+        <span class="n">model_result</span><span class="p">:</span> <span class="n">CreateResult</span><span class="p">,</span>
+        <span class="n">executed_calls_and_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">,</span> <span class="n">FunctionExecutionResult</span><span class="p">]],</span>
+        <span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">],</span>
+        <span class="n">handoffs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HandoffBase</span><span class="p">],</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Response</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detect handoff calls, generate the HandoffMessage if needed, and return a Response.</span>
+<span class="sd">        If multiple handoffs exist, only the first is used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">handoff_reqs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">call</span> <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">model_result</span><span class="o">.</span><span class="n">content</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">FunctionCall</span><span class="p">)</span> <span class="ow">and</span> <span class="n">call</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">handoffs</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">handoff_reqs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># We have at least one handoff function call</span>
+            <span class="n">selected_handoff</span> <span class="o">=</span> <span class="n">handoffs</span><span class="p">[</span><span class="n">handoff_reqs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">handoff_reqs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Multiple handoffs detected. Only the first is executed: &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="p">[</span><span class="n">handoffs</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">handoff_reqs</span><span class="p">]</span><span class="si">}</span><span class="s2">. &quot;</span>
+                        <span class="s2">&quot;Disable parallel tool calls in the model client to avoid this warning.&quot;</span>
+                    <span class="p">),</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Collect normal tool calls (not handoff) into the handoff context</span>
+            <span class="n">tool_calls</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">tool_call_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FunctionExecutionResult</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">exec_call</span><span class="p">,</span> <span class="n">exec_result</span> <span class="ow">in</span> <span class="n">executed_calls_and_results</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">exec_call</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">handoffs</span><span class="p">:</span>
+                    <span class="n">tool_calls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exec_call</span><span class="p">)</span>
+                    <span class="n">tool_call_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exec_result</span><span class="p">)</span>
+
+            <span class="n">handoff_context</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tool_calls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Include the thought in the AssistantMessage if model_result has it</span>
+                <span class="n">handoff_context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">AssistantMessage</span><span class="p">(</span>
+                        <span class="n">content</span><span class="o">=</span><span class="n">tool_calls</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                        <span class="n">thought</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="s2">&quot;thought&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">handoff_context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FunctionExecutionResultMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">tool_call_results</span><span class="p">))</span>
+
+            <span class="c1"># Return response for the first handoff</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+                <span class="n">chat_message</span><span class="o">=</span><span class="n">HandoffMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">selected_handoff</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+                    <span class="n">target</span><span class="o">=</span><span class="n">selected_handoff</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+                    <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                    <span class="n">context</span><span class="o">=</span><span class="n">handoff_context</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_reflect_on_tool_use_flow</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span>
+        <span class="n">model_client_stream</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">model_context</span><span class="p">:</span> <span class="n">ChatCompletionContext</span><span class="p">,</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">Response</span> <span class="o">|</span> <span class="n">ModelClientStreamingChunkEvent</span> <span class="o">|</span> <span class="n">ThoughtEvent</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If reflect_on_tool_use=True, we do another inference based on tool results</span>
+<span class="sd">        and yield the final text response (or streaming chunks).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_messages</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">get_messages</span><span class="p">()</span>
+        <span class="n">llm_messages</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_compatible_context</span><span class="p">(</span><span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span> <span class="n">messages</span><span class="o">=</span><span class="n">all_messages</span><span class="p">)</span>
+
+        <span class="n">reflection_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CreateResult</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">model_client_stream</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create_stream</span><span class="p">(</span><span class="n">llm_messages</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">CreateResult</span><span class="p">):</span>
+                    <span class="n">reflection_result</span> <span class="o">=</span> <span class="n">chunk</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid chunk type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">reflection_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">model_client</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">llm_messages</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">reflection_result</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reflection_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Reflect on tool use produced no valid text response.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># --- NEW: If the reflection produced a thought, yield it ---</span>
+        <span class="k">if</span> <span class="n">reflection_result</span><span class="o">.</span><span class="n">thought</span><span class="p">:</span>
+            <span class="n">thought_event</span> <span class="o">=</span> <span class="n">ThoughtEvent</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">reflection_result</span><span class="o">.</span><span class="n">thought</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">thought_event</span>
+            <span class="n">inner_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thought_event</span><span class="p">)</span>
+
+        <span class="c1"># Add to context (including thought if present)</span>
+        <span class="k">await</span> <span class="n">model_context</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span>
+            <span class="n">AssistantMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">reflection_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                <span class="n">thought</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">reflection_result</span><span class="p">,</span> <span class="s2">&quot;thought&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span>
+            <span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">reflection_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+                <span class="n">models_usage</span><span class="o">=</span><span class="n">reflection_result</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_summarize_tool_use</span><span class="p">(</span>
+        <span class="n">executed_calls_and_results</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">,</span> <span class="n">FunctionExecutionResult</span><span class="p">]],</span>
+        <span class="n">inner_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">],</span>
+        <span class="n">handoffs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">HandoffBase</span><span class="p">],</span>
+        <span class="n">tool_call_summary_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If reflect_on_tool_use=False, create a summary message of all tool calls.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Filter out calls which were actually handoffs</span>
+        <span class="n">normal_tool_calls</span> <span class="o">=</span> <span class="p">[(</span><span class="n">call</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span> <span class="k">for</span> <span class="n">call</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">executed_calls_and_results</span> <span class="k">if</span> <span class="n">call</span><span class="o">.</span><span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">handoffs</span><span class="p">]</span>
+        <span class="n">tool_call_summaries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tool_call</span><span class="p">,</span> <span class="n">tool_call_result</span> <span class="ow">in</span> <span class="n">normal_tool_calls</span><span class="p">:</span>
+            <span class="n">tool_call_summaries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">tool_call_summary_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">tool_name</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">arguments</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span><span class="p">,</span>
+                    <span class="n">result</span><span class="o">=</span><span class="n">tool_call_result</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">tool_call_summary</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tool_call_summaries</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+            <span class="n">chat_message</span><span class="o">=</span><span class="n">ToolCallSummaryMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">tool_call_summary</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="n">agent_name</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">inner_messages</span><span class="o">=</span><span class="n">inner_messages</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_execute_tool_call</span><span class="p">(</span>
+        <span class="n">tool_call</span><span class="p">:</span> <span class="n">FunctionCall</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">handoff_tools</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseTool</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+        <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">FunctionCall</span><span class="p">,</span> <span class="n">FunctionExecutionResult</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute a single tool call and return the result.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">all_tools</span> <span class="o">=</span> <span class="n">tools</span> <span class="o">+</span> <span class="n">handoff_tools</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">all_tools</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No tools are available.&quot;</span><span class="p">)</span>
+            <span class="n">tool</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">all_tools</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">tool</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The tool &#39;</span><span class="si">{</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is not available.&quot;</span><span class="p">)</span>
+            <span class="n">arguments</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span> <span class="k">if</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">arguments</span> <span class="k">else</span> <span class="p">{}</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">tool</span><span class="o">.</span><span class="n">run_json</span><span class="p">(</span><span class="n">arguments</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+            <span class="n">result_as_str</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">return_value_as_string</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">tool_call</span><span class="p">,</span>
+                <span class="n">FunctionExecutionResult</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="n">result_as_str</span><span class="p">,</span>
+                    <span class="n">call_id</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                    <span class="n">is_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">tool_call</span><span class="p">,</span>
+                <span class="n">FunctionExecutionResult</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">call_id</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                    <span class="n">is_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">tool_call</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="AssistantAgent.on_reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.on_reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the assistant agent to its initialization state.&quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AssistantAgent.save_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the current state of the assistant agent.&quot;&quot;&quot;</span>
+        <span class="n">model_context_state</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span><span class="o">.</span><span class="n">save_state</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">AssistantAgentState</span><span class="p">(</span><span class="n">llm_context</span><span class="o">=</span><span class="n">model_context_state</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AssistantAgent.load_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.AssistantAgent.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the state of the assistant agent&quot;&quot;&quot;</span>
+        <span class="n">assistant_agent_state</span> <span class="o">=</span> <span class="n">AssistantAgentState</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="c1"># Load the model context state.</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_context</span><span class="o">.</span><span class="n">load_state</span><span class="p">(</span><span class="n">assistant_agent_state</span><span class="o">.</span><span class="n">llm_context</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_compatible_context</span><span class="p">(</span><span class="n">model_client</span><span class="p">:</span> <span class="n">ChatCompletionClient</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">LLMMessage</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that the messages are compatible with the underlying client, by removing images if needed.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">model_client</span><span class="o">.</span><span class="n">model_info</span><span class="p">[</span><span class="s2">&quot;vision&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">messages</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">remove_images</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

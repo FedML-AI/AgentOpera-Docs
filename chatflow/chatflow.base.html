@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chatflow.base &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="chatflow.conditions" href="chatflow.conditions.html" />
+    <link rel="prev" title="chatflow.agents" href="chatflow.agents.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">chatflow.base</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent"><code class="docutils literal notranslate"><span class="pre">ChatAgent</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.name"><code class="docutils literal notranslate"><span class="pre">ChatAgent.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.description"><code class="docutils literal notranslate"><span class="pre">ChatAgent.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.produced_message_types"><code class="docutils literal notranslate"><span class="pre">ChatAgent.produced_message_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.on_messages"><code class="docutils literal notranslate"><span class="pre">ChatAgent.on_messages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.on_messages_stream"><code class="docutils literal notranslate"><span class="pre">ChatAgent.on_messages_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.on_reset"><code class="docutils literal notranslate"><span class="pre">ChatAgent.on_reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.save_state"><code class="docutils literal notranslate"><span class="pre">ChatAgent.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.load_state"><code class="docutils literal notranslate"><span class="pre">ChatAgent.load_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.close"><code class="docutils literal notranslate"><span class="pre">ChatAgent.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.Response"><code class="docutils literal notranslate"><span class="pre">Response</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Response.chat_message"><code class="docutils literal notranslate"><span class="pre">Response.chat_message</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Response.inner_messages"><code class="docutils literal notranslate"><span class="pre">Response.inner_messages</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.Team"><code class="docutils literal notranslate"><span class="pre">Team</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Team.reset"><code class="docutils literal notranslate"><span class="pre">Team.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Team.save_state"><code class="docutils literal notranslate"><span class="pre">Team.save_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Team.load_state"><code class="docutils literal notranslate"><span class="pre">Team.load_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.TerminatedException"><code class="docutils literal notranslate"><span class="pre">TerminatedException</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition"><code class="docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition.terminated"><code class="docutils literal notranslate"><span class="pre">TerminationCondition.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition.reset"><code class="docutils literal notranslate"><span class="pre">TerminationCondition.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.AndTerminationCondition"><code class="docutils literal notranslate"><span class="pre">AndTerminationCondition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.AndTerminationCondition.terminated"><code class="docutils literal notranslate"><span class="pre">AndTerminationCondition.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.AndTerminationCondition.reset"><code class="docutils literal notranslate"><span class="pre">AndTerminationCondition.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.OrTerminationCondition"><code class="docutils literal notranslate"><span class="pre">OrTerminationCondition</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.OrTerminationCondition.terminated"><code class="docutils literal notranslate"><span class="pre">OrTerminationCondition.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.OrTerminationCondition.reset"><code class="docutils literal notranslate"><span class="pre">OrTerminationCondition.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.TaskResult"><code class="docutils literal notranslate"><span class="pre">TaskResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TaskResult.messages"><code class="docutils literal notranslate"><span class="pre">TaskResult.messages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TaskResult.stop_reason"><code class="docutils literal notranslate"><span class="pre">TaskResult.stop_reason</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.TaskRunner"><code class="docutils literal notranslate"><span class="pre">TaskRunner</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TaskRunner.run"><code class="docutils literal notranslate"><span class="pre">TaskRunner.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.TaskRunner.run_stream"><code class="docutils literal notranslate"><span class="pre">TaskRunner.run_stream()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.base.Handoff"><code class="docutils literal notranslate"><span class="pre">Handoff</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.target"><code class="docutils literal notranslate"><span class="pre">Handoff.target</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.description"><code class="docutils literal notranslate"><span class="pre">Handoff.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.name"><code class="docutils literal notranslate"><span class="pre">Handoff.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.model_config"><code class="docutils literal notranslate"><span class="pre">Handoff.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.message"><code class="docutils literal notranslate"><span class="pre">Handoff.message</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.set_defaults"><code class="docutils literal notranslate"><span class="pre">Handoff.set_defaults()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.base.Handoff.handoff_tool"><code class="docutils literal notranslate"><span class="pre">Handoff.handoff_tool</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">chatflow.base</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chatflow/chatflow.base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.chatflow.base">
+<span id="chatflow-base"></span><h1>chatflow.base<a class="headerlink" href="#module-agentopera.chatflow.base" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">ChatAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <a class="reference internal" href="#agentopera.chatflow.base.TaskRunner" title="agentopera.chatflow.base.task.TaskRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskRunner</span></code></a></p>
+<p>Protocol for a chat agent.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.name" title="Link to this definition"></a></dt>
+<dd><p>The name of the agent. This is used by team to uniquely identify
+the agent. It should be unique within the team.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.description">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.description" title="Link to this definition"></a></dt>
+<dd><p>The description of the agent. This is used by team to
+make decisions about which agents to use. The description should
+describe the agent’s capabilities and how to interact with it.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.produced_message_types">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">produced_message_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.produced_message_types" title="Link to this definition"></a></dt>
+<dd><p>The types of messages that the agent produces in the
+<a class="reference internal" href="#agentopera.chatflow.base.Response.chat_message" title="agentopera.chatflow.base.Response.chat_message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Response.chat_message</span></code></a> field. They must be <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code> types.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.on_messages">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.chatflow.base.Response" title="agentopera.chatflow.base.chat_agent.Response"><span class="pre">Response</span></a></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.on_messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.on_messages" title="Link to this definition"></a></dt>
+<dd><p>Handles incoming messages and returns a response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.on_messages_stream">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_messages_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.chatflow.base.Response" title="agentopera.chatflow.base.chat_agent.Response"><span class="pre">Response</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.on_messages_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.on_messages_stream" title="Link to this definition"></a></dt>
+<dd><p>Handles incoming messages and returns a stream of inner messages and
+and the final item is the response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.on_reset">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">on_reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.on_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.on_reset" title="Link to this definition"></a></dt>
+<dd><p>Resets the agent to its initialization state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.save_state">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save agent state for later restoration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.load_state">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.load_state" title="Link to this definition"></a></dt>
+<dd><p>Restore agent from saved state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.ChatAgent.close">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#ChatAgent.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.ChatAgent.close" title="Link to this definition"></a></dt>
+<dd><p>Called when the engine is stopped or any stop method is called</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Response">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">Response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chat_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/chat_agent.html#Response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Response" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A response from calling <a class="reference internal" href="#agentopera.chatflow.base.ChatAgent.on_messages" title="agentopera.chatflow.base.ChatAgent.on_messages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ChatAgent.on_messages()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Response.chat_message">
+<span class="sig-name descname"><span class="pre">chat_message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span></em><a class="headerlink" href="#agentopera.chatflow.base.Response.chat_message" title="Link to this definition"></a></dt>
+<dd><p>A chat message produced by the agent as the response.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Response.inner_messages">
+<span class="sig-name descname"><span class="pre">inner_messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.chatflow.base.Response.inner_messages" title="Link to this definition"></a></dt>
+<dd><p>Inner messages produced by the agent, they can be <code class="xref py py-class docutils literal notranslate"><span class="pre">AgentEvent</span></code>
+or <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Team">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">Team</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/team.html#Team"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Team" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code>, <a class="reference internal" href="#agentopera.chatflow.base.TaskRunner" title="agentopera.chatflow.base.task.TaskRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskRunner</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Team.reset">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/team.html#Team.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Team.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the team and all its participants to its initial state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Team.save_state">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/team.html#Team.save_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Team.save_state" title="Link to this definition"></a></dt>
+<dd><p>Save the current state of the team.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Team.load_state">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/team.html#Team.load_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Team.load_state" title="Link to this definition"></a></dt>
+<dd><p>Load the state of the team.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TerminatedException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">TerminatedException</span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#TerminatedException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TerminatedException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TerminationCondition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">TerminationCondition</span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#TerminationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TerminationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>A stateful condition that determines when a conversation should be terminated.</p>
+<p>A termination condition is a callable that takes a sequence of ChatMessage objects
+since the last time the condition was called, and returns a StopMessage if the
+conversation should be terminated, or None otherwise.
+Once a termination condition has been reached, it must be reset before it can be used again.</p>
+<p>Termination conditions can be combined using the AND and OR operators.</p>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaxMessageTermination</span><span class="p">,</span> <span class="n">TextMentionTermination</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Terminate the conversation after 10 turns or if the text &quot;TERMINATE&quot; is mentioned.</span>
+    <span class="n">cond1</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Terminate the conversation after 10 turns and if the text &quot;TERMINATE&quot; is mentioned.</span>
+    <span class="n">cond2</span> <span class="o">=</span> <span class="n">MaxMessageTermination</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ...</span>
+
+    <span class="c1"># Reset the termination condition.</span>
+    <span class="k">await</span> <span class="n">cond1</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">await</span> <span class="n">cond2</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TerminationCondition.terminated">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.base.TerminationCondition.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TerminationCondition.reset">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#TerminationCondition.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TerminationCondition.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.AndTerminationCondition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">AndTerminationCondition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#AndTerminationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.AndTerminationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.AndTerminationCondition.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.base.AndTerminationCondition.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.AndTerminationCondition.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#AndTerminationCondition.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.AndTerminationCondition.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.OrTerminationCondition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">OrTerminationCondition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><span class="pre">TerminationCondition</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#OrTerminationCondition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.OrTerminationCondition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.OrTerminationCondition.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.base.OrTerminationCondition.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.OrTerminationCondition.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/termination.html#OrTerminationCondition.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.OrTerminationCondition.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">TaskResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop_reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/task.html#TaskResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TaskResult" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Result of running a task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskResult.messages">
+<span class="sig-name descname"><span class="pre">messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.base.TaskResult.messages" title="Link to this definition"></a></dt>
+<dd><p>Messages produced by the task.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskResult.stop_reason">
+<span class="sig-name descname"><span class="pre">stop_reason</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#agentopera.chatflow.base.TaskResult.stop_reason" title="Link to this definition"></a></dt>
+<dd><p>The reason the task stopped.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskRunner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">TaskRunner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/task.html#TaskRunner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TaskRunner" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>A task runner.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskRunner.run">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.task.TaskResult"><span class="pre">TaskResult</span></a></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/task.html#TaskRunner.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TaskRunner.run" title="Link to this definition"></a></dt>
+<dd><p>Run the task and return the result.</p>
+<p>The task can be a string, a single message, or a sequence of messages.</p>
+<p>The runner is stateful and a subsequent call to this method will continue
+from where the previous call left off. If the task is not specified,
+the runner will continue with the current task.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.TaskRunner.run_stream">
+<span class="sig-name descname"><span class="pre">run_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancellation_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../engine/engine.types.html#agentopera.engine.types.agent.CancellationToken" title="agentopera.engine.types.agent.cancellation_token.CancellationToken"><span class="pre">CancellationToken</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span><span class="p"><span class="pre">[</span></span><span class="pre">ToolCallRequestEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallExecutionEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MemoryQueryEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">UserInputRequestedEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModelClientStreamingChunkEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ThoughtEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">TextMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">MultiModalMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StopMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ToolCallSummaryMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">HandoffMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">VercelMessage</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.task.TaskResult"><span class="pre">TaskResult</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/task.html#TaskRunner.run_stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.TaskRunner.run_stream" title="Link to this definition"></a></dt>
+<dd><p>Run the task and produces a stream of messages and the final result
+<a class="reference internal" href="#agentopera.chatflow.base.TaskResult" title="agentopera.chatflow.base.TaskResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TaskResult</span></code></a> as the last item in the stream.</p>
+<p>The task can be a string, a single message, or a sequence of messages.</p>
+<p>The runner is stateful and a subsequent call to this method will continue
+from where the previous call left off. If the task is not specified,
+the runner will continue with the current task.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.base.</span></span><span class="sig-name descname"><span class="pre">Handoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/base/handoff.html#Handoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Handoff" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Handoff configuration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.target">
+<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.target" title="Link to this definition"></a></dt>
+<dd><p>The name of the target agent to handoff to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.description" title="Link to this definition"></a></dt>
+<dd><p>The description of the handoff such as the condition under which it should happen and the target agent’s ability.
+If not provided, it is generated from the target agent’s name.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.name" title="Link to this definition"></a></dt>
+<dd><p>The name of this handoff configuration. If not provided, it is generated from the target agent’s name.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.message">
+<span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.message" title="Link to this definition"></a></dt>
+<dd><p>The message to the target agent.
+If not provided, it is generated from the target agent’s name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.set_defaults">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/base/handoff.html#Handoff.set_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.base.Handoff.set_defaults" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.base.Handoff.handoff_tool">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handoff_tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../engine/engine.function_call.html#agentopera.engine.function_call.BaseTool" title="agentopera.engine.function_call.base.BaseTool"><span class="pre">BaseTool</span></a><span class="p"><span class="pre">[</span></span><span class="pre">BaseModel</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">BaseModel</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#agentopera.chatflow.base.Handoff.handoff_tool" title="Link to this definition"></a></dt>
+<dd><p>Create a handoff tool from this handoff configuration.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chatflow.agents.html" class="btn btn-neutral float-left" title="chatflow.agents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chatflow.conditions.html" class="btn btn-neutral float-right" title="chatflow.conditions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

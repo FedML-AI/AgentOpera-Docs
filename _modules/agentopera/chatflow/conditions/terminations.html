@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.conditions.terminations &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.conditions.terminations</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.conditions.terminations</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">TerminatedException</span><span class="p">,</span> <span class="n">TerminationCondition</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">BaseChatMessage</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">HandoffMessage</span><span class="p">,</span>
+    <span class="n">MultiModalMessage</span><span class="p">,</span>
+    <span class="n">StopMessage</span><span class="p">,</span>
+    <span class="n">TextMessage</span><span class="p">,</span>
+    <span class="n">ToolCallExecutionEvent</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="StopMessageTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.StopMessageTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StopMessageTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a StopMessage is received.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">StopMessage</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;Stop message received&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;StopMessageTermination&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="StopMessageTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.StopMessageTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MaxMessageTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">max_messages</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">include_agent_event</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="MaxMessageTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.MaxMessageTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MaxMessageTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation after a maximum number of messages have been exchanged.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_messages: The maximum number of messages allowed in the conversation.</span>
+<span class="sd">        include_agent_event: If True, include :class:`~agentopera.chatflow.messages.AgentEvent` in the message count.</span>
+<span class="sd">            Otherwise, only include :class:`~agentopera.chatflow.messages.ChatMessage`. Defaults to False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_messages</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">include_agent_event</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_messages</span> <span class="o">=</span> <span class="n">max_messages</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_include_agent_event</span> <span class="o">=</span> <span class="n">include_agent_event</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_messages</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">([</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_agent_event</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_messages</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Maximum number of messages </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_messages</span><span class="si">}</span><span class="s2"> reached, current message count: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="s2">&quot;MaxMessageTermination&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="MaxMessageTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.MaxMessageTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_message_count</span> <span class="o">=</span> <span class="mi">0</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TextMentionTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<div class="viewcode-block" id="TextMentionTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TextMentionTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TextMentionTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a specific text is mentioned.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        text: The text to look for in the messages.</span>
+<span class="sd">        sources: Check only messages of the specified agents for the text to look for.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sources</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_termination_text</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">sources</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">message</span><span class="o">.</span><span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_text</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Text &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_termination_text</span><span class="si">}</span><span class="s2">&#39; mentioned&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;TextMentionTermination&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">MultiModalMessage</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_termination_text</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                            <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Text &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_termination_text</span><span class="si">}</span><span class="s2">&#39; mentioned&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;TextMentionTermination&quot;</span>
+                        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TextMentionTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TextMentionTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TokenUsageTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">max_total_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">max_prompt_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">max_completion_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="TokenUsageTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TokenUsageTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TokenUsageTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a token usage limit is reached.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_total_token: The maximum total number of tokens allowed in the conversation.</span>
+<span class="sd">        max_prompt_token: The maximum number of prompt tokens allowed in the conversation.</span>
+<span class="sd">        max_completion_token: The maximum number of completion tokens allowed in the conversation.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If none of max_total_token, max_prompt_token, or max_completion_token is provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">max_total_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_prompt_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_completion_token</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">max_total_token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">max_prompt_token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">max_completion_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;At least one of max_total_token, max_prompt_token, or max_completion_token must be provided&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_total_token</span> <span class="o">=</span> <span class="n">max_total_token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_prompt_token</span> <span class="o">=</span> <span class="n">max_prompt_token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_completion_token</span> <span class="o">=</span> <span class="n">max_completion_token</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_token_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prompt_token_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_completion_token_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_total_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_token_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_total_token</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_prompt_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prompt_token_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_prompt_token</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_completion_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_completion_token_count</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_completion_token</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prompt_token_count</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_completion_token_count</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_total_token_count</span> <span class="o">+=</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">prompt_tokens</span> <span class="o">+</span> <span class="n">message</span><span class="o">.</span><span class="n">models_usage</span><span class="o">.</span><span class="n">completion_tokens</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminated</span><span class="p">:</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Token usage limit reached, total token count: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_total_token_count</span><span class="si">}</span><span class="s2">, prompt token count: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_prompt_token_count</span><span class="si">}</span><span class="s2">, completion token count: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_completion_token_count</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;TokenUsageTermination&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TokenUsageTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TokenUsageTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_total_token_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prompt_token_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_completion_token_count</span> <span class="o">=</span> <span class="mi">0</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="HandoffTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.HandoffTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HandoffTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a :class:`~agentopera.chatflow.messages.HandoffMessage`</span>
+<span class="sd">    with the given target is received.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target (str): The target of the handoff message.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target</span> <span class="o">=</span> <span class="n">target</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">)</span> <span class="ow">and</span> <span class="n">message</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Handoff to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_target</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2"> detected.&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;HandoffTermination&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="HandoffTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.HandoffTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeoutTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">timeout_seconds</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<div class="viewcode-block" id="TimeoutTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TimeoutTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TimeoutTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation after a specified duration has passed.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        timeout_seconds: The maximum duration in seconds before terminating the conversation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_seconds</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_seconds</span> <span class="o">=</span> <span class="n">timeout_seconds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_seconds</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Timeout of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeout_seconds</span><span class="si">}</span><span class="s2"> seconds reached&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;TimeoutTermination&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TimeoutTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TimeoutTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ExternalTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="ExternalTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.ExternalTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExternalTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A termination condition that is externally controlled</span>
+<span class="sd">    by calling the :meth:`set` method.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from agentopera.chatflow.conditions import ExternalTermination</span>
+
+<span class="sd">        termination = ExternalTermination()</span>
+
+<span class="sd">        # Run the team in an asyncio task.</span>
+<span class="sd">        ...</span>
+
+<span class="sd">        # Set the termination condition externally</span>
+<span class="sd">        termination.set()</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setted</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+<div class="viewcode-block" id="ExternalTermination.set">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.ExternalTermination.set">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the termination condition to terminated.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setted</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setted</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;External termination requested&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;ExternalTermination&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ExternalTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.ExternalTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setted</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SourceMatchTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">sources</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="SourceMatchTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.SourceMatchTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SourceMatchTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation after a specific source responds.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sources (List[str]): List of source names to terminate the conversation.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TerminatedException: If the termination condition has already been reached.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sources</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span> <span class="o">=</span> <span class="n">sources</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sources</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">&#39; answered&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;SourceMatchTermination&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="SourceMatchTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.SourceMatchTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TextMessageTerminationConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for the TextMessageTermination termination condition.&quot;&quot;&quot;</span>
+
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The source of the text message to terminate the conversation.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="TextMessageTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TextMessageTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TextMessageTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a :class:`~agentopera.chatflow.messages.TextMessage` is received.</span>
+
+<span class="sd">    This termination condition checks for TextMessage instances in the message sequence. When a TextMessage is found,</span>
+<span class="sd">    it terminates the conversation if either:</span>
+<span class="sd">    - No source was specified (terminates on any TextMessage)</span>
+<span class="sd">    - The message source matches the specified source</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        source (str | None, optional): The source name to match against incoming messages. If None, matches any source.</span>
+<span class="sd">            Defaults to None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="o">=</span> <span class="n">source</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">TextMessage</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_source</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">message</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Text message received from &#39;</span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;TextMessageTermination&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TextMessageTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.TextMessageTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="FunctionCallTermination">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.FunctionCallTermination">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionCallTermination</span><span class="p">(</span><span class="n">TerminationCondition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Terminate the conversation if a :class:`~agentopera.core.models.FunctionExecutionResult`</span>
+<span class="sd">    with a specific name was received.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        function_name (str): The name of the function to look for in the messages.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        TerminatedException: If the termination condition has already been reached.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_function_name</span> <span class="o">=</span> <span class="n">function_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">terminated</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StopMessage</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TerminatedException</span><span class="p">(</span><span class="s2">&quot;Termination condition has already been reached&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ToolCallExecutionEvent</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">execution</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">execution</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_function_name</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">return</span> <span class="n">StopMessage</span><span class="p">(</span>
+                            <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Function &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_function_name</span><span class="si">}</span><span class="s2">&#39; was executed.&quot;</span><span class="p">,</span>
+                            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;FunctionCallTermination&quot;</span><span class="p">,</span>
+                        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="FunctionCallTermination.reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.conditions.html#agentopera.chatflow.conditions.FunctionCallTermination.reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_terminated</span> <span class="o">=</span> <span class="kc">False</span></div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

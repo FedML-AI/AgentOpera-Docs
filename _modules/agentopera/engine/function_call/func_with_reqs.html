@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.function_call.func_with_reqs &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.function_call.func_with_reqs</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.function_call.func_with_reqs</h1><div class="highlight"><pre>
+<span></span><span class="c1"># File based from: https://github.com/FedML-AI/AgentOpera/blob/main/agentopera/coding/func_with_reqs.py</span>
+<span class="c1"># Credit to original authors</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">SourceLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">module_from_spec</span><span class="p">,</span> <span class="n">spec_from_loader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedent</span><span class="p">,</span> <span class="n">indent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParamSpec</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_to_code</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">],</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">func</span><span class="o">.</span><span class="n">func</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">FunctionWithRequirements</span><span class="p">):</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="c1"># Strip the decorator</span>
+    <span class="k">if</span> <span class="n">code</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">):</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="n">code</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">code</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Alias</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">alias</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ImportFromModule</span><span class="p">:</span>
+    <span class="n">module</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">imports</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Alias</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
+
+    <span class="c1"># backward compatibility</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">module</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">imports</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Alias</span><span class="p">],</span> <span class="o">...</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Alias</span><span class="p">]]],</span>
+    <span class="p">):</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;module&quot;</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">imports</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;imports&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">imports</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;imports&quot;</span><span class="p">,</span> <span class="n">imports</span><span class="p">)</span>
+
+
+<span class="n">Import</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ImportFromModule</span><span class="p">,</span> <span class="n">Alias</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_import_to_str</span><span class="p">(</span><span class="n">im</span><span class="p">:</span> <span class="n">Import</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;import </span><span class="si">{</span><span class="n">im</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">Alias</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;import </span><span class="si">{</span><span class="n">im</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> as </span><span class="si">{</span><span class="n">im</span><span class="o">.</span><span class="n">alias</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">to_str</span><span class="p">(</span><span class="n">i</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Alias</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> as </span><span class="si">{</span><span class="n">i</span><span class="o">.</span><span class="n">alias</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">imports</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">to_str</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">imports</span><span class="p">))</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;from </span><span class="si">{</span><span class="n">im</span><span class="o">.</span><span class="n">module</span><span class="si">}</span><span class="s2"> import </span><span class="si">{</span><span class="n">imports</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_StringLoader</span><span class="p">(</span><span class="n">SourceLoader</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;not a real path&gt;/&quot;</span> <span class="o">+</span> <span class="n">fullname</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span>
+
+
+<div class="viewcode-block" id="FunctionWithRequirementsStr">
+<a class="viewcode-back" href="../../../../engine/engine.function_call.html#agentopera.engine.function_call.FunctionWithRequirementsStr">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionWithRequirementsStr</span><span class="p">:</span>
+    <span class="n">func</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">compiled_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">_func_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">python_packages</span> <span class="o">=</span> <span class="n">python_packages</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">global_imports</span> <span class="o">=</span> <span class="n">global_imports</span>
+
+        <span class="n">module_name</span> <span class="o">=</span> <span class="s2">&quot;func_module&quot;</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">_StringLoader</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">spec_from_loader</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">loader</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not create spec&quot;</span><span class="p">)</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">module_from_spec</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">loader</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not create loader&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">spec</span><span class="o">.</span><span class="n">loader</span><span class="o">.</span><span class="n">exec_module</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not compile function: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="n">functions</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The string must contain exactly one function&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">compiled_func</span> <span class="o">=</span> <span class="n">functions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;String based function with requirement objects are not directly callable&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FunctionWithRequirements">
+<a class="viewcode-back" href="../../../../engine/engine.function_call.html#agentopera.engine.function_call.FunctionWithRequirements">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionWithRequirements</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]):</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]</span>
+    <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FunctionWithRequirements.from_callable">
+<a class="viewcode-back" href="../../../../engine/engine.function_call.html#agentopera.engine.function_call.FunctionWithRequirements.from_callable">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_callable</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">python_packages</span><span class="o">=</span><span class="n">python_packages</span><span class="p">,</span> <span class="n">global_imports</span><span class="o">=</span><span class="n">global_imports</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FunctionWithRequirements.from_str">
+<a class="viewcode-back" href="../../../../engine/engine.function_call.html#agentopera.engine.function_call.FunctionWithRequirements.from_str">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_str</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">python_packages</span><span class="o">=</span><span class="n">python_packages</span><span class="p">,</span> <span class="n">global_imports</span><span class="o">=</span><span class="n">global_imports</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Type this based on F</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">with_requirements</span><span class="p">(</span>
+    <span class="n">python_packages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">global_imports</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">]],</span> <span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decorate a function with package and import requirements for code execution environments.</span>
+
+<span class="sd">    This decorator makes a function available for reference in dynamically executed code blocks</span>
+<span class="sd">    by wrapping it in a `FunctionWithRequirements` object that tracks its dependencies. When the</span>
+<span class="sd">    decorated function is passed to a code executor, it can be imported by name in the executed</span>
+<span class="sd">    code, with all dependencies automatically handled.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        python_packages (Sequence[str], optional): Python packages required by the function.</span>
+<span class="sd">            Can include version specifications (e.g., [&quot;pandas&gt;=1.0.0&quot;]). Defaults to [].</span>
+<span class="sd">        global_imports (Sequence[Import], optional): Import statements required by the function.</span>
+<span class="sd">            Can be strings (&quot;numpy&quot;), ImportFromModule objects, or Alias objects. Defaults to [].</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Callable[[Callable[P, T]], FunctionWithRequirements[T, P]]: A decorator that wraps</span>
+<span class="sd">            the target function, preserving its functionality while registering its dependencies.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            import tempfile</span>
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.core.code_executor import with_requirements, CodeBlock</span>
+<span class="sd">            from agentopera.agents.code_executors.local import LocalCommandLineCodeExecutor</span>
+<span class="sd">            import pandas</span>
+
+<span class="sd">            @with_requirements(python_packages=[&quot;pandas&quot;], global_imports=[&quot;pandas&quot;])</span>
+<span class="sd">            def load_data() -&gt; pandas.DataFrame:</span>
+<span class="sd">                \&quot;\&quot;\&quot;Load some sample data.</span>
+
+<span class="sd">                Returns:</span>
+<span class="sd">                    pandas.DataFrame: A DataFrame with sample data</span>
+<span class="sd">                \&quot;\&quot;\&quot;</span>
+<span class="sd">                data = {</span>
+<span class="sd">                    &quot;name&quot;: [&quot;John&quot;, &quot;Anna&quot;, &quot;Peter&quot;, &quot;Linda&quot;],</span>
+<span class="sd">                    &quot;location&quot;: [&quot;New York&quot;, &quot;Paris&quot;, &quot;Berlin&quot;, &quot;London&quot;],</span>
+<span class="sd">                    &quot;age&quot;: [24, 13, 53, 33],</span>
+<span class="sd">                }</span>
+<span class="sd">                return pandas.DataFrame(data)</span>
+
+<span class="sd">            async def run_example():</span>
+<span class="sd">                # The decorated function can be used in executed code</span>
+<span class="sd">                with tempfile.TemporaryDirectory() as temp_dir:</span>
+<span class="sd">                    executor = LocalCommandLineCodeExecutor(work_dir=temp_dir, functions=[load_data])</span>
+<span class="sd">                    code = f\&quot;\&quot;\&quot;from {executor.functions_module} import load_data</span>
+
+<span class="sd">                    # Use the imported function</span>
+<span class="sd">                    data = load_data()</span>
+<span class="sd">                    print(data[&#39;name&#39;][0])\&quot;\&quot;\&quot;</span>
+
+<span class="sd">                    result = await executor.execute_code_blocks(</span>
+<span class="sd">                        code_blocks=[CodeBlock(language=&quot;python&quot;, code=code)],</span>
+<span class="sd">                        cancellation_token=CancellationToken(),</span>
+<span class="sd">                    )</span>
+<span class="sd">                    print(result.output)  # Output: John</span>
+
+<span class="sd">            # Run the async example</span>
+<span class="sd">            asyncio.run(run_example())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">]:</span>
+        <span class="n">func_with_reqs</span> <span class="o">=</span> <span class="n">FunctionWithRequirements</span><span class="p">(</span>
+            <span class="n">python_packages</span><span class="o">=</span><span class="n">python_packages</span><span class="p">,</span> <span class="n">global_imports</span><span class="o">=</span><span class="n">global_imports</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span>
+        <span class="p">)</span>
+
+        <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">func_with_reqs</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func_with_reqs</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_python_functions_file</span><span class="p">(</span>
+    <span class="n">funcs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">P</span><span class="p">],</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;:meta private:&quot;&quot;&quot;</span>
+    <span class="c1"># First collect all global imports</span>
+    <span class="n">global_imports</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">Import</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">funcs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="p">(</span><span class="n">FunctionWithRequirements</span><span class="p">,</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">)):</span>
+            <span class="n">global_imports</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">global_imports</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">_import_to_str</span><span class="p">,</span> <span class="n">global_imports</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+    <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">funcs</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="n">_to_code</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">content</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_stub</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a stub for a function as a string</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        func (Callable[..., Any]): The function to generate a stub for</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The stub for the function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">to_stub</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">compiled_func</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;def </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}{</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">docstring</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
+
+    <span class="k">if</span> <span class="n">docstring</span><span class="p">:</span>
+        <span class="n">docstring</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span><span class="n">docstring</span><span class="p">)</span>
+        <span class="n">docstring</span> <span class="o">=</span> <span class="s1">&#39;&quot;&quot;&quot;&#39;</span> <span class="o">+</span> <span class="n">docstring</span> <span class="o">+</span> <span class="s1">&#39;&quot;&quot;&quot;&#39;</span>
+        <span class="n">docstring</span> <span class="o">=</span> <span class="n">indent</span><span class="p">(</span><span class="n">docstring</span><span class="p">,</span> <span class="s2">&quot;    &quot;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">+=</span> <span class="n">docstring</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="n">content</span> <span class="o">+=</span> <span class="s2">&quot;    ...&quot;</span>
+    <span class="k">return</span> <span class="n">content</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_code</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">FunctionWithRequirements</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">],</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span> <span class="n">FunctionWithRequirementsStr</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_to_code</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">import_to_str</span><span class="p">(</span><span class="n">im</span><span class="p">:</span> <span class="n">Import</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_import_to_str</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

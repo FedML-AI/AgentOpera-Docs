@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>chatflow.conditions &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="chatflow.media" href="chatflow.media.html" />
+    <link rel="prev" title="chatflow.base" href="chatflow.base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">chatflow.conditions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.MaxMessageTermination"><code class="docutils literal notranslate"><span class="pre">MaxMessageTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.MaxMessageTermination.terminated"><code class="docutils literal notranslate"><span class="pre">MaxMessageTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.MaxMessageTermination.reset"><code class="docutils literal notranslate"><span class="pre">MaxMessageTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMentionTermination"><code class="docutils literal notranslate"><span class="pre">TextMentionTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMentionTermination.terminated"><code class="docutils literal notranslate"><span class="pre">TextMentionTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMentionTermination.reset"><code class="docutils literal notranslate"><span class="pre">TextMentionTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.StopMessageTermination"><code class="docutils literal notranslate"><span class="pre">StopMessageTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.StopMessageTermination.terminated"><code class="docutils literal notranslate"><span class="pre">StopMessageTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.StopMessageTermination.reset"><code class="docutils literal notranslate"><span class="pre">StopMessageTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.TokenUsageTermination"><code class="docutils literal notranslate"><span class="pre">TokenUsageTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TokenUsageTermination.terminated"><code class="docutils literal notranslate"><span class="pre">TokenUsageTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TokenUsageTermination.reset"><code class="docutils literal notranslate"><span class="pre">TokenUsageTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.HandoffTermination"><code class="docutils literal notranslate"><span class="pre">HandoffTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.HandoffTermination.terminated"><code class="docutils literal notranslate"><span class="pre">HandoffTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.HandoffTermination.reset"><code class="docutils literal notranslate"><span class="pre">HandoffTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.TimeoutTermination"><code class="docutils literal notranslate"><span class="pre">TimeoutTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TimeoutTermination.terminated"><code class="docutils literal notranslate"><span class="pre">TimeoutTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TimeoutTermination.reset"><code class="docutils literal notranslate"><span class="pre">TimeoutTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.ExternalTermination"><code class="docutils literal notranslate"><span class="pre">ExternalTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.ExternalTermination.terminated"><code class="docutils literal notranslate"><span class="pre">ExternalTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.ExternalTermination.set"><code class="docutils literal notranslate"><span class="pre">ExternalTermination.set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.ExternalTermination.reset"><code class="docutils literal notranslate"><span class="pre">ExternalTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.SourceMatchTermination"><code class="docutils literal notranslate"><span class="pre">SourceMatchTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.SourceMatchTermination.terminated"><code class="docutils literal notranslate"><span class="pre">SourceMatchTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.SourceMatchTermination.reset"><code class="docutils literal notranslate"><span class="pre">SourceMatchTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMessageTermination"><code class="docutils literal notranslate"><span class="pre">TextMessageTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMessageTermination.terminated"><code class="docutils literal notranslate"><span class="pre">TextMessageTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.TextMessageTermination.reset"><code class="docutils literal notranslate"><span class="pre">TextMessageTermination.reset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#agentopera.chatflow.conditions.FunctionCallTermination"><code class="docutils literal notranslate"><span class="pre">FunctionCallTermination</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.FunctionCallTermination.terminated"><code class="docutils literal notranslate"><span class="pre">FunctionCallTermination.terminated</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentopera.chatflow.conditions.FunctionCallTermination.reset"><code class="docutils literal notranslate"><span class="pre">FunctionCallTermination.reset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">chatflow.conditions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chatflow/chatflow.conditions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-agentopera.chatflow.conditions">
+<span id="chatflow-conditions"></span><h1>chatflow.conditions<a class="headerlink" href="#module-agentopera.chatflow.conditions" title="Link to this heading"></a></h1>
+<p>This module provides various termination conditions for controlling the behavior of
+multi-agent teams.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.MaxMessageTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">MaxMessageTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_agent_event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#MaxMessageTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.MaxMessageTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation after a maximum number of messages have been exchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_messages</strong> – The maximum number of messages allowed in the conversation.</p></li>
+<li><p><strong>include_agent_event</strong> – If True, include <code class="xref py py-class docutils literal notranslate"><span class="pre">AgentEvent</span></code> in the message count.
+Otherwise, only include <code class="xref py py-class docutils literal notranslate"><span class="pre">ChatMessage</span></code>. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.MaxMessageTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.MaxMessageTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.MaxMessageTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#MaxMessageTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.MaxMessageTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMentionTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">TextMentionTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TextMentionTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TextMentionTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a specific text is mentioned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – The text to look for in the messages.</p></li>
+<li><p><strong>sources</strong> – Check only messages of the specified agents for the text to look for.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMentionTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.TextMentionTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMentionTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TextMentionTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TextMentionTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.StopMessageTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">StopMessageTermination</span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#StopMessageTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.StopMessageTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a StopMessage is received.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.StopMessageTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.StopMessageTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.StopMessageTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#StopMessageTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.StopMessageTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TokenUsageTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">TokenUsageTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_total_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_prompt_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_completion_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TokenUsageTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TokenUsageTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a token usage limit is reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_total_token</strong> – The maximum total number of tokens allowed in the conversation.</p></li>
+<li><p><strong>max_prompt_token</strong> – The maximum number of prompt tokens allowed in the conversation.</p></li>
+<li><p><strong>max_completion_token</strong> – The maximum number of completion tokens allowed in the conversation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If none of max_total_token, max_prompt_token, or max_completion_token is provided.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TokenUsageTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.TokenUsageTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TokenUsageTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TokenUsageTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TokenUsageTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.HandoffTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">HandoffTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#HandoffTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.HandoffTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a <code class="xref py py-class docutils literal notranslate"><span class="pre">HandoffMessage</span></code>
+with the given target is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target</strong> (<em>str</em>) – The target of the handoff message.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.HandoffTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.HandoffTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.HandoffTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#HandoffTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.HandoffTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TimeoutTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">TimeoutTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TimeoutTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TimeoutTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation after a specified duration has passed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout_seconds</strong> – The maximum duration in seconds before terminating the conversation.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TimeoutTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.TimeoutTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TimeoutTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TimeoutTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TimeoutTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.ExternalTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">ExternalTermination</span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#ExternalTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.ExternalTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>A termination condition that is externally controlled
+by calling the <a class="reference internal" href="#agentopera.chatflow.conditions.ExternalTermination.set" title="agentopera.chatflow.conditions.ExternalTermination.set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set()</span></code></a> method.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.chatflow.conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExternalTermination</span>
+
+<span class="n">termination</span> <span class="o">=</span> <span class="n">ExternalTermination</span><span class="p">()</span>
+
+<span class="c1"># Run the team in an asyncio task.</span>
+<span class="o">...</span>
+
+<span class="c1"># Set the termination condition externally</span>
+<span class="n">termination</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.ExternalTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.ExternalTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.ExternalTermination.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#ExternalTermination.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.ExternalTermination.set" title="Link to this definition"></a></dt>
+<dd><p>Set the termination condition to terminated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.ExternalTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#ExternalTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.ExternalTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.SourceMatchTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">SourceMatchTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#SourceMatchTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.SourceMatchTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation after a specific source responds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sources</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of source names to terminate the conversation.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminatedException" title="agentopera.chatflow.base.TerminatedException"><strong>TerminatedException</strong></a> – If the termination condition has already been reached.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.SourceMatchTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.SourceMatchTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.SourceMatchTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#SourceMatchTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.SourceMatchTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMessageTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">TextMessageTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TextMessageTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TextMessageTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a <code class="xref py py-class docutils literal notranslate"><span class="pre">TextMessage</span></code> is received.</p>
+<p>This termination condition checks for TextMessage instances in the message sequence. When a TextMessage is found,
+it terminates the conversation if either:
+- No source was specified (terminates on any TextMessage)
+- The message source matches the specified source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The source name to match against incoming messages. If None, matches any source.
+Defaults to None.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMessageTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.TextMessageTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.TextMessageTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#TextMessageTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.TextMessageTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.FunctionCallTermination">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">agentopera.chatflow.conditions.</span></span><span class="sig-name descname"><span class="pre">FunctionCallTermination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#FunctionCallTermination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.FunctionCallTermination" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminationCondition" title="agentopera.chatflow.base.termination.TerminationCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">TerminationCondition</span></code></a></p>
+<p>Terminate the conversation if a <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionExecutionResult</span></code>
+with a specific name was received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function_name</strong> (<em>str</em>) – The name of the function to look for in the messages.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="chatflow.base.html#agentopera.chatflow.base.TerminatedException" title="agentopera.chatflow.base.TerminatedException"><strong>TerminatedException</strong></a> – If the termination condition has already been reached.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.FunctionCallTermination.terminated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">terminated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#agentopera.chatflow.conditions.FunctionCallTermination.terminated" title="Link to this definition"></a></dt>
+<dd><p>Check if the termination condition has been reached</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="agentopera.chatflow.conditions.FunctionCallTermination.reset">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/agentopera/chatflow/conditions/terminations.html#FunctionCallTermination.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#agentopera.chatflow.conditions.FunctionCallTermination.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the termination condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chatflow.base.html" class="btn btn-neutral float-left" title="chatflow.base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chatflow.media.html" class="btn btn-neutral float-right" title="chatflow.media" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

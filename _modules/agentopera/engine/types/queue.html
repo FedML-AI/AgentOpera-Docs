@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.engine.types.queue &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.engine.types.queue</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.engine.types.queue</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copy of Asyncio queue: https://github.com/python/cpython/blob/main/Lib/asyncio/queues.py</span>
+<span class="c1"># So that shutdown can be used in &lt;3.13</span>
+<span class="c1"># Modified to work outside of the asyncio package</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="n">_global_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_LoopBoundMixin</span><span class="p">:</span>
+    <span class="n">_loop</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">AbstractEventLoop</span><span class="p">:</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">_global_lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span> <span class="o">=</span> <span class="n">loop</span>
+        <span class="k">if</span> <span class="n">loop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="si">!r}</span><span class="s2"> is bound to a different event loop&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loop</span>
+
+
+<div class="viewcode-block" id="QueueShutDown">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.QueueShutDown">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">QueueShutDown</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when putting on to or getting from a shut-down Queue.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Queue">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Queue</span><span class="p">(</span><span class="n">_LoopBoundMixin</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span> <span class="o">=</span> <span class="n">maxsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">[</span><span class="n">asyncio</span><span class="o">.</span><span class="n">Future</span><span class="p">[</span><span class="kc">None</span><span class="p">]]()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">[</span><span class="n">asyncio</span><span class="o">.</span><span class="n">Future</span><span class="p">[</span><span class="kc">None</span><span class="p">]]()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># These three are overridable in subclasses.</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="c1"># End of the overridable methods.</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_wakeup_next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">waiters</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">[</span><span class="n">asyncio</span><span class="o">.</span><span class="n">Future</span><span class="p">[</span><span class="kc">None</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Wake up the next waiter (if any) that isn&#39;t cancelled.</span>
+        <span class="k">while</span> <span class="n">waiters</span><span class="p">:</span>
+            <span class="n">waiter</span> <span class="o">=</span> <span class="n">waiters</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">waiter</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+                <span class="n">waiter</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">:</span><span class="s2">#x</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">()</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">()</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;maxsize=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="si">!r}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_queue&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; _queue=</span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="p">)</span><span class="si">!r}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; _getters[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; _putters[</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; tasks=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="s2">&quot; shutdown&quot;</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="Queue.qsize">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.qsize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">qsize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of items in the queue.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queue</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maxsize</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of items allowed in the queue.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span>
+
+<div class="viewcode-block" id="Queue.empty">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.empty">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the queue is empty, False otherwise.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queue</span></div>
+
+
+<div class="viewcode-block" id="Queue.full">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.full">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">full</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if there are maxsize items in the queue.</span>
+
+<span class="sd">        Note: if the Queue was initialized with maxsize=0 (the default),</span>
+<span class="sd">        then full() is never True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">qsize</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span></div>
+
+
+<div class="viewcode-block" id="Queue.put">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.put">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Put an item into the queue.</span>
+
+<span class="sd">        Put an item into the queue. If the queue is full, wait until a free</span>
+<span class="sd">        slot is available before adding item.</span>
+
+<span class="sd">        Raises QueueShutDown if the queue has been shut down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">full</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">QueueShutDown</span>
+            <span class="n">putter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_loop</span><span class="p">()</span><span class="o">.</span><span class="n">create_future</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">putter</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">putter</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">putter</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>  <span class="c1"># Just in case putter is not done yet.</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># Clean self._putters from canceled putters.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">putter</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="c1"># The putter could be removed from self._putters by a</span>
+                    <span class="c1"># previous get_nowait call or a shutdown call.</span>
+                    <span class="k">pass</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">full</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">putter</span><span class="o">.</span><span class="n">cancelled</span><span class="p">():</span>
+                    <span class="c1"># We were woken up by get_nowait(), but can&#39;t take</span>
+                    <span class="c1"># the call.  Wake up the next in line.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_wakeup_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="p">)</span>
+                <span class="k">raise</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">put_nowait</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Queue.put_nowait">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.put_nowait">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">put_nowait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Put an item into the queue without blocking.</span>
+
+<span class="sd">        If no free slot is immediately available, raise QueueFull.</span>
+
+<span class="sd">        Raises QueueShutDown if the queue has been shut down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QueueShutDown</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">full</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">QueueFull</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wakeup_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Queue.get">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.get">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove and return an item from the queue.</span>
+
+<span class="sd">        If queue is empty, wait until an item is available.</span>
+
+<span class="sd">        Raises QueueShutDown if the queue has been shut down and is empty, or</span>
+<span class="sd">        if the queue has been shut down immediately.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">QueueShutDown</span>
+            <span class="n">getter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_loop</span><span class="p">()</span><span class="o">.</span><span class="n">create_future</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getter</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">getter</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">getter</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>  <span class="c1"># Just in case getter is not done yet.</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># Clean self._getters from canceled getters.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">getter</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="c1"># The getter could be removed from self._getters by a</span>
+                    <span class="c1"># previous put_nowait call, or a shutdown call.</span>
+                    <span class="k">pass</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">getter</span><span class="o">.</span><span class="n">cancelled</span><span class="p">():</span>
+                    <span class="c1"># We were woken up by put_nowait(), but can&#39;t take</span>
+                    <span class="c1"># the call.  Wake up the next in line.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_wakeup_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="p">)</span>
+                <span class="k">raise</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_nowait</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Queue.get_nowait">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.get_nowait">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_nowait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove and return an item from the queue.</span>
+
+<span class="sd">        Return an item if one is immediately available, else raise QueueEmpty.</span>
+
+<span class="sd">        Raises QueueShutDown if the queue has been shut down and is empty, or</span>
+<span class="sd">        if the queue has been shut down immediately.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">QueueShutDown</span>
+            <span class="k">raise</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">QueueEmpty</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wakeup_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span></div>
+
+
+<div class="viewcode-block" id="Queue.task_done">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.task_done">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">task_done</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Indicate that a formerly enqueued task is complete.</span>
+
+<span class="sd">        Used by queue consumers. For each get() used to fetch a task,</span>
+<span class="sd">        a subsequent call to task_done() tells the queue that the processing</span>
+<span class="sd">        on the task is complete.</span>
+
+<span class="sd">        If a join() is currently blocking, it will resume when all items have</span>
+<span class="sd">        been processed (meaning that a task_done() call was received for every</span>
+<span class="sd">        item that had been put() into the queue).</span>
+
+<span class="sd">        shutdown(immediate=True) calls task_done() for each remaining item in</span>
+<span class="sd">        the queue.</span>
+
+<span class="sd">        Raises ValueError if called more times than there were items placed in</span>
+<span class="sd">        the queue.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;task_done() called too many times&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">set</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Queue.join">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.join">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Block until all items in the queue have been gotten and processed.</span>
+
+<span class="sd">        The count of unfinished tasks goes up whenever an item is added to the</span>
+<span class="sd">        queue. The count goes down whenever a consumer calls task_done() to</span>
+<span class="sd">        indicate that the item was retrieved and all work on it is complete.</span>
+<span class="sd">        When the count of unfinished tasks drops to zero, join() unblocks.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Queue.shutdown">
+<a class="viewcode-back" href="../../../../engine/engine.types.html#agentopera.engine.types.Queue.shutdown">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">immediate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shut-down the queue, making queue gets and puts raise QueueShutDown.</span>
+
+<span class="sd">        By default, gets will only raise once the queue is empty. Set</span>
+<span class="sd">        &#39;immediate&#39; to True to make gets raise immediately instead.</span>
+
+<span class="sd">        All blocked callers of put() and get() will be unblocked. If</span>
+<span class="sd">        &#39;immediate&#39;, a task is marked as done for each item remaining in</span>
+<span class="sd">        the queue, which may unblock callers of join().</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_shutdown</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">immediate</span><span class="p">:</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unfinished_tasks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+        <span class="c1"># All getters need to re-check queue-empty to raise ShutDown</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="p">:</span>
+            <span class="n">getter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getters</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">getter</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+                <span class="n">getter</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="p">:</span>
+            <span class="n">putter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_putters</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">putter</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+                <span class="n">putter</span><span class="o">.</span><span class="n">set_result</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

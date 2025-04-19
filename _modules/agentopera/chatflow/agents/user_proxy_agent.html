@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.agents.user_proxy_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.agents.user_proxy_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.agents.user_proxy_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">contextvars</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextVar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">iscoroutinefunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentEvent</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">,</span> <span class="n">TextMessage</span><span class="p">,</span> <span class="n">UserInputRequestedEvent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_chat_agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatAgent</span>
+
+<span class="n">SyncInputFunc</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span>
+<span class="n">AsyncInputFunc</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
+<span class="n">InputFuncType</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">SyncInputFunc</span><span class="p">,</span> <span class="n">AsyncInputFunc</span><span class="p">]</span>
+
+
+<span class="c1"># TODO: check if using to_thread fixes this in jupyter</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">cancellable_input</span><span class="p">(</span><span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">task</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">prompt</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cancellation_token</span><span class="o">.</span><span class="n">link_future</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">task</span>
+
+
+<div class="viewcode-block" id="UserProxyAgent">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">UserProxyAgent</span><span class="p">(</span><span class="n">BaseChatAgent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An agent that can represent a human user through an input function.</span>
+
+<span class="sd">    This agent can be used to represent a human user in a chat system by providing a custom input function.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        Using :class:`UserProxyAgent` puts a running team in a temporary blocked</span>
+<span class="sd">        state until the user responds. So it is important to time out the user input</span>
+<span class="sd">        function and cancel using the :class:`~agentopera.core.CancellationToken` if the user does not respond.</span>
+<span class="sd">        The input function should also handle exceptions and return a default response if needed.</span>
+
+<span class="sd">        For typical use cases that involve</span>
+<span class="sd">        slow human responses, it is recommended to use termination conditions</span>
+<span class="sd">        such as :class:`~agentopera.chatflow.conditions.HandoffTermination` or :class:`~agentopera.chatflow.conditions.SourceMatchTermination`</span>
+<span class="sd">        to stop the running team and return the control to the application.</span>
+<span class="sd">        You can run the team again with the user input. This way, the state of the team</span>
+<span class="sd">        can be saved and restored when the user responds.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (str): The name of the agent.</span>
+<span class="sd">        description (str, optional): A description of the agent.</span>
+<span class="sd">        input_func (Optional[Callable[[str], str]], Callable[[str, Optional[CancellationToken]], Awaitable[str]]): A function that takes a prompt and returns a user input string.</span>
+
+<span class="sd">    For examples of integrating with web and UI frameworks, see the following:</span>
+
+<span class="sd">    * `FastAPI &lt;https://github.com/FedML-AI/AgentOpera/tree/main/python/samples/agentopera_fastapi&gt;`_</span>
+<span class="sd">    * `ChainLit &lt;https://github.com/FedML-AI/AgentOpera/tree/main/python/samples/agentopera_chainlit&gt;`_</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        Simple usage case::</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.chatflow.agents import UserProxyAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+
+
+<span class="sd">            async def simple_user_agent():</span>
+<span class="sd">                agent = UserProxyAgent(&quot;user_proxy&quot;)</span>
+<span class="sd">                response = await asyncio.create_task(</span>
+<span class="sd">                    agent.on_messages(</span>
+<span class="sd">                        [TextMessage(content=&quot;What is your name? &quot;, source=&quot;user&quot;)],</span>
+<span class="sd">                        cancellation_token=CancellationToken(),</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+<span class="sd">                print(f&quot;Your name is {response.chat_message.content}&quot;)</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        Cancellable usage case::</span>
+
+<span class="sd">            import asyncio</span>
+<span class="sd">            from typing import Any</span>
+<span class="sd">            from agentopera.core import CancellationToken</span>
+<span class="sd">            from agentopera.chatflow.agents import UserProxyAgent</span>
+<span class="sd">            from agentopera.chatflow.messages import TextMessage</span>
+
+
+<span class="sd">            token = CancellationToken()</span>
+<span class="sd">            agent = UserProxyAgent(&quot;user_proxy&quot;)</span>
+
+
+<span class="sd">            async def timeout(delay: float):</span>
+<span class="sd">                await asyncio.sleep(delay)</span>
+
+
+<span class="sd">            def cancellation_callback(task: asyncio.Task[Any]):</span>
+<span class="sd">                token.cancel()</span>
+
+
+<span class="sd">            async def cancellable_user_agent():</span>
+<span class="sd">                try:</span>
+<span class="sd">                    timeout_task = asyncio.create_task(timeout(3))</span>
+<span class="sd">                    timeout_task.add_done_callback(cancellation_callback)</span>
+<span class="sd">                    agent_task = asyncio.create_task(</span>
+<span class="sd">                        agent.on_messages(</span>
+<span class="sd">                            [TextMessage(content=&quot;What is your name? &quot;, source=&quot;user&quot;)],</span>
+<span class="sd">                            cancellation_token=token,</span>
+<span class="sd">                        )</span>
+<span class="sd">                    )</span>
+<span class="sd">                    response = await agent_task</span>
+<span class="sd">                    print(f&quot;Your name is {response.chat_message.content}&quot;)</span>
+<span class="sd">                except Exception as e:</span>
+<span class="sd">                    print(f&quot;Exception: {e}&quot;)</span>
+<span class="sd">                except BaseException as e:</span>
+<span class="sd">                    print(f&quot;BaseException: {e}&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UserProxyAgent.InputRequestContext">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent.InputRequestContext">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">InputRequestContext</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;InputRequestContext cannot be instantiated. It is a static class that provides context management for user input requests.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">_INPUT_REQUEST_CONTEXT_VAR</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ContextVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ContextVar</span><span class="p">(</span><span class="s2">&quot;_INPUT_REQUEST_CONTEXT_VAR&quot;</span><span class="p">)</span>
+
+        <span class="nd">@classmethod</span>
+        <span class="nd">@contextmanager</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">populate_context</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;:meta private:&quot;&quot;&quot;</span>
+            <span class="n">token</span> <span class="o">=</span> <span class="n">UserProxyAgent</span><span class="o">.</span><span class="n">InputRequestContext</span><span class="o">.</span><span class="n">_INPUT_REQUEST_CONTEXT_VAR</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">yield</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">UserProxyAgent</span><span class="o">.</span><span class="n">InputRequestContext</span><span class="o">.</span><span class="n">_INPUT_REQUEST_CONTEXT_VAR</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UserProxyAgent.InputRequestContext.request_id">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent.InputRequestContext.request_id">[docs]</a>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">request_id</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_INPUT_REQUEST_CONTEXT_VAR</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="s2">&quot;InputRequestContext.runtime() must be called within the input callback of a UserProxyAgent.&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+</div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;A human user&quot;</span><span class="p">,</span>
+        <span class="n">input_func</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">InputFuncType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the UserProxyAgent.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_func</span> <span class="o">=</span> <span class="n">input_func</span> <span class="ow">or</span> <span class="n">cancellable_input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_async</span> <span class="o">=</span> <span class="n">iscoroutinefunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_func</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Message types this agent can produce.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">TextMessage</span><span class="p">,</span> <span class="n">HandoffMessage</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_latest_handoff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">HandoffMessage</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find the HandoffMessage in the message sequence that addresses this agent.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">HandoffMessage</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Handoff message target does not match agent name: </span><span class="si">{</span><span class="n">messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle input based on function signature.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async</span><span class="p">:</span>
+                <span class="c1"># Cast to AsyncInputFunc for proper typing</span>
+                <span class="n">async_func</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">AsyncInputFunc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_func</span><span class="p">)</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">async_func</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Cast to SyncInputFunc for proper typing</span>
+                <span class="n">sync_func</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">SyncInputFunc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_func</span><span class="p">)</span>
+                <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">sync_func</span><span class="p">,</span> <span class="n">prompt</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to get user input: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+<div class="viewcode-block" id="UserProxyAgent.on_messages">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent.on_messages">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages_stream</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">message</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;The stream should have returned the final result.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UserProxyAgent.on_messages_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent.on_messages_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Response</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle incoming messages by requesting user input.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Check for handoff first</span>
+            <span class="n">handoff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_latest_handoff</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+            <span class="n">prompt</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Handoff received from </span><span class="si">{</span><span class="n">handoff</span><span class="o">.</span><span class="n">source</span><span class="si">}</span><span class="s2">. Enter your response: &quot;</span> <span class="k">if</span> <span class="n">handoff</span> <span class="k">else</span> <span class="s2">&quot;Enter your response: &quot;</span>
+            <span class="p">)</span>
+
+            <span class="n">request_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+            <span class="n">input_requested_event</span> <span class="o">=</span> <span class="n">UserInputRequestedEvent</span><span class="p">(</span><span class="n">request_id</span><span class="o">=</span><span class="n">request_id</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">input_requested_event</span>
+            <span class="k">with</span> <span class="n">UserProxyAgent</span><span class="o">.</span><span class="n">InputRequestContext</span><span class="o">.</span><span class="n">populate_context</span><span class="p">(</span><span class="n">request_id</span><span class="p">):</span>
+                <span class="n">user_input</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_input</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+
+            <span class="c1"># Return appropriate message type based on handoff presence</span>
+            <span class="k">if</span> <span class="n">handoff</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">HandoffMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">user_input</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">handoff</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">Response</span><span class="p">(</span><span class="n">chat_message</span><span class="o">=</span><span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">user_input</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+        <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to get user input: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+
+
+<div class="viewcode-block" id="UserProxyAgent.on_reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.UserProxyAgent.on_reset">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">CancellationToken</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset agent state.&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

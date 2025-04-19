@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.state.states &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.state.states</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.state.states</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Ensures pydantic can distinguish between types of events &amp; messages.</span>
+<span class="n">_AgentMessage</span> <span class="o">=</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">discriminator</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">)]</span>
+
+
+<div class="viewcode-block" id="BaseState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.BaseState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseState</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for all saveable state&quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;BaseState&quot;</span><span class="p">)</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="AssistantAgentState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.AssistantAgentState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AssistantAgentState</span><span class="p">(</span><span class="n">BaseState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for an assistant agent.&quot;&quot;&quot;</span>
+
+    <span class="n">llm_context</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">dict</span><span class="p">([(</span><span class="s2">&quot;messages&quot;</span><span class="p">,</span> <span class="p">[])]))</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;AssistantAgentState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="TeamState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.TeamState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TeamState</span><span class="p">(</span><span class="n">BaseState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for a team of agents.&quot;&quot;&quot;</span>
+
+    <span class="n">agent_states</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">team_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;TeamState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="BaseGroupChatManagerState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.BaseGroupChatManagerState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseGroupChatManagerState</span><span class="p">(</span><span class="n">BaseState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base state for all group chat managers.&quot;&quot;&quot;</span>
+
+    <span class="n">message_thread</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">_AgentMessage</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">current_turn</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;BaseGroupChatManagerState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ChatAgentContainerState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.ChatAgentContainerState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ChatAgentContainerState</span><span class="p">(</span><span class="n">BaseState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for a container of chat agents.&quot;&quot;&quot;</span>
+
+    <span class="n">agent_state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="n">message_buffer</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;ChatAgentContainerState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="RoundRobinManagerState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.RoundRobinManagerState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RoundRobinManagerState</span><span class="p">(</span><span class="n">BaseGroupChatManagerState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for :class:`~agentopera.chatflow.teams.RoundRobinGroupChat` manager.&quot;&quot;&quot;</span>
+
+    <span class="n">next_speaker_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;RoundRobinManagerState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SelectorManagerState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.SelectorManagerState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SelectorManagerState</span><span class="p">(</span><span class="n">BaseGroupChatManagerState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for :class:`~agentopera.chatflow.teams.SelectorGroupChat` manager.&quot;&quot;&quot;</span>
+
+    <span class="n">previous_speaker</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;SelectorManagerState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SwarmManagerState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.SwarmManagerState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SwarmManagerState</span><span class="p">(</span><span class="n">BaseGroupChatManagerState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for :class:`~agentopera.chatflow.teams.Swarm` manager.&quot;&quot;&quot;</span>
+
+    <span class="n">current_speaker</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;SwarmManagerState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="MagenticOneOrchestratorState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.MagenticOneOrchestratorState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MagenticOneOrchestratorState</span><span class="p">(</span><span class="n">BaseGroupChatManagerState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for :class:`~agentopera.chatflow.teams.MagneticOneGroupChat` orchestrator.&quot;&quot;&quot;</span>
+
+    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">facts</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">plan</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">n_rounds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">n_stalls</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;MagenticOneOrchestratorState&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SocietyOfMindAgentState">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.state.html#agentopera.chatflow.state.SocietyOfMindAgentState">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SocietyOfMindAgentState</span><span class="p">(</span><span class="n">BaseState</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;State for a Society of Mind agent.&quot;&quot;&quot;</span>
+
+    <span class="n">inner_team_state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;SocietyOfMindAgentState&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

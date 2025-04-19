@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agentopera.chatflow.agents.base_chat_agent &mdash; AgentOpera API References 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            AgentOpera API References
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Chatflow Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.html">chatflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.agents.html">chatflow.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.base.html">chatflow.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.conditions.html">chatflow.conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.media.html">chatflow.media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.state.html">chatflow.state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.team.html">chatflow.team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.ui.html">chatflow.ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../chatflow/chatflow.utils.html">chatflow.utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Engine Module</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.html">engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.agent.html">engine.agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.function_call.html">engine.function_call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.protocol.html">engine.protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.runtime.html">engine.runtime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.telemetry.html">engine.telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../engine/engine.types.html">engine.types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">AgentOpera API References</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">agentopera.chatflow.agents.base_chat_agent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for agentopera.chatflow.agents.base_chat_agent</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">agentopera.engine.types.agent.cancellation_token</span><span class="w"> </span><span class="kn">import</span> <span class="n">CancellationToken</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAgent</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">TaskResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..messages</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AgentEvent</span><span class="p">,</span>
+    <span class="n">BaseChatMessage</span><span class="p">,</span>
+    <span class="n">ChatMessage</span><span class="p">,</span>
+    <span class="n">ModelClientStreamingChunkEvent</span><span class="p">,</span>
+    <span class="n">TextMessage</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..state</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseState</span>
+
+
+<div class="viewcode-block" id="BaseChatAgent">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseChatAgent</span><span class="p">(</span><span class="n">ChatAgent</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for a chat agent.</span>
+
+<span class="sd">    This abstract class provides a base implementation for a :class:`ChatAgent`.</span>
+<span class="sd">    To create a new chat agent, subclass this class and implement the</span>
+<span class="sd">    :meth:`on_messages`, :meth:`on_reset`, and :attr:`produced_message_types`.</span>
+<span class="sd">    If streaming is required, also implement the :meth:`on_messages_stream` method.</span>
+
+<span class="sd">    An agent is considered stateful and maintains its state between calls to</span>
+<span class="sd">    the :meth:`on_messages` or :meth:`on_messages_stream` methods.</span>
+<span class="sd">    The agent should store its state in the</span>
+<span class="sd">    agent instance. The agent should also implement the :meth:`on_reset` method</span>
+<span class="sd">    to reset the agent to its initialization state.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        The caller should only pass the new messages to the agent on each call</span>
+<span class="sd">        to the :meth:`on_messages` or :meth:`on_messages_stream` method.</span>
+<span class="sd">        Do not pass the entire conversation history to the agent on each call.</span>
+<span class="sd">        This design principle must be followed when creating a new agent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent_identifier</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The agent name must be a valid Python identifier.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">description</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The name of the agent. This is used by team to uniquely identify</span>
+<span class="sd">        the agent. It should be unique within the team.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The description of the agent. This is used by team to</span>
+<span class="sd">        make decisions about which agents to use. The description should</span>
+<span class="sd">        describe the agent&#39;s capabilities and how to interact with it.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">produced_message_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The types of messages that the agent produces in the</span>
+<span class="sd">        :attr:`Response.chat_message` field. They must be :class:`ChatMessage` types.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+
+<div class="viewcode-block" id="BaseChatAgent.on_messages">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.on_messages">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handles incoming messages and returns a response.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Agents are stateful and the messages passed to this method should</span>
+<span class="sd">            be the new messages since the last call to this method. The agent</span>
+<span class="sd">            should maintain its state between calls to this method. For example,</span>
+<span class="sd">            if the agent needs to remember the previous messages to respond to</span>
+<span class="sd">            the current message, it should store the previous messages in the</span>
+<span class="sd">            agent state.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.on_messages_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.on_messages_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_messages_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">],</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Response</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handles incoming messages and returns a stream of messages and</span>
+<span class="sd">        and the final item is the response. The base implementation in</span>
+<span class="sd">        :class:`BaseChatAgent` simply calls :meth:`on_messages` and yields</span>
+<span class="sd">        the messages in the response.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Agents are stateful and the messages passed to this method should</span>
+<span class="sd">            be the new messages since the last call to this method. The agent</span>
+<span class="sd">            should maintain its state between calls to this method. For example,</span>
+<span class="sd">            if the agent needs to remember the previous messages to respond to</span>
+<span class="sd">            the current message, it should store the previous messages in the</span>
+<span class="sd">            agent state.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">inner_message</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">inner_messages</span> <span class="ow">or</span> <span class="p">[]:</span>
+            <span class="k">yield</span> <span class="n">inner_message</span>
+        <span class="k">yield</span> <span class="n">response</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.run">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.run">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TaskResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the agent with the given task and return the result.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+        <span class="n">input_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">output_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">text_msg</span> <span class="o">=</span> <span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+            <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_msg</span><span class="p">)</span>
+            <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_msg</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+            <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Task list cannot be empty.&quot;</span><span class="p">)</span>
+            <span class="c1"># Task is a sequence of messages.</span>
+            <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+                    <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid message type in sequence: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages</span><span class="p">(</span><span class="n">input_messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">inner_messages</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">output_messages</span> <span class="o">+=</span> <span class="n">response</span><span class="o">.</span><span class="n">inner_messages</span>
+        <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">chat_message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TaskResult</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">output_messages</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.run_stream">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.run_stream">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_stream</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">task</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span> <span class="o">|</span> <span class="n">TaskResult</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the agent with the given task and return a stream of messages</span>
+<span class="sd">        and the final task result as the last item in the stream.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cancellation_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cancellation_token</span> <span class="o">=</span> <span class="n">CancellationToken</span><span class="p">()</span>
+        <span class="n">input_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">output_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AgentEvent</span> <span class="o">|</span> <span class="n">ChatMessage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">task</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">text_msg</span> <span class="o">=</span> <span class="n">TextMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+            <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_msg</span><span class="p">)</span>
+            <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_msg</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">text_msg</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+            <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">task</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Task list cannot be empty.&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">task</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">BaseChatMessage</span><span class="p">):</span>
+                    <span class="n">input_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">msg</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid message type in sequence: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_messages_stream</span><span class="p">(</span><span class="n">input_messages</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">Response</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">message</span><span class="o">.</span><span class="n">chat_message</span>
+                <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">chat_message</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">TaskResult</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="n">output_messages</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">message</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">ModelClientStreamingChunkEvent</span><span class="p">):</span>
+                    <span class="c1"># Skip the model client streaming chunk events.</span>
+                    <span class="k">continue</span>
+                <span class="n">output_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.on_reset">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.on_reset">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">on_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cancellation_token</span><span class="p">:</span> <span class="n">CancellationToken</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resets the agent to its initialization state.&quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.save_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.save_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export state. Default implementation for stateless agents.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">BaseState</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.load_state">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.load_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Restore agent from saved state. Default implementation for stateless agents.&quot;&quot;&quot;</span>
+        <span class="n">BaseState</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.close">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.close">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when the engine is closed&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="BaseChatAgent.agent_identifier">
+<a class="viewcode-back" href="../../../../chatflow/chatflow.agents.html#agentopera.chatflow.agents.BaseChatAgent.agent_identifier">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">agent_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Returns the identifier of the agent.</span>
+<span class="sd">            :param agent_name: Input string</span>
+<span class="sd">            :return: True if valid, False otherwise</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;^[a-zA-Z0-9_\- ]+$&#39;</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">agent_name</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, tensoropera.ai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

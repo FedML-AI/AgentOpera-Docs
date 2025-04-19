@@ -1,0 +1,36 @@
+.. AgentOpera API References documentation master file, created by
+   sphinx-quickstart on Sat Apr 19 13:54:41 2025.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+AgentOpera API References documentation
+=======================================
+
+Welcome to the API documentation for AgentOpera. This documentation is automatically generated
+from the source code docstrings.
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Chatflow Module
+   
+   chatflow/chatflow
+   chatflow/chatflow.agents
+   chatflow/chatflow.base
+   chatflow/chatflow.conditions
+   chatflow/chatflow.media
+   chatflow/chatflow.state
+   chatflow/chatflow.team
+   chatflow/chatflow.ui
+   chatflow/chatflow.utils
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Engine Module
+   
+   engine/engine
+   engine/engine.agent
+   engine/engine.function_call
+   engine/engine.protocol
+   engine/engine.runtime
+   engine/engine.telemetry
+   engine/engine.types
